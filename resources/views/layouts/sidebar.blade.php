@@ -295,13 +295,19 @@
                     <span class="sidebar-label transition-all duration-300">Export Spreadsheet</span>
                 </a>
 
-                <!-- Pengguna -->
+                <!-- Pengaturan -->
                 <p class="sidebar-section-label text-[9px] font-bold text-blue-400 uppercase tracking-widest px-3 pt-4 pb-2 transition-all duration-300">Pengaturan</p>
                 <a href="{{ route('users.index') }}"
                    class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-300 hover:text-white {{ request()->routeIs('users.*') ? 'active' : '' }}"
                    title="Kelola Pengguna Sistem">
                     <i class="fa-solid fa-users-gear w-5 text-center shrink-0"></i>
                     <span class="sidebar-label transition-all duration-300">Kelola Pengguna</span>
+                </a>
+                <a href="{{ route('settings.index') }}"
+                   class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-300 hover:text-white {{ request()->routeIs('settings.*') ? 'active' : '' }}"
+                   title="Pengaturan Kop Surat & Identitas">
+                    <i class="fa-solid fa-sliders w-5 text-center shrink-0"></i>
+                    <span class="sidebar-label transition-all duration-300">Pengaturan Surat</span>
                 </a>
             </nav>
 

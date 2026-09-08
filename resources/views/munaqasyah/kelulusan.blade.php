@@ -34,15 +34,24 @@
 <body class="bg-slate-100 min-h-screen py-4 sm:py-8 px-2 sm:px-4 text-slate-900">
     <!-- Action Bar (No Print) -->
     <div class="max-w-3xl mx-auto mb-4 sm:mb-5 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 no-print">
-        <a href="{{ route('munaqasyah.index', ['jenis' => $santri->jenis]) }}" 
-           class="inline-flex items-center justify-center gap-2 text-xs font-semibold text-slate-700 bg-white border border-slate-300 px-3.5 py-2.5 rounded-xl shadow-xs hover:bg-slate-50 transition">
-            <i class="fa-solid fa-arrow-left"></i> Kembali ke Rekapitulasi
-        </a>
-        <div class="flex items-center gap-2">
-            <a href="{{ route('munaqasyah.edit', $santri->id) }}"
-               class="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 text-xs font-semibold text-slate-700 bg-white border border-slate-300 px-3.5 py-2.5 rounded-xl shadow-xs hover:bg-slate-50 transition">
-                <i class="fa-solid fa-pen-to-square text-amber-500"></i> Edit Data
+        @if(isset($isPublic) && $isPublic)
+            <a href="{{ route('public.check', ['q' => $santri->no_peserta, 'jenis' => $santri->jenis]) }}" 
+               class="inline-flex items-center justify-center gap-2 text-xs font-semibold text-slate-700 bg-white border border-slate-300 px-3.5 py-2.5 rounded-xl shadow-xs hover:bg-slate-50 transition">
+                <i class="fa-solid fa-arrow-left"></i> Kembali ke Portal Cek Kelulusan
             </a>
+        @else
+            <a href="{{ route('munaqasyah.index', ['jenis' => $santri->jenis]) }}" 
+               class="inline-flex items-center justify-center gap-2 text-xs font-semibold text-slate-700 bg-white border border-slate-300 px-3.5 py-2.5 rounded-xl shadow-xs hover:bg-slate-50 transition">
+                <i class="fa-solid fa-arrow-left"></i> Kembali ke Rekapitulasi
+            </a>
+        @endif
+        <div class="flex items-center gap-2">
+            @if(!isset($isPublic) || !$isPublic)
+                <a href="{{ route('munaqasyah.edit', $santri->id) }}"
+                   class="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 text-xs font-semibold text-slate-700 bg-white border border-slate-300 px-3.5 py-2.5 rounded-xl shadow-xs hover:bg-slate-50 transition">
+                    <i class="fa-solid fa-pen-to-square text-amber-500"></i> Edit Data
+                </a>
+            @endif
             <button onclick="window.print()" 
                     class="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 text-xs font-bold text-white bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 hover:to-rose-700 px-4 py-2.5 rounded-xl shadow-md transition active:scale-95">
                 <i class="fa-solid fa-print"></i> Cetak / Simpan PDF
@@ -57,9 +66,9 @@
             <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-5">
                 <img src="{{ asset('images/logo.png') }}" alt="Logo Yayasan" class="w-16 h-16 sm:w-20 sm:h-20 object-contain shrink-0">
                 <div>
-                    <h3 class="text-xs sm:text-sm font-black tracking-wider text-blue-950 uppercase">YAYASAN CAHAYA AMANAH AR-RAUDHAH</h3>
+                    <h3 class="text-xs sm:text-sm font-black tracking-wider text-blue-950 uppercase">{{ $settings['nama_yayasan'] ?? 'YAYASAN CAHAYA AMANAH AR-RAUDHAH' }}</h3>
                     <h1 class="text-base sm:text-xl font-black text-slate-900 tracking-tight">PANITIA MUNAQASYAH SANTRI BANJARBARU</h1>
-                    <p class="text-[10px] sm:text-[11px] text-slate-600 font-semibold">Banjarbaru - Kalimantan Selatan • Tahun 1447 H / 2026 M</p>
+                    <p class="text-[10px] sm:text-[11px] text-slate-600 font-semibold">{{ $settings['alamat_yayasan'] ?? 'Banjarbaru - Kalimantan Selatan' }} • Periode {{ $settings['tahun_ajaran'] ?? '1447 H / 2026 M' }}</p>
                 </div>
             </div>
         </div>
@@ -68,7 +77,9 @@
             <h2 class="text-sm sm:text-base font-extrabold uppercase text-slate-900 tracking-wide underline decoration-red-600 decoration-2 underline-offset-4">
                 SURAT KETERANGAN HASIL UJIAN MUNAQASYAH
             </h2>
-            <p class="text-[11px] sm:text-xs text-slate-500 mt-1 font-mono">Nomor: SKM/{{ $santri->jenis }}/2026/{{ str_pad($santri->no_peserta ?? $santri->id, 4, '0', STR_PAD_LEFT) }}</p>
+            <p class="text-[11px] sm:text-xs text-slate-500 mt-1 font-mono">
+                Nomor: {{ $settings['nomor_sk_munaqasyah'] ?? ('SKM/' . $santri->jenis . '/2026/' . str_pad($santri->no_peserta ?? $santri->id, 4, '0', STR_PAD_LEFT)) }}
+            </p>
         </div>
 
         <!-- Bagian Biodata Santri + Pas Foto Kelulusan -->

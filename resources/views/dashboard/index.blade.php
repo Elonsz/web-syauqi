@@ -124,6 +124,83 @@
         </div>
     </div>
 
+    {{-- ===== VISUAL ANALYTICS (CHART.JS) ===== --}}
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+        {{-- Chart 1: Distribusi Predikat --}}
+        <div class="lg:col-span-5 bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-between">
+            <div>
+                <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center text-sm border border-amber-200">
+                            <i class="fa-solid fa-chart-pie"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-extrabold text-slate-800 text-sm">Distribusi Predikat</h3>
+                            <p class="text-[10px] text-slate-400">Tingkat capaian predikat kelulusan santri</p>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full">Total: {{ $totalSemua }}</span>
+                </div>
+                <div class="relative mt-4 flex items-center justify-center" style="height: 220px;">
+                    <canvas id="predikatChart"></canvas>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 pt-3 border-t border-slate-100 text-[10px] mt-2">
+                <div class="flex items-center gap-1.5">
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 shrink-0"></span>
+                    <span class="text-slate-600 truncate">Mumtaz ({{ $predikatCounts['Mumtaz (Istimewa)'] ?? 0 }})</span>
+                </div>
+                <div class="flex items-center gap-1.5">
+                    <span class="w-2.5 h-2.5 rounded-full bg-blue-500 shrink-0"></span>
+                    <span class="text-slate-600 truncate">Jayyid J. ({{ $predikatCounts['Jayyid Jiddan (Sangat Baik)'] ?? 0 }})</span>
+                </div>
+                <div class="flex items-center gap-1.5">
+                    <span class="w-2.5 h-2.5 rounded-full bg-amber-500 shrink-0"></span>
+                    <span class="text-slate-600 truncate">Jayyid ({{ $predikatCounts['Jayyid (Baik)'] ?? 0 }})</span>
+                </div>
+                <div class="flex items-center gap-1.5">
+                    <span class="w-2.5 h-2.5 rounded-full bg-purple-500 shrink-0"></span>
+                    <span class="text-slate-600 truncate">Maqbul ({{ $predikatCounts['Maqbul (Cukup)'] ?? 0 }})</span>
+                </div>
+                <div class="flex items-center gap-1.5">
+                    <span class="w-2.5 h-2.5 rounded-full bg-rose-500 shrink-0"></span>
+                    <span class="text-slate-600 truncate">Rasib ({{ $predikatCounts['Rasib (Kurang)'] ?? 0 }})</span>
+                </div>
+            </div>
+        </div>
+
+        {{-- Chart 2: Komparasi 9 Mata Uji --}}
+        <div class="lg:col-span-7 bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-between">
+            <div>
+                <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 rounded-lg bg-blue-50 text-blue-900 flex items-center justify-center text-sm border border-blue-200">
+                            <i class="fa-solid fa-chart-column"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-extrabold text-slate-800 text-sm">Rata-Rata 9 Komponen Nilai</h3>
+                            <p class="text-[10px] text-slate-400">Komparasi nilai rata-rata TPQ vs RTQ</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3 text-[10px] font-bold">
+                        <span class="inline-flex items-center gap-1 text-amber-700">
+                            <span class="w-2 h-2 rounded bg-amber-500"></span> TPQ
+                        </span>
+                        <span class="inline-flex items-center gap-1 text-blue-800">
+                            <span class="w-2 h-2 rounded bg-blue-900"></span> RTQ
+                        </span>
+                    </div>
+                </div>
+                <div class="relative mt-4" style="height: 240px;">
+                    <canvas id="komponenChart"></canvas>
+                </div>
+            </div>
+            <p class="text-[10px] text-slate-400 text-center mt-2">
+                *Skala nilai 0 – 100. Evaluasi mata uji mencakup bidang Munaqasyah Bacaan, Hafalan, &amp; Ujian Tertulis.
+            </p>
+        </div>
+    </div>
+
     {{-- ===== GRID: Breakdown TPQ/RTQ + Aksi Cepat ===== --}}
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
 
@@ -407,6 +484,7 @@
 @endsection
 
 @section('scripts')
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
     // Live clock
     function updateClock() {
@@ -422,5 +500,123 @@
     }
     updateClock();
     setInterval(updateClock, 1000);
+
+    // Chart.js: Distribusi Predikat (Doughnut)
+    const ctxPredikat = document.getElementById('predikatChart');
+    if (ctxPredikat) {
+        new Chart(ctxPredikat, {
+            type: 'doughnut',
+            data: {
+                labels: ['Mumtaz (Istimewa)', 'Jayyid Jiddan (Sangat Baik)', 'Jayyid (Baik)', 'Maqbul (Cukup)', 'Rasib (Kurang)'],
+                datasets: [{
+                    data: [
+                        {{ $predikatCounts['Mumtaz (Istimewa)'] ?? 0 }},
+                        {{ $predikatCounts['Jayyid Jiddan (Sangat Baik)'] ?? 0 }},
+                        {{ $predikatCounts['Jayyid (Baik)'] ?? 0 }},
+                        {{ $predikatCounts['Maqbul (Cukup)'] ?? 0 }},
+                        {{ $predikatCounts['Rasib (Kurang)'] ?? 0 }}
+                    ],
+                    backgroundColor: [
+                        '#10b981', // Emerald
+                        '#3b82f6', // Blue
+                        '#f59e0b', // Amber
+                        '#a855f7', // Purple
+                        '#f43f5e'  // Rose
+                    ],
+                    borderWidth: 2,
+                    borderColor: '#ffffff',
+                    hoverOffset: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                const val = context.parsed;
+                                const pct = total > 0 ? ((val / total) * 100).toFixed(1) : 0;
+                                return ` ${context.label}: ${val} santri (${pct}%)`;
+                            }
+                        }
+                    }
+                },
+                cutout: '70%'
+            }
+        });
+    }
+
+    // Chart.js: Komparasi 9 Komponen Nilai (Bar Chart)
+    const ctxKomponen = document.getElementById('komponenChart');
+    if (ctxKomponen) {
+        new Chart(ctxKomponen, {
+            type: 'bar',
+            data: {
+                labels: {!! json_encode($komponenLabels) !!},
+                datasets: [
+                    {
+                        label: 'TPQ Ar-Raudhah',
+                        data: {!! json_encode($avgKomponenTPQ) !!},
+                        backgroundColor: 'rgba(245, 158, 11, 0.85)', // Amber
+                        borderColor: '#d97706',
+                        borderWidth: 1,
+                        borderRadius: 6,
+                    },
+                    {
+                        label: 'RTQ Ar-Raudhah',
+                        data: {!! json_encode($avgKomponenRTQ) !!},
+                        backgroundColor: 'rgba(23, 37, 84, 0.9)', // Blue 950
+                        borderColor: '#0f172a',
+                        borderWidth: 1,
+                        borderRadius: 6,
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        grid: {
+                            color: '#f1f5f9'
+                        },
+                        ticks: {
+                            font: { size: 10 },
+                            stepSize: 20
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            font: { size: 10 },
+                            maxRotation: 45,
+                            minRotation: 0
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return ` ${context.dataset.label}: ${context.parsed.y} / 100`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
 </script>
 @endsection

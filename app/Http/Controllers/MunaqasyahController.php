@@ -226,7 +226,40 @@ class MunaqasyahController extends Controller
     public function kelulusan($id)
     {
         $santri = Santri::with(['penilaian', 'unit'])->findOrFail($id);
-        return view('munaqasyah.kelulusan', compact('santri'));
+        $settings = \App\Models\Setting::getAll();
+        return view('munaqasyah.kelulusan', compact('santri', 'settings'));
+    }
+
+    /**
+     * Cetak Massal Surat Kelulusan (Multi-halaman)
+     */
+    public function cetakMassal(Request $request)
+    {
+        $jenis = $request->get('jenis', 'TPQ');
+        $status = $request->get('status', 'LULUS');
+        $santriIds = $request->get('ids');
+
+        $query = Santri::with(['penilaian', 'unit'])->where('jenis', $jenis);
+
+        if (!empty($santriIds)) {
+            $ids = is_array($santriIds) ? $santriIds : explode(',', $santriIds);
+            $query->whereIn('id', $ids);
+        } elseif ($status && $status !== 'SEMUA') {
+            $query->where('status_kelulusan', $status);
+        }
+
+        if ($request->filled('unit')) {
+            $query->where('nama_unit', $request->unit);
+        }
+
+        $santris = $query->orderBy('no_peserta', 'asc')->get();
+        $settings = \App\Models\Setting::getAll();
+
+        if ($santris->isEmpty()) {
+            return back()->with('error', "Tidak ada data santri {$jenis} yang memenuhi kriteria untuk dicetak massal.");
+        }
+
+        return view('munaqasyah.cetak_massal', compact('santris', 'jenis', 'settings'));
     }
 
     /**

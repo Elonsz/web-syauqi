@@ -24,10 +24,20 @@
                 Rekapitulasi nilai bacaan &amp; hafalan munaqasyah <strong class="text-slate-700">{{ $jenis == 'TPQ' ? "Taman Pendidikan Qur'an Ar-Raudhah" : "Rumah Tahfidz Qur'an Ar-Raudhah" }}</strong> — Tahun 2026
             </p>
         </div>
-        <a href="{{ route('munaqasyah.create', ['jenis' => $jenis]) }}"
-            class="self-start sm:self-auto inline-flex items-center gap-2 bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 hover:to-rose-700 text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow-md hover:shadow-lg transition active:scale-95">
-            <i class="fa-solid fa-user-plus"></i> Tambah Santri {{ $jenis }}
-        </a>
+        <div class="flex flex-wrap items-center gap-2 self-start sm:self-auto">
+            <a href="{{ route('munaqasyah.cetak.massal', ['jenis' => $jenis, 'unit' => request('unit')]) }}" target="_blank"
+                class="inline-flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-3.5 py-2.5 rounded-xl shadow-xs transition active:scale-95">
+                <i class="fa-solid fa-print"></i> Cetak Massal
+            </a>
+            <a href="{{ route('munaqasyah.import', ['jenis' => $jenis]) }}"
+                class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-900 text-white font-bold text-xs px-3.5 py-2.5 rounded-xl shadow-xs transition active:scale-95">
+                <i class="fa-solid fa-file-excel text-emerald-400"></i> Import Data
+            </a>
+            <a href="{{ route('munaqasyah.create', ['jenis' => $jenis]) }}"
+                class="inline-flex items-center gap-1.5 bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 hover:to-rose-700 text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow-md hover:shadow-lg transition active:scale-95">
+                <i class="fa-solid fa-user-plus"></i> Tambah Santri
+            </a>
+        </div>
     </div>
 
     {{-- ===== STAT CARDS ===== --}}
@@ -86,6 +96,15 @@
                         Reset
                     </a>
                 @endif
+                <div class="h-6 w-px bg-slate-200 hidden sm:block"></div>
+                <a href="{{ route('munaqasyah.export.excel', ['jenis' => $jenis, 'unit' => request('unit')]) }}"
+                    class="hidden sm:inline-flex items-center gap-1.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 px-3 py-2 rounded-lg text-xs font-bold transition shadow-2xs">
+                    <i class="fa-solid fa-file-excel text-emerald-600"></i> Excel
+                </a>
+                <a href="{{ route('munaqasyah.export.csv', ['jenis' => $jenis, 'unit' => request('unit')]) }}"
+                    class="hidden sm:inline-flex items-center gap-1.5 bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-300 px-3 py-2 rounded-lg text-xs font-bold transition shadow-2xs">
+                    <i class="fa-solid fa-file-csv text-slate-600"></i> CSV
+                </a>
             </div>
         </form>
     </div>
