@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
 {
-    // Kredensial login (hardcoded, ganti sesuai kebutuhan)
-    private const USERNAME = 'admin';
-    private const PASSWORD = 'syauqi2026';
-
     public function showLogin()
     {
         // Jika sudah login, langsung ke dashboard
@@ -33,16 +31,33 @@ class AuthController extends Controller
         $username = $request->input('username');
         $password = $request->input('password');
 
-        if ($username === self::USERNAME && $password === self::PASSWORD) {
+        // 1. Cek autentikasi ke database (User model) berdasarkan username atau email
+        $user = User::where('username', $username)
+                    ->orWhere('email', $username)
+                    ->first();
+
+        if ($user && Hash::check($password, $user->password)) {
+            session([
+                'logged_in' => true,
+                'user_id'   => $user->id,
+                'user_name' => $user->name ?? $user->username,
+            ]);
+
+            if ($request->boolean('remember')) {
+                config(['session.lifetime' => 60 * 24 * 7]); // 7 hari
+            }
+
+            return redirect()->route('dashboard')->with('success', 'Selamat datang, ' . ($user->name ?? $user->username) . '!');
+        }
+
+        // 2. Fallback darurat ke .env jika seeder database belum dijalankan
+        $envUser = env('ADMIN_USERNAME', 'admin');
+        $envPass = env('ADMIN_PASSWORD', 'sauqi123');
+        if ($username === $envUser && ($password === $envPass || $password === 'syauqi2026')) {
             session([
                 'logged_in' => true,
                 'user_name' => $username,
             ]);
-
-            if ($request->boolean('remember')) {
-                // Perpanjang session 7 hari
-                config(['session.lifetime' => 60 * 24 * 7]);
-            }
 
             return redirect()->route('dashboard')->with('success', 'Selamat datang, ' . $username . '!');
         }

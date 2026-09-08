@@ -17,11 +17,7 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Admin Munaqasyah',
-            'email' => 'admin@syauqi.com',
-        ]);
-
+        $this->call(AdminSeeder::class);
         $this->call(MunaqasyahSeeder::class);
     }
 }
