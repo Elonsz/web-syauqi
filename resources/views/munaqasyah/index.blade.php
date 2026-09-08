@@ -4,50 +4,15 @@
 
 @section('content')
 <div class="space-y-6">
-    <!-- Header Title & Switch Tab -->
-    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4">
-        <div>
-            <div class="flex items-center gap-2">
-                <span class="px-2.5 py-1 text-xs font-bold rounded-md {{ $jenis == 'TPQ' ? 'bg-emerald-100 text-emerald-800' : 'bg-blue-100 text-blue-800' }}">
-                    KATEGORI: {{ $jenis }}
-                </span>
-                <h2 class="text-xl font-extrabold text-slate-800 tracking-tight">PENILAIAN MUNAQASYAH KOTA 2026</h2>
-            </div>
-            <p class="text-xs text-slate-500 mt-1">Data kelulusan munaqasyah, rekapitulasi nilai bacaan & hafalan santri, serta pas foto kelulusan.</p>
+    <!-- Header Title -->
+    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200">
+        <div class="flex items-center gap-2">
+            <span class="px-2.5 py-1 text-xs font-bold rounded-md {{ $jenis == 'TPQ' ? 'bg-emerald-100 text-emerald-800' : 'bg-blue-100 text-blue-800' }}">
+                KATEGORI: {{ $jenis }}
+            </span>
+            <h2 class="text-xl font-extrabold text-slate-800 tracking-tight">PENILAIAN MUNAQASYAH KOTA 2026</h2>
         </div>
-
-        <div class="flex flex-wrap items-center gap-2">
-            <!-- Tab TPQ & RTQ -->
-            <div class="inline-flex bg-slate-100 p-1 rounded-xl border border-slate-200">
-                <a href="{{ route('munaqasyah.index', ['jenis' => 'TPQ']) }}" 
-                   class="px-4 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 {{ $jenis == 'TPQ' ? 'bg-yellow-400 text-slate-900 shadow-sm' : 'text-slate-600 hover:text-slate-900' }}">
-                    <i class="fa-solid fa-scroll"></i> Tab TPQ
-                </a>
-                <a href="{{ route('munaqasyah.index', ['jenis' => 'RTQ']) }}" 
-                   class="px-4 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 {{ $jenis == 'RTQ' ? 'bg-yellow-400 text-slate-900 shadow-sm' : 'text-slate-600 hover:text-slate-900' }}">
-                    <i class="fa-solid fa-book-quran"></i> Tab RTQ
-                </a>
-            </div>
-
-            <!-- Tombol Export Excel & Spreadsheet -->
-            <div class="inline-flex items-center gap-1.5">
-                <a href="{{ route('munaqasyah.export.excel', ['jenis' => $jenis, 'unit' => request('unit')]) }}" 
-                   class="bg-emerald-700 hover:bg-emerald-800 text-white px-3.5 py-2 rounded-xl text-xs font-bold shadow-xs transition flex items-center gap-1.5"
-                   title="Download Format Excel (.xls) dengan warna dan tabel lengkap">
-                    <i class="fa-solid fa-file-excel text-emerald-300"></i> Export Excel
-                </a>
-                <a href="{{ route('munaqasyah.export.csv', ['jenis' => $jenis, 'unit' => request('unit')]) }}" 
-                   class="bg-teal-600 hover:bg-teal-700 text-white px-3.5 py-2 rounded-xl text-xs font-bold shadow-xs transition flex items-center gap-1.5"
-                   title="Download Format Spreadsheet / CSV untuk Google Sheets">
-                    <i class="fa-solid fa-table text-teal-200"></i> Export Spreadsheet
-                </a>
-            </div>
-
-            <a href="{{ route('munaqasyah.create', ['jenis' => $jenis]) }}" 
-               class="bg-amber-500 hover:bg-amber-600 text-slate-900 px-4 py-2 rounded-xl text-xs font-bold shadow-xs transition flex items-center gap-1.5">
-                <i class="fa-solid fa-user-plus"></i> Input Santri & Foto
-            </a>
-        </div>
+        <p class="text-xs text-slate-500 mt-1">Data kelulusan munaqasyah, rekapitulasi nilai bacaan &amp; hafalan santri, serta pas foto kelulusan.</p>
     </div>
 
     <!-- Quick Stats Cards -->

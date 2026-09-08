@@ -2,13 +2,23 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MunaqasyahController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AuthController;
 
-// Redirect root ke halaman utama Munaqasyah
+// ===== Auth Routes =====
+Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+Route::post('/login', [AuthController::class, 'login'])->name('login.post');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+// ===== Dashboard =====
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+// ===== Root Redirect =====
 Route::get('/', function () {
-    return redirect()->route('munaqasyah.index');
+    return redirect()->route('dashboard');
 });
 
-// Route Penilaian & Kelulusan Munaqasyah TPQ & RTQ
+// ===== Munaqasyah Routes =====
 Route::prefix('munaqasyah')->name('munaqasyah.')->group(function () {
     Route::get('/', [MunaqasyahController::class, 'index'])->name('index');
     Route::get('/tambah', [MunaqasyahController::class, 'create'])->name('create');
