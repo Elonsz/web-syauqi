@@ -246,14 +246,22 @@
 
                 <!-- Penilaian -->
                 <p class="sidebar-section-label text-[9px] font-bold text-blue-400 uppercase tracking-widest px-3 pt-4 pb-2 transition-all duration-300">Penilaian</p>
+                @php
+                    $isCreatePage = request()->routeIs('munaqasyah.create');
+                    $currJenis = request('jenis', isset($santri) ? ($santri->jenis ?? 'TPQ') : 'TPQ');
+                    $isTpqActive = !$isCreatePage && request()->is('munaqasyah*') && $currJenis === 'TPQ';
+                    $isRtqActive = !$isCreatePage && request()->is('munaqasyah*') && $currJenis === 'RTQ';
+                    $isCreateTpqActive = $isCreatePage && request('jenis', 'TPQ') === 'TPQ';
+                    $isCreateRtqActive = $isCreatePage && request('jenis') === 'RTQ';
+                @endphp
                 <a href="{{ route('munaqasyah.index', ['jenis' => 'TPQ']) }}"
-                   class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-300 hover:text-white {{ request()->is('munaqasyah*') && request('jenis','TPQ') == 'TPQ' ? 'active' : '' }}"
+                   class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-300 hover:text-white {{ $isTpqActive ? 'active' : '' }}"
                    title="Taman Pendidikan Qur'an Ar-Raudhah">
                     <i class="fa-solid fa-scroll w-5 text-center shrink-0"></i>
                     <span class="sidebar-label transition-all duration-300">TPQ Ar-Raudhah</span>
                 </a>
                 <a href="{{ route('munaqasyah.index', ['jenis' => 'RTQ']) }}"
-                   class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-300 hover:text-white {{ request()->is('munaqasyah*') && request('jenis') == 'RTQ' ? 'active' : '' }}"
+                   class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-300 hover:text-white {{ $isRtqActive ? 'active' : '' }}"
                    title="Rumah Tahfidz Qur'an Ar-Raudhah">
                     <i class="fa-solid fa-book-quran w-5 text-center shrink-0"></i>
                     <span class="sidebar-label transition-all duration-300">RTQ Ar-Raudhah</span>
@@ -263,12 +271,12 @@
                 <p class="sidebar-section-label text-[9px] font-bold text-blue-400 uppercase tracking-widest px-3 pt-4 pb-2 transition-all duration-300">Input Data</p>
                 @php $navJenis = request('jenis', 'TPQ'); @endphp
                 <a href="{{ route('munaqasyah.create', ['jenis' => 'TPQ']) }}"
-                   class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-300 hover:text-white {{ request()->routeIs('munaqasyah.create') && request('jenis','TPQ') == 'TPQ' ? 'active' : '' }}">
+                   class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-300 hover:text-white {{ $isCreateTpqActive ? 'active' : '' }}">
                     <i class="fa-solid fa-user-plus w-5 text-center shrink-0"></i>
                     <span class="sidebar-label transition-all duration-300">Input TPQ Ar-Raudhah</span>
                 </a>
                 <a href="{{ route('munaqasyah.create', ['jenis' => 'RTQ']) }}"
-                   class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-300 hover:text-white {{ request()->routeIs('munaqasyah.create') && request('jenis') == 'RTQ' ? 'active' : '' }}">
+                   class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-300 hover:text-white {{ $isCreateRtqActive ? 'active' : '' }}">
                     <i class="fa-solid fa-user-plus w-5 text-center shrink-0"></i>
                     <span class="sidebar-label transition-all duration-300">Input RTQ Ar-Raudhah</span>
                 </a>
