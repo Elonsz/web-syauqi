@@ -309,7 +309,8 @@
             <div class="sidebar-footer border-t border-slate-800/80 p-3 text-center">
                 <div class="sidebar-label px-2 transition-all duration-300 overflow-hidden">
                     <p class="text-[10px] text-red-400 font-bold uppercase tracking-wider">AR-RAUDHAH</p>
-                    <p class="text-[9px] text-slate-500 mt-0.5">&copy; 2026 Yayasan Cahaya Amanah</p>
+                    <p class="text-[9px] text-slate-400 mt-0.5">&copy; 2026 Yayasan Cahaya Amanah</p>
+                    <p class="text-[8.5px] text-slate-500 mt-1">Diciptakan oleh <span class="text-blue-300 font-bold">Hugo Putra Pratama</span></p>
                 </div>
             </div>
         </aside>
@@ -651,5 +652,8 @@
             }, 5000);
         });
     </script>
+
+    {{-- Floating FAQ Chatbot Widget (Created by Hugo Putra Pratama) --}}
+    @include('partials.chatbot')
 </body>
 </html>

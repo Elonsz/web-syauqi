@@ -134,6 +134,7 @@
                 <div class="flex items-center gap-3 sm:gap-6">
                     <a href="#kategori" class="text-slate-300 hover:text-white text-xs sm:text-sm font-semibold transition hidden sm:block">Unit Lembaga</a>
                     <a href="#fitur" class="text-slate-300 hover:text-white text-xs sm:text-sm font-semibold transition hidden sm:block">Fitur Sistem</a>
+                    <a href="#faq" class="text-slate-300 hover:text-white text-xs sm:text-sm font-semibold transition hidden sm:block">FAQ &amp; Bantuan</a>
                     <a href="#tentang" class="text-slate-300 hover:text-white text-xs sm:text-sm font-semibold transition hidden sm:block">Tentang</a>
                     <a href="{{ route('login') }}"
                         class="btn-cta text-white font-bold text-xs sm:text-sm px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl flex items-center gap-2">
@@ -367,6 +368,102 @@
         </div>
     </section>
 
+    <!-- ===== FAQ & TANYA JAWAB SECTION ===== -->
+    <section id="faq" class="py-20 bg-slate-900/90 relative border-t border-slate-800/80">
+        <div class="max-w-4xl mx-auto px-4">
+            <!-- Header -->
+            <div class="text-center mb-12 reveal">
+                <span class="text-xs font-bold text-red-400 uppercase tracking-widest bg-red-950/60 border border-red-800/60 px-3.5 py-1 rounded-full">
+                    Pertanyaan Umum
+                </span>
+                <h2 class="text-2xl sm:text-4xl font-black text-white mt-3 leading-tight">
+                    Frequently Asked Questions (FAQ)
+                </h2>
+                <p class="text-slate-400 text-xs sm:text-sm mt-2 max-w-lg mx-auto">
+                    Temukan jawaban atas pertanyaan seputar penilaian, syarat kelulusan munaqasyah santri, dan pengembang platform.
+                </p>
+            </div>
+
+            <!-- FAQ List -->
+            <div class="space-y-4 reveal">
+                <!-- Q1: Pembuat -->
+                <div class="bg-gradient-to-r from-slate-900 to-blue-950/60 border border-blue-500/30 rounded-2xl p-5 shadow-lg">
+                    <div class="flex items-start gap-3.5">
+                        <div class="w-10 h-10 rounded-xl bg-red-600/20 text-red-400 border border-red-500/30 flex items-center justify-center text-lg shrink-0 mt-0.5">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-base font-bold text-white mb-1.5 flex items-center gap-2">
+                                Siapa pembuat sistem munaqasyah ini?
+                                <span class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-red-600 text-white uppercase">Creator</span>
+                            </h3>
+                            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                                Sistem ini dirancang dan diciptakan oleh <strong class="text-amber-300 font-bold">Hugo Putra Pratama</strong>, software engineer yang mendedikasikan platform digital ini untuk standarisasi penilaian santri di <strong>Yayasan Cahaya Amanah Ar-Raudhah Banjarbaru</strong>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q2: 9 Mata Uji -->
+                <div class="bg-slate-900/60 border border-slate-800 hover:border-slate-700 rounded-2xl p-5 transition">
+                    <div class="flex items-start gap-3.5">
+                        <div class="w-10 h-10 rounded-xl bg-blue-600/20 text-blue-400 border border-blue-500/30 flex items-center justify-center text-lg shrink-0 mt-0.5">
+                            <i class="fa-solid fa-clipboard-check"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-base font-bold text-white mb-1.5">Apa saja 9 mata uji standar yang dinilai?</h3>
+                            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-2">
+                                Sembilan mata uji resmi meliputi: <strong>Fashohah</strong>, <strong>Tajwid</strong>, <strong>Gharib &amp; Musykilat</strong>, <strong>Suara &amp; Lagu</strong>, <strong>Ayat Pilihan</strong>, <strong>Surah Pendek (Juz 'Amma)</strong>, <strong>Doa Harian</strong>, <strong>Bacaan Shalat</strong>, dan <strong>Ujian Tertulis Dinul Islam</strong>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q3: Cetak Surat -->
+                <div class="bg-slate-900/60 border border-slate-800 hover:border-slate-700 rounded-2xl p-5 transition">
+                    <div class="flex items-start gap-3.5">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-600/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center text-lg shrink-0 mt-0.5">
+                            <i class="fa-solid fa-print"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-base font-bold text-white mb-1.5">Bagaimana cara menerbitkan surat keterangan kelulusan?</h3>
+                            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                                Panitia atau penguji cukup membuka daftar nilai TPQ/RTQ, memilih santri terkait, lalu menekan tombol <strong>"Sertifikat"</strong>. Halaman surat kelulusan resmi dengan kop yayasan, transkrip 9 mata uji, dan pas foto santri akan langsung siap cetak atau disimpan ke format PDF.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q4: Export Data -->
+                <div class="bg-slate-900/60 border border-slate-800 hover:border-slate-700 rounded-2xl p-5 transition">
+                    <div class="flex items-start gap-3.5">
+                        <div class="w-10 h-10 rounded-xl bg-amber-600/20 text-amber-400 border border-amber-500/30 flex items-center justify-center text-lg shrink-0 mt-0.5">
+                            <i class="fa-solid fa-file-excel"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-base font-bold text-white mb-1.5">Apakah data rekapitulasi bisa diunduh ke Excel?</h3>
+                            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                                Ya, sistem menyediakan dua format unduhan: <strong>Microsoft Excel (.xls)</strong> lengkap dengan format tabel formal, dan <strong>CSV Spreadsheet (.csv)</strong> yang dapat dibuka langsung di Google Sheets kapan saja.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chatbot CTA Prompt -->
+            <div class="mt-8 p-6 rounded-2xl bg-gradient-to-r from-red-950/70 via-slate-900 to-blue-950/70 border border-red-500/30 text-center reveal">
+                <p class="text-white font-bold text-sm mb-1 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-robot text-red-400"></i> Punya pertanyaan lain yang belum terjawab?
+                </p>
+                <p class="text-slate-300 text-xs mb-4">Gunakan Asisten Virtual Ar-Raudhah interaktif yang selalu siap menjawab 24/7.</p>
+                <button type="button" onclick="toggleChatbot()"
+                        class="btn-cta inline-flex items-center gap-2 text-white font-bold text-xs sm:text-sm px-5 py-2.5 rounded-xl shadow-lg cursor-pointer">
+                    <i class="fa-solid fa-comments"></i> Buka Chatbot Asisten
+                </button>
+            </div>
+        </div>
+    </section>
+
     <!-- ===== TENTANG SECTION ===== -->
     <section id="tentang" class="py-20 bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900 relative overflow-hidden">
         <div class="absolute inset-0 islamic-bg opacity-40"></div>
@@ -431,13 +528,15 @@
     <!-- ===== FOOTER ===== -->
     <footer class="bg-slate-950 border-t border-slate-800/80 py-8 text-center text-slate-400">
         <div class="max-w-7xl mx-auto px-4">
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-3 mb-3">
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3 mb-2">
                 <img src="{{ asset('images/logo.png') }}" alt="Logo" class="w-8 h-8 object-contain bg-white rounded-lg p-0.5 shadow">
                 <span class="text-white font-bold text-sm">Yayasan Cahaya Amanah Ar-Raudhah</span>
                 <span class="hidden sm:inline text-slate-600">•</span>
                 <span class="text-blue-400 text-xs font-semibold">TPQ &amp; RTQ Ar-Raudhah Banjarbaru</span>
             </div>
-            <p class="text-xs text-slate-500">&copy; 2026 Yayasan Cahaya Amanah Ar-Raudhah. Sistem Penilaian Munaqasyah Santri. Hak Cipta Dilindungi.</p>
+            <p class="text-xs text-slate-400">
+                Sistem Penilaian Munaqasyah Santri &copy; 2026. Diciptakan &amp; Dikembangkan dengan bangga oleh <strong class="text-white font-bold">Hugo Putra Pratama</strong>.
+            </p>
         </div>
     </footer>
 
@@ -517,5 +616,8 @@
         }
         drawParticles();
     </script>
+
+    {{-- Floating FAQ Chatbot Widget (Created by Hugo Putra Pratama) --}}
+    @include('partials.chatbot')
 </body>
 </html>
