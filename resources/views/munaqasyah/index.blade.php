@@ -133,6 +133,7 @@
                         <p class="text-xs text-slate-500 truncate">{{ $santri->nama_unit ?? '-' }}</p>
                         <div class="flex items-center gap-1.5 mt-1 flex-wrap">
                             <span class="text-[10px] font-mono font-bold text-slate-600 bg-slate-200 px-1.5 py-0.5 rounded">#{{ $santri->no_peserta ?? '-' }}</span>
+                            <span class="text-[10px] font-bold text-amber-800 bg-amber-100 border border-amber-200 px-1.5 py-0.5 rounded">{{ $santri->tahun_munaqasyah ?? '2026' }}</span>
                             @if($isLulus)
                                 <span class="inline-flex items-center gap-1 text-[10px] font-bold bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full">
                                     <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span> LULUS
@@ -225,6 +226,7 @@
                         <th rowspan="2" class="w-14 bg-slate-900 text-amber-400">TERTULIS</th>
                         <th rowspan="2" class="w-14 bg-slate-950 text-white">JUMLAH</th>
                         <th rowspan="2" class="w-16 bg-red-950 text-red-200 font-black">RATA²</th>
+                        <th rowspan="2" class="w-20 bg-amber-900 text-amber-200 font-black">ANGKATAN</th>
                         <th rowspan="2" class="w-28 bg-slate-900 text-slate-200 no-print">AKSI</th>
                     </tr>
                     <tr class="bg-slate-100 text-slate-700 font-bold text-[10px] uppercase">
@@ -270,6 +272,7 @@
                             <td class="font-mono text-slate-800 bg-slate-50/50">{{ $p ? number_format($p->ujian_tertulis, 0) : '-' }}</td>
                             <td class="font-mono font-bold text-slate-900 bg-slate-100/60">{{ $p ? number_format($p->jumlah_nilai, 0) : '-' }}</td>
                             <td class="font-mono font-extrabold {{ $isRed ? 'text-rose-600' : 'text-blue-900' }} bg-blue-50/50">{{ $p ? number_format($p->rata_rata, 2) : '-' }}</td>
+                            <td class="font-bold text-amber-800 bg-amber-50/70">{{ $santri->tahun_munaqasyah ?? '2026' }}</td>
                             <td class="no-print">
                                 <div class="flex items-center justify-center gap-1">
                                     <a href="{{ route('munaqasyah.kelulusan', $santri->id) }}" target="_blank"
@@ -295,7 +298,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="16" class="py-12 text-center text-slate-400">
+                            <td colspan="17" class="py-12 text-center text-slate-400">
                                 <i class="fa-solid fa-inbox text-4xl mb-3 block text-slate-300"></i>
                                 <p class="text-sm font-semibold text-slate-600">Belum ada data santri untuk kategori {{ $jenis == 'TPQ' ? "Taman Pendidikan Qur'an Ar-Raudhah (TPQ)" : "Rumah Tahfidz Qur'an Ar-Raudhah (RTQ)" }}</p>
                                 <a href="{{ route('munaqasyah.create', ['jenis' => $jenis]) }}" class="mt-2 inline-block text-red-600 font-bold hover:underline text-xs">

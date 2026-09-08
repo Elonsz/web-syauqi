@@ -7,13 +7,27 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        window.tailwind = window.tailwind || {};
+        window.tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        blue: { 50: '#eff6ff', 100: '#dbeafe', 200: '#bfdbfe', 300: '#93c5fd', 400: '#60a5fa', 500: '#2563eb', 600: '#1d4ed8', 700: '#1e40af', 800: '#1e3a8a', 900: '#16285a', 950: '#081026' },
+                        red: { 50: '#fef2f2', 100: '#fee2e2', 200: '#fecaca', 300: '#fca5a5', 400: '#f87171', 500: '#ef4444', 600: '#dc2626', 700: '#b91c1c', 800: '#991b1b', 900: '#7f1d1d', 950: '#450a0a' },
+                        rose: { 50: '#fff1f2', 100: '#ffe4e6', 200: '#fecdd3', 300: '#fda4af', 400: '#fb7185', 500: '#f43f5e', 600: '#e11d48', 700: '#be123c', 800: '#9f1239', 900: '#881337', 950: '#4c0519' }
+                    }
+                }
+            }
+        };
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
 
         .bg-animated {
-            background: linear-gradient(135deg, #030712 0%, #0f172a 25%, #172554 50%, #1e3a8a 75%, #020617 100%);
+            background: linear-gradient(135deg, #070d1e 0%, #0c1836 25%, #152c64 50%, #0d1b3e 75%, #070d1e 100%);
             background-size: 400% 400%;
             animation: gradientShift 8s ease infinite;
         }
@@ -27,12 +41,12 @@
             position: absolute;
             border-radius: 50%;
             filter: blur(60px);
-            opacity: 0.2;
+            opacity: 0.22;
             animation: floatOrb 10s ease-in-out infinite;
         }
         .orb-1 { width: 400px; height: 400px; background: #dc2626; top: -10%; left: -10%; animation-delay: 0s; }
         .orb-2 { width: 300px; height: 300px; background: #f59e0b; top: 60%; right: -5%; animation-delay: -4s; }
-        .orb-3 { width: 250px; height: 250px; background: #2563eb; bottom: -5%; left: 40%; animation-delay: -7s; }
+        .orb-3 { width: 250px; height: 250px; background: #1e3a8a; bottom: -5%; left: 40%; animation-delay: -7s; }
         @keyframes floatOrb {
             0%, 100% { transform: translateY(0) scale(1); }
             50%       { transform: translateY(-30px) scale(1.08); }
@@ -43,10 +57,10 @@
         }
 
         .glass-card {
-            background: rgba(15, 23, 42, 0.75);
+            background: rgba(15, 23, 42, 0.78);
             backdrop-filter: blur(24px);
             -webkit-backdrop-filter: blur(24px);
-            border: 1px solid rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.14);
         }
 
         .input-field {
@@ -60,7 +74,7 @@
         }
 
         .btn-login {
-            background: linear-gradient(135deg, #dc2626, #b91c1c);
+            background: linear-gradient(135deg, #dc2626, #991b1b);
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;

@@ -8,8 +8,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -19,14 +17,53 @@
                         arabic: ['Amiri', 'serif'],
                     },
                     colors: {
+                        blue: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#2563eb',
+                            600: '#1d4ed8',
+                            700: '#1e40af',
+                            800: '#1e3a8a',
+                            900: '#16285a',
+                            950: '#081026',
+                        },
+                        red: {
+                            50: '#fef2f2',
+                            100: '#fee2e2',
+                            200: '#fecaca',
+                            300: '#fca5a5',
+                            400: '#f87171',
+                            500: '#ef4444',
+                            600: '#dc2626',
+                            700: '#b91c1c',
+                            800: '#991b1b',
+                            900: '#7f1d1d',
+                            950: '#450a0a',
+                        },
+                        rose: {
+                            50: '#fff1f2',
+                            100: '#ffe4e6',
+                            200: '#fecdd3',
+                            300: '#fda4af',
+                            400: '#fb7185',
+                            500: '#f43f5e',
+                            600: '#e11d48',
+                            700: '#be123c',
+                            800: '#9f1239',
+                            900: '#881337',
+                            950: '#4c0519',
+                        },
                         brand: {
-                            50: '#ecfdf5',
-                            100: '#d1fae5',
-                            500: '#10b981',
-                            600: '#059669',
-                            700: '#047857',
-                            800: '#065f46',
-                            900: '#064e3b',
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#2563eb',
+                            600: '#1d4ed8',
+                            700: '#1e40af',
+                            800: '#1e3a8a',
+                            900: '#16285a',
                         },
                         munaqasyah: {
                             yellow: '#FEF08A',
@@ -37,6 +74,8 @@
             }
         }
     </script>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @media print {
@@ -56,7 +95,7 @@
             inset: 0;
             z-index: 9999;
             pointer-events: none;
-            background: linear-gradient(135deg, #064e3b, #047857, #0d9488);
+            background: linear-gradient(135deg, #081026, #16285a, #dc2626);
             opacity: 0;
             transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -69,12 +108,13 @@
             top: 0; left: 0;
             height: 3px;
             width: 0%;
-            background: linear-gradient(90deg, #fbbf24, #f59e0b, #fbbf24);
+            background: linear-gradient(90deg, #dc2626, #2563eb, #dc2626);
             background-size: 200% auto;
             animation: progressShimmer 1.2s linear infinite;
             z-index: 10000;
             transition: width 0.3s ease;
             border-radius: 0 2px 2px 0;
+            box-shadow: 0 0 8px rgba(220, 38, 38, 0.7);
         }
         @keyframes progressShimmer {
             from { background-position: 0% center; }
@@ -135,7 +175,7 @@
                 <div class="text-center mb-6">
                     <h3 class="text-lg font-black text-slate-800">Keluar dari Sistem?</h3>
                     <p class="text-sm text-slate-500 mt-1.5 leading-relaxed">
-                        Kamu akan keluar dari <span class="font-bold text-emerald-700">SIMUNAQASYAH</span>.<br>
+                        Kamu akan keluar dari <span class="font-bold text-blue-900">SIMUNAQASYAH</span>.<br>
                         Pastikan semua data sudah tersimpan sebelum keluar.
                     </p>
                 </div>
@@ -162,37 +202,37 @@
     </form>
 
     <!-- Navbar -->
-    <header class="bg-gradient-to-r from-emerald-800 to-teal-900 text-white shadow-lg sticky top-0 z-50 no-print">
+    <header class="bg-gradient-to-r from-[#081026] via-[#0D1C44] to-[#1E3A8A] text-white shadow-lg sticky top-0 z-50 no-print border-b border-[#1E3A8A]/40">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <div class="flex items-center space-x-3">
                     <a href="{{ route('dashboard') }}" class="flex items-center gap-3 group">
-                        <div class="w-10 h-10 rounded-xl bg-amber-400 text-emerald-950 flex items-center justify-center font-bold text-xl shadow-md group-hover:scale-105 transition-transform">
-                            <i class="fa-solid fa-quran"></i>
+                        <div class="w-10 h-10 rounded-xl bg-white p-1 flex items-center justify-center font-bold text-xl shadow-md group-hover:scale-105 transition-transform border border-[#1E3A8A]">
+                            <img src="{{ asset('images/logo.png') }}" alt="Logo" class="w-full h-full object-contain">
                         </div>
                         <div>
                             <h1 class="text-base font-bold tracking-tight text-white flex items-center gap-2">
-                                SIMUNAQASYAH
-                                <span class="text-xs bg-amber-400 text-emerald-950 font-bold px-2 py-0.5 rounded-full uppercase">KOTA 2026</span>
+                                AR-RAUDHAH
+                                <span class="text-xs bg-[#dc2626] text-white font-black px-2 py-0.5 rounded-full uppercase shadow">MUNAQASYAH</span>
                             </h1>
-                            <p class="text-xs text-emerald-200">Sistem Penilaian &amp; Kelulusan TPQ - RTQ</p>
+                            <p class="text-xs text-blue-200">Yayasan Cahaya Amanah Banjarbaru</p>
                         </div>
                     </a>
                     <a href="{{ route('dashboard') }}" title="Dashboard"
-                       class="px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 {{ request()->routeIs('dashboard') ? 'bg-white/20 text-white' : 'text-emerald-300 hover:bg-emerald-700/50 hover:text-white' }}">
+                       class="px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 {{ request()->routeIs('dashboard') ? 'bg-white/20 text-white' : 'text-blue-200 hover:bg-[#1E3A8A] hover:text-white' }}">
                         <i class="fa-solid fa-gauge-high"></i> Dashboard
                     </a>
                 </div>
 
                 <div class="flex items-center gap-2">
                     {{-- Tab Switch TPQ / RTQ --}}
-                    <div class="inline-flex bg-emerald-950/40 p-1 rounded-xl border border-emerald-700/50">
+                    <div class="inline-flex bg-[#081026]/80 p-1 rounded-xl border border-blue-900/60">
                         <a href="{{ route('munaqasyah.index', ['jenis' => 'TPQ']) }}"
-                           class="px-3.5 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 {{ request('jenis', 'TPQ') == 'TPQ' ? 'bg-amber-400 text-emerald-950 shadow' : 'text-emerald-200 hover:bg-emerald-700' }}">
+                           class="px-3.5 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 {{ request('jenis', 'TPQ') == 'TPQ' ? 'bg-[#1E3A8A] text-white shadow' : 'text-blue-200 hover:bg-[#1E3A8A]/50' }}">
                             <i class="fa-solid fa-scroll"></i> Tab TPQ
                         </a>
                         <a href="{{ route('munaqasyah.index', ['jenis' => 'RTQ']) }}"
-                           class="px-3.5 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 {{ request('jenis') == 'RTQ' ? 'bg-amber-400 text-emerald-950 shadow' : 'text-emerald-200 hover:bg-emerald-700' }}">
+                           class="px-3.5 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 {{ request('jenis') == 'RTQ' ? 'bg-[#dc2626] text-white shadow' : 'text-red-200 hover:bg-[#dc2626]/50' }}">
                             <i class="fa-solid fa-book-quran"></i> Tab RTQ
                         </a>
                     </div>
@@ -205,19 +245,19 @@
                         <i class="fa-solid fa-file-excel text-emerald-200"></i> Export Excel
                     </a>
                     <a href="{{ route('munaqasyah.export.csv', ['jenis' => $navJenis, 'unit' => $navUnit]) }}"
-                       class="bg-teal-600 hover:bg-teal-500 text-white px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 shadow-sm"
+                       class="bg-[#1E3A8A] hover:bg-blue-700 text-white px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 shadow-sm border border-blue-400/40"
                        title="Download Spreadsheet / CSV">
-                        <i class="fa-solid fa-table text-teal-200"></i> Export Spreadsheet
+                        <i class="fa-solid fa-table text-blue-200"></i> Export Spreadsheet
                     </a>
 
                     {{-- Input Santri & Foto --}}
                     <a href="{{ route('munaqasyah.create', ['jenis' => $navJenis]) }}"
-                       class="bg-amber-400 hover:bg-amber-300 text-emerald-950 px-3.5 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
+                       class="bg-[#dc2626] hover:bg-red-700 text-white px-3.5 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
                         <i class="fa-solid fa-user-plus"></i> Input Santri &amp; Foto
                     </a>
 
                     {{-- Logout Button --}}
-                    <div class="border-l border-emerald-700/60 pl-2 ml-1">
+                    <div class="border-l border-blue-800/60 pl-2 ml-1">
                         <button type="button" onclick="openLogoutModal()" title="Keluar dari sistem"
                             class="flex items-center gap-1.5 text-xs font-bold text-red-300 hover:text-white hover:bg-red-600/40 px-3 py-1.5 rounded-lg transition">
                             <i class="fa-solid fa-right-from-bracket"></i> Keluar
@@ -247,7 +287,7 @@
 
     <!-- Footer -->
     <footer class="bg-white border-t border-slate-200 py-4 text-center text-xs text-slate-500 no-print">
-        <p>&copy; 2026 Lembaga Penilaian Munaqasyah Santri Kota. Database Web Syauqi.</p>
+        <p>&copy; 2026 Yayasan Cahaya Amanah Ar-Raudhah Banjarbaru. Sistem Penilaian Munaqasyah Santri.</p>
     </footer>
 
     @yield('scripts')

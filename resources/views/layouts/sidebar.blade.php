@@ -7,11 +7,27 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
+                    colors: {
+                        blue: {
+                            50: '#eff6ff', 100: '#dbeafe', 200: '#bfdbfe', 300: '#93c5fd',
+                            400: '#60a5fa', 500: '#2563eb', 600: '#1d4ed8', 700: '#1e40af',
+                            800: '#1e3a8a', 900: '#16285a', 950: '#081026',
+                        },
+                        red: {
+                            50: '#fef2f2', 100: '#fee2e2', 200: '#fecaca', 300: '#fca5a5',
+                            400: '#f87171', 500: '#ef4444', 600: '#dc2626', 700: '#b91c1c',
+                            800: '#991b1b', 900: '#7f1d1d', 950: '#450a0a',
+                        },
+                        rose: {
+                            50: '#fff1f2', 100: '#ffe4e6', 200: '#fecdd3', 300: '#fda4af',
+                            400: '#fb7185', 500: '#f43f5e', 600: '#e11d48', 700: '#be123c',
+                            800: '#9f1239', 900: '#881337', 950: '#4c0519',
+                        },
+                    },
                     fontFamily: {
                         sans: ['"Plus Jakarta Sans"', 'sans-serif'],
                         arabic: ['Amiri', 'serif'],
@@ -20,6 +36,7 @@
             }
         }
     </script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @media print {
@@ -107,7 +124,7 @@
         #page-overlay {
             position: fixed; inset: 0; z-index: 9999;
             pointer-events: none;
-            background: linear-gradient(135deg, #091224, #172554);
+            background: linear-gradient(135deg, #081026, #16285a);
             opacity: 0;
             transition: opacity 0.25s ease;
         }
@@ -122,7 +139,7 @@
             z-index: 10000;
             transition: width 0.3s ease;
             border-radius: 0 2px 2px 0;
-            box-shadow: 0 0 8px rgba(220,38,38,0.7);
+            box-shadow: 0 0 8px rgba(220, 38, 38, 0.7);
         }
         @keyframes prgShimmer { from{background-position:0%} to{background-position:200%} }
 
@@ -207,7 +224,7 @@
     <div class="flex min-h-screen">
 
         <!-- ===== SIDEBAR ===== -->
-        <aside id="sidebar" class="no-print bg-gradient-to-b from-slate-950 via-slate-900 to-blue-950 text-white flex flex-col w-64 shrink-0 relative border-r border-slate-800/80">
+        <aside id="sidebar" class="no-print bg-gradient-to-b from-[#081026] via-[#0D1C44] to-[#122558] text-white flex flex-col w-64 shrink-0 relative border-r border-blue-950/80 shadow-2xl">
 
             <!-- Brand -->
             <div class="sidebar-header flex items-center justify-between px-3.5 py-3.5 border-b border-slate-800/80 min-h-[60px] transition-all duration-300">

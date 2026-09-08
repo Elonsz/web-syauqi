@@ -7,6 +7,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        window.tailwind = window.tailwind || {};
+        window.tailwind.config = { theme: { extend: { colors: {
+            blue: { 50: '#eff6ff', 100: '#dbeafe', 200: '#bfdbfe', 300: '#93c5fd', 400: '#60a5fa', 500: '#2563eb', 600: '#1d4ed8', 700: '#1e40af', 800: '#1e3a8a', 900: '#16285a', 950: '#081026' },
+            red: { 50: '#fef2f2', 100: '#fee2e2', 200: '#fecaca', 300: '#fca5a5', 400: '#f87171', 500: '#ef4444', 600: '#dc2626', 700: '#b91c1c', 800: '#991b1b', 900: '#7f1d1d', 950: '#450a0a' },
+            rose: { 50: '#fff1f2', 100: '#ffe4e6', 200: '#fecdd3', 300: '#fda4af', 400: '#fb7185', 500: '#f43f5e', 600: '#e11d48', 700: '#be123c', 800: '#9f1239', 900: '#881337', 950: '#4c0519' }
+        } } } };
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -67,7 +75,7 @@
                 <img src="{{ asset('images/logo.png') }}" alt="Logo Yayasan" class="w-16 h-16 sm:w-20 sm:h-20 object-contain shrink-0">
                 <div>
                     <h3 class="text-xs sm:text-sm font-black tracking-wider text-blue-950 uppercase">{{ $settings['nama_yayasan'] ?? 'YAYASAN CAHAYA AMANAH AR-RAUDHAH' }}</h3>
-                    <h1 class="text-base sm:text-xl font-black text-slate-900 tracking-tight">PANITIA MUNAQASYAH SANTRI BANJARBARU</h1>
+                    <h1 class="text-base sm:text-xl font-black text-slate-900 tracking-tight">TAMAN PENDIDIKAN QUR'AN AR-RAUDHAH UNIT 004</h1>
                     <p class="text-[10px] sm:text-[11px] text-slate-600 font-semibold">{{ $settings['alamat_yayasan'] ?? 'Banjarbaru - Kalimantan Selatan' }} • Periode {{ $settings['tahun_ajaran'] ?? '1447 H / 2026 M' }}</p>
                 </div>
             </div>
@@ -244,14 +252,14 @@
         <!-- Tanda Tangan Penguji & Panitia -->
         <div class="grid grid-cols-2 gap-4 text-center text-xs mt-8 sm:mt-10">
             <div>
-                <p class="text-slate-600 mb-12 sm:mb-16">Penguji Munaqasyah,</p>
-                <p class="font-bold text-slate-900 underline uppercase text-[11px] sm:text-xs">( ............................................ )</p>
-                <p class="text-[10px] text-slate-500">NIP / ID Penguji</p>
-            </div>
-            <div>
                 <p class="text-slate-600 mb-12 sm:mb-16">Ketua Panitia Munaqasyah,</p>
                 <p class="font-bold text-slate-900 underline uppercase text-[11px] sm:text-xs">H. AHMAD SYAUQI, S.Pd.I</p>
                 <p class="text-[10px] text-slate-500">Ketua Panitia Pelaksana Kota 2026</p>
+            </div>
+            <div>
+                <p class="text-slate-600 mb-12 sm:mb-16">Penguji Munaqasyah,</p>
+                <p class="font-bold text-slate-900 underline uppercase text-[11px] sm:text-xs">( ............................................ )</p>
+                <p class="text-[10px] text-slate-500">NIP / ID Penguji</p>
             </div>
         </div>
     </div>

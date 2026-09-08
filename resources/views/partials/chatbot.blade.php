@@ -5,7 +5,7 @@
     <!-- Chat Trigger Button -->
     <button id="chatbot-toggle-btn"
             onclick="toggleChatbot()"
-            class="group relative flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-tr from-slate-950 via-blue-950 to-red-600 text-white shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 focus:outline-none ring-4 ring-white/20 hover:ring-red-500/40 cursor-pointer"
+            class="group relative flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-tr from-[#081026] via-[#1e3a8a] to-[#dc2626] text-white shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 focus:outline-none ring-4 ring-white/20 hover:ring-red-500/40 cursor-pointer"
             aria-label="Buka FAQ Chatbot">
         <!-- Notification Ping -->
         <span class="absolute -top-1 -right-1 flex h-4 w-4">
@@ -29,7 +29,7 @@
          class="hidden fixed sm:absolute bottom-20 right-0 left-4 sm:left-auto w-auto sm:w-96 max-w-[92vw] h-[560px] max-h-[82vh] bg-white rounded-3xl shadow-2xl border border-slate-200/90 flex-col overflow-hidden transition-all duration-300 transform origin-bottom-right z-50">
 
         <!-- Chat Header -->
-        <div class="bg-gradient-to-r from-slate-950 via-blue-950 to-red-950 p-4 text-white flex items-center justify-between border-b border-white/10 shrink-0">
+        <div class="bg-gradient-to-r from-[#081026] via-[#10224d] to-[#1e3a8a] p-4 text-white flex items-center justify-between border-b border-white/10 shrink-0">
             <div class="flex items-center gap-3">
                 <div class="relative w-10 h-10 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center text-red-400 text-lg shadow-inner">
                     <i class="fa-solid fa-robot"></i>
@@ -56,7 +56,7 @@
         </div>
 
         <!-- Creator Mini Bar -->
-        <div class="bg-gradient-to-r from-slate-900 to-blue-950 px-3.5 py-1.5 text-[11px] text-slate-300 flex items-center justify-between border-b border-slate-800">
+        <div class="bg-gradient-to-r from-[#081026] to-[#0f2048] px-3.5 py-1.5 text-[11px] text-slate-300 flex items-center justify-between border-b border-blue-950/80">
             <span class="flex items-center gap-1.5 text-[10px] text-slate-300">
                 <i class="fa-solid fa-code text-red-400 text-[10px]"></i> Pengembang: <strong class="text-white font-bold">Hugo Putra Pratama</strong>
             </span>
@@ -68,7 +68,7 @@
 
             <!-- Bot Welcome Bubble -->
             <div class="flex items-start gap-2.5">
-                <div class="w-7 h-7 rounded-xl bg-gradient-to-tr from-slate-900 to-red-600 text-white flex items-center justify-center text-xs shrink-0 mt-1 shadow-xs">
+                <div class="w-7 h-7 rounded-xl bg-gradient-to-tr from-[#081026] to-[#dc2626] text-white flex items-center justify-center text-xs shrink-0 mt-1 shadow-xs">
                     <i class="fa-solid fa-robot"></i>
                 </div>
                 <div class="bg-white border border-slate-200 rounded-2xl rounded-tl-xs p-3.5 text-slate-800 shadow-xs max-w-[85%] space-y-2 leading-relaxed">
