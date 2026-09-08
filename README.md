@@ -8,7 +8,7 @@
 ### 1. Diclone dulu
 
 ```zsh
-git clone https://github.com/bluebleaze/web-syauqi.git 
+git clone https://github.com/Elonsz/web-syauqi.git 
 cd web-syauqi
 ```
 
