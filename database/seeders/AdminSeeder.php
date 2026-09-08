@@ -21,7 +21,30 @@ class AdminSeeder extends Seeder
             [
                 'name' => 'Admin Ar-Raudhah',
                 'email' => $username . '@arraudhah.id',
+                'role' => 'Administrator',
                 'password' => Hash::make($password),
+            ]
+        );
+
+        // Akun contoh Penguji TPQ
+        User::updateOrCreate(
+            ['username' => 'penguji_tpq'],
+            [
+                'name' => 'Ustadz Ahmad Al-Hafidz',
+                'email' => 'ahmad@arraudhah.id',
+                'role' => 'Penguji TPQ',
+                'password' => Hash::make('tpq123'),
+            ]
+        );
+
+        // Akun contoh Penguji RTQ
+        User::updateOrCreate(
+            ['username' => 'penguji_rtq'],
+            [
+                'name' => 'Ustadzah Fatimah Az-Zahra',
+                'email' => 'fatimah@arraudhah.id',
+                'role' => 'Penguji RTQ',
+                'password' => Hash::make('rtq123'),
             ]
         );
     }

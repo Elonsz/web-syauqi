@@ -294,6 +294,15 @@
                     <i class="fa-solid fa-table w-5 text-center shrink-0 text-sky-400"></i>
                     <span class="sidebar-label transition-all duration-300">Export Spreadsheet</span>
                 </a>
+
+                <!-- Pengguna -->
+                <p class="sidebar-section-label text-[9px] font-bold text-blue-400 uppercase tracking-widest px-3 pt-4 pb-2 transition-all duration-300">Pengaturan</p>
+                <a href="{{ route('users.index') }}"
+                   class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-300 hover:text-white {{ request()->routeIs('users.*') ? 'active' : '' }}"
+                   title="Kelola Pengguna Sistem">
+                    <i class="fa-solid fa-users-gear w-5 text-center shrink-0"></i>
+                    <span class="sidebar-label transition-all duration-300">Kelola Pengguna</span>
+                </a>
             </nav>
 
             <!-- Sidebar Footer -->
@@ -409,6 +418,13 @@
                                     <div>
                                         <p class="font-bold text-slate-800 leading-tight">RTQ Ar-Raudhah</p>
                                         <p class="text-[10px] text-slate-400 font-normal">Rumah Tahfidz Qur'an</p>
+                                    </div>
+                                </a>
+                                <a href="{{ route('users.index') }}" class="flex items-start gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-100 rounded-xl transition">
+                                    <i class="fa-solid fa-users-gear text-red-600 w-4 text-center mt-0.5 shrink-0"></i>
+                                    <div>
+                                        <p class="font-bold text-slate-800 leading-tight">Kelola Pengguna</p>
+                                        <p class="text-[10px] text-slate-400 font-normal">Manajemen Akun &amp; Hak Akses</p>
                                     </div>
                                 </a>
                             </div>

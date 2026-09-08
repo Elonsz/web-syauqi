@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MunaqasyahController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 
 // ===== Auth Routes (public) =====
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
@@ -23,6 +24,9 @@ Route::middleware('auth.check')->group(function () {
     // Dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
+    // Kelola Pengguna / Users
+    Route::resource('users', UserController::class)->except(['show']);
+
     // Munaqasyah
     Route::prefix('munaqasyah')->name('munaqasyah.')->group(function () {
         Route::get('/', [MunaqasyahController::class, 'index'])->name('index');
@@ -38,3 +42,4 @@ Route::middleware('auth.check')->group(function () {
         Route::get('/{id}/kelulusan', [MunaqasyahController::class, 'kelulusan'])->name('kelulusan');
     });
 });
+
