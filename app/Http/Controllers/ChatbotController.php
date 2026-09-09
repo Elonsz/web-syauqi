@@ -65,7 +65,27 @@ class ChatbotController extends Controller
             ]);
         }
 
-        // 2. Pencarian Data Santri Individual Real-Time (Nama, NISN, No Peserta, Cek Nilai)
+        // 2. Percakapan Santai, Sapaan & Pertanyaan Interaktif (Small Talk & Chatbot Self-Awareness)
+        $talkReply = $this->handleConversationalAndSmallTalk($message);
+        if ($talkReply) {
+            return response()->json([
+                'status' => 'success',
+                'source' => 'conversational',
+                'reply'  => $talkReply,
+            ]);
+        }
+
+        // 3. Panduan Fitur Sistem Munaqasyah & FAQ
+        $guideReply = $this->handleSystemFaqAndGuides($message);
+        if ($guideReply) {
+            return response()->json([
+                'status' => 'success',
+                'source' => 'system_guide',
+                'reply'  => $guideReply,
+            ]);
+        }
+
+        // 4. Pencarian Data Santri Individual Real-Time (Nama, NISN, No Peserta, Cek Nilai)
         $santriReply = $this->handleIndividualSantriSearch($message);
         if ($santriReply) {
             return response()->json([
@@ -75,7 +95,7 @@ class ChatbotController extends Controller
             ]);
         }
 
-        // 3. Cek Kueri Agregasi Database Santri & Yayasan
+        // 5. Cek Kueri Agregasi Database Santri & Yayasan
         $dbReply = $this->handleDatabaseQueries($message);
         if ($dbReply) {
             return response()->json([
@@ -85,7 +105,7 @@ class ChatbotController extends Controller
             ]);
         }
 
-        // 4. Cek Pencarian Al-Qur'an Interaktif (Surah, Ayat, Murottal)
+        // 6. Cek Pencarian Al-Qur'an Interaktif (Surah, Ayat, Murottal)
         $quranReply = $this->handleQuranQueries($message);
         if ($quranReply) {
             return response()->json([
@@ -95,7 +115,7 @@ class ChatbotController extends Controller
             ]);
         }
 
-        // 5. Cek Jadwal Sholat & Doa-Doa Harian
+        // 7. Cek Jadwal Sholat & Doa-Doa Harian
         $prayerReply = $this->handlePrayerAndWorship($message);
         if ($prayerReply) {
             return response()->json([
@@ -105,7 +125,7 @@ class ChatbotController extends Controller
             ]);
         }
 
-        // 6. Cek pertanyaan Matematika, Konversi Satuan & Perhitungan Umur
+        // 8. Cek pertanyaan Matematika, Konversi Satuan & Perhitungan
         $mathReply = $this->handleMathAndConversions($message);
         if ($mathReply) {
             return response()->json([
@@ -115,7 +135,7 @@ class ChatbotController extends Controller
             ]);
         }
 
-        // 7. Cek Pengetahuan Khusus Sistem Ar-Raudhah, Tajwid & Keislaman
+        // 9. Cek Pengetahuan Khusus Sistem Ar-Raudhah, Tajwid & Keislaman
         $systemReply = $this->handleSystemAndIslamicKnowledge($message);
         if ($systemReply) {
             return response()->json([
@@ -125,7 +145,7 @@ class ChatbotController extends Controller
             ]);
         }
 
-        // 8. Cek Pencarian Pengetahuan Umum (Wikipedia Bahasa Indonesia)
+        // 10. Cek Pencarian Pengetahuan Umum (Wikipedia Bahasa Indonesia - khusus kueri ensiklopedia)
         $wikiReply = $this->searchWikipediaKnowledge($message);
         if ($wikiReply) {
             return response()->json([
@@ -135,7 +155,7 @@ class ChatbotController extends Controller
             ]);
         }
 
-        // 9. Respon Percakapan Cerdas / Fallback
+        // 11. Respon Percakapan Cerdas / Fallback Kontekstual Dinamis
         $fallbackReply = $this->getConversationalFallback($message);
         return response()->json([
             'status' => 'success',
@@ -160,15 +180,18 @@ class ChatbotController extends Controller
 
         if ($geminiKey) {
             try {
-                $endpoint = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=" . $geminiKey;
-                $response = Http::timeout(8)->post($endpoint, [
-                    'system_instruction' => [
-                        'parts' => [['text' => $systemPrompt]]
-                    ],
+                // Gunakan model terbaru gemini-3.6-flash yang aktif pada Google AI Studio
+                $endpoint = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=" . $geminiKey;
+                $response = Http::withoutVerifying()
+                    ->withOptions(['curl' => [CURLOPT_IPRESOLVE => CURL_IPRESOLVE_V4]])
+                    ->timeout(8)
+                    ->post($endpoint, [
                     'contents' => [
                         [
                             'role' => 'user',
-                            'parts' => [['text' => $message]]
+                            'parts' => [
+                                ['text' => "Instruksi Sistem: {$systemPrompt}\n\nPertanyaan Pengguna: {$message}"]
+                            ]
                         ]
                     ],
                     'generationConfig' => [
@@ -217,8 +240,346 @@ class ChatbotController extends Controller
     }
 
     /**
+     * Menangani Percakapan Santai, Sapaan & Pertanyaan Interaktif
+     */
+    protected function handleConversationalAndSmallTalk(string $message): ?string
+    {
+        $q = strtolower(trim($message));
+
+        // 1. Respon terhadap keluhan bot "ga nyambung" / "jawabannya itu terus"
+        if (preg_match('/(ga nyambung|gak nyambung|tidak nyambung|ngulang terus|itu terus|kok gitu|jawabanmu aneh|jawabanmu sama|kenapa jawabannya|kaku amat|bot aneh|jawabannya kok|kok aneh)/i', $q)) {
+            return "
+                <div class='space-y-2 text-xs'>
+                    <div class='p-2.5 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 flex items-center gap-2'>
+                        <span class='text-base'>🙏</span>
+                        <p class='font-bold'>Mohon maaf jika tadi jawaban saya terasa kaku atau kurang tepat!</p>
+                    </div>
+                    <p class='text-slate-700 leading-relaxed'>
+                        Saya sekarang sudah diperbarui agar jauh lebih luwes, nyambung, dan memahami pertanyaan Anda dengan baik! Silakan coba tanyakan:
+                    </p>
+                    <ul class='space-y-1.5 text-slate-700 pl-1'>
+                        <li>🔹 <strong>Cari data santri:</strong> Cukup ketik nama santri, misalnya: <em>\"Ahmad\"</em> atau <em>\"Syauqi\"</em>.</li>
+                        <li>🔹 <strong>Panduan sistem:</strong> Ketik <em>\"cara input nilai\"</em>, <em>\"cara tambah biodata\"</em>, atau <em>\"cara cetak surat\"</em>.</li>
+                        <li>🔹 <strong>Wawasan Islam &amp; Al-Qur'an:</strong> Ketik <em>\"surat al fatihah\"</em>, <em>\"jadwal sholat\"</em>, atau <em>\"hukum tajwid\"</em>.</li>
+                        <li>🔹 <strong>Hitungan:</strong> Ketik <em>\"25% dari 500000\"</em> atau <em>\"akar 144\"</em>.</li>
+                    </ul>
+                    <p class='text-[10px] text-slate-400'>Silakan ketik pertanyaan Anda sekarang, saya siap menjawab! 😊</p>
+                </div>
+            ";
+        }
+
+        // 2. Pertanyaan identitas "kamu siapa?", "siapa namamu?", "kamu apa?"
+        if (preg_match('/(kamu siapa|siapa kamu|siapa namamu|namamu siapa|nama kamu siapa|tentang kamu|profil kamu|identitas kamu|kamu apa)/i', $q)) {
+            return "
+                <div class='space-y-2 text-xs'>
+                    <div class='p-3 rounded-2xl bg-gradient-to-r from-blue-950 to-[#1E3A8A] text-white flex items-center gap-3'>
+                        <div class='w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-xl shrink-0'>
+                            🤖
+                        </div>
+                        <div>
+                            <h4 class='font-black text-sm text-white'>Asisten Cerdas Virtual Ar-Raudhah</h4>
+                            <p class='text-[10px] text-blue-200'>Yayasan Cahaya Amanah Banjarbaru</p>
+                        </div>
+                    </div>
+                    <p class='text-slate-700 leading-relaxed'>
+                        Saya adalah asisten AI interaktif yang dikembangkan oleh <strong>Hugo Putra Pratama</strong> untuk membantu panitia munaqasyah, dewan asatidz, dan wali santri.
+                    </p>
+                    <div class='p-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-700 space-y-1'>
+                        <p class='font-bold text-slate-900'>Kemampuan Utama Saya:</p>
+                        <ul class='list-disc list-inside space-y-0.5 pl-1 text-[11px]'>
+                            <li>Mencari biodata &amp; hasil ujian santri secara real-time dari database</li>
+                            <li>Menampilkan Al-Qur'an 114 surah beserta audio murottal</li>
+                            <li>Memberikan panduan teknis penggunaan seluruh fitur aplikasi</li>
+                            <li>Menampilkan jadwal sholat Banjarbaru, doa harian &amp; hukum tajwid</li>
+                        </ul>
+                    </div>
+                </div>
+            ";
+        }
+
+        // 3. Apakah kamu robot / AI / manusia?
+        if (preg_match('/(kamu robot|kamu manusia|apakah kamu robot|apakah kamu manusia|kamu bot|kamu ai|apakah kamu bot|apakah kamu nyata)/i', $q)) {
+            return "
+                <div class='space-y-1.5 text-xs text-slate-700 leading-relaxed'>
+                    <p class='font-bold text-slate-900 text-sm'>Saya adalah Program Kecerdasan Buatan (AI Chatbot) 🤖✨</p>
+                    <p>
+                        Saya dirancang khusus untuk mempermudah Anda dalam mengelola penilaian munaqasyah santri TPQ &amp; RTQ Ar-Raudhah, mencari data santri di database, menyajikan referensi Al-Qur'an, dan menjawab pertanyaan seputar sistem ini.
+                    </p>
+                    <p class='text-slate-500 text-[11px]'>
+                        Meskipun saya bot cerdas, saya selalu siap mendampingi Anda layaknya rekan kerja yang ramah! 😊
+                    </p>
+                </div>
+            ";
+        }
+
+        // 4. "Kamu bisa apa?" / "Bisa bantu apa?"
+        if (preg_match('/(kamu bisa apa|bisa apa aja|fitur kamu|apa saja yang bisa|bisa bantu apa|kamu bisa bantu apa|kemampuan kamu|bisa ngapain)/i', $q)) {
+            return "
+                <div class='space-y-2 text-xs'>
+                    <p class='font-bold text-slate-900 text-sm'>✨ Berikut Kemampuan yang Bisa Saya Bantu:</p>
+                    <div class='grid grid-cols-1 sm:grid-cols-2 gap-2 text-slate-700'>
+                        <div class='p-2 rounded-xl bg-blue-50 border border-blue-200'>
+                            <p class='font-bold text-blue-950'>🔍 Cari Data Santri</p>
+                            <p class='text-[11px] text-slate-600 mt-0.5'>Ketik nama santri atau no peserta untuk melihat nilai 9 mata uji dan kelulusan.</p>
+                        </div>
+                        <div class='p-2 rounded-xl bg-emerald-50 border border-emerald-200'>
+                            <p class='font-bold text-emerald-950'>📖 Al-Qur'an &amp; Murottal</p>
+                            <p class='text-[11px] text-slate-600 mt-0.5'>Ketik <em>\"surat al mulk\"</em> atau <em>\"ayat kursi\"</em> untuk bacaan Arab, arti &amp; audio.</p>
+                        </div>
+                        <div class='p-2 rounded-xl bg-amber-50 border border-amber-200'>
+                            <p class='font-bold text-amber-950'>🕌 Jadwal Sholat &amp; Doa</p>
+                            <p class='text-[11px] text-slate-600 mt-0.5'>Ketik <em>\"jadwal sholat\"</em> atau <em>\"doa orang tua\"</em> untuk waktu sholat Banjarbaru.</p>
+                        </div>
+                        <div class='p-2 rounded-xl bg-purple-50 border border-purple-200'>
+                            <p class='font-bold text-purple-950'>⚙️ Panduan Sistem</p>
+                            <p class='text-[11px] text-slate-600 mt-0.5'>Tanyakan <em>\"cara cetak surat\"</em>, <em>\"cara input nilai\"</em>, atau <em>\"cara export excel\"</em>.</p>
+                        </div>
+                    </div>
+                </div>
+            ";
+        }
+
+        // 5. "Apa kabar?" / "Lagi apa?"
+        if (preg_match('/(apa kabar|bagaimana kabar|kabarmu|gimana kabar|lagi apa|sedang apa|lagi ngapain)/i', $q)) {
+            return "
+                <div class='space-y-1.5 text-xs text-slate-700'>
+                    <p class='font-bold text-slate-900'>Alhamdulillah, saya luar biasa baik dan selalu bersemangat! 🌟</p>
+                    <p>
+                        Saat ini saya sedang siaga memproses data munaqasyah dan siap menjawab segala pertanyaan Anda seputar santri, nilai, maupun fitur sistem ini.
+                    </p>
+                    <p class='text-[11px] text-slate-500'>Bagaimana dengan Anda? Semoga senantiasa diberikan kesehatan dan kelancaran dalam mendidik generasi Qur'ani! Ada yang bisa saya bantu?</p>
+                </div>
+            ";
+        }
+
+        // 6. Sapaan singkat: "halo", "hai", "p", "assalamualaikum", dll.
+        if (preg_match('/^(assalamu|assalamualaikum|halo|hai|hey|hei|p|ping|tes|test|pagi|siang|sore|malam)$/i', $q) ||
+            preg_match('/^(selamat pagi|selamat siang|selamat sore|selamat malam)$/i', $q)) {
+            $greeting = str_contains($q, 'assalam') 
+                ? "Wa'alaikumussalam Warahmatullahi Wabarakatuh! 🕌✨"
+                : "Halo! Selamat datang di SIMUNAQASYAH Ar-Raudhah 👋";
+
+            return "
+                <div class='space-y-1.5 text-xs text-slate-700'>
+                    <p class='font-bold text-slate-900'>{$greeting}</p>
+                    <p>
+                        Senang sekali bisa menyapa Anda! Saya adalah <strong>Asisten Cerdas Virtual Ar-Raudhah</strong> yang siap membantu kebutuhan informasi Anda.
+                    </p>
+                    <p class='text-[11px] text-slate-600'>
+                        Ada yang ingin Anda tanyakan atau cari hari ini? Coba tanyakan nama santri, surah Al-Qur'an, atau panduan sistem! 😊
+                    </p>
+                </div>
+            ";
+        }
+
+        // 7. Ucapan terima kasih / pujian
+        if (preg_match('/(terima kasih|makasih|syukron|jazakallah|thank you|thanks|keren|mantap|bagus|hebat|top|makasi)/i', $q)) {
+            return "
+                <div class='space-y-1.5 text-xs text-slate-700'>
+                    <p class='font-bold text-slate-900'>Sama-sama! Afwan / Wa Iyyakum... 😊🤲</p>
+                    <p>
+                        Senang sekali bisa membantu Anda. Sukses selalu untuk seluruh kegiatan munaqasyah santri di Yayasan Cahaya Amanah Ar-Raudhah! Jangan ragu bertanya lagi kapan pun ya. ✨
+                    </p>
+                </div>
+            ";
+        }
+
+        // 8. Konfirmasi singkat: "ok", "oke", "siap", dll.
+        if (preg_match('/^(ok|oke|okee|siap|baik|sip|y|ya|yes|bisa|mengerti|paham)$/i', $q)) {
+            return "
+                <div class='text-xs text-slate-700'>
+                    <p class='font-bold text-slate-900'>Siap, luar biasa! 👍</p>
+                    <p class='mt-1 text-[11px]'>Silakan ketik pertanyaan lain kapan saja jika Anda membutuhkan bantuan seputar santri atau munaqasyah.</p>
+                </div>
+            ";
+        }
+
+        return null;
+    }
+
+    /**
+     * Menangani Panduan Fitur Sistem & FAQ Munaqasyah Ar-Raudhah
+     */
+    protected function handleSystemFaqAndGuides(string $message): ?string
+    {
+        $q = strtolower(trim($message));
+
+        // 1. Panduan Tambah / Input Biodata Santri
+        if (preg_match('/(cara.*(tambah|daftar|input).*(santri|siswa|biodata)|tambah santri|daftar santri)/i', $q)) {
+            return "
+                <div class='space-y-2 text-xs'>
+                    <p class='font-bold text-slate-900 text-sm'>📝 Panduan Menambah Biodata Santri Baru:</p>
+                    <ol class='list-decimal list-inside space-y-1 text-slate-700 pl-1'>
+                        <li>Buka menu <strong>\"Biodata Santri\" &rarr; \"Tambah Biodata\"</strong> pada sidebar sebelah kiri.</li>
+                        <li>Isi identitas santri: Nama lengkap, Jenjang (TPQ / RTQ), No. Peserta, dan NISN.</li>
+                        <li>Unggah pas foto resmi santri (foto akan otomatis terpasang pada sertifikat kelulusan).</li>
+                        <li>Pilih tombol <strong>\"Simpan Biodata\"</strong> atau <strong>\"Simpan &amp; Lanjut Isi Nilai\"</strong>.</li>
+                    </ol>
+                    <div class='pt-1'>
+                        <a href='/santri/create' class='inline-block px-3 py-1.5 bg-red-600 text-white rounded-lg font-bold text-[11px] hover:bg-red-500 transition'>
+                            + Buka Form Tambah Santri Sekarang &rarr;
+                        </a>
+                    </div>
+                </div>
+            ";
+        }
+
+        // 2. Panduan Input / Mengisi Nilai Munaqasyah 9 Mata Uji
+        if (preg_match('/(cara.*(isi|input|nilai|skor).*(munaqasyah|ujian|santri)|cara menilai|form nilai|isi nilai)/i', $q)) {
+            return "
+                <div class='space-y-2 text-xs'>
+                    <p class='font-bold text-slate-900 text-sm'>📊 Panduan Mengisi Nilai Munaqasyah:</p>
+                    <ol class='list-decimal list-inside space-y-1 text-slate-700 pl-1'>
+                        <li>Pilih tab jenjang pada sidebar: <strong>\"TPQ Ar-Raudhah\"</strong> atau <strong>\"RTQ Ar-Raudhah\"</strong>.</li>
+                        <li>Pada baris santri yang ingin dinilai, klik tombol edit/pensil berwarna biru.</li>
+                        <li>Masukkan nilai angka (skala 0 - 100) untuk masing-masing <strong>9 mata uji</strong>.</li>
+                        <li>Total nilai, rata-rata, dan predikat kelulusan (Mumtaz, Jayyid, dll.) akan terkalkulasi otomatis!</li>
+                        <li>Klik tombol <strong>\"Simpan Perubahan Nilai\"</strong> di bagian bawah form.</li>
+                    </ol>
+                    <div class='pt-1'>
+                        <a href='/munaqasyah' class='inline-block px-3 py-1.5 bg-blue-950 text-white rounded-lg font-bold text-[11px] hover:bg-slate-900 transition'>
+                            Buka Lembar Penilaian &rarr;
+                        </a>
+                    </div>
+                </div>
+            ";
+        }
+
+        // 3. Panduan Cetak Surat Kelulusan & Cetak Massal
+        if (preg_match('/(cara.*(cetak|print).*(surat|kelulusan|sertifikat|piagam|ijazah)|cetak massal|cetak surat)/i', $q)) {
+            return "
+                <div class='space-y-2 text-xs'>
+                    <p class='font-bold text-slate-900 text-sm'>🖨️ Panduan Mencetak Surat Keterangan Kelulusan:</p>
+                    <ul class='space-y-1.5 text-slate-700 pl-1'>
+                        <li>🔹 <strong>Cetak Satuan:</strong> Pada tabel penilaian, klik tombol cetak / printer berwarna hijau di samping nama santri. Lembar sertifikat resmi lengkap dengan foto, QR Code, dan stempel yayasan akan langsung terbuka siap cetak.</li>
+                        <li>🔹 <strong>Cetak Massal:</strong> Buka menu cetak massal pada halaman penilaian untuk mencetak seluruh santri yang berstatus LULUS sekaligus dalam format multi-halaman siap cetak ke printer.</li>
+                    </ul>
+                    <p class='text-[10px] text-slate-500'>Tips: Gunakan kertas ukuran A4 dengan orientasi Portrait dan hilangkan opsi 'Header &amp; Footer' di dialog printer browser.</p>
+                </div>
+            ";
+        }
+
+        // 4. Panduan Kirim Hasil ke WhatsApp Wali Santri
+        if (preg_match('/(cara.*(kirim|share|kirimkan).*(wa|whatsapp|wali)|whatsapp wali|kirim wa)/i', $q)) {
+            return "
+                <div class='space-y-2 text-xs'>
+                    <p class='font-bold text-slate-900 text-sm'>📲 Panduan Kirim Hasil Ujian ke WhatsApp Wali Santri:</p>
+                    <p class='text-slate-700 leading-relaxed'>
+                        Sistem telah dilengkapi fitur <strong>Direct WhatsApp Share</strong>:
+                    </p>
+                    <ol class='list-decimal list-inside space-y-1 text-slate-700 pl-1'>
+                        <li>Masuk ke halaman <strong>Penilaian TPQ</strong> atau <strong>RTQ</strong>.</li>
+                        <li>Cari nama santri yang ingin dibagikan hasilnya.</li>
+                        <li>Klik ikon tombol berwarna hijau berlogo <strong>WhatsApp</strong> (<i class='fa-brands fa-whatsapp text-emerald-600'></i>).</li>
+                        <li>WhatsApp akan terbuka otomatis dengan format pesan ucapan selamat, rekap nilai rata-rata, predikat, dan tautan online untuk melihat surat resmi.</li>
+                    </ol>
+                </div>
+            ";
+        }
+
+        // 5. Apa fungsi QR Code di Surat Kelulusan?
+        if (preg_match('/(fungsi.*qr code|apa itu qr code|verifikasi dokumen|cek keaslian|qr code)/i', $q)) {
+            return "
+                <div class='space-y-2 text-xs'>
+                    <p class='font-bold text-slate-900 text-sm'>🔲 Fitur QR Code Verifikasi Keaslian Dokumen:</p>
+                    <p class='text-slate-700 leading-relaxed'>
+                        Setiap Surat Keterangan Kelulusan yang diterbitkan oleh sistem ini memiliki <strong>QR Code verifikasi unik</strong> di pojok kanan bawah.
+                    </p>
+                    <div class='p-2 rounded-xl bg-blue-50 border border-blue-200 text-slate-800 space-y-1'>
+                        <p class='font-bold text-blue-950'>Keunggulan:</p>
+                        <ul class='list-disc list-inside space-y-0.5 text-[11px]'>
+                            <li>Mencegah pemalsuan piagam atau manipulasi nilai kelulusan.</li>
+                            <li>Wali santri atau madrasah lanjutan cukup memindai QR Code dengan kamera ponsel untuk memvalidasi keabsahan surat secara real-time.</li>
+                        </ul>
+                    </div>
+                </div>
+            ";
+        }
+
+        // 6. Panduan Export Excel & Spreadsheet
+        if (preg_match('/(cara.*(export|download|unduh).*(excel|spreadsheet|csv)|ekspor)/i', $q)) {
+            return "
+                <div class='space-y-2 text-xs'>
+                    <p class='font-bold text-slate-900 text-sm'>📊 Panduan Ekspor Data Penilaian:</p>
+                    <p class='text-slate-700 leading-relaxed'>
+                        Tersedia dua format ekspor resmi pada navbar dan sidebar:
+                    </p>
+                    <ul class='space-y-1 text-slate-700 pl-1'>
+                        <li>🟢 <strong>Export Excel (.xls):</strong> Mengunduh dokumen Excel dengan format tabel beraksen kuning resmi siap print atau arsip yayasan.</li>
+                        <li>🔵 <strong>Export Spreadsheet (.csv):</strong> Mengunduh data CSV terstruktur yang kompatibel langsung untuk dibuka di Microsoft Excel maupun Google Sheets.</li>
+                    </ul>
+                </div>
+            ";
+        }
+
+        // 7. Lupa Password / Akun Terkunci / Gagal Login
+        if (preg_match('/(lupa password|gagal login|akun terkunci|login terkunci|tidak bisa login|kenapa diblokir)/i', $q)) {
+            return "
+                <div class='space-y-2 text-xs'>
+                    <p class='font-bold text-slate-900 text-sm'>🔒 Bantuan Akses &amp; Keamanan Akun:</p>
+                    <p class='text-slate-700 leading-relaxed'>
+                        Sistem dilengkapi proteksi anti brute-force: akun akan <strong>dikunci sementara selama 15 menit</strong> jika terjadi 5 kali percobaan login gagal berturut-turut.
+                    </p>
+                    <div class='p-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-800 space-y-1'>
+                        <p class='font-bold text-slate-900'>Solusi:</p>
+                        <ul class='list-disc list-inside space-y-0.5 text-[11px]'>
+                            <li>Tunggu hitung mundur di halaman login hingga waktu selesai.</li>
+                            <li>Pastikan username dan password diisi dengan benar tanpa spasi berlebih.</li>
+                            <li>Hubungi Administrator untuk mereset kata sandi melalui menu Kelola Pengguna.</li>
+                        </ul>
+                    </div>
+                </div>
+            ";
+        }
+
+        // 8. Apa itu Munaqasyah?
+        if (preg_match('/(apa itu munaqasyah|arti munaqasyah|pengertian munaqasyah|munaqasyah adalah|tujuan munaqasyah)/i', $q)) {
+            return "
+                <div class='space-y-2 text-xs'>
+                    <p class='font-bold text-slate-900 text-sm'>📖 Pengertian Munaqasyah Al-Qur'an:</p>
+                    <p class='text-slate-700 leading-relaxed'>
+                        <strong>Munaqasyah</strong> adalah proses ujian komprehensif akhir bagi santri TPQ (Taman Pendidikan Qur'an) dan RTQ (Rumah Tahfidz Qur'an) untuk menguji kelayakan, kefasihan membaca, hafalan, serta penguasaan dasar-dasar ilmu agama Islam sebelum dinyatakan lulus dan diwisuda.
+                    </p>
+                    <div class='p-2 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-950 text-[11px]'>
+                        <strong>Tujuan:</strong> Memastikan standarisasi kualitas bacaan santri sesuai kaidah tajwid, fashohah, dan mencetak generasi yang berakhlakul karimah.
+                    </div>
+                </div>
+            ";
+        }
+
+        // 9. Kriteria Kelulusan & Predikat Nilai
+        if (preg_match('/(kriteria kelulusan|syarat lulus|predikat|mumtaz|jayyid|nilai minimal|standar kelulusan)/i', $q)) {
+            return "
+                <div class='space-y-2 text-xs'>
+                    <p class='font-bold text-slate-900 text-sm'>🏆 Standar Kategori &amp; Predikat Nilai Munaqasyah:</p>
+                    <div class='space-y-1 font-mono text-[11px]'>
+                        <div class='p-1.5 rounded-lg bg-emerald-100 text-emerald-900 flex justify-between font-bold'>
+                            <span>🌟 90.0 - 100.0</span> <span>MUMTAZ (Istimewa)</span>
+                        </div>
+                        <div class='p-1.5 rounded-lg bg-blue-100 text-blue-900 flex justify-between font-bold'>
+                            <span>✨ 80.0 - 89.9</span> <span>JAYYID JIDDAN (Amat Baik)</span>
+                        </div>
+                        <div class='p-1.5 rounded-lg bg-sky-100 text-sky-900 flex justify-between font-bold'>
+                            <span>👍 70.0 - 79.9</span> <span>JAYYID (Baik)</span>
+                        </div>
+                        <div class='p-1.5 rounded-lg bg-amber-100 text-amber-900 flex justify-between font-bold'>
+                            <span>⚠️ 60.0 - 69.9</span> <span>MAQBUL (Cukup)</span>
+                        </div>
+                        <div class='p-1.5 rounded-lg bg-rose-100 text-rose-900 flex justify-between font-bold'>
+                            <span>❌ &lt; 60.0</span> <span>RASIB (Tidak Lulus)</span>
+                        </div>
+                    </div>
+                    <p class='text-[10px] text-slate-500'>Santri dinyatakan LULUS jika memperoleh nilai rata-rata minimal 60.0 (Maqbul).</p>
+                </div>
+            ";
+        }
+
+        return null;
+    }
+
+    /**
      * Pencarian Data Santri Individual Real-Time
-     * Contoh: "cari santri Ahmad", "nilai santri Muhammad", "apakah fatimah lulus?", "cek peserta 001"
+     * Contoh: "cari santri Ahmad", "nilai santri Muhammad", "apakah fatimah lulus?", "cek peserta 001", atau ketik langsung nama santri "Ahmad"
      */
     protected function handleIndividualSantriSearch(string $message): ?string
     {
@@ -243,6 +604,19 @@ class ChatbotController extends Controller
         // Hapus kata sambung yang mungkin terbawa
         if ($searchName) {
             $searchName = trim(preg_replace('/\b(lulus|tidak lulus|munaqasyah|ujian|tpq|rtq|tahun ini|hari ini)\b/i', '', $searchName));
+        }
+
+        // Jika tidak ada kata awalan khusus, tetapi input 1-3 kata cocok dengan data santri di database
+        if (!$searchName && preg_match('/^[a-zA-Z0-9\s\.\'\-]{3,35}$/', trim($message))) {
+            $candidate = trim($message);
+            // Cek apakah ada santri yang cocok di database
+            $exists = Santri::where('nama', 'like', "%{$candidate}%")
+                ->orWhere('no_peserta', $candidate)
+                ->orWhere('nisn', $candidate)
+                ->exists();
+            if ($exists) {
+                $searchName = $candidate;
+            }
         }
 
         if (!$searchName || mb_strlen($searchName) < 2) {
@@ -1091,12 +1465,15 @@ class ChatbotController extends Controller
 
     /**
      * Pencarian Pengetahuan Umum Ensiklopedia (Wikipedia Bahasa Indonesia)
+     * Hanya dipicu jika pengguna secara eksplisit menanyakan konsep / istilah ensiklopedia
      */
     protected function searchWikipediaKnowledge(string $message): ?string
     {
-        $clean = preg_replace('/^(apa itu|siapa itu|apakah yang dimaksud|jelaskan tentang|bagaimana|ceritakan tentang|siapakah|apakah|maksud dari)\s+/i', '', trim($message));
-        $clean = trim(preg_replace('/[\?\!\.\,]+$/', '', $clean));
+        if (!preg_match('/^(apa itu|apakah yang dimaksud|jelaskan tentang|definisi|pengertian|sejarah|biografi|siapakah tokoh)\s+(.+)/i', trim($message), $m)) {
+            return null;
+        }
 
+        $clean = trim(preg_replace('/[\?\!\.\,]+$/', '', $m[2]));
         if (mb_strlen($clean) < 2) {
             return null;
         }
@@ -1107,7 +1484,7 @@ class ChatbotController extends Controller
             ];
 
             $urlSummary = "https://id.wikipedia.org/api/rest_v1/page/summary/" . urlencode(str_replace(' ', '_', $clean));
-            $resSummary = Http::withHeaders($headers)->timeout(5)->get($urlSummary);
+            $resSummary = Http::withHeaders($headers)->timeout(4)->get($urlSummary);
 
             if ($resSummary->successful()) {
                 $json = $resSummary->json();
@@ -1137,7 +1514,7 @@ class ChatbotController extends Controller
 
             // Search query API jika tidak match langsung
             $searchUrl = "https://id.wikipedia.org/w/api.php?action=query&list=search&srsearch=" . urlencode($clean) . "&format=json&utf8=1";
-            $resSearch = Http::withHeaders($headers)->timeout(5)->get($searchUrl);
+            $resSearch = Http::withHeaders($headers)->timeout(4)->get($searchUrl);
 
             if ($resSearch->successful()) {
                 $searchJson = $resSearch->json();
@@ -1145,7 +1522,7 @@ class ChatbotController extends Controller
 
                 if ($firstResult && !empty($firstResult['title'])) {
                     $topTitle = $firstResult['title'];
-                    $summary2 = Http::withHeaders($headers)->timeout(5)->get("https://id.wikipedia.org/api/rest_v1/page/summary/" . urlencode(str_replace(' ', '_', $topTitle)));
+                    $summary2 = Http::withHeaders($headers)->timeout(4)->get("https://id.wikipedia.org/api/rest_v1/page/summary/" . urlencode(str_replace(' ', '_', $topTitle)));
                     if ($summary2->successful() && !empty($summary2->json()['extract'])) {
                         $extract2 = $summary2->json()['extract'];
                         $wikiUrl2 = $summary2->json()['content_urls']['desktop']['page'] ?? "https://id.wikipedia.org/wiki/" . urlencode($topTitle);
@@ -1177,25 +1554,72 @@ class ChatbotController extends Controller
     }
 
     /**
-     * Fallback cerdas dengan saran pertanyaan dinamis
+     * Fallback cerdas dengan respon kontekstual dinamis dan natural
      */
     protected function getConversationalFallback(string $message): string
     {
         $escaped = htmlspecialchars($message, ENT_QUOTES, 'UTF-8');
+        $lower = strtolower(trim($message));
 
+        // 1. Input sangat pendek (misal: "ha?", "eh", "hmm", "ya", dll)
+        if (mb_strlen($lower) <= 3) {
+            return "
+                <div class='space-y-1.5 text-xs text-slate-700'>
+                    <p class='font-bold text-slate-900'>Iya, ada yang bisa saya bantu? 😊</p>
+                    <p class='text-[11px]'>Silakan tanyakan nama santri, surah Al-Qur'an, jadwal sholat, atau panduan sistem munaqasyah.</p>
+                </div>
+            ";
+        }
+
+        // 2. Pertanyaan yang diawali "kenapa" / "mengapa"
+        if (str_starts_with($lower, 'kenapa') || str_starts_with($lower, 'mengapa')) {
+            return "
+                <div class='space-y-2 text-xs text-slate-700'>
+                    <p class='font-bold text-slate-900'>Pertanyaan Bagus! 🤔</p>
+                    <p class='leading-relaxed'>
+                        Terkait <em>\"{$escaped}\"</em>, jika hal ini berhubungan dengan sistem munaqasyah (seperti status kelulusan, nilai yang belum masuk, atau akun yang terkunci), silakan tanyakan lebih spesifik seperti:
+                    </p>
+                    <ul class='list-disc list-inside space-y-0.5 text-[11px] pl-1'>
+                        <li><em>\"kenapa santri belum lulus?\"</em></li>
+                        <li><em>\"kenapa login terkunci?\"</em></li>
+                        <li><em>\"cek santri [nama santri]\"</em></li>
+                    </ul>
+                </div>
+            ";
+        }
+
+        // 3. Pertanyaan yang diawali "bagaimana" / "gimana" / "cara"
+        if (str_starts_with($lower, 'bagaimana') || str_starts_with($lower, 'gimana') || str_starts_with($lower, 'cara')) {
+            return "
+                <div class='space-y-2 text-xs text-slate-700'>
+                    <p class='font-bold text-slate-900'>Panduan Teknis Sistem Munaqasyah 🧭</p>
+                    <p class='leading-relaxed'>
+                        Untuk pertanyaan <em>\"{$escaped}\"</em>, berikut beberapa panduan fitur utama yang sering dibutuhkan:
+                    </p>
+                    <div class='grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-[11px]'>
+                        <div class='p-1.5 rounded bg-slate-50 border border-slate-200'>📝 <strong>Ketik:</strong> <em>\"cara input nilai\"</em></div>
+                        <div class='p-1.5 rounded bg-slate-50 border border-slate-200'>📇 <strong>Ketik:</strong> <em>\"cara tambah biodata\"</em></div>
+                        <div class='p-1.5 rounded bg-slate-50 border border-slate-200'>🖨️ <strong>Ketik:</strong> <em>\"cara cetak surat\"</em></div>
+                        <div class='p-1.5 rounded bg-slate-50 border border-slate-200'>📲 <strong>Ketik:</strong> <em>\"cara kirim ke wa\"</em></div>
+                    </div>
+                </div>
+            ";
+        }
+
+        // 4. Default respons dinamis dan ramah (tidak monoton)
         return "
             <div class='space-y-2 text-xs'>
-                <p class='font-bold text-slate-900'>💡 Terima kasih atas pertanyaan Anda!</p>
+                <p class='font-bold text-slate-900'>Saya menyimak pertanyaan Anda tentang <em>\"{$escaped}\"</em> 😊</p>
                 <p class='text-slate-700 leading-relaxed'>
-                    Terkait <em>\"{$escaped}\"</em>, saya adalah asisten pintar serba tahu yang siap menjawab:
+                    Sebagai asisten virtual sistem Munaqasyah Ar-Raudhah, saya paling mahir membantu Anda dalam hal:
                 </p>
-                <div class='grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-[11px] text-slate-700'>
-                    <div class='p-1.5 rounded bg-slate-50 border border-slate-200'>👤 <strong>Cari Santri:</strong> Ketik <em>\"cari santri [nama]\"</em></div>
-                    <div class='p-1.5 rounded bg-slate-50 border border-slate-200'>📖 <strong>Al-Qur'an:</strong> Ketik <em>\"surat al fatihah\"</em> atau <em>\"ayat kursi\"</em></div>
-                    <div class='p-1.5 rounded bg-slate-50 border border-slate-200'>🕌 <strong>Jadwal Sholat:</strong> Ketik <em>\"jadwal sholat hari ini\"</em></div>
-                    <div class='p-1.5 rounded bg-slate-50 border border-slate-200'>🧮 <strong>Kalkulator:</strong> Ketik <em>\"250 * 18\"</em> atau <em>\"akar 144\"</em></div>
+                <div class='p-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-800 space-y-1 text-[11px]'>
+                    <p>🔹 <strong>Cari Santri:</strong> Cukup ketik nama santri (cth: <em>\"Ahmad\"</em> atau <em>\"Syauqi\"</em>)</p>
+                    <p>🔹 <strong>Al-Qur'an:</strong> Ketik nama surah (cth: <em>\"surat yasin\"</em> atau <em>\"ayat kursi\"</em>)</p>
+                    <p>🔹 <strong>Jadwal Sholat:</strong> Ketik <em>\"jadwal sholat hari ini\"</em></p>
+                    <p>🔹 <strong>Hitungan / Persen:</strong> Ketik <em>\"25% dari 500000\"</em> atau <em>\"150 * 12\"</em></p>
                 </div>
-                <p class='text-[10px] text-slate-400 pt-1'>Ketik pertanyaan lebih spesifik atau coba tombol di bawah kolom chat!</p>
+                <p class='text-[10px] text-slate-400'>Silakan ketik nama santri atau topik yang ingin Anda cari secara spesifik ya!</p>
             </div>
         ";
     }
