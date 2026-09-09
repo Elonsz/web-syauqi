@@ -180,7 +180,7 @@
                     Batal
                 </a>
                 <button type="submit"
-                        class="px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 hover:to-rose-700 shadow-md transition flex items-center gap-2">
+                        class="px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 shadow-md transition flex items-center gap-2">
                     <i class="fa-solid fa-floppy-disk"></i> Simpan Perubahan
                 </button>
             </div>

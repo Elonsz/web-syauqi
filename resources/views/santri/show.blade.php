@@ -15,7 +15,7 @@
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-xs">
         <div>
             <div class="flex items-center gap-2">
-                <span class="text-xs font-bold px-2.5 py-0.5 rounded-full {{ $santri->jenis === 'TPQ' ? 'bg-blue-100 text-blue-900' : 'bg-red-100 text-red-900' }}">
+                <span class="text-xs font-bold px-2.5 py-0.5 rounded-full {{ $santri->jenis === 'TPQ' ? 'bg-blue-100 text-blue-900' : 'bg-emerald-100 text-emerald-900' }}">
                     {{ $santri->jenis }} Ar-Raudhah
                 </span>
                 <span class="text-xs text-slate-400 font-mono">ID #{{ $santri->id }}</span>
@@ -47,9 +47,7 @@
 
     <!-- MAIN PROFILE CARD -->
     <div class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
-        <!-- Banner Header -->
-        <div class="h-28 sm:h-32 bg-gradient-to-r from-[#081026] via-[#0D1C44] to-[#1E3A8A] relative p-6 flex items-end justify-end">
-            <div class="absolute inset-0 bg-[radial-gradient(#ffffff0a_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
+        <div class="h-28 sm:h-32 bg-slate-800 relative p-6 flex items-end justify-end">
             <div class="relative z-10 flex items-center gap-2">
                 @if($santri->status_kelulusan === 'LULUS')
                     <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black bg-emerald-500 text-white shadow-md">
@@ -84,7 +82,7 @@
                 <!-- Info Header Santri -->
                 <div class="flex-1 min-w-0 pt-2 sm:pt-4">
                     <div class="flex items-center gap-2 flex-wrap mb-1">
-                        <span class="px-2.5 py-0.5 rounded-md text-xs font-bold {{ $santri->jenis === 'TPQ' ? 'bg-blue-100 text-blue-900' : 'bg-red-100 text-red-900' }}">
+                        <span class="px-2.5 py-0.5 rounded-md text-xs font-bold {{ $santri->jenis === 'TPQ' ? 'bg-blue-100 text-blue-900' : 'bg-emerald-100 text-emerald-900' }}">
                             {{ $santri->jenis }}
                         </span>
                         <span class="text-xs font-mono font-bold text-slate-500">
@@ -255,7 +253,7 @@
         </p>
         <div class="pt-2">
             <a href="{{ route('munaqasyah.edit', $santri->id) }}" 
-               class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white shadow-md shadow-red-900/20 transition active:scale-95">
+               class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold bg-blue-600 hover:bg-blue-700 text-white shadow-md shadow-blue-900/20 transition active:scale-95">
                 <i class="fa-solid fa-calculator"></i>
                 <span>Mulai Isi Nilai Munaqasyah</span>
             </a>

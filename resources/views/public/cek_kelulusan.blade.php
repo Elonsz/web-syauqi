@@ -37,11 +37,11 @@
         }
         @keyframes shimmer { from{background-position:0%} to{background-position:250%} }
         .btn-cta {
-            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
-            box-shadow: 0 8px 24px rgba(220, 38, 38, 0.38);
-            transition: all 0.3s ease;
+            background: #2563eb;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+            transition: all 0.2s ease;
         }
-        .btn-cta:hover { transform:translateY(-2px); box-shadow:0 12px 32px rgba(220, 38, 38, 0.5); }
+        .btn-cta:hover { background: #1d4ed8; transform:translateY(-1px); box-shadow:0 6px 20px rgba(37, 99, 235, 0.4); }
     </style>
 </head>
 <body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-amber-400 selection:text-slate-900">
@@ -53,7 +53,7 @@
                 <img src="{{ asset('images/logo.png') }}" alt="Logo Yayasan" class="w-10 h-10 object-contain bg-white rounded-xl p-1 shadow-md group-hover:scale-105 transition">
                 <div>
                     <p class="text-sm font-black text-white leading-none">AR-RAUDHAH</p>
-                    <p class="text-[10px] text-blue-300 font-semibold leading-none mt-1">Yayasan Cahaya Amanah</p>
+                    <p class="text-[10px] text-slate-400 font-semibold leading-none mt-1">Yayasan Cahaya Amanah</p>
                 </div>
             </a>
             <div class="flex items-center gap-3">

@@ -172,55 +172,29 @@ class ChatbotController extends Controller
         $geminiKey = env('GEMINI_API_KEY');
         $openaiKey = env('OPENAI_API_KEY');
 
-        $systemPrompt = "Kamu adalah Asisten Cerdas Resmi 'Yayasan Cahaya Amanah Ar-Raudhah' Banjarbaru, Kalimantan Selatan. "
-            . "Sistem Penilaian & Munaqasyah ini dibuat dan dikembangkan oleh Software Engineer berbakat bernama Hugo Putra Pratama. "
-            . "Tugasmu adalah menjawab SEMUA pertanyaan pengguna (tentang sistem, santri, agama Islam, pengetahuan umum, sains, matematika, sejarah, dll.) "
-            . "dengan sangat ramah, santun, akurat, informatif, dan mudah dipahami dalam Bahasa Indonesia. "
-            . "Gunakan format yang rapi dengan poin/bullet jika diperlukan. Jangan segan menyebut karya Hugo Putra Pratama bila relevan dengan sistem.";
+        $systemInstruction = "Kamu adalah Asisten Cerdas Resmi 'Yayasan Cahaya Amanah Ar-Raudhah' (disingkat RTQ/TPQ) di Banjarbaru, Kalimantan Selatan. "
+            . "Sistem Penilaian & Munaqasyah ini dikembangkan oleh Software Engineer bernama Hugo Putra Pratama. "
+            . "Tugasmu adalah menjawab SEMUA pertanyaan pengguna—termasuk tentang sistem ini, santri, agama Islam, pengetahuan umum, sains, matematika, teknologi, sejarah, dan topik lainnya—"
+            . "dengan ramah, santun, akurat, informatif, dan mudah dipahami dalam Bahasa Indonesia. "
+            . "Jika pertanyaan terkait sistem ini, berikan panduan yang jelas. Gunakan bullet points atau format terstruktur jika membantu kejelasan jawaban. "
+            . "Jangan pernah menolak menjawab pertanyaan yang wajar dan tidak melanggar etika.";
 
         if ($geminiKey) {
-            try {
-                // Gunakan model terbaru gemini-3.6-flash yang aktif pada Google AI Studio
-                $endpoint = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=" . $geminiKey;
-                $response = Http::withoutVerifying()
-                    ->withOptions(['curl' => [CURLOPT_IPRESOLVE => CURL_IPRESOLVE_V4]])
-                    ->timeout(8)
-                    ->post($endpoint, [
-                    'contents' => [
-                        [
-                            'role' => 'user',
-                            'parts' => [
-                                ['text' => "Instruksi Sistem: {$systemPrompt}\n\nPertanyaan Pengguna: {$message}"]
-                            ]
-                        ]
-                    ],
-                    'generationConfig' => [
-                        'temperature' => 0.7,
-                        'maxOutputTokens' => 800,
-                    ]
-                ]);
-
-                if ($response->successful()) {
-                    $json = $response->json();
-                    $text = $json['candidates'][0]['content']['parts'][0]['text'] ?? null;
-                    if ($text) {
-                        return $this->formatMarkdownToHtml($text);
-                    }
-                }
-            } catch (\Throwable $e) {
-                Log::warning("Gemini API Error: " . $e->getMessage());
+            $text = $this->callGeminiCurl($geminiKey, $message, $systemInstruction);
+            if ($text) {
+                return $this->formatMarkdownToHtml($text);
             }
         }
 
         if ($openaiKey) {
             try {
-                $response = Http::timeout(8)->withToken($openaiKey)->post('https://api.openai.com/v1/chat/completions', [
-                    'model' => 'gpt-4o-mini',
+                $response = Http::timeout(15)->withToken($openaiKey)->post('https://api.openai.com/v1/chat/completions', [
+                    'model'    => 'gpt-4o-mini',
                     'messages' => [
-                        ['role' => 'system', 'content' => $systemPrompt],
-                        ['role' => 'user', 'content' => $message]
+                        ['role' => 'system', 'content' => $systemInstruction],
+                        ['role' => 'user',   'content' => $message]
                     ],
-                    'max_tokens' => 600,
+                    'max_tokens'  => 800,
                     'temperature' => 0.7,
                 ]);
 
@@ -240,7 +214,99 @@ class ChatbotController extends Controller
     }
 
     /**
+     * Memanggil Gemini API menggunakan native cURL (lebih stabil dari Http facade Laravel)
+     * Menggunakan parameter system_instruction untuk memisahkan instruksi sistem dari pesan user
+     */
+    protected function callGeminiCurl(string $apiKey, string $message, string $systemInstruction): ?string
+    {
+        $endpoint = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=" . $apiKey;
+
+        $payload = json_encode([
+            'system_instruction' => [
+                'parts' => [['text' => $systemInstruction]]
+            ],
+            'contents' => [
+                [
+                    'role'  => 'user',
+                    'parts' => [['text' => $message]]
+                ]
+            ],
+            'generationConfig' => [
+                'temperature'     => 0.7,
+                'maxOutputTokens' => 1024,
+                'topP'            => 0.95,
+            ]
+        ]);
+
+        $ch = curl_init($endpoint);
+        curl_setopt_array($ch, [
+            CURLOPT_POST           => true,
+            CURLOPT_POSTFIELDS     => $payload,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_TIMEOUT        => 20,
+            CURLOPT_CONNECTTIMEOUT => 10,
+            CURLOPT_IPRESOLVE      => CURL_IPRESOLVE_V4,
+            CURLOPT_SSL_VERIFYPEER => false,
+            CURLOPT_HTTPHEADER     => ['Content-Type: application/json'],
+        ]);
+
+        $result   = curl_exec($ch);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        $curlErr  = curl_error($ch);
+        curl_close($ch);
+
+        if ($curlErr) {
+            Log::warning("Gemini cURL Error: " . $curlErr);
+            return null;
+        }
+
+        if ($httpCode !== 200) {
+            Log::warning("Gemini HTTP {$httpCode}: " . substr($result, 0, 300));
+            return null;
+        }
+
+        $json = json_decode($result, true);
+        return $json['candidates'][0]['content']['parts'][0]['text'] ?? null;
+    }
+
+    /**
+     * @deprecated Tidak digunakan lagi, digantikan callGeminiCurl
+     */
+    private function _legacyGeminiHttpFacade(string $geminiKey, string $message, string $systemPrompt): ?string
+    {
+        try {
+            $endpoint = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=" . $geminiKey;
+            $response = Http::withoutVerifying()
+                ->withOptions(['curl' => [CURLOPT_IPRESOLVE => CURL_IPRESOLVE_V4]])
+                ->timeout(8)
+                ->post($endpoint, [
+                'contents' => [
+                    [
+                        'role' => 'user',
+                        'parts' => [
+                            ['text' => "Instruksi Sistem: {$systemPrompt}\n\nPertanyaan Pengguna: {$message}"]
+                        ]
+                    ]
+                ],
+                'generationConfig' => [
+                    'temperature' => 0.7,
+                    'maxOutputTokens' => 800,
+                ]
+            ]);
+
+            if ($response->successful()) {
+                $json = $response->json();
+                return $json['candidates'][0]['content']['parts'][0]['text'] ?? null;
+            }
+        } catch (\Throwable $e) {
+            Log::warning("Gemini HTTP Facade Error: " . $e->getMessage());
+        }
+        return null;
+    }
+
+    /**
      * Menangani Percakapan Santai, Sapaan & Pertanyaan Interaktif
+
      */
     protected function handleConversationalAndSmallTalk(string $message): ?string
     {

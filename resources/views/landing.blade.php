@@ -89,12 +89,12 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16 sm:h-20">
                 <a href="#" class="flex items-center gap-3 group">
-                    <div class="w-11 h-11 sm:w-12 sm:h-12 bg-white rounded-2xl p-1 shadow-md border-2 border-[#1e3a8a] group-hover:border-[#dc2626] transition shrink-0 flex items-center justify-center">
+                    <div class="w-11 h-11 sm:w-12 sm:h-12 bg-white rounded-2xl p-1 shadow-md border-2 border-[#1e3a8a] group-hover:border-blue-400 transition shrink-0 flex items-center justify-center">
                         <img src="{{ asset('images/logo.png') }}" alt="Logo Yayasan" class="w-full h-full object-contain">
                     </div>
                     <div>
                         <p class="text-sm sm:text-base font-black text-white tracking-tight leading-none">AR-RAUDHAH</p>
-                        <p class="text-[10px] sm:text-xs text-[#f87171] font-bold leading-none mt-1">Yayasan Cahaya Amanah</p>
+                        <p class="text-[10px] sm:text-xs text-blue-300 font-semibold leading-none mt-1">Yayasan Cahaya Amanah</p>
                     </div>
                 </a>
                 <div class="flex items-center gap-3 sm:gap-6">
@@ -120,10 +120,10 @@
 
         <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
             <!-- Badge Yayasan -->
-            <div class="inline-flex items-center gap-2.5 bg-[#0e2254]/90 border-2 border-[#3b82f6]/60 rounded-full px-5 py-2 mb-6 backdrop-blur-md shadow-xl shadow-[#1e3a8a]/30">
+            <div class="inline-flex items-center gap-2.5 bg-[#0e2254]/90 border border-blue-400/40 rounded-full px-5 py-2 mb-6 backdrop-blur-md shadow-lg">
                 <img src="{{ asset('images/logo.png') }}" alt="Logo" class="w-5 h-5 object-contain bg-white rounded-full p-0.5 shadow">
-                <span class="text-xs font-black text-white uppercase tracking-widest">Yayasan Cahaya Amanah Ar-Raudhah</span>
-                <span class="w-2 h-2 rounded-full bg-[#dc2626] animate-pulse"></span>
+                <span class="text-xs font-bold text-white uppercase tracking-widest">Yayasan Cahaya Amanah Ar-Raudhah</span>
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
             </div>
 
             <!-- Arabic Bismillah -->
@@ -132,15 +132,15 @@
             <!-- Main Heading -->
             <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mb-4 tracking-tight">
                 Sistem Penilaian Munaqasyah
-                <span class="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-200 via-white to-red-400 drop-shadow-md">
+                <span class="block mt-2 text-white drop-shadow-sm">
                     TPQ &amp; RTQ Ar-Raudhah
                 </span>
             </h1>
 
             <p class="text-blue-100 text-sm sm:text-base lg:text-lg max-w-2xl mx-auto leading-relaxed mb-8 font-normal">
                 Platform digital resmi evaluasi, penilaian 9 mata uji, dan penerbitan surat kelulusan santri 
-                <strong class="text-white font-bold underline decoration-[#3b82f6] decoration-2">Taman Pendidikan Qur'an (TPQ)</strong> &amp; 
-                <strong class="text-white font-bold underline decoration-[#dc2626] decoration-2">Rumah Tahfidz Qur'an (RTQ)</strong> Ar-Raudhah Banjarbaru.
+                <strong class="text-white font-bold">Taman Pendidikan Qur'an (TPQ)</strong> &amp; 
+                <strong class="text-white font-bold">Rumah Tahfidz Qur'an (RTQ)</strong> Ar-Raudhah Banjarbaru.
             </p>
 
             <!-- Unit Pills -->
@@ -214,7 +214,7 @@
     <section id="kategori" class="py-20 bg-[#071026] relative">
         <div class="max-w-6xl mx-auto px-4">
             <div class="text-center mb-14 reveal">
-                <span class="text-xs font-black text-white uppercase tracking-widest bg-[#dc2626] px-4 py-1.5 rounded-full shadow-md">Unit Pendidikan</span>
+                <span class="text-xs font-bold text-white uppercase tracking-widest bg-blue-700 px-4 py-1.5 rounded-full shadow-sm">Unit Pendidikan</span>
                 <h2 class="text-2xl sm:text-4xl font-black text-white mt-4">
                     Lembaga Pendidikan Al-Qur'an Ar-Raudhah
                 </h2>
@@ -223,14 +223,14 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- TPQ Card (Official Royal Blue Identity) -->
-                <div class="bg-gradient-to-br from-[#0c1a44] via-[#102560] to-[#183584] border-2 border-[#3b82f6] rounded-3xl p-8 shadow-2xl shadow-[#1e3a8a]/30 hover:border-white transition reveal relative overflow-hidden">
+                <div class="bg-gradient-to-br from-[#0c1a44] via-[#102560] to-[#183584] border border-blue-400/50 rounded-3xl p-8 shadow-xl shadow-[#1e3a8a]/20 hover:border-white transition reveal relative overflow-hidden">
                     <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-blue-500/10 rounded-full blur-2xl"></div>
                     <div class="flex items-center gap-4 mb-5">
                         <div class="w-16 h-16 bg-[#1e3a8a] text-white border-2 border-[#60a5fa] rounded-2xl flex items-center justify-center text-3xl shadow-lg">
                             <i class="fa-solid fa-book-open-reader"></i>
                         </div>
                         <div>
-                            <span class="text-[11px] font-black text-blue-300 uppercase tracking-widest bg-blue-950/80 px-2.5 py-0.5 rounded-lg border border-blue-400/30">Unit 01 • TPQ</span>
+                            <span class="text-[11px] font-bold text-blue-300 uppercase tracking-widest bg-blue-950/80 px-2.5 py-0.5 rounded-lg border border-blue-400/30">Unit 01 • TPQ</span>
                             <h3 class="text-xl sm:text-2xl font-black text-white mt-1">TPQ Ar-Raudhah</h3>
                             <p class="text-xs text-blue-200 font-semibold">Taman Pendidikan Qur'an Banjarbaru</p>
                         </div>
@@ -246,27 +246,27 @@
                     </div>
                 </div>
 
-                <!-- RTQ Card (Official Crimson Red Identity) -->
-                <div class="bg-gradient-to-br from-[#240a10] via-[#3d0f19] to-[#591424] border-2 border-[#dc2626] rounded-3xl p-8 shadow-2xl shadow-[#dc2626]/30 hover:border-white transition reveal relative overflow-hidden">
-                    <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-red-500/10 rounded-full blur-2xl"></div>
+                <!-- RTQ Card (Official Islamic Emerald Identity) -->
+                <div class="bg-gradient-to-br from-[#041a12] via-[#062b1e] to-[#0a3d2b] border border-emerald-500/50 rounded-3xl p-8 shadow-xl shadow-emerald-950/20 hover:border-white transition reveal relative overflow-hidden">
+                    <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-emerald-500/10 rounded-full blur-2xl"></div>
                     <div class="flex items-center gap-4 mb-5">
-                        <div class="w-16 h-16 bg-[#dc2626] text-white border-2 border-[#fca5a5] rounded-2xl flex items-center justify-center text-3xl shadow-lg">
+                        <div class="w-16 h-16 bg-emerald-700 text-white border-2 border-emerald-400/50 rounded-2xl flex items-center justify-center text-3xl shadow-lg">
                             <i class="fa-solid fa-mosque"></i>
                         </div>
                         <div>
-                            <span class="text-[11px] font-black text-red-300 uppercase tracking-widest bg-red-950/80 px-2.5 py-0.5 rounded-lg border border-red-400/30">Unit 02 • RTQ</span>
+                            <span class="text-[11px] font-bold text-emerald-300 uppercase tracking-widest bg-emerald-950/80 px-2.5 py-0.5 rounded-lg border border-emerald-400/30">Unit 02 • RTQ</span>
                             <h3 class="text-xl sm:text-2xl font-black text-white mt-1">RTQ Ar-Raudhah</h3>
-                            <p class="text-xs text-red-200 font-semibold">Rumah Tahfidz Qur'an Banjarbaru</p>
+                            <p class="text-xs text-emerald-200 font-semibold">Rumah Tahfidz Qur'an Banjarbaru</p>
                         </div>
                     </div>
-                    <p class="text-red-100 text-sm leading-relaxed mb-6">
+                    <p class="text-emerald-100/90 text-sm leading-relaxed mb-6">
                         Program intensif penghafalan Al-Qur'an berjenjang dengan muraja'ah berkala, penguatan mutqin hafalan, dan pengujian kelayakan sanad hafalan santri binaan.
                     </p>
                     <div class="flex flex-wrap gap-2 text-xs font-bold text-white">
-                        <span class="px-3 py-1.5 bg-[#170509] border border-[#dc2626]/50 rounded-xl">Tahfidz Tematik</span>
-                        <span class="px-3 py-1.5 bg-[#170509] border border-[#dc2626]/50 rounded-xl">Tahfidz Juz 'Amma</span>
-                        <span class="px-3 py-1.5 bg-[#170509] border border-[#dc2626]/50 rounded-xl">Muraja'ah Berkala</span>
-                        <span class="px-3 py-1.5 bg-[#170509] border border-[#dc2626]/50 rounded-xl">Kelulusan Resmi</span>
+                        <span class="px-3 py-1.5 bg-[#03150e] border border-emerald-500/50 rounded-xl">Tahfidz Tematik</span>
+                        <span class="px-3 py-1.5 bg-[#03150e] border border-emerald-500/50 rounded-xl">Tahfidz Juz 'Amma</span>
+                        <span class="px-3 py-1.5 bg-[#03150e] border border-emerald-500/50 rounded-xl">Muraja'ah Berkala</span>
+                        <span class="px-3 py-1.5 bg-[#03150e] border border-emerald-500/50 rounded-xl">Kelulusan Resmi</span>
                     </div>
                 </div>
             </div>
@@ -278,10 +278,10 @@
         <div class="max-w-6xl mx-auto px-4">
             <!-- Section Header -->
             <div class="text-center mb-14 reveal">
-                <span class="text-xs font-black text-white uppercase tracking-widest bg-[#1e3a8a] px-4 py-1.5 rounded-full shadow-md">Fitur Unggulan</span>
+                <span class="text-xs font-bold text-white uppercase tracking-widest bg-blue-800 px-4 py-1.5 rounded-full shadow-sm">Fitur Unggulan</span>
                 <h2 class="text-3xl sm:text-4xl font-black text-[#0c1c46] mt-4 leading-tight">
                     Semua yang Dibutuhkan Penguji &amp; Panitia<br>
-                    <span class="text-[#dc2626]">dalam Satu Platform Terpadu</span>
+                    <span class="text-blue-700">dalam Satu Platform Terpadu</span>
                 </h2>
                 <p class="text-slate-600 mt-3 max-w-xl mx-auto text-sm">Dirancang khusus untuk Yayasan Cahaya Amanah Ar-Raudhah agar proses penilaian menjadi terstandar, objektif, dan efisien.</p>
             </div>
@@ -289,48 +289,48 @@
             <!-- Features Grid with Logo Color Accents -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- F1 -->
-                <div class="feature-card bg-white rounded-3xl p-7 border-2 border-slate-200 hover:border-[#1e3a8a] shadow-md hover:shadow-2xl transition-all duration-300 reveal">
-                    <div class="w-14 h-14 bg-[#1e3a8a] text-white rounded-2xl flex items-center justify-center text-2xl mb-5 shadow-lg shadow-[#1e3a8a]/30">
+                <div class="feature-card bg-white rounded-3xl p-7 border border-slate-200 hover:border-blue-700 shadow-sm hover:shadow-xl transition-all duration-300 reveal">
+                    <div class="w-14 h-14 bg-blue-800 text-white rounded-2xl flex items-center justify-center text-2xl mb-5 shadow-md shadow-blue-900/20">
                         <i class="fa-solid fa-clipboard-list"></i>
                     </div>
                     <h3 class="font-black text-slate-900 text-base mb-2">Penilaian 9 Mata Uji</h3>
                     <p class="text-slate-600 text-sm leading-relaxed">Form penilaian digital untuk 9 indikator resmi: Fashohah, Tajwid, Gharib, Dinul Islam, Ayat Pilihan, Praktek Sholat, Doa Harian, dan Tahfidz.</p>
                 </div>
                 <!-- F2 -->
-                <div class="feature-card bg-white rounded-3xl p-7 border-2 border-slate-200 hover:border-[#dc2626] shadow-md hover:shadow-2xl transition-all duration-300 reveal">
-                    <div class="w-14 h-14 bg-[#dc2626] text-white rounded-2xl flex items-center justify-center text-2xl mb-5 shadow-lg shadow-[#dc2626]/30">
+                <div class="feature-card bg-white rounded-3xl p-7 border border-slate-200 hover:border-blue-700 shadow-sm hover:shadow-xl transition-all duration-300 reveal">
+                    <div class="w-14 h-14 bg-blue-800 text-white rounded-2xl flex items-center justify-center text-2xl mb-5 shadow-md shadow-blue-900/20">
                         <i class="fa-solid fa-award"></i>
                     </div>
                     <h3 class="font-black text-slate-900 text-base mb-2">Penentuan Kelulusan Otomatis</h3>
                     <p class="text-slate-600 text-sm leading-relaxed">Algoritma otomatis mengevaluasi nilai ambang batas kelulusan per mata uji secara transparan dan tanpa bias manusiawi.</p>
                 </div>
                 <!-- F3 -->
-                <div class="feature-card bg-white rounded-3xl p-7 border-2 border-slate-200 hover:border-[#1e3a8a] shadow-md hover:shadow-2xl transition-all duration-300 reveal">
-                    <div class="w-14 h-14 bg-[#1e3a8a] text-white rounded-2xl flex items-center justify-center text-2xl mb-5 shadow-lg shadow-[#1e3a8a]/30">
+                <div class="feature-card bg-white rounded-3xl p-7 border border-slate-200 hover:border-blue-700 shadow-sm hover:shadow-xl transition-all duration-300 reveal">
+                    <div class="w-14 h-14 bg-blue-800 text-white rounded-2xl flex items-center justify-center text-2xl mb-5 shadow-md shadow-blue-900/20">
                         <i class="fa-solid fa-file-invoice"></i>
                     </div>
                     <h3 class="font-black text-slate-900 text-base mb-2">Surat Keterangan Kelulusan</h3>
                     <p class="text-slate-600 text-sm leading-relaxed">Penerbitan surat kelulusan resmi dengan kop yayasan, transkrip nilai 9 mata uji, pas foto santri, dan format siap cetak.</p>
                 </div>
                 <!-- F4 -->
-                <div class="feature-card bg-white rounded-3xl p-7 border-2 border-slate-200 hover:border-emerald-600 shadow-md hover:shadow-2xl transition-all duration-300 reveal">
-                    <div class="w-14 h-14 bg-emerald-600 text-white rounded-2xl flex items-center justify-center text-2xl mb-5 shadow-lg shadow-emerald-600/30">
+                <div class="feature-card bg-white rounded-3xl p-7 border border-slate-200 hover:border-emerald-600 shadow-sm hover:shadow-xl transition-all duration-300 reveal">
+                    <div class="w-14 h-14 bg-emerald-600 text-white rounded-2xl flex items-center justify-center text-2xl mb-5 shadow-md shadow-emerald-600/20">
                         <i class="fa-solid fa-file-excel"></i>
                     </div>
                     <h3 class="font-black text-slate-900 text-base mb-2">Export Data Excel &amp; CSV</h3>
                     <p class="text-slate-600 text-sm leading-relaxed">Unduh seluruh rekapitulasi data santri munaqasyah TPQ &amp; RTQ dalam format Excel/CSV dengan sekali klik.</p>
                 </div>
                 <!-- F5 -->
-                <div class="feature-card bg-white rounded-3xl p-7 border-2 border-slate-200 hover:border-[#dc2626] shadow-md hover:shadow-2xl transition-all duration-300 reveal">
-                    <div class="w-14 h-14 bg-[#dc2626] text-white rounded-2xl flex items-center justify-center text-2xl mb-5 shadow-lg shadow-[#dc2626]/30">
+                <div class="feature-card bg-white rounded-3xl p-7 border border-slate-200 hover:border-blue-700 shadow-sm hover:shadow-xl transition-all duration-300 reveal">
+                    <div class="w-14 h-14 bg-blue-800 text-white rounded-2xl flex items-center justify-center text-2xl mb-5 shadow-md shadow-blue-900/20">
                         <i class="fa-solid fa-camera"></i>
                     </div>
                     <h3 class="font-black text-slate-900 text-base mb-2">Upload Pas Foto Santri</h3>
                     <p class="text-slate-600 text-sm leading-relaxed">Manajemen foto santri resmi yang otomatis tersemat rapi pada surat keterangan kelulusan dan arsip database.</p>
                 </div>
                 <!-- F6 -->
-                <div class="feature-card bg-white rounded-3xl p-7 border-2 border-slate-200 hover:border-[#1e3a8a] shadow-md hover:shadow-2xl transition-all duration-300 reveal">
-                    <div class="w-14 h-14 bg-[#1e3a8a] text-white rounded-2xl flex items-center justify-center text-2xl mb-5 shadow-lg shadow-[#1e3a8a]/30">
+                <div class="feature-card bg-white rounded-3xl p-7 border border-slate-200 hover:border-blue-700 shadow-sm hover:shadow-xl transition-all duration-300 reveal">
+                    <div class="w-14 h-14 bg-blue-800 text-white rounded-2xl flex items-center justify-center text-2xl mb-5 shadow-md shadow-blue-900/20">
                         <i class="fa-solid fa-chart-pie"></i>
                     </div>
                     <h3 class="font-black text-slate-900 text-base mb-2">Dashboard Statistik Real-Time</h3>
@@ -345,7 +345,7 @@
         <div class="max-w-4xl mx-auto px-4">
             <!-- Header -->
             <div class="text-center mb-12 reveal">
-                <span class="text-xs font-black text-white uppercase tracking-widest bg-[#dc2626] px-4 py-1.5 rounded-full shadow-md">
+                <span class="text-xs font-bold text-white uppercase tracking-widest bg-blue-700 px-4 py-1.5 rounded-full shadow-sm">
                     Pertanyaan Umum
                 </span>
                 <h2 class="text-2xl sm:text-4xl font-black text-white mt-4 leading-tight">
@@ -359,27 +359,27 @@
             <!-- FAQ List -->
             <div class="space-y-4 reveal">
                 <!-- Q1: Pembuat -->
-                <div class="bg-gradient-to-r from-[#0d1c44] to-[#1e3a8a]/50 border-2 border-[#3b82f6]/60 rounded-2xl p-6 shadow-xl shadow-[#1e3a8a]/20">
+                <div class="bg-gradient-to-r from-[#0d1c44] to-[#1e3a8a]/50 border border-blue-400/30 rounded-2xl p-6 shadow-xl shadow-[#1e3a8a]/20">
                     <div class="flex items-start gap-4">
-                        <div class="w-12 h-12 rounded-2xl bg-[#dc2626] text-white flex items-center justify-center text-xl shrink-0 shadow-md shadow-[#dc2626]/30">
+                        <div class="w-12 h-12 rounded-2xl bg-blue-700 text-white flex items-center justify-center text-xl shrink-0 shadow-md">
                             <i class="fa-solid fa-code"></i>
                         </div>
                         <div>
                             <h3 class="text-base font-bold text-white mb-1.5 flex items-center gap-2">
                                 Siapa pembuat sistem munaqasyah ini?
-                                <span class="px-2.5 py-0.5 rounded text-[10px] font-black bg-[#dc2626] text-white uppercase shadow-sm">Creator</span>
+                                <span class="px-2.5 py-0.5 rounded text-[10px] font-bold bg-blue-600 text-white uppercase shadow-sm">Creator</span>
                             </h3>
                             <p class="text-blue-100 text-xs sm:text-sm leading-relaxed">
-                                Sistem ini dirancang dan diciptakan oleh <strong class="text-amber-300 font-black">Hugo Putra Pratama</strong>, software engineer yang mendedikasikan platform digital ini untuk standarisasi penilaian santri di <strong class="text-white">Yayasan Cahaya Amanah Ar-Raudhah Banjarbaru</strong>.
+                                Sistem ini dirancang dan diciptakan oleh <strong class="text-amber-300 font-bold">Hugo Putra Pratama</strong>, software engineer yang mendedikasikan platform digital ini untuk standarisasi penilaian santri di <strong class="text-white">Yayasan Cahaya Amanah Ar-Raudhah Banjarbaru</strong>.
                             </p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Q2: 9 Mata Uji -->
-                <div class="bg-[#0b1636]/80 border-2 border-[#1e3a8a]/60 hover:border-[#60a5fa] rounded-2xl p-6 transition shadow-md">
+                <div class="bg-[#0b1636]/80 border border-blue-400/20 hover:border-blue-400/60 rounded-2xl p-6 transition shadow-md">
                     <div class="flex items-start gap-4">
-                        <div class="w-12 h-12 rounded-2xl bg-[#1e3a8a] text-white flex items-center justify-center text-xl shrink-0 shadow-md shadow-[#1e3a8a]/30">
+                        <div class="w-12 h-12 rounded-2xl bg-blue-800 text-white flex items-center justify-center text-xl shrink-0 shadow-md">
                             <i class="fa-solid fa-clipboard-check"></i>
                         </div>
                         <div>
@@ -392,9 +392,9 @@
                 </div>
 
                 <!-- Q3: Cetak Surat -->
-                <div class="bg-[#0b1636]/80 border-2 border-[#1e3a8a]/60 hover:border-[#60a5fa] rounded-2xl p-6 transition shadow-md">
+                <div class="bg-[#0b1636]/80 border border-blue-400/20 hover:border-blue-400/60 rounded-2xl p-6 transition shadow-md">
                     <div class="flex items-start gap-4">
-                        <div class="w-12 h-12 rounded-2xl bg-[#dc2626] text-white flex items-center justify-center text-xl shrink-0 shadow-md shadow-[#dc2626]/30">
+                        <div class="w-12 h-12 rounded-2xl bg-blue-800 text-white flex items-center justify-center text-xl shrink-0 shadow-md">
                             <i class="fa-solid fa-print"></i>
                         </div>
                         <div>
@@ -407,7 +407,7 @@
                 </div>
 
                 <!-- Q4: Export Data -->
-                <div class="bg-[#0b1636]/80 border-2 border-[#1e3a8a]/60 hover:border-[#60a5fa] rounded-2xl p-6 transition shadow-md">
+                <div class="bg-[#0b1636]/80 border border-blue-400/20 hover:border-blue-400/60 rounded-2xl p-6 transition shadow-md">
                     <div class="flex items-start gap-4">
                         <div class="w-12 h-12 rounded-2xl bg-emerald-600 text-white flex items-center justify-center text-xl shrink-0 shadow-md shadow-emerald-600/30">
                             <i class="fa-solid fa-file-excel"></i>
@@ -423,9 +423,9 @@
             </div>
 
             <!-- Chatbot CTA Prompt -->
-            <div class="mt-8 p-6 rounded-2xl bg-gradient-to-r from-[#170509] via-[#0b1636] to-[#170509] border-2 border-[#dc2626]/40 text-center reveal shadow-xl">
+            <div class="mt-8 p-6 rounded-2xl bg-[#0b1636]/90 border border-blue-400/30 text-center reveal shadow-xl">
                 <p class="text-white font-bold text-sm mb-1 flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-robot text-[#f87171]"></i> Punya pertanyaan lain yang belum terjawab?
+                    <i class="fa-solid fa-robot text-blue-400"></i> Punya pertanyaan lain yang belum terjawab?
                 </p>
                 <p class="text-blue-200 text-xs mb-4">Gunakan Asisten Virtual Ar-Raudhah interaktif yang selalu siap menjawab 24/7.</p>
                 <button type="button" onclick="toggleChatbot()"
@@ -439,8 +439,8 @@
     <!-- ===== TENTANG SECTION ===== -->
     <section id="tentang" class="py-20 bg-gradient-to-br from-[#060e22] via-[#0d1d44] to-[#162d6b] relative overflow-hidden border-t-2 border-[#1e3a8a]/40">
         <div class="absolute inset-0 islamic-bg opacity-40"></div>
-        <div class="absolute top-0 right-0 w-96 h-96 bg-[#dc2626]/15 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-0 left-0 w-96 h-96 bg-[#1e3a8a]/30 rounded-full blur-3xl"></div>
+        <div class="absolute top-0 right-0 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-600/15 rounded-full blur-3xl"></div>
         
         <div class="max-w-4xl mx-auto px-4 relative z-10">
             <div class="text-center reveal">
@@ -451,12 +451,12 @@
                 <p class="text-blue-100 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto mb-10">
                     Berdedikasi dalam pendidikan Al-Qur'an di Banjarbaru melalui 
                     <strong class="text-amber-300 font-bold">Taman Pendidikan Qur'an (TPQ) Ar-Raudhah</strong> dan 
-                    <strong class="text-[#fca5a5] font-bold">Rumah Tahfidz Qur'an (RTQ) Ar-Raudhah</strong>. 
+                    <strong class="text-emerald-300 font-bold">Rumah Tahfidz Qur'an (RTQ) Ar-Raudhah</strong>. 
                     Platform ini hadir untuk menjamin akuntabilitas, validitas, dan standar kualitas para santri lulusan.
                 </p>
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <div class="bg-[#081330]/80 border-2 border-[#3b82f6]/30 rounded-2xl p-5 text-center backdrop-blur-sm shadow-lg">
-                        <div class="w-12 h-12 rounded-xl bg-[#dc2626]/20 text-[#f87171] border border-[#dc2626]/40 flex items-center justify-center text-xl mx-auto mb-3">
+                        <div class="w-12 h-12 rounded-xl bg-blue-500/20 text-blue-300 border border-blue-400/40 flex items-center justify-center text-xl mx-auto mb-3">
                             <i class="fa-solid fa-shield-halved"></i>
                         </div>
                         <p class="font-bold text-white text-sm">Aman &amp; Terverifikasi</p>
@@ -486,7 +486,7 @@
         <div class="max-w-3xl mx-auto px-4 text-center reveal">
             <div class="bg-gradient-to-br from-[#091536] via-[#102456] to-[#183584] border-2 border-[#3b82f6]/50 rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden">
                 <div class="absolute inset-0 islamic-bg opacity-30"></div>
-                <div class="absolute -top-10 -right-10 w-48 h-48 bg-[#dc2626]/20 rounded-full blur-3xl"></div>
+                <div class="absolute -top-10 -right-10 w-48 h-48 bg-blue-500/10 rounded-full blur-3xl"></div>
                 <div class="relative z-10">
                     <div class="w-20 h-20 bg-white rounded-2xl p-1.5 shadow-2xl mx-auto mb-5 border-2 border-[#1e3a8a] flex items-center justify-center">
                         <img src="{{ asset('images/logo.png') }}" alt="Logo Yayasan" class="w-full h-full object-contain">

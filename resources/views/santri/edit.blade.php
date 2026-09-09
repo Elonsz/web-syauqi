@@ -17,7 +17,7 @@
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-xs">
         <div>
             <div class="flex items-center gap-2">
-                <span class="text-xs font-bold px-2.5 py-0.5 rounded-full {{ $santri->jenis === 'TPQ' ? 'bg-blue-100 text-blue-900' : 'bg-red-100 text-red-900' }}">
+                <span class="text-xs font-bold px-2.5 py-0.5 rounded-full {{ $santri->jenis === 'TPQ' ? 'bg-blue-100 text-blue-900' : 'bg-emerald-100 text-emerald-900' }}">
                     {{ $santri->jenis }}
                 </span>
                 <h2 class="text-base sm:text-lg font-extrabold text-slate-900">Edit Biodata Santri</h2>
@@ -150,7 +150,7 @@
         <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-xs space-y-5">
             <div class="border-b border-slate-100 pb-3 flex items-center justify-between">
                 <h3 class="text-sm font-bold text-slate-800 flex items-center gap-2">
-                    <span class="w-6 h-6 rounded-lg bg-red-100 text-red-900 flex items-center justify-center text-xs font-black">2</span>
+                    <span class="w-6 h-6 rounded-lg bg-slate-100 text-slate-700 flex items-center justify-center text-xs font-black">2</span>
                     Tempat Tanggal Lahir &amp; Lembaga Asal
                 </h3>
             </div>

@@ -136,7 +136,7 @@
         <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-xs space-y-5">
             <div class="border-b border-slate-100 pb-3 flex items-center justify-between">
                 <h3 class="text-sm font-bold text-slate-800 flex items-center gap-2">
-                    <span class="w-6 h-6 rounded-lg bg-red-100 text-red-900 flex items-center justify-center text-xs font-black">2</span>
+                    <span class="w-6 h-6 rounded-lg bg-slate-100 text-slate-700 flex items-center justify-center text-xs font-black">2</span>
                     Tempat Tanggal Lahir &amp; Lembaga Asal
                 </h3>
             </div>
@@ -222,7 +222,7 @@
 
                 <!-- Simpan & Lanjut Isi Nilai -->
                 <button type="submit" name="action" value="save_and_grade"
-                        class="flex-1 sm:flex-none px-5 py-2.5 bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white text-xs font-bold rounded-xl transition shadow-md shadow-red-900/20 flex items-center justify-center gap-2 active:scale-95">
+                        class="flex-1 sm:flex-none px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl transition shadow-md shadow-blue-900/20 flex items-center justify-center gap-2 active:scale-95">
                     <i class="fa-solid fa-clipboard-check text-xs"></i>
                     <span>Simpan &amp; Lanjut Isi Nilai</span>
                 </button>

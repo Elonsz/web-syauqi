@@ -5,12 +5,12 @@
     <!-- Chat Trigger Button -->
     <button id="chatbot-toggle-btn"
             onclick="toggleChatbot()"
-            class="group relative flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-tr from-[#081026] via-[#1e3a8a] to-[#dc2626] text-white shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 focus:outline-none ring-4 ring-white/20 hover:ring-red-500/40 cursor-pointer"
+            class="group relative flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-blue-600 hover:bg-blue-700 text-white shadow-xl hover:scale-105 active:scale-95 transition-all duration-300 focus:outline-none ring-4 ring-blue-100 cursor-pointer"
             aria-label="Buka FAQ Chatbot">
         <!-- Notification Ping -->
         <span class="absolute -top-1 -right-1 flex h-4 w-4">
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-            <span class="relative inline-flex rounded-full h-4 w-4 bg-red-600 text-[9px] font-bold text-white items-center justify-center">1</span>
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-4 w-4 bg-blue-700 text-[9px] font-bold text-white items-center justify-center">1</span>
         </span>
 
         <!-- Icons -->
@@ -29,19 +29,19 @@
          class="hidden fixed sm:absolute bottom-20 right-0 left-4 sm:left-auto w-auto sm:w-96 max-w-[92vw] h-[580px] max-h-[84vh] bg-white rounded-3xl shadow-2xl border border-slate-200/90 flex-col overflow-hidden transition-all duration-300 transform origin-bottom-right z-50">
 
         <!-- Chat Header -->
-        <div class="bg-gradient-to-r from-[#081026] via-[#10224d] to-[#1e3a8a] p-4 text-white flex items-center justify-between border-b border-white/10 shrink-0">
+        <div class="bg-slate-900 p-4 text-white flex items-center justify-between border-b border-slate-800 shrink-0">
             <div class="flex items-center gap-3">
-                <div class="relative w-10 h-10 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center text-red-400 text-lg shadow-inner">
+                <div class="relative w-10 h-10 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center text-blue-400 text-lg shadow-inner">
                     <i class="fa-solid fa-robot"></i>
-                    <span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-400 border-2 border-slate-950"></span>
+                    <span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-400 border-2 border-slate-900"></span>
                 </div>
                 <div>
-                    <h3 class="text-xs sm:text-sm font-black tracking-tight leading-tight flex items-center gap-1.5">
+                    <h3 class="text-xs sm:text-sm font-bold tracking-tight leading-tight flex items-center gap-1.5">
                         Asisten Ar-Raudhah
-                        <span class="text-[9px] px-1.5 py-0.5 rounded bg-red-600/60 font-bold uppercase">AI Smart</span>
+                        <span class="text-[9px] px-1.5 py-0.5 rounded bg-blue-600 font-bold uppercase">AI Smart</span>
                     </h3>
                     <p class="text-[10px] text-slate-300 font-medium leading-tight mt-0.5">
-                        Karya <strong class="text-amber-300 font-bold">Hugo Putra Pratama</strong>
+                        Yayasan Cahaya Amanah Ar-Raudhah
                     </p>
                 </div>
             </div>
@@ -56,12 +56,12 @@
         </div>
 
         <!-- Creator Mini Bar -->
-        <div class="bg-gradient-to-r from-[#081026] to-[#0f2048] px-3.5 py-1.5 text-[11px] text-slate-300 flex items-center justify-between border-b border-blue-950/80">
-            <span class="flex items-center gap-1.5 text-[10px] text-slate-300">
-                <i class="fa-solid fa-code text-red-400 text-[10px]"></i> Pengembang: <strong class="text-white font-bold">Hugo Putra Pratama</strong>
+        <div class="bg-slate-950 px-3.5 py-1.5 text-[11px] text-slate-400 flex items-center justify-between border-b border-slate-800">
+            <span class="flex items-center gap-1.5 text-[10px] text-slate-400">
+                <i class="fa-solid fa-code text-blue-400 text-[10px]"></i> Pengembang: <strong class="text-white font-semibold">Hugo Putra Pratama</strong>
             </span>
             <span class="text-[9px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded-full font-bold flex items-center gap-1">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Voice &amp; Quran Active
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Online
             </span>
         </div>
 
@@ -70,7 +70,7 @@
 
             <!-- Bot Welcome Bubble -->
             <div class="flex items-start gap-2.5">
-                <div class="w-7 h-7 rounded-xl bg-gradient-to-tr from-[#081026] to-[#dc2626] text-white flex items-center justify-center text-xs shrink-0 mt-1 shadow-xs">
+                <div class="w-7 h-7 rounded-xl bg-blue-600 text-white flex items-center justify-center text-xs shrink-0 mt-1 shadow-xs">
                     <i class="fa-solid fa-robot"></i>
                 </div>
                 <div class="bg-white border border-slate-200 rounded-2xl rounded-tl-xs p-3.5 text-slate-800 shadow-xs max-w-[88%] space-y-2 leading-relaxed">
@@ -79,7 +79,7 @@
                     </p>
                     <p class="text-slate-600 text-xs leading-relaxed">
                         Saya Asisten Cerdas <strong>Yayasan Cahaya Amanah Ar-Raudhah</strong> yang dirancang dan dikembangkan oleh 
-                        <strong class="text-red-600 font-bold">Hugo Putra Pratama</strong>.
+                        <strong class="text-blue-600 font-bold">Hugo Putra Pratama</strong>.
                     </p>
                     <p class="text-slate-600 text-xs">
                         Kini saya semakin pintar! Saya dapat mencari data santri, nilai ujian, membaca Al-Qur'an 114 surah, jadwal sholat, perhitungan matematika, dan hukum tajwid.
@@ -91,7 +91,7 @@
             <div id="chat-suggestions" class="space-y-1.5 pt-2">
                 <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider px-1">Pertanyaan Cepat:</p>
                 <div class="flex flex-wrap gap-1.5">
-                    <button type="button" onclick="askQuestion('Siapa pembuat sistem ini?')" class="suggestion-chip px-2.5 py-1.5 rounded-xl bg-white border border-slate-200 hover:border-red-500 hover:text-red-700 hover:bg-red-50 text-slate-700 text-[11px] font-semibold transition text-left shadow-2xs">
+                    <button type="button" onclick="askQuestion('Siapa pembuat sistem ini?')" class="suggestion-chip px-2.5 py-1.5 rounded-xl bg-white border border-slate-200 hover:border-blue-500 hover:text-blue-700 hover:bg-blue-50 text-slate-700 text-[11px] font-semibold transition text-left shadow-2xs">
                         👨‍💻 Pembuat Sistem
                     </button>
                     <button type="button" onclick="askQuestion('Berapa jumlah santri saat ini?')" class="suggestion-chip px-2.5 py-1.5 rounded-xl bg-white border border-slate-200 hover:border-emerald-500 hover:text-emerald-700 hover:bg-emerald-50 text-slate-700 text-[11px] font-semibold transition text-left shadow-2xs">
@@ -109,7 +109,7 @@
                     <button type="button" onclick="askQuestion('Jadwal sholat hari ini')" class="suggestion-chip px-2.5 py-1.5 rounded-xl bg-white border border-slate-200 hover:border-blue-500 hover:text-blue-700 hover:bg-blue-50 text-slate-700 text-[11px] font-semibold transition text-left shadow-2xs">
                         🕌 Jadwal Sholat
                     </button>
-                    <button type="button" onclick="askQuestion('Apa saja 9 mata uji penilaian?')" class="suggestion-chip px-2.5 py-1.5 rounded-xl bg-white border border-slate-200 hover:border-rose-500 hover:text-rose-700 hover:bg-rose-50 text-slate-700 text-[11px] font-semibold transition text-left shadow-2xs">
+                    <button type="button" onclick="askQuestion('Apa saja 9 mata uji penilaian?')" class="suggestion-chip px-2.5 py-1.5 rounded-xl bg-white border border-slate-200 hover:border-blue-500 hover:text-blue-700 hover:bg-blue-50 text-slate-700 text-[11px] font-semibold transition text-left shadow-2xs">
                         📖 9 Mata Uji
                     </button>
                     <button type="button" onclick="askQuestion('Hitung 25% dari 500000')" class="suggestion-chip px-2.5 py-1.5 rounded-xl bg-white border border-slate-200 hover:border-indigo-500 hover:text-indigo-700 hover:bg-indigo-50 text-slate-700 text-[11px] font-semibold transition text-left shadow-2xs">
@@ -124,9 +124,9 @@
                     <i class="fa-solid fa-robot"></i>
                 </div>
                 <div class="flex gap-1.5 items-center bg-white border border-slate-200 px-3 py-2 rounded-2xl shadow-2xs">
-                    <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-bounce" style="animation-delay: 0s;"></span>
-                    <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-bounce" style="animation-delay: 0.2s;"></span>
-                    <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-bounce" style="animation-delay: 0.4s;"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-bounce" style="animation-delay: 0s;"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-bounce" style="animation-delay: 0.2s;"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-bounce" style="animation-delay: 0.4s;"></span>
                     <span class="text-[10px] text-slate-400 ml-1 font-medium">Asisten sedang berpikir...</span>
                 </div>
             </div>
@@ -134,11 +134,11 @@
         </div>
 
         <!-- Voice Status Banner (when listening) -->
-        <div id="voice-status-banner" class="hidden bg-red-600 text-white px-3 py-1.5 text-[11px] flex items-center justify-between animate-pulse">
+        <div id="voice-status-banner" class="hidden bg-blue-600 text-white px-3 py-1.5 text-[11px] flex items-center justify-between animate-pulse">
             <span class="flex items-center gap-1.5 font-bold">
                 <i class="fa-solid fa-microphone"></i> Mendengarkan suara Anda... Silakan berbicara
             </span>
-            <button type="button" onclick="stopVoiceRecognition()" class="text-white hover:text-red-200">
+            <button type="button" onclick="stopVoiceRecognition()" class="text-white hover:text-blue-200">
                 <i class="fa-solid fa-xmark text-xs"></i>
             </button>
         </div>
@@ -150,13 +150,13 @@
                        id="chatbot-input"
                        placeholder="Tanya apa saja (santri, nilai, quran, sholat, hitung)..."
                        autocomplete="off"
-                       class="flex-1 px-3.5 py-2.5 rounded-2xl bg-slate-100 border border-slate-200 text-xs sm:text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-red-500/40 focus:border-red-500 transition">
+                       class="flex-1 px-3.5 py-2.5 rounded-2xl bg-slate-100 border border-slate-200 text-xs sm:text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 transition">
                 
                 <!-- Voice Input Button (Mic) -->
                 <button type="button"
                         id="voice-input-btn"
                         onclick="toggleVoiceInput()"
-                        class="w-10 h-10 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-red-600 flex items-center justify-center transition cursor-pointer shrink-0 border border-slate-200"
+                        class="w-10 h-10 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-blue-600 flex items-center justify-center transition cursor-pointer shrink-0 border border-slate-200"
                         title="Bicara dengan Suara (Voice Input)">
                     <i class="fa-solid fa-microphone text-xs" id="voice-mic-icon"></i>
                 </button>
@@ -164,7 +164,7 @@
                 <!-- Send Button -->
                 <button type="submit"
                         id="chatbot-send-btn"
-                        class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-red-600 to-rose-600 text-white flex items-center justify-center shadow-md hover:scale-105 active:scale-95 transition cursor-pointer shrink-0"
+                        class="w-10 h-10 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center shadow-md hover:scale-105 active:scale-95 transition cursor-pointer shrink-0"
                         title="Kirim Pesan">
                     <i class="fa-solid fa-paper-plane text-xs"></i>
                 </button>
@@ -234,7 +234,7 @@
             isRecognizing = true;
             document.getElementById('voice-status-banner').classList.remove('hidden');
             const btn = document.getElementById('voice-input-btn');
-            btn.classList.add('bg-red-600', 'text-white', 'animate-pulse');
+            btn.classList.add('bg-blue-600', 'text-white', 'animate-pulse');
             btn.classList.remove('bg-slate-100', 'text-slate-600');
         } catch (e) {
             console.warn(e);
@@ -249,7 +249,7 @@
         isRecognizing = false;
         document.getElementById('voice-status-banner').classList.add('hidden');
         const btn = document.getElementById('voice-input-btn');
-        btn.classList.remove('bg-red-600', 'text-white', 'animate-pulse');
+        btn.classList.remove('bg-blue-600', 'text-white', 'animate-pulse');
         btn.classList.add('bg-slate-100', 'text-slate-600');
     }
 
@@ -279,7 +279,7 @@
         utterance.rate = 1.0;
         utterance.pitch = 1.0;
 
-        btn.innerHTML = '<i class="fa-solid fa-volume-high text-red-600 animate-pulse"></i>';
+        btn.innerHTML = '<i class="fa-solid fa-volume-high text-blue-600 animate-pulse"></i>';
         utterance.onend = function() {
             btn.innerHTML = '<i class="fa-solid fa-volume-low"></i>';
         };
@@ -312,11 +312,11 @@
             keywords: ['pembuat', 'hugo', 'putra', 'pratama', 'developer', 'creator', 'pembuatnya', 'siapa yang bikin', 'author', 'programmer', 'bikin', 'dibuat'],
             answer: `
                 <div class="space-y-2">
-                    <div class="p-2.5 rounded-xl bg-gradient-to-r from-red-50 via-rose-50 to-blue-50 border border-red-200">
+                    <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
                         <p class="font-black text-slate-900 text-xs sm:text-sm flex items-center gap-1.5">
                             👨‍💻 <span>Hugo Putra Pratama</span>
                         </p>
-                        <p class="text-[11px] text-red-700 font-semibold mt-0.5">Software Engineer &amp; Full-Stack Architect</p>
+                        <p class="text-[11px] text-blue-700 font-semibold mt-0.5">Software Engineer &amp; Full-Stack Architect</p>
                     </div>
                     <p class="text-slate-700 leading-relaxed text-xs">
                         Sistem Penilaian &amp; Kelulusan Munaqasyah ini <strong>dibuat dan dirancang secara eksklusif oleh Hugo Putra Pratama</strong> untuk <strong>Yayasan Cahaya Amanah Ar-Raudhah Banjarbaru</strong>.
@@ -434,7 +434,7 @@
         // Add user bubble
         const userHtml = `
             <div class="flex items-start justify-end gap-2.5">
-                <div class="bg-gradient-to-r from-red-600 to-rose-600 text-white rounded-2xl rounded-tr-xs p-3 shadow-xs max-w-[85%] font-medium leading-relaxed text-xs sm:text-sm">
+                <div class="bg-blue-600 text-white rounded-2xl rounded-tr-xs p-3 shadow-xs max-w-[85%] font-medium leading-relaxed text-xs sm:text-sm">
                     ${escapeHtml(query)}
                 </div>
             </div>
@@ -479,7 +479,7 @@
                 } else if (data.source === 'wikipedia') {
                     sourceBadge = '<span class="text-[9px] px-1.5 py-0.5 rounded bg-purple-100 text-purple-800 font-bold ml-1.5"><i class="fa-solid fa-book mr-1"></i>Ensiklopedia</span>';
                 } else if (data.source === 'generative_ai') {
-                    sourceBadge = '<span class="text-[9px] px-1.5 py-0.5 rounded bg-red-100 text-red-800 font-bold ml-1.5"><i class="fa-solid fa-wand-magic-sparkles mr-1"></i>AI Generatif</span>';
+                    sourceBadge = '<span class="text-[9px] px-1.5 py-0.5 rounded bg-blue-100 text-blue-800 font-bold ml-1.5"><i class="fa-solid fa-wand-magic-sparkles mr-1"></i>AI Generatif</span>';
                 }
             } else {
                 botAnswer = findOfflineAnswer(query);
@@ -492,7 +492,7 @@
 
             const botHtml = `
                 <div class="flex items-start gap-2.5">
-                    <div class="w-7 h-7 rounded-xl bg-gradient-to-tr from-slate-900 to-red-600 text-white flex items-center justify-center text-xs shrink-0 mt-1 shadow-xs">
+                    <div class="w-7 h-7 rounded-xl bg-blue-600 text-white flex items-center justify-center text-xs shrink-0 mt-1 shadow-xs">
                         <i class="fa-solid fa-robot"></i>
                     </div>
                     <div class="bg-white border border-slate-200 rounded-2xl rounded-tl-xs p-3.5 text-slate-800 shadow-xs max-w-[88%] space-y-2 leading-relaxed text-xs sm:text-sm bot-bubble-content relative group">
@@ -552,7 +552,7 @@
         const messages = document.getElementById('chat-messages');
         messages.innerHTML = `
             <div class="flex items-start gap-2.5">
-                <div class="w-7 h-7 rounded-xl bg-gradient-to-tr from-slate-900 to-red-600 text-white flex items-center justify-center text-xs shrink-0 mt-1 shadow-xs">
+                <div class="w-7 h-7 rounded-xl bg-blue-600 text-white flex items-center justify-center text-xs shrink-0 mt-1 shadow-xs">
                     <i class="fa-solid fa-robot"></i>
                 </div>
                 <div class="bg-white border border-slate-200 rounded-2xl rounded-tl-xs p-3.5 text-slate-800 shadow-xs max-w-[85%] space-y-2 leading-relaxed text-xs sm:text-sm">
@@ -561,7 +561,7 @@
                     </p>
                     <p class="text-slate-600 leading-relaxed">
                         Saya adalah Asisten Virtual Cerdas <strong>Yayasan Cahaya Amanah Ar-Raudhah</strong> karya 
-                        <strong class="text-red-600 font-bold">Hugo Putra Pratama</strong>.
+                        <strong class="text-blue-600 font-bold">Hugo Putra Pratama</strong>.
                     </p>
                     <p class="text-slate-600">
                         Silakan tanyakan apa saja yang ingin Anda ketahui!
@@ -572,7 +572,7 @@
             <div id="chat-suggestions" class="space-y-1.5 pt-2">
                 <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider px-1">Pertanyaan Cepat:</p>
                 <div class="flex flex-wrap gap-1.5">
-                    <button type="button" onclick="askQuestion('Siapa pembuat sistem ini?')" class="suggestion-chip px-2.5 py-1.5 rounded-xl bg-white border border-slate-200 hover:border-red-500 hover:text-red-700 hover:bg-red-50 text-slate-700 text-[11px] font-semibold transition text-left shadow-2xs">
+                    <button type="button" onclick="askQuestion('Siapa pembuat sistem ini?')" class="suggestion-chip px-2.5 py-1.5 rounded-xl bg-white border border-slate-200 hover:border-blue-500 hover:text-blue-700 hover:bg-blue-50 text-slate-700 text-[11px] font-semibold transition text-left shadow-2xs">
                         👨‍💻 Pembuat Sistem
                     </button>
                     <button type="button" onclick="askQuestion('Berapa jumlah santri saat ini?')" class="suggestion-chip px-2.5 py-1.5 rounded-xl bg-white border border-slate-200 hover:border-emerald-500 hover:text-emerald-700 hover:bg-emerald-50 text-slate-700 text-[11px] font-semibold transition text-left shadow-2xs">
@@ -592,9 +592,9 @@
                     <i class="fa-solid fa-robot"></i>
                 </div>
                 <div class="flex gap-1.5 items-center bg-white border border-slate-200 px-3 py-2 rounded-2xl shadow-2xs">
-                    <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-bounce" style="animation-delay: 0s;"></span>
-                    <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-bounce" style="animation-delay: 0.2s;"></span>
-                    <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-bounce" style="animation-delay: 0.4s;"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-bounce" style="animation-delay: 0s;"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-bounce" style="animation-delay: 0.2s;"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-bounce" style="animation-delay: 0.4s;"></span>
                     <span class="text-[10px] text-slate-400 ml-1 font-medium">Asisten sedang berpikir...</span>
                 </div>
             </div>

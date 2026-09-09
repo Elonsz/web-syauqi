@@ -34,7 +34,7 @@
                 <i class="fa-solid fa-file-excel text-emerald-400"></i> Import Data
             </a>
             <a href="{{ route('munaqasyah.create', ['jenis' => $jenis]) }}"
-                class="inline-flex items-center gap-1.5 bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 hover:to-rose-700 text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow-md hover:shadow-lg transition active:scale-95">
+                class="inline-flex items-center gap-1.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs px-4 py-2.5 rounded-xl shadow-xs transition active:scale-95">
                 <i class="fa-solid fa-user-plus"></i> Tambah Santri
             </a>
         </div>
@@ -211,7 +211,7 @@
                 <i class="fa-solid fa-inbox text-4xl text-slate-300 mb-3 block"></i>
                 <p class="text-slate-600 text-sm font-semibold">Belum ada data santri untuk kategori {{ $jenis == 'TPQ' ? "Taman Pendidikan Qur'an Ar-Raudhah (TPQ)" : "Rumah Tahfidz Qur'an Ar-Raudhah (RTQ)" }}</p>
                 <a href="{{ route('munaqasyah.create', ['jenis' => $jenis]) }}"
-                    class="mt-3 inline-flex items-center gap-1.5 text-xs font-bold text-red-600 hover:text-red-700 hover:underline">
+                    class="mt-3 inline-flex items-center gap-1.5 text-xs font-bold text-blue-600 hover:text-blue-700 hover:underline">
                     <i class="fa-solid fa-plus"></i> Tambah Santri {{ $jenis }} Sekarang
                 </a>
             </div>
@@ -223,19 +223,19 @@
         <div class="overflow-x-auto">
             <table class="w-full text-center border-collapse table-custom">
                 <thead>
-                    <tr class="bg-slate-900 text-white font-extrabold uppercase tracking-wider text-[11px]">
-                        <th rowspan="2" class="w-12 bg-slate-950 text-slate-200">NO. PESERTA</th>
-                        <th rowspan="2" class="w-10 bg-slate-950 text-slate-200">UNIT</th>
-                        <th rowspan="2" class="text-left w-56 bg-slate-900 text-white">NAMA SANTRI</th>
-                        <th rowspan="2" class="w-14 bg-slate-900 text-slate-200">FOTO</th>
-                        <th rowspan="2" class="w-24 bg-slate-900 text-slate-200">LEMBAGA</th>
-                        <th colspan="4" class="bg-blue-900 text-blue-100 border-b border-blue-800">MUNAQASYAH BACAAN</th>
-                        <th colspan="4" class="bg-blue-950 text-blue-200 border-b border-blue-900">MUNAQASYAH HAFALAN</th>
-                        <th rowspan="2" class="w-14 bg-slate-900 text-amber-400">TERTULIS</th>
-                        <th rowspan="2" class="w-14 bg-slate-950 text-white">JUMLAH</th>
-                        <th rowspan="2" class="w-16 bg-red-950 text-red-200 font-black">RATA²</th>
-                        <th rowspan="2" class="w-20 bg-amber-900 text-amber-200 font-black">ANGKATAN</th>
-                        <th rowspan="2" class="w-28 bg-slate-900 text-slate-200 no-print">AKSI</th>
+                    <tr class="bg-slate-800 text-white font-bold uppercase tracking-wider text-[11px]">
+                        <th rowspan="2" class="w-12 bg-slate-900 text-slate-200">NO. PESERTA</th>
+                        <th rowspan="2" class="w-10 bg-slate-900 text-slate-200">UNIT</th>
+                        <th rowspan="2" class="text-left w-56 bg-slate-800 text-white">NAMA SANTRI</th>
+                        <th rowspan="2" class="w-14 bg-slate-800 text-slate-200">FOTO</th>
+                        <th rowspan="2" class="w-24 bg-slate-800 text-slate-200">LEMBAGA</th>
+                        <th colspan="4" class="bg-slate-700 text-slate-100 border-b border-slate-600">MUNAQASYAH BACAAN</th>
+                        <th colspan="4" class="bg-slate-700 text-slate-100 border-b border-slate-600">MUNAQASYAH HAFALAN</th>
+                        <th rowspan="2" class="w-14 bg-slate-800 text-slate-200">TERTULIS</th>
+                        <th rowspan="2" class="w-14 bg-slate-900 text-white">JUMLAH</th>
+                        <th rowspan="2" class="w-16 bg-slate-900 text-white font-black">RATA²</th>
+                        <th rowspan="2" class="w-20 bg-slate-800 text-slate-200 font-bold">ANGKATAN</th>
+                        <th rowspan="2" class="w-28 bg-slate-800 text-slate-200 no-print">AKSI</th>
                     </tr>
                     <tr class="bg-slate-100 text-slate-700 font-bold text-[10px] uppercase">
                         <th class="w-12">FASHOHAH</th>
@@ -306,14 +306,14 @@
                                         </button>
                                     </form>
                                 </div>
-                            </td></td>
+                            </td>
                         </tr>
                     @empty
                         <tr>
                             <td colspan="17" class="py-12 text-center text-slate-400">
                                 <i class="fa-solid fa-inbox text-4xl mb-3 block text-slate-300"></i>
                                 <p class="text-sm font-semibold text-slate-600">Belum ada data santri untuk kategori {{ $jenis == 'TPQ' ? "Taman Pendidikan Qur'an Ar-Raudhah (TPQ)" : "Rumah Tahfidz Qur'an Ar-Raudhah (RTQ)" }}</p>
-                                <a href="{{ route('munaqasyah.create', ['jenis' => $jenis]) }}" class="mt-2 inline-block text-red-600 font-bold hover:underline text-xs">
+                                <a href="{{ route('munaqasyah.create', ['jenis' => $jenis]) }}" class="mt-2 inline-block text-blue-600 font-bold hover:underline text-xs">
                                     + Tambah Santri {{ $jenis }} Sekarang
                                 </a>
                             </td>

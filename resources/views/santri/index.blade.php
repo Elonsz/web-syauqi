@@ -12,39 +12,36 @@
 <div class="space-y-6">
 
     <!-- TOP HEADER -->
-    <div class="bg-gradient-to-r from-[#081026] via-[#0D1C44] to-[#1E3A8A] rounded-2xl p-5 sm:p-6 text-white shadow-lg border border-blue-900/60 relative overflow-hidden">
-        <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-red-600/10 rounded-full blur-3xl pointer-events-none"></div>
-        <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
-            <div>
-                <div class="flex items-center gap-2 mb-1.5 flex-wrap">
-                    <span class="text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-red-600 text-white shadow-xs">
-                        MANAJEMEN BIODATA
-                    </span>
-                    <span class="text-xs text-blue-200 font-medium">
-                        Terpisah dari Form Penilaian
-                    </span>
-                </div>
-                <h1 class="text-xl sm:text-2xl font-black text-white tracking-tight flex items-center gap-2.5">
-                    <i class="fa-solid fa-address-card text-red-400"></i>
-                    Direktori Biodata Siswa
-                </h1>
-                <p class="text-xs sm:text-sm text-slate-300 mt-1 max-w-2xl">
-                    Kelola data identitas peserta munaqasyah TPQ &amp; RTQ Ar-Raudhah secara mandiri tanpa terganggu proses skoring nilai.
-                </p>
+    <div class="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+            <div class="flex items-center gap-2 mb-1.5 flex-wrap">
+                <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-blue-50 text-blue-700 border border-blue-200">
+                    MANAJEMEN BIODATA
+                </span>
+                <span class="text-xs text-slate-500 font-medium">
+                    Data Pokok Santri
+                </span>
             </div>
+            <h1 class="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2.5">
+                <i class="fa-solid fa-address-card text-blue-700"></i>
+                Direktori Biodata Santri
+            </h1>
+            <p class="text-xs sm:text-sm text-slate-500 mt-1 max-w-2xl">
+                Kelola data identitas peserta munaqasyah TPQ &amp; RTQ Ar-Raudhah secara mandiri dan terstruktur.
+            </p>
+        </div>
 
-            <div class="flex items-center gap-2.5 shrink-0 flex-wrap">
-                <a href="{{ route('santri.create', ['jenis' => $jenis ?? 'TPQ']) }}" 
-                   class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white shadow-md shadow-red-900/30 transition active:scale-95">
-                    <i class="fa-solid fa-user-plus text-xs"></i>
-                    <span>+ Tambah Santri Baru</span>
-                </a>
-                <a href="{{ route('munaqasyah.index', ['jenis' => $jenis ?? 'TPQ']) }}" 
-                   class="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-xs font-bold bg-white/10 hover:bg-white/20 text-blue-100 border border-white/15 backdrop-blur-sm transition">
-                    <i class="fa-solid fa-table-list text-xs text-red-300"></i>
-                    <span>Buka Lembar Penilaian</span>
-                </a>
-            </div>
+        <div class="flex items-center gap-2.5 shrink-0 flex-wrap">
+            <a href="{{ route('santri.create', ['jenis' => $jenis ?? 'TPQ']) }}" 
+               class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-semibold bg-blue-600 hover:bg-blue-700 text-white shadow-xs transition active:scale-95">
+                <i class="fa-solid fa-user-plus text-xs"></i>
+                <span>+ Tambah Santri</span>
+            </a>
+            <a href="{{ route('munaqasyah.index', ['jenis' => $jenis ?? 'TPQ']) }}" 
+               class="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-xs font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 transition">
+                <i class="fa-solid fa-table-list text-xs text-slate-500"></i>
+                <span>Lembar Penilaian</span>
+            </a>
         </div>
     </div>
 
@@ -132,7 +129,7 @@
                     TPQ
                 </a>
                 <a href="{{ route('santri.index', array_merge(request()->query(), ['jenis' => 'RTQ'])) }}" 
-                   class="flex-1 py-1.5 text-center text-xs font-bold rounded-lg transition {{ $jenis === 'RTQ' ? 'bg-red-600 text-white shadow-xs' : 'text-slate-500 hover:text-slate-800' }}">
+                   class="flex-1 py-1.5 text-center text-xs font-bold rounded-lg transition {{ $jenis === 'RTQ' ? 'bg-emerald-700 text-white shadow-xs' : 'text-slate-500 hover:text-slate-800' }}">
                     RTQ
                 </a>
             </div>
@@ -236,11 +233,11 @@
                                     @endif
                                 </div>
                                 <div class="min-w-0">
-                                    <a href="{{ route('santri.show', $s->id) }}" class="font-extrabold text-slate-900 hover:text-red-600 transition truncate block max-w-xs text-xs">
+                                    <a href="{{ route('santri.show', $s->id) }}" class="font-extrabold text-slate-900 hover:text-blue-600 transition truncate block max-w-xs text-xs">
                                         {{ $s->nama }}
                                     </a>
                                     <div class="flex items-center gap-1.5 mt-0.5">
-                                        <span class="text-[9px] font-black px-1.5 py-0.5 rounded {{ $s->jenis === 'TPQ' ? 'bg-blue-100 text-blue-900' : 'bg-red-100 text-red-900' }}">
+                                        <span class="text-[9px] font-black px-1.5 py-0.5 rounded {{ $s->jenis === 'TPQ' ? 'bg-blue-100 text-blue-900' : 'bg-emerald-100 text-emerald-900' }}">
                                             {{ $s->jenis }}
                                         </span>
                                         <span class="text-[10px] text-slate-400 font-medium">Tahun {{ $s->tahun_munaqasyah ?? '2026' }}</span>
@@ -374,7 +371,7 @@
                                     @endif
                                 </p>
                                 <div class="pt-2">
-                                    <a href="{{ route('santri.create') }}" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold bg-red-600 hover:bg-red-700 text-white transition">
+                                    <a href="{{ route('santri.create') }}" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold bg-blue-600 hover:bg-blue-700 text-white transition">
                                         <i class="fa-solid fa-plus"></i> Tambah Santri Baru
                                     </a>
                                 </div>

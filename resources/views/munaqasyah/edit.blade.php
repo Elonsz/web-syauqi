@@ -138,7 +138,7 @@
         <div class="bg-white p-4 sm:p-6 rounded-2xl border border-slate-200 shadow-xs space-y-5">
             <div class="border-b border-slate-100 pb-3 flex items-center justify-between">
                 <h3 class="text-sm font-bold text-slate-800 flex items-center gap-2">
-                    <span class="w-6 h-6 rounded-lg bg-red-100 text-red-700 flex items-center justify-center text-xs font-black">2</span>
+                    <span class="w-6 h-6 rounded-lg bg-blue-100 text-blue-800 flex items-center justify-center text-xs font-black">2</span>
                     Nilai Ujian Munaqasyah (9 Komponen Penilaian)
                 </h3>
                 <span class="text-[11px] text-slate-500 font-medium">Rentang: 0 - 100</span>
@@ -220,7 +220,7 @@
             <div class="bg-gradient-to-br from-slate-50 to-blue-50/50 border border-slate-200 rounded-2xl p-4 sm:p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-xs">
                 <div>
                     <span class="text-[10px] uppercase font-bold text-blue-950 tracking-wider flex items-center gap-1.5 mb-2">
-                        <i class="fa-solid fa-calculator text-red-600"></i>
+                        <i class="fa-solid fa-calculator text-blue-600"></i>
                         Kalkulasi Otomatis Sistem:
                     </span>
                     <div class="grid grid-cols-3 sm:flex sm:items-center gap-3 sm:gap-6">
@@ -240,7 +240,7 @@
                 </div>
 
                 <div class="flex items-center gap-3 pt-2 md:pt-0 border-t md:border-t-0 border-slate-200">
-                    <button type="submit" class="w-full sm:w-auto bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 hover:to-rose-700 text-white font-bold text-xs px-6 py-3 rounded-xl shadow-md hover:shadow-lg transition flex items-center justify-center gap-2 active:scale-95">
+                    <button type="submit" class="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs px-6 py-3 rounded-xl shadow-xs transition flex items-center justify-center gap-2 active:scale-95">
                         <i class="fa-solid fa-floppy-disk"></i> Simpan Perubahan
                     </button>
                 </div>

@@ -69,7 +69,7 @@
             </div>
             <div class="flex items-center gap-2">
                 <button onclick="window.print()"
-                        class="px-5 py-2 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 hover:to-rose-700 shadow-md transition flex items-center gap-2 cursor-pointer">
+                        class="px-5 py-2 rounded-xl text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 shadow-md transition flex items-center gap-2 cursor-pointer">
                     <i class="fa-solid fa-print"></i>
                     <span>Cetak Semua ({{ $santris->count() }} Lembar)</span>
                 </button>
@@ -108,7 +108,7 @@
 
             <!-- Judul Surat -->
             <div class="text-center mb-5">
-                <h2 class="text-sm font-extrabold uppercase text-slate-900 tracking-wide underline decoration-red-600 decoration-2 underline-offset-4">
+                <h2 class="text-sm font-extrabold uppercase text-slate-900 tracking-wide underline decoration-slate-900 decoration-2 underline-offset-4">
                     SURAT KETERANGAN HASIL UJIAN MUNAQASYAH
                 </h2>
                 <p class="text-[11px] text-slate-500 mt-0.5 font-mono">
@@ -244,7 +244,7 @@
                     <p class="text-slate-600 mb-14">Ketua Yayasan,</p>
                     <!-- Stempel Digital Resmi Yayasan -->
                     <div class="absolute left-1/2 -translate-x-1/2 top-3 w-22 h-22 sm:w-26 sm:h-26 pointer-events-none select-none opacity-85 -rotate-12">
-                        <svg viewBox="0 0 120 120" class="w-full h-full text-red-600" fill="currentColor">
+                        <svg viewBox="0 0 120 120" class="w-full h-full text-blue-800" fill="currentColor">
                             <circle cx="60" cy="60" r="54" fill="none" stroke="currentColor" stroke-width="2.5" stroke-dasharray="3 1.5"/>
                             <circle cx="60" cy="60" r="50" fill="none" stroke="currentColor" stroke-width="1.5"/>
                             <circle cx="60" cy="60" r="34" fill="none" stroke="currentColor" stroke-width="1"/>

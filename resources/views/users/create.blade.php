@@ -14,7 +14,7 @@
     <!-- Header Card -->
     <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-xs flex items-center justify-between">
         <div class="flex items-center gap-3.5">
-            <div class="w-12 h-12 rounded-2xl bg-red-50 text-red-600 flex items-center justify-center text-xl shrink-0 border border-red-100">
+            <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl shrink-0 border border-blue-100">
                 <i class="fa-solid fa-user-plus"></i>
             </div>
             <div>
@@ -177,7 +177,7 @@
                     Batal
                 </a>
                 <button type="submit"
-                        class="px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 hover:to-rose-700 shadow-md transition flex items-center gap-2">
+                        class="px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 shadow-md transition flex items-center gap-2">
                     <i class="fa-solid fa-floppy-disk"></i> Simpan Pengguna
                 </button>
             </div>

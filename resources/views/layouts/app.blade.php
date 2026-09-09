@@ -156,7 +156,7 @@
         <!-- Card -->
         <div class="modal-card relative bg-white rounded-2xl shadow-2xl w-full max-w-sm overflow-hidden">
             <!-- Top accent bar -->
-            <div class="h-1.5 bg-gradient-to-r from-red-500 via-rose-500 to-red-600"></div>
+            <div class="h-1.5 bg-slate-700"></div>
             <div class="p-6">
                 <!-- Icon -->
                 <div class="flex items-center justify-center mb-4">
@@ -180,7 +180,7 @@
                     </button>
                     <button onclick="confirmLogout()"
                         id="confirmLogoutBtn"
-                        class="flex-1 py-2.5 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-red-500 to-rose-600 hover:from-red-600 hover:to-rose-700 shadow-lg hover:shadow-red-200 transition flex items-center justify-center gap-2">
+                        class="flex-1 py-2.5 rounded-xl text-sm font-bold text-white bg-rose-600 hover:bg-rose-700 shadow-sm transition flex items-center justify-center gap-2">
                         <i class="fa-solid fa-right-from-bracket" id="logoutBtnIcon"></i>
                         <span id="logoutBtnText">Ya, Keluar</span>
                     </button>
@@ -256,7 +256,7 @@
                     {{-- Logout Button --}}
                     <div class="border-l border-slate-200 pl-1.5 ml-0.5">
                         <button type="button" onclick="openLogoutModal()" title="Keluar dari sistem"
-                            class="flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-red-600 hover:bg-red-50 px-3 py-1.5 rounded-lg transition">
+                            class="flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-blue-600 hover:bg-blue-50 px-3 py-1.5 rounded-lg transition">
                             <i class="fa-solid fa-right-from-bracket"></i> Keluar
                         </button>
                     </div>

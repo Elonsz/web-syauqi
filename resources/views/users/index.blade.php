@@ -13,14 +13,14 @@
     <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-xs">
         <div>
             <div class="flex items-center gap-2 mb-1">
-                <span class="w-2.5 h-2.5 rounded-full bg-red-600"></span>
-                <span class="text-xs font-bold uppercase tracking-wider text-red-600">Manajemen Akun</span>
+                <span class="w-2.5 h-2.5 rounded-full bg-blue-600"></span>
+                <span class="text-xs font-bold uppercase tracking-wider text-blue-700">Manajemen Akun</span>
             </div>
             <h1 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Data Pengguna Sistem</h1>
             <p class="text-xs sm:text-sm text-slate-500 mt-0.5">Kelola akun administrator, penguji TPQ/RTQ, dan panitia munaqasyah.</p>
         </div>
         <a href="{{ route('users.create') }}"
-           class="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 hover:to-rose-700 shadow-md transition shrink-0">
+           class="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-xl text-xs font-semibold text-white bg-blue-600 hover:bg-blue-700 shadow-xs transition shrink-0">
             <i class="fa-solid fa-user-plus text-sm"></i>
             Tambah User Baru
         </a>
@@ -41,12 +41,12 @@
 
         <!-- Administrator -->
         <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-xs flex items-center gap-3">
-            <div class="w-10 h-10 rounded-xl bg-red-50 text-red-600 flex items-center justify-center text-lg shrink-0 border border-red-100">
+            <div class="w-10 h-10 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center text-lg shrink-0 border border-slate-200">
                 <i class="fa-solid fa-user-shield"></i>
             </div>
             <div>
                 <p class="text-[11px] font-semibold text-slate-400 uppercase tracking-wide">Administrator</p>
-                <p class="text-lg sm:text-xl font-black text-red-600">{{ $stats['admin'] }}</p>
+                <p class="text-lg sm:text-xl font-black text-slate-800">{{ $stats['admin'] }}</p>
             </div>
         </div>
 
@@ -140,7 +140,7 @@
                         </td>
                         <td class="py-3.5 px-4">
                             <div class="flex items-center gap-3">
-                                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-slate-900 via-blue-900 to-red-600 text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-xs">
+                                <div class="w-9 h-9 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-xs">
                                     {{ strtoupper(substr($user->name, 0, 2)) }}
                                 </div>
                                 <div>
@@ -162,7 +162,7 @@
                         </td>
                         <td class="py-3.5 px-4">
                             @if($user->role === 'Administrator')
-                                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-red-50 text-red-700 border border-red-200">
+                                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200">
                                     <i class="fa-solid fa-shield-halved text-[10px]"></i> Administrator
                                 </span>
                             @elseif($user->role === 'Penguji TPQ')
@@ -224,7 +224,7 @@
             <div class="p-4 space-y-3">
                 <div class="flex items-start justify-between gap-3">
                     <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-slate-900 via-blue-900 to-red-600 text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-xs">
+                        <div class="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-xs">
                             {{ strtoupper(substr($user->name, 0, 2)) }}
                         </div>
                         <div>
@@ -239,7 +239,7 @@
                     </div>
                     <div>
                         @if($user->role === 'Administrator')
-                            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-red-50 text-red-700 border border-red-200">Admin</span>
+                            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200">Admin</span>
                         @elseif($user->role === 'Penguji TPQ')
                             <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200">TPQ</span>
                         @elseif($user->role === 'Penguji RTQ')
@@ -307,7 +307,7 @@
                     Batal
                 </button>
                 <button type="submit"
-                        class="flex-1 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 hover:to-rose-700 shadow-md transition">
+                        class="flex-1 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-white bg-rose-600 hover:bg-rose-700 shadow-md transition">
                     Ya, Hapus
                 </button>
             </div>

@@ -9,34 +9,30 @@
 @section('content')
 <div class="space-y-6">
     {{-- ===== HERO WELCOME BANNER ===== --}}
-    <div class="relative overflow-hidden bg-gradient-to-r from-[#081026] via-[#0f224f] to-[#1e3a8a] rounded-2xl sm:rounded-3xl p-5 sm:p-7 shadow-xl border border-blue-950/80">
-        <div class="absolute inset-0 opacity-10" style="background-image:url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C%2Fg%3E%3C%2Fsvg%3E');"></div>
-        <div class="absolute -top-12 -right-12 w-48 sm:w-64 h-48 sm:h-64 bg-red-600/15 rounded-full blur-2xl"></div>
-        <div class="absolute -bottom-10 -left-10 w-36 sm:w-48 h-36 sm:h-48 bg-blue-600/15 rounded-full blur-2xl"></div>
-
-        <div class="relative flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+    <div class="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div class="flex items-start sm:items-center gap-4">
+            <img src="{{ asset('images/logo.png') }}" alt="Logo Yayasan" class="w-12 h-12 sm:w-14 sm:h-14 object-contain bg-slate-50 border border-slate-200 rounded-xl p-1 shrink-0">
             <div>
-                <div class="flex items-center gap-3 mb-2">
-                    <img src="{{ asset('images/logo.png') }}" alt="Logo Yayasan" class="w-12 h-12 sm:w-14 sm:h-14 object-contain bg-white rounded-2xl p-1 shadow-lg shrink-0">
-                    <div>
-                        <p class="text-red-400 text-[10px] font-bold uppercase tracking-widest">Sistem Penilaian Munaqasyah Santri</p>
-                        <h1 class="text-base sm:text-2xl font-black text-white tracking-tight leading-tight">Yayasan Cahaya Amanah Ar-Raudhah</h1>
-                    </div>
+                <div class="flex items-center gap-2 mb-1 flex-wrap">
+                    <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-blue-50 text-blue-700 border border-blue-200">
+                        Sistem Munaqasyah
+                    </span>
+                    <span class="text-xs text-slate-500 font-medium">Tahun 2026</span>
                 </div>
-                <p class="text-blue-200 text-xs sm:text-sm max-w-lg">
-                    Selamat datang, <span class="font-bold text-amber-300">{{ session('user_name', 'Panitia') }}</span>!
-                    Pantau rekapitulasi penilaian santri Taman Pendidikan Qur'an (TPQ) &amp; Rumah Tahfidz Qur'an (RTQ) Ar-Raudhah Banjarbaru Tahun 2026.
+                <h1 class="text-lg sm:text-xl font-extrabold text-slate-900 tracking-tight">Yayasan Cahaya Amanah Ar-Raudhah</h1>
+                <p class="text-xs sm:text-sm text-slate-500 mt-0.5">
+                    Selamat datang, <span class="font-semibold text-slate-800">{{ session('user_name', 'Panitia') }}</span>! Pantau data penilaian santri TPQ &amp; RTQ Ar-Raudhah Banjarbaru.
                 </p>
             </div>
-            <div class="flex sm:flex-col items-center sm:items-end gap-3 sm:gap-1 shrink-0">
-                <div class="sm:text-right">
-                    <p class="text-blue-300 text-xs font-medium" id="dashDate"></p>
-                    <p class="text-amber-300 font-bold text-base sm:text-lg font-mono" id="dashTime"></p>
-                </div>
-                <div class="inline-flex items-center gap-1.5 bg-blue-900/60 px-3 py-1 rounded-full border border-blue-700/60">
-                    <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
-                    <span class="text-xs text-blue-200 font-semibold">Sistem Aktif</span>
-                </div>
+        </div>
+        <div class="flex sm:flex-col items-center sm:items-end justify-between gap-2 shrink-0 pt-3 sm:pt-0 border-t sm:border-t-0 border-slate-100">
+            <div class="sm:text-right">
+                <p class="text-xs text-slate-500" id="dashDate"></p>
+                <p class="text-base sm:text-lg font-bold text-slate-800 font-mono" id="dashTime"></p>
+            </div>
+            <div class="inline-flex items-center gap-1.5 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
+                <span class="w-2 h-2 bg-emerald-500 rounded-full"></span>
+                <span class="text-xs text-emerald-700 font-semibold">Sistem Aktif</span>
             </div>
         </div>
     </div>
@@ -203,15 +199,15 @@
 
     {{-- ===== LEADERBOARD / SANTRI BERPRESTASI ===== --}}
     <div class="bg-white rounded-2xl sm:rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
-        <div class="p-4 sm:p-5 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-2 bg-gradient-to-r from-amber-500/10 via-red-500/5 to-transparent">
-            <div class="flex items-center gap-2.5">
-                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-amber-500 to-yellow-400 text-slate-950 flex items-center justify-center text-base shadow-xs">
+        <div class="p-4 sm:p-5 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-2 bg-slate-50/60">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-amber-50 border border-amber-200 text-amber-600 flex items-center justify-center text-base shrink-0">
                     <i class="fa-solid fa-trophy"></i>
                 </div>
                 <div>
                     <h3 class="font-extrabold text-slate-900 text-sm sm:text-base flex items-center gap-2">
                         <span>Santri Berprestasi Munaqasyah 2026</span>
-                        <span class="text-[9px] px-2 py-0.5 rounded-full bg-amber-100 text-amber-900 font-black uppercase">Top Rata-Rata</span>
+                        <span class="text-[9px] px-2 py-0.5 rounded-md bg-amber-50 text-amber-800 border border-amber-200 font-bold uppercase">Top Nilai</span>
                     </h3>
                     <p class="text-[11px] text-slate-500">Santri peraih nilai munaqasyah tertinggi untuk unit TPQ &amp; RTQ Ar-Raudhah</p>
                 </div>
@@ -320,9 +316,9 @@
             </div>
             <div class="p-5 grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {{-- TPQ Card --}}
-                <div class="bg-gradient-to-br from-amber-50 to-yellow-50/60 rounded-2xl p-4 border border-amber-200">
+                <div class="bg-amber-50/50 rounded-2xl p-4 border border-amber-200/80">
                     <div class="flex items-center gap-2.5 mb-3">
-                        <div class="w-10 h-10 bg-amber-400 text-slate-900 rounded-xl flex items-center justify-center shadow-xs">
+                        <div class="w-10 h-10 bg-amber-100 text-amber-800 rounded-xl flex items-center justify-center border border-amber-200 shadow-xs">
                             <i class="fa-solid fa-scroll text-base"></i>
                         </div>
                         <div>
@@ -359,15 +355,15 @@
                         </p>
                     </div>
                     <a href="{{ route('munaqasyah.index', ['jenis' => 'TPQ']) }}"
-                        class="mt-3 w-full inline-flex items-center justify-center gap-1.5 text-xs font-bold text-slate-900 bg-amber-300 hover:bg-amber-400 py-2 rounded-xl transition shadow-xs">
-                        <i class="fa-solid fa-arrow-right text-[10px]"></i> Lihat Data TPQ Ar-Raudhah
+                        class="mt-3 w-full inline-flex items-center justify-center gap-1.5 text-xs font-semibold text-amber-900 bg-amber-100 hover:bg-amber-200 border border-amber-300 py-2 rounded-xl transition">
+                        <i class="fa-solid fa-arrow-right text-[10px]"></i> Lihat Data TPQ
                     </a>
                 </div>
 
                 {{-- RTQ Card --}}
-                <div class="bg-gradient-to-br from-blue-50 to-indigo-50/60 rounded-2xl p-4 border border-blue-200">
+                <div class="bg-blue-50/50 rounded-2xl p-4 border border-blue-200/80">
                     <div class="flex items-center gap-2.5 mb-3">
-                        <div class="w-10 h-10 bg-blue-900 text-white rounded-xl flex items-center justify-center shadow-xs">
+                        <div class="w-10 h-10 bg-blue-100 text-blue-800 rounded-xl flex items-center justify-center border border-blue-200 shadow-xs">
                             <i class="fa-solid fa-book-quran text-base"></i>
                         </div>
                         <div>
@@ -404,8 +400,8 @@
                         </p>
                     </div>
                     <a href="{{ route('munaqasyah.index', ['jenis' => 'RTQ']) }}"
-                        class="mt-3 w-full inline-flex items-center justify-center gap-1.5 text-xs font-bold text-white bg-blue-900 hover:bg-blue-950 py-2 rounded-xl transition shadow-xs">
-                        <i class="fa-solid fa-arrow-right text-[10px]"></i> Lihat Data RTQ Ar-Raudhah
+                        class="mt-3 w-full inline-flex items-center justify-center gap-1.5 text-xs font-semibold text-blue-900 bg-blue-100 hover:bg-blue-200 border border-blue-300 py-2 rounded-xl transition">
+                        <i class="fa-solid fa-arrow-right text-[10px]"></i> Lihat Data RTQ
                     </a>
                 </div>
             </div>
@@ -414,7 +410,7 @@
         {{-- Quick Actions --}}
         <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
             <div class="p-5 border-b border-slate-100 flex items-center gap-2">
-                <i class="fa-solid fa-bolt text-red-600"></i>
+                <i class="fa-solid fa-bolt text-amber-500"></i>
                 <h3 class="font-bold text-slate-800 text-sm">Aksi Cepat</h3>
             </div>
             <div class="p-4 space-y-2">
@@ -431,8 +427,8 @@
                 </a>
 
                 <a href="{{ route('munaqasyah.create', ['jenis' => 'RTQ']) }}"
-                    class="flex items-center gap-3 p-3 rounded-xl bg-blue-50 hover:bg-blue-100 border border-blue-200 transition group">
-                    <div class="w-9 h-9 bg-blue-900 rounded-lg flex items-center justify-center text-white group-hover:scale-110 transition-transform">
+                    class="flex items-center gap-3 p-3 rounded-xl bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 transition group">
+                    <div class="w-9 h-9 bg-emerald-600 rounded-lg flex items-center justify-center text-white group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-user-plus text-sm"></i>
                     </div>
                     <div>
@@ -444,7 +440,7 @@
 
                 <a href="{{ route('munaqasyah.index', ['jenis' => 'TPQ']) }}"
                     class="flex items-center gap-3 p-3 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition group">
-                    <div class="w-9 h-9 bg-red-600 rounded-lg flex items-center justify-center text-white group-hover:scale-110 transition-transform">
+                    <div class="w-9 h-9 bg-amber-500 rounded-lg flex items-center justify-center text-white group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-table-list text-sm"></i>
                     </div>
                     <div>
@@ -456,7 +452,7 @@
 
                 <a href="{{ route('munaqasyah.index', ['jenis' => 'RTQ']) }}"
                     class="flex items-center gap-3 p-3 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition group">
-                    <div class="w-9 h-9 bg-blue-950 rounded-lg flex items-center justify-center text-white group-hover:scale-110 transition-transform">
+                    <div class="w-9 h-9 bg-emerald-600 rounded-lg flex items-center justify-center text-white group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-table-list text-sm"></i>
                     </div>
                     <div>
@@ -485,10 +481,10 @@
     <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
         <div class="p-4 sm:p-5 border-b border-slate-100 flex items-center justify-between">
             <div class="flex items-center gap-2">
-                <i class="fa-solid fa-clock-rotate-left text-blue-900"></i>
+                <i class="fa-solid fa-clock-rotate-left text-slate-500"></i>
                 <h3 class="font-bold text-slate-800 text-sm">Santri Terbaru Ditambahkan</h3>
             </div>
-            <a href="{{ route('munaqasyah.index') }}" class="text-xs text-red-600 font-bold hover:underline">Lihat Semua</a>
+            <a href="{{ route('munaqasyah.index') }}" class="text-xs text-blue-600 font-semibold hover:underline">Lihat Semua</a>
         </div>
 
         {{-- Mobile card list --}}

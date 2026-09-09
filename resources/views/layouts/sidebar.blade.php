@@ -185,7 +185,7 @@
     <div id="logout-modal" class="fixed inset-0 z-[9998] flex items-center justify-center p-4" role="dialog" aria-modal="true">
         <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="closeLogoutModal()"></div>
         <div class="modal-card relative bg-white rounded-2xl shadow-2xl w-full max-w-sm overflow-hidden">
-            <div class="h-1.5 bg-gradient-to-r from-red-500 via-rose-500 to-red-600"></div>
+            <div class="h-1.5 bg-slate-700"></div>
             <div class="p-6">
                 <div class="flex items-center justify-center mb-4">
                     <div class="w-16 h-16 rounded-2xl bg-red-50 border-2 border-red-100 flex items-center justify-center">
@@ -205,7 +205,7 @@
                         <i class="fa-solid fa-xmark"></i> Batal
                     </button>
                     <button onclick="confirmLogout()" id="confirmLogoutBtn"
-                        class="flex-1 py-2.5 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-red-500 to-rose-600 hover:from-red-600 hover:to-rose-700 shadow-lg transition flex items-center justify-center gap-2">
+                        class="flex-1 py-2.5 rounded-xl text-sm font-bold text-white bg-rose-600 hover:bg-rose-700 shadow-sm transition flex items-center justify-center gap-2">
                         <i class="fa-solid fa-right-from-bracket" id="logoutBtnIcon"></i>
                         <span id="logoutBtnText">Ya, Keluar</span>
                     </button>
@@ -372,7 +372,7 @@
                     <img src="{{ asset('images/logo.png') }}" alt="Logo" class="w-7 h-7 object-contain bg-white rounded-lg p-0.5 shadow-xs">
                     <div>
                         <span class="text-xs font-black text-slate-900 tracking-tight leading-none block">AR-RAUDHAH</span>
-                        <span class="text-[8px] text-red-600 font-bold leading-none block">Cahaya Amanah</span>
+                        <span class="text-[8px] text-slate-500 font-semibold leading-none block">Cahaya Amanah</span>
                     </div>
                 </a>
 
@@ -409,9 +409,9 @@
                     <!-- User Profile Dropdown -->
                     <div class="relative" id="userDropdownWrapper">
                         <button onclick="toggleUserDropdown(event)" id="userDropdownBtn"
-                            class="flex items-center gap-2 bg-slate-100 hover:bg-slate-200 border border-slate-200 rounded-xl px-2.5 py-1.5 transition select-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-red-500/40"
+                            class="flex items-center gap-2 bg-slate-100 hover:bg-slate-200 border border-slate-200 rounded-xl px-2.5 py-1.5 transition select-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500/30"
                             aria-expanded="false" aria-haspopup="true">
-                            <div class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-blue-800 text-white flex items-center justify-center text-xs font-bold shrink-0">
+                            <div class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-slate-800 text-white flex items-center justify-center text-xs font-bold shrink-0">
                                 <i class="fa-solid fa-user-tie"></i>
                             </div>
                             <div class="text-left hidden sm:block">
@@ -432,14 +432,14 @@
                                     <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                                     <p class="text-xs font-black text-slate-800 capitalize">{{ session('user_name', 'Admin') }}</p>
                                 </div>
-                                <p class="text-[10px] text-blue-950 font-bold">Yayasan Cahaya Amanah Ar-Raudhah</p>
+                                <p class="text-[10px] text-slate-700 font-bold">Yayasan Cahaya Amanah Ar-Raudhah</p>
                                 <p class="text-[9px] text-slate-400">Banjarbaru - Kalimantan Selatan</p>
                             </div>
 
                             <!-- Menu Items -->
                             <div class="p-1 space-y-0.5">
                                 <a href="{{ route('dashboard') }}" class="flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-100 rounded-xl transition">
-                                    <i class="fa-solid fa-gauge-high text-blue-800 w-4 text-center"></i>
+                                    <i class="fa-solid fa-gauge-high text-slate-500 w-4 text-center"></i>
                                     Dashboard
                                 </a>
                                 <a href="{{ route('munaqasyah.index', ['jenis' => 'TPQ']) }}" class="flex items-start gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-100 rounded-xl transition">
@@ -450,14 +450,14 @@
                                     </div>
                                 </a>
                                 <a href="{{ route('munaqasyah.index', ['jenis' => 'RTQ']) }}" class="flex items-start gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-100 rounded-xl transition">
-                                    <i class="fa-solid fa-book-quran text-blue-600 w-4 text-center mt-0.5 shrink-0"></i>
+                                    <i class="fa-solid fa-book-quran text-emerald-600 w-4 text-center mt-0.5 shrink-0"></i>
                                     <div>
                                         <p class="font-bold text-slate-800 leading-tight">RTQ Ar-Raudhah</p>
                                         <p class="text-[10px] text-slate-400 font-normal">Rumah Tahfidz Qur'an</p>
                                     </div>
                                 </a>
                                 <a href="{{ route('users.index') }}" class="flex items-start gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-100 rounded-xl transition">
-                                    <i class="fa-solid fa-users-gear text-red-600 w-4 text-center mt-0.5 shrink-0"></i>
+                                    <i class="fa-solid fa-users-gear text-slate-500 w-4 text-center mt-0.5 shrink-0"></i>
                                     <div>
                                         <p class="font-bold text-slate-800 leading-tight">Kelola Pengguna</p>
                                         <p class="text-[10px] text-slate-400 font-normal">Manajemen Akun &amp; Hak Akses</p>
@@ -512,7 +512,7 @@
             <!-- Footer -->
             <footer class="no-print bg-white border-t border-slate-200 py-3 px-6 text-xs text-slate-400 flex flex-col sm:flex-row items-center justify-between gap-1">
                 <span>&copy; 2026 Yayasan Cahaya Amanah Ar-Raudhah • Banjarbaru</span>
-                <span class="text-red-600 font-bold">Sistem Munaqasyah Ar-Raudhah v1.0</span>
+                <span class="text-slate-500 font-medium">Sistem Munaqasyah Ar-Raudhah v1.0</span>
             </footer>
         </div>
     </div>

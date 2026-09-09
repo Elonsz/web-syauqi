@@ -70,7 +70,7 @@
                 </a>
             @endif
             <button onclick="window.print()" 
-                    class="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 text-xs font-bold text-white bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 hover:to-rose-700 px-4 py-2.5 rounded-xl shadow-md transition active:scale-95">
+                    class="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 px-4 py-2.5 rounded-xl shadow-md transition active:scale-95">
                 <i class="fa-solid fa-print"></i> Cetak / Simpan PDF
             </button>
         </div>
@@ -95,7 +95,7 @@
         </div>
 
         <div class="text-center mb-5 sm:mb-6">
-            <h2 class="text-sm sm:text-base font-extrabold uppercase text-slate-900 tracking-wide underline decoration-red-600 decoration-2 underline-offset-4">
+            <h2 class="text-sm sm:text-base font-extrabold uppercase text-slate-900 tracking-wide underline decoration-slate-900 decoration-2 underline-offset-4">
                 SURAT KETERANGAN HASIL UJIAN MUNAQASYAH
             </h2>
             <p class="text-[11px] sm:text-xs text-slate-500 mt-1 font-mono">
@@ -269,7 +269,7 @@
                 <p class="text-slate-600 mb-12 sm:mb-16">Ketua Panitia Munaqasyah,</p>
                 <!-- Stempel Digital Resmi Yayasan -->
                 <div class="absolute left-1/2 -translate-x-1/2 top-4 w-24 h-24 sm:w-28 sm:h-28 pointer-events-none select-none opacity-85 -rotate-12">
-                    <svg viewBox="0 0 120 120" class="w-full h-full text-red-600" fill="currentColor">
+                    <svg viewBox="0 0 120 120" class="w-full h-full text-blue-800" fill="currentColor">
                         <circle cx="60" cy="60" r="54" fill="none" stroke="currentColor" stroke-width="2.5" stroke-dasharray="3 1.5"/>
                         <circle cx="60" cy="60" r="50" fill="none" stroke="currentColor" stroke-width="1.5"/>
                         <circle cx="60" cy="60" r="34" fill="none" stroke="currentColor" stroke-width="1"/>

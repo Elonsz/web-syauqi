@@ -30,7 +30,7 @@
             <!-- Section 1: Identitas Lembaga & Yayasan -->
             <div class="space-y-4">
                 <div class="flex items-center gap-2 border-b border-slate-100 pb-2">
-                    <i class="fa-solid fa-building-columns text-red-600 text-sm"></i>
+                    <i class="fa-solid fa-building-columns text-blue-600 text-sm"></i>
                     <h2 class="text-xs font-bold uppercase tracking-wider text-slate-800">Identitas Lembaga &amp; Kop</h2>
                 </div>
 
@@ -166,7 +166,7 @@
             <!-- Submit Button -->
             <div class="flex items-center justify-end gap-3 pt-5 border-t border-slate-100">
                 <button type="submit"
-                        class="px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 hover:to-rose-700 shadow-md transition flex items-center gap-2">
+                        class="px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 shadow-md transition flex items-center gap-2">
                     <i class="fa-solid fa-floppy-disk"></i> Simpan Pengaturan
                 </button>
             </div>
