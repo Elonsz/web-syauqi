@@ -284,6 +284,21 @@
                     <span class="sidebar-label transition-all duration-300">RTQ Ar-Raudhah</span>
                 </a>
 
+                <!-- Biodata Santri (Terpisah dari Penilaian) -->
+                <p class="sidebar-section-label text-[9px] font-bold text-blue-400 uppercase tracking-widest px-3 pt-4 pb-2 transition-all duration-300">Biodata Santri</p>
+                <a href="{{ route('santri.index') }}"
+                   class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-300 hover:text-white {{ request()->routeIs('santri.index') || request()->routeIs('santri.show') || request()->routeIs('santri.edit') ? 'active' : '' }}"
+                   title="Direktori Biodata Siswa">
+                    <i class="fa-solid fa-address-card w-5 text-center shrink-0 text-cyan-400"></i>
+                    <span class="sidebar-label transition-all duration-300">Direktori Biodata</span>
+                </a>
+                <a href="{{ route('santri.create') }}"
+                   class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-300 hover:text-white {{ request()->routeIs('santri.create') ? 'active' : '' }}"
+                   title="Tambah Biodata Santri Baru">
+                    <i class="fa-solid fa-user-plus w-5 text-center shrink-0 text-rose-400"></i>
+                    <span class="sidebar-label transition-all duration-300">Tambah Biodata</span>
+                </a>
+
                 <!-- Input Data -->
                 <p class="sidebar-section-label text-[9px] font-bold text-blue-400 uppercase tracking-widest px-3 pt-4 pb-2 transition-all duration-300">Input Data</p>
                 @php $navJenis = request('jenis', 'TPQ'); @endphp

@@ -129,6 +129,13 @@
     <!-- Islamic Pattern Overlay -->
     <div class="absolute inset-0 islamic-pattern pointer-events-none"></div>
 
+    <!-- Tombol Kembali ke Landing Page (Pojok Kiri Atas) -->
+    <a href="{{ route('landing') }}" 
+       class="fixed top-4 left-4 sm:top-6 sm:left-6 z-20 inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-300 bg-slate-900/70 hover:bg-slate-800 hover:text-white border border-white/15 backdrop-blur-md transition-all duration-200 shadow-lg group">
+        <i class="fa-solid fa-arrow-left text-[11px] transition-transform group-hover:-translate-x-1 text-red-400 group-hover:text-white"></i>
+        <span>Kembali ke Beranda</span>
+    </a>
+
     <!-- Login Container -->
     <div class="relative z-10 w-full max-w-md px-4">
         <div class="card-enter">
@@ -152,6 +159,31 @@
                     <p class="text-slate-300 text-sm mt-0.5">Silakan masuk untuk melanjutkan</p>
                 </div>
 
+                @if(session('success'))
+                <div class="mb-4 bg-emerald-500/20 border border-emerald-400/40 rounded-xl p-3.5 flex items-start gap-2.5">
+                    <i class="fa-solid fa-circle-check text-emerald-400 mt-0.5 shrink-0"></i>
+                    <p class="text-emerald-200 text-xs leading-relaxed">{{ session('success') }}</p>
+                </div>
+                @endif
+
+                @if(session('is_locked'))
+                <div class="mb-5 bg-gradient-to-r from-red-950/80 to-rose-950/80 border-2 border-red-500/60 rounded-2xl p-4 shadow-xl text-center space-y-2">
+                    <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-red-600/30 border border-red-500/50 text-red-400 animate-pulse">
+                        <i class="fa-solid fa-lock text-xl"></i>
+                    </div>
+                    <h3 class="text-sm font-bold text-red-300">AKSES LOGIN DIKUNCI SEMENTARA</h3>
+                    <p class="text-slate-300 text-xs">
+                        Terlalu banyak percobaan login gagal dari perangkat ini demi perlindungan keamanan sistem.
+                    </p>
+                    <div class="py-2">
+                        <div class="inline-block px-4 py-2 rounded-xl bg-red-950/90 border border-red-500/40 font-mono text-lg font-black text-red-400 tracking-wider shadow-inner" id="countdownBox">
+                            ⏳ <span id="countdownTimer">--:--</span>
+                        </div>
+                    </div>
+                    <p class="text-[11px] text-slate-400">Silakan tunggu hingga waktu selesai atau hubungi administrator.</p>
+                </div>
+                @endif
+
                 @if($errors->any())
                 <div class="mb-4 bg-red-500/20 border border-red-400/40 rounded-xl p-3 flex items-start gap-2">
                     <i class="fa-solid fa-circle-exclamation text-red-400 mt-0.5 shrink-0"></i>
@@ -160,13 +192,6 @@
                             <p class="text-red-200 text-xs">{{ $error }}</p>
                         @endforeach
                     </div>
-                </div>
-                @endif
-
-                @if(session('error'))
-                <div class="mb-4 bg-red-500/20 border border-red-400/40 rounded-xl p-3 flex items-start gap-2">
-                    <i class="fa-solid fa-circle-exclamation text-red-400 mt-0.5 shrink-0"></i>
-                    <p class="text-red-200 text-xs">{{ session('error') }}</p>
                 </div>
                 @endif
 
@@ -202,13 +227,29 @@
                                 id="password"
                                 placeholder="••••••••"
                                 autocomplete="current-password"
-                                class="input-field w-full bg-white/10 border border-white/20 text-white placeholder-slate-400 rounded-xl px-4 py-3 pr-11 text-sm"
+                                class="input-field w-full bg-white/10 border {{ session('error') && !session('is_locked') ? 'border-red-400/80 ring-1 ring-red-400/50' : 'border-white/20' }} text-white placeholder-slate-400 rounded-xl px-4 py-3 pr-11 text-sm"
                                 required
                             >
                             <button type="button" class="absolute right-3 top-1/2 -translate-y-1/2 text-red-400 hover:text-white transition-colors" onclick="togglePass()">
                                 <i class="fa-solid fa-eye text-sm" id="eyeIcon"></i>
                             </button>
                         </div>
+
+                        <!-- Peringatan Error & Sisa Percobaan (Di Bawah Password) -->
+                        @if(session('error') && !session('is_locked'))
+                        <div class="mt-2.5 bg-red-500/20 border border-red-400/40 rounded-xl p-3 flex items-start gap-2.5">
+                            <i class="fa-solid fa-triangle-exclamation text-red-400 mt-0.5 shrink-0 text-sm"></i>
+                            <div class="space-y-1">
+                                <p class="text-red-200 text-xs font-semibold leading-relaxed">{!! session('error') !!}</p>
+                                @if(session('remaining_attempts'))
+                                <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-amber-500/20 border border-amber-400/40 text-amber-300 text-[11px] font-bold">
+                                    <i class="fa-solid fa-shield-halved text-[10px]"></i>
+                                    <span>Sisa percobaan: {{ session('remaining_attempts') }}x lagi sebelum diblokir</span>
+                                </div>
+                                @endif
+                            </div>
+                        </div>
+                        @endif
                     </div>
 
                     <!-- Remember Me -->
@@ -228,11 +269,17 @@
                 </form>
 
                 <!-- Info Footer -->
-                <div class="mt-6 pt-6 border-t border-white/10 text-center">
+                <div class="mt-6 pt-6 border-t border-white/10 text-center space-y-3">
                     <p class="text-slate-400 text-xs">
                         <i class="fa-solid fa-shield-halved mr-1 text-red-400"></i>
                         Akses terbatas untuk panitia munaqasyah yang berwenang
                     </p>
+                    <div class="pt-1">
+                        <a href="{{ route('landing') }}" class="inline-flex items-center justify-center gap-2 text-xs font-semibold text-slate-300 hover:text-white transition group py-1.5 px-3 rounded-xl hover:bg-white/5 border border-transparent hover:border-white/10">
+                            <i class="fa-solid fa-house text-[11px] text-red-400 group-hover:scale-110 transition-transform"></i>
+                            <span>Kembali ke Halaman Landing</span>
+                        </a>
+                    </div>
                 </div>
             </div>
 
@@ -269,6 +316,47 @@
             setTimeout(() => p.remove(), 12000);
         }
         setInterval(createParticle, 700);
+
+        @if(session('is_locked'))
+        (function() {
+            let secondsLeft = {{ (int) session('lockout_seconds', 900) }};
+            const display = document.getElementById('countdownTimer');
+            const form = document.getElementById('loginForm');
+            const btn = document.getElementById('loginBtn');
+            const uInput = document.getElementById('username');
+            const pInput = document.getElementById('password');
+
+            if (btn) {
+                btn.disabled = true;
+                btn.classList.add('opacity-50', 'cursor-not-allowed');
+                document.getElementById('loginText').textContent = 'Terkunci Sementara';
+            }
+            if (uInput) uInput.disabled = true;
+            if (pInput) pInput.disabled = true;
+
+            function updateTimer() {
+                if (secondsLeft <= 0) {
+                    if (display) display.textContent = 'Waktu Habis! Silakan Refresh';
+                    if (btn) {
+                        btn.disabled = false;
+                        btn.classList.remove('opacity-50', 'cursor-not-allowed');
+                        document.getElementById('loginText').textContent = 'Coba Masuk Lagi';
+                    }
+                    if (uInput) uInput.disabled = false;
+                    if (pInput) pInput.disabled = false;
+                    return;
+                }
+                const mins = Math.floor(secondsLeft / 60);
+                const secs = secondsLeft % 60;
+                if (display) {
+                    display.textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+                }
+                secondsLeft--;
+                setTimeout(updateTimer, 1000);
+            }
+            updateTimer();
+        })();
+        @endif
     </script>
 </body>
 </html>

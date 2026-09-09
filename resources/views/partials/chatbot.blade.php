@@ -26,7 +26,7 @@
 
     <!-- Chatbot Window Panel -->
     <div id="chatbot-window"
-         class="hidden fixed sm:absolute bottom-20 right-0 left-4 sm:left-auto w-auto sm:w-96 max-w-[92vw] h-[560px] max-h-[82vh] bg-white rounded-3xl shadow-2xl border border-slate-200/90 flex-col overflow-hidden transition-all duration-300 transform origin-bottom-right z-50">
+         class="hidden fixed sm:absolute bottom-20 right-0 left-4 sm:left-auto w-auto sm:w-96 max-w-[92vw] h-[580px] max-h-[84vh] bg-white rounded-3xl shadow-2xl border border-slate-200/90 flex-col overflow-hidden transition-all duration-300 transform origin-bottom-right z-50">
 
         <!-- Chat Header -->
         <div class="bg-gradient-to-r from-[#081026] via-[#10224d] to-[#1e3a8a] p-4 text-white flex items-center justify-between border-b border-white/10 shrink-0">
@@ -38,7 +38,7 @@
                 <div>
                     <h3 class="text-xs sm:text-sm font-black tracking-tight leading-tight flex items-center gap-1.5">
                         Asisten Ar-Raudhah
-                        <span class="text-[9px] px-1.5 py-0.5 rounded bg-red-600/60 font-bold uppercase">AI FAQ</span>
+                        <span class="text-[9px] px-1.5 py-0.5 rounded bg-red-600/60 font-bold uppercase">AI Smart</span>
                     </h3>
                     <p class="text-[10px] text-slate-300 font-medium leading-tight mt-0.5">
                         Karya <strong class="text-amber-300 font-bold">Hugo Putra Pratama</strong>
@@ -60,7 +60,9 @@
             <span class="flex items-center gap-1.5 text-[10px] text-slate-300">
                 <i class="fa-solid fa-code text-red-400 text-[10px]"></i> Pengembang: <strong class="text-white font-bold">Hugo Putra Pratama</strong>
             </span>
-            <span class="text-[9px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded-full font-bold">Online • 24/7</span>
+            <span class="text-[9px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded-full font-bold flex items-center gap-1">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Voice &amp; Quran Active
+            </span>
         </div>
 
         <!-- Chat Messages Container -->
@@ -71,16 +73,16 @@
                 <div class="w-7 h-7 rounded-xl bg-gradient-to-tr from-[#081026] to-[#dc2626] text-white flex items-center justify-center text-xs shrink-0 mt-1 shadow-xs">
                     <i class="fa-solid fa-robot"></i>
                 </div>
-                <div class="bg-white border border-slate-200 rounded-2xl rounded-tl-xs p-3.5 text-slate-800 shadow-xs max-w-[85%] space-y-2 leading-relaxed">
+                <div class="bg-white border border-slate-200 rounded-2xl rounded-tl-xs p-3.5 text-slate-800 shadow-xs max-w-[88%] space-y-2 leading-relaxed">
                     <p class="font-bold text-slate-900 text-xs">
                         Assalamu'alaikum! 👋
                     </p>
                     <p class="text-slate-600 text-xs leading-relaxed">
-                        Saya Asisten Virtual <strong>Yayasan Cahaya Amanah Ar-Raudhah</strong>. Sistem munaqasyah ini dikembangkan oleh 
+                        Saya Asisten Cerdas <strong>Yayasan Cahaya Amanah Ar-Raudhah</strong> yang dirancang dan dikembangkan oleh 
                         <strong class="text-red-600 font-bold">Hugo Putra Pratama</strong>.
                     </p>
                     <p class="text-slate-600 text-xs">
-                        Ada yang bisa saya bantu terkait penilaian santri, mata uji, atau panduan sistem?
+                        Kini saya semakin pintar! Saya dapat mencari data santri, nilai ujian, membaca Al-Qur'an 114 surah, jadwal sholat, perhitungan matematika, dan hukum tajwid.
                     </p>
                 </div>
             </div>
@@ -90,22 +92,28 @@
                 <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider px-1">Pertanyaan Cepat:</p>
                 <div class="flex flex-wrap gap-1.5">
                     <button type="button" onclick="askQuestion('Siapa pembuat sistem ini?')" class="suggestion-chip px-2.5 py-1.5 rounded-xl bg-white border border-slate-200 hover:border-red-500 hover:text-red-700 hover:bg-red-50 text-slate-700 text-[11px] font-semibold transition text-left shadow-2xs">
-                        👨‍💻 Siapa pembuat sistem ini?
+                        👨‍💻 Pembuat Sistem
                     </button>
-                    <button type="button" onclick="askQuestion('Apa saja 9 mata uji penilaian?')" class="suggestion-chip px-2.5 py-1.5 rounded-xl bg-white border border-slate-200 hover:border-blue-500 hover:text-blue-700 hover:bg-blue-50 text-slate-700 text-[11px] font-semibold transition text-left shadow-2xs">
-                        📖 9 Mata Uji Munaqasyah
+                    <button type="button" onclick="askQuestion('Berapa jumlah santri saat ini?')" class="suggestion-chip px-2.5 py-1.5 rounded-xl bg-white border border-slate-200 hover:border-emerald-500 hover:text-emerald-700 hover:bg-emerald-50 text-slate-700 text-[11px] font-semibold transition text-left shadow-2xs">
+                        📊 Total Santri
                     </button>
-                    <button type="button" onclick="askQuestion('Bagaimana syarat kelulusan santri?')" class="suggestion-chip px-2.5 py-1.5 rounded-xl bg-white border border-slate-200 hover:border-amber-500 hover:text-amber-700 hover:bg-amber-50 text-slate-700 text-[11px] font-semibold transition text-left shadow-2xs">
-                        🎓 Syarat Kelulusan
+                    <button type="button" onclick="askQuestion('Siapa santri dengan nilai tertinggi?')" class="suggestion-chip px-2.5 py-1.5 rounded-xl bg-white border border-slate-200 hover:border-purple-500 hover:text-purple-700 hover:bg-purple-50 text-slate-700 text-[11px] font-semibold transition text-left shadow-2xs">
+                        🏆 Santri Terbaik
                     </button>
-                    <button type="button" onclick="askQuestion('Bagaimana cara cetak surat kelulusan?')" class="suggestion-chip px-2.5 py-1.5 rounded-xl bg-white border border-slate-200 hover:border-red-500 hover:text-red-700 hover:bg-red-50 text-slate-700 text-[11px] font-semibold transition text-left shadow-2xs">
-                        🖨️ Cara Cetak Surat Kelulusan
+                    <button type="button" onclick="askQuestion('Surat Al-Fatihah')" class="suggestion-chip px-2.5 py-1.5 rounded-xl bg-white border border-slate-200 hover:border-teal-500 hover:text-teal-700 hover:bg-teal-50 text-slate-700 text-[11px] font-semibold transition text-left shadow-2xs">
+                        📖 Surah Al-Fatihah
                     </button>
-                    <button type="button" onclick="askQuestion('Bagaimana cara export Excel atau CSV?')" class="suggestion-chip px-2.5 py-1.5 rounded-xl bg-white border border-slate-200 hover:border-emerald-500 hover:text-emerald-700 hover:bg-emerald-50 text-slate-700 text-[11px] font-semibold transition text-left shadow-2xs">
-                        📊 Export Data Excel
+                    <button type="button" onclick="askQuestion('Ayat Kursi')" class="suggestion-chip px-2.5 py-1.5 rounded-xl bg-white border border-slate-200 hover:border-amber-500 hover:text-amber-700 hover:bg-amber-50 text-slate-700 text-[11px] font-semibold transition text-left shadow-2xs">
+                        ✨ Ayat Kursi
                     </button>
-                    <button type="button" onclick="askQuestion('Apa perbedaan TPQ dan RTQ Ar-Raudhah?')" class="suggestion-chip px-2.5 py-1.5 rounded-xl bg-white border border-slate-200 hover:border-indigo-500 hover:text-indigo-700 hover:bg-indigo-50 text-slate-700 text-[11px] font-semibold transition text-left shadow-2xs">
-                        🕌 Beda TPQ &amp; RTQ Ar-Raudhah
+                    <button type="button" onclick="askQuestion('Jadwal sholat hari ini')" class="suggestion-chip px-2.5 py-1.5 rounded-xl bg-white border border-slate-200 hover:border-blue-500 hover:text-blue-700 hover:bg-blue-50 text-slate-700 text-[11px] font-semibold transition text-left shadow-2xs">
+                        🕌 Jadwal Sholat
+                    </button>
+                    <button type="button" onclick="askQuestion('Apa saja 9 mata uji penilaian?')" class="suggestion-chip px-2.5 py-1.5 rounded-xl bg-white border border-slate-200 hover:border-rose-500 hover:text-rose-700 hover:bg-rose-50 text-slate-700 text-[11px] font-semibold transition text-left shadow-2xs">
+                        📖 9 Mata Uji
+                    </button>
+                    <button type="button" onclick="askQuestion('Hitung 25% dari 500000')" class="suggestion-chip px-2.5 py-1.5 rounded-xl bg-white border border-slate-200 hover:border-indigo-500 hover:text-indigo-700 hover:bg-indigo-50 text-slate-700 text-[11px] font-semibold transition text-left shadow-2xs">
+                        🧮 25% dari 500rb
                     </button>
                 </div>
             </div>
@@ -115,23 +123,45 @@
                 <div class="w-6 h-6 rounded-lg bg-slate-200 flex items-center justify-center text-[10px] text-slate-600 shrink-0">
                     <i class="fa-solid fa-robot"></i>
                 </div>
-                <div class="flex gap-1 items-center bg-white border border-slate-200 px-3 py-2 rounded-2xl shadow-2xs">
-                    <span class="w-1.5 h-1.5 rounded-full bg-slate-400 animate-bounce" style="animation-delay: 0s;"></span>
-                    <span class="w-1.5 h-1.5 rounded-full bg-slate-400 animate-bounce" style="animation-delay: 0.2s;"></span>
-                    <span class="w-1.5 h-1.5 rounded-full bg-slate-400 animate-bounce" style="animation-delay: 0.4s;"></span>
+                <div class="flex gap-1.5 items-center bg-white border border-slate-200 px-3 py-2 rounded-2xl shadow-2xs">
+                    <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-bounce" style="animation-delay: 0s;"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-bounce" style="animation-delay: 0.2s;"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-bounce" style="animation-delay: 0.4s;"></span>
+                    <span class="text-[10px] text-slate-400 ml-1 font-medium">Asisten sedang berpikir...</span>
                 </div>
             </div>
 
         </div>
 
+        <!-- Voice Status Banner (when listening) -->
+        <div id="voice-status-banner" class="hidden bg-red-600 text-white px-3 py-1.5 text-[11px] flex items-center justify-between animate-pulse">
+            <span class="flex items-center gap-1.5 font-bold">
+                <i class="fa-solid fa-microphone"></i> Mendengarkan suara Anda... Silakan berbicara
+            </span>
+            <button type="button" onclick="stopVoiceRecognition()" class="text-white hover:text-red-200">
+                <i class="fa-solid fa-xmark text-xs"></i>
+            </button>
+        </div>
+
         <!-- Chat Input Form -->
         <div class="p-3 bg-white border-t border-slate-200/90 shrink-0">
-            <form id="chatbot-form" onsubmit="handleChatSubmit(event)" class="flex items-center gap-2">
+            <form id="chatbot-form" onsubmit="handleChatSubmit(event)" class="flex items-center gap-1.5">
                 <input type="text"
                        id="chatbot-input"
-                       placeholder="Ketik pertanyaan seputar sistem..."
+                       placeholder="Tanya apa saja (santri, nilai, quran, sholat, hitung)..."
                        autocomplete="off"
                        class="flex-1 px-3.5 py-2.5 rounded-2xl bg-slate-100 border border-slate-200 text-xs sm:text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-red-500/40 focus:border-red-500 transition">
+                
+                <!-- Voice Input Button (Mic) -->
+                <button type="button"
+                        id="voice-input-btn"
+                        onclick="toggleVoiceInput()"
+                        class="w-10 h-10 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-red-600 flex items-center justify-center transition cursor-pointer shrink-0 border border-slate-200"
+                        title="Bicara dengan Suara (Voice Input)">
+                    <i class="fa-solid fa-microphone text-xs" id="voice-mic-icon"></i>
+                </button>
+
+                <!-- Send Button -->
                 <button type="submit"
                         id="chatbot-send-btn"
                         class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-red-600 to-rose-600 text-white flex items-center justify-center shadow-md hover:scale-105 active:scale-95 transition cursor-pointer shrink-0"
@@ -139,9 +169,12 @@
                     <i class="fa-solid fa-paper-plane text-xs"></i>
                 </button>
             </form>
-            <div class="text-center mt-1.5">
+            <div class="text-center mt-1.5 flex items-center justify-between px-1">
                 <span class="text-[9px] text-slate-400">
-                    Sistem Penilaian Munaqasyah • Dibuat oleh <strong class="text-slate-600">Hugo Putra Pratama</strong>
+                    Karya <strong class="text-slate-600">Hugo Putra Pratama</strong>
+                </span>
+                <span class="text-[9px] text-slate-400">
+                    Bisa tanya nama santri, surah, &amp; sholat
                 </span>
             </div>
         </div>
@@ -150,7 +183,130 @@
 </div>
 
 <script>
-    // FAQ Knowledge Base
+    const CHATBOT_ENDPOINT = "{{ route('chatbot.ask') }}";
+    const CSRF_TOKEN = "{{ csrf_token() }}";
+
+    // Speech Recognition & Speech Synthesis Setup
+    let speechRecognition = null;
+    let isRecognizing = false;
+
+    if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+        const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+        speechRecognition = new SpeechRec();
+        speechRecognition.lang = 'id-ID';
+        speechRecognition.interimResults = false;
+        speechRecognition.maxAlternatives = 1;
+
+        speechRecognition.onresult = function(event) {
+            const transcript = event.results[0][0].transcript;
+            document.getElementById('chatbot-input').value = transcript;
+            stopVoiceRecognition();
+            askQuestion(transcript);
+        };
+
+        speechRecognition.onerror = function(event) {
+            console.warn('Speech recognition error:', event.error);
+            stopVoiceRecognition();
+        };
+
+        speechRecognition.onend = function() {
+            stopVoiceRecognition();
+        };
+    }
+
+    function toggleVoiceInput() {
+        if (!speechRecognition) {
+            alert('Browser Anda belum mendukung input suara. Silakan gunakan Google Chrome, Microsoft Edge, atau Safari terbaru.');
+            return;
+        }
+
+        if (isRecognizing) {
+            stopVoiceRecognition();
+        } else {
+            startVoiceRecognition();
+        }
+    }
+
+    function startVoiceRecognition() {
+        if (!speechRecognition) return;
+        try {
+            speechRecognition.start();
+            isRecognizing = true;
+            document.getElementById('voice-status-banner').classList.remove('hidden');
+            const btn = document.getElementById('voice-input-btn');
+            btn.classList.add('bg-red-600', 'text-white', 'animate-pulse');
+            btn.classList.remove('bg-slate-100', 'text-slate-600');
+        } catch (e) {
+            console.warn(e);
+        }
+    }
+
+    function stopVoiceRecognition() {
+        if (!speechRecognition) return;
+        try {
+            speechRecognition.stop();
+        } catch (e) {}
+        isRecognizing = false;
+        document.getElementById('voice-status-banner').classList.add('hidden');
+        const btn = document.getElementById('voice-input-btn');
+        btn.classList.remove('bg-red-600', 'text-white', 'animate-pulse');
+        btn.classList.add('bg-slate-100', 'text-slate-600');
+    }
+
+    // Text to Speech (Baca Suara Jawaban)
+    function speakText(btn) {
+        if (!('speechSynthesis' in window)) {
+            alert('Browser Anda belum mendukung pembacaan suara (Text-to-Speech).');
+            return;
+        }
+
+        window.speechSynthesis.cancel(); // Hentikan suara sebelumnya jika ada
+
+        const container = btn.closest('.bot-bubble-content');
+        if (!container) return;
+
+        // Ambil teks bersih
+        const clone = container.cloneNode(true);
+        // Hapus audio player & tombol aksi dari pembacaan
+        clone.querySelectorAll('audio, button, .no-read').forEach(el => el.remove());
+        let textToRead = clone.innerText || clone.textContent;
+        textToRead = textToRead.replace(/[^\w\s\.\,\?\!\-]/gi, ' ').trim();
+
+        if (!textToRead) return;
+
+        const utterance = new SpeechSynthesisUtterance(textToRead);
+        utterance.lang = 'id-ID';
+        utterance.rate = 1.0;
+        utterance.pitch = 1.0;
+
+        btn.innerHTML = '<i class="fa-solid fa-volume-high text-red-600 animate-pulse"></i>';
+        utterance.onend = function() {
+            btn.innerHTML = '<i class="fa-solid fa-volume-low"></i>';
+        };
+        utterance.onerror = function() {
+            btn.innerHTML = '<i class="fa-solid fa-volume-low"></i>';
+        };
+
+        window.speechSynthesis.speak(utterance);
+    }
+
+    // Salin Teks Jawaban
+    function copyChatText(btn) {
+        const container = btn.closest('.bot-bubble-content');
+        if (!container) return;
+
+        const clone = container.cloneNode(true);
+        clone.querySelectorAll('audio, button, .no-read').forEach(el => el.remove());
+        const text = clone.innerText || clone.textContent;
+
+        navigator.clipboard.writeText(text.trim()).then(() => {
+            const oldHtml = btn.innerHTML;
+            btn.innerHTML = '<i class="fa-solid fa-check text-emerald-600"></i>';
+            setTimeout(() => btn.innerHTML = oldHtml, 1500);
+        });
+    }
+
+    // FAQ Knowledge Base (Local Offline Fallback)
     const FAQ_KNOWLEDGE = [
         {
             keywords: ['pembuat', 'hugo', 'putra', 'pratama', 'developer', 'creator', 'pembuatnya', 'siapa yang bikin', 'author', 'programmer', 'bikin', 'dibuat'],
@@ -160,18 +316,18 @@
                         <p class="font-black text-slate-900 text-xs sm:text-sm flex items-center gap-1.5">
                             👨‍💻 <span>Hugo Putra Pratama</span>
                         </p>
-                        <p class="text-[11px] text-red-700 font-semibold mt-0.5">Software Engineer &amp; Full-Stack Developer</p>
+                        <p class="text-[11px] text-red-700 font-semibold mt-0.5">Software Engineer &amp; Full-Stack Architect</p>
                     </div>
                     <p class="text-slate-700 leading-relaxed text-xs">
                         Sistem Penilaian &amp; Kelulusan Munaqasyah ini <strong>dibuat dan dirancang secara eksklusif oleh Hugo Putra Pratama</strong> untuk <strong>Yayasan Cahaya Amanah Ar-Raudhah Banjarbaru</strong>.
                     </p>
                     <div class="text-[11px] text-slate-600 space-y-1">
-                        <p>✨ <strong>Sorotan Teknologi:</strong></p>
+                        <p>✨ <strong>Sorotan Fitur Unggulan:</strong></p>
                         <ul class="list-disc list-inside space-y-0.5 text-slate-500 pl-1">
                             <li>Laravel 12 &amp; Modern PHP 8.2+ Architecture</li>
-                            <li>Palet Warna Resmi Ar-Raudhah (Navy Blue &amp; Crimson Red)</li>
                             <li>Kalkulasi Otomatis 9 Mata Uji &amp; Export Dokumen</li>
-                            <li>Tampilan Responsif Mobile &amp; Desktop</li>
+                            <li>Cetak Surat Kelulusan &amp; Cek Kelulusan Mandiri</li>
+                            <li>Chatbot AI Interaktif dengan Pencarian Santri &amp; Suara</li>
                         </ul>
                     </div>
                 </div>
@@ -182,18 +338,18 @@
             answer: `
                 <div class="space-y-1.5">
                     <p class="font-bold text-slate-900">📖 9 Mata Uji Standar Munaqasyah:</p>
-                    <ol class="list-decimal list-inside space-y-1 text-slate-700 pl-1">
-                        <li><strong>Fashohah</strong> (Maks: 100) — Kelancaran membaca</li>
-                        <li><strong>Tajwid</strong> (Maks: 100) — Ketepatan hukum tajwid</li>
-                        <li><strong>Gharib &amp; Musykilat</strong> (Maks: 100) — Ayat-ayat asing/khusus</li>
-                        <li><strong>Suara &amp; Lagu</strong> (Maks: 100) — Irama tartil santri</li>
-                        <li><strong>Ayat Pilihan</strong> (Maks: 100) — Ujian tilawah acak</li>
-                        <li><strong>Surah Pendek</strong> (Maks: 100) — Hafalan Juz 'Amma</li>
-                        <li><strong>Doa Harian</strong> (Maks: 100) — Doa-doa harian praktis</li>
-                        <li><strong>Bacaan Shalat</strong> (Maks: 100) — Doa &amp; gerakan sholat</li>
-                        <li><strong>Ujian Tertulis</strong> (Maks: 100) — Dinul Islam &amp; tajwid teori</li>
+                    <ol class="list-decimal list-inside space-y-1 text-slate-700 pl-1 text-xs">
+                        <li><strong>Fashohah</strong> — Kelancaran membaca Al-Qur'an</li>
+                        <li><strong>Tajwid</strong> — Ketepatan hukum tajwid</li>
+                        <li><strong>Gharib &amp; Musykilat</strong> — Ayat-ayat asing &amp; khusus</li>
+                        <li><strong>Suara &amp; Lagu</strong> — Irama tartil santri</li>
+                        <li><strong>Ayat Pilihan</strong> — Ujian tilawah acak</li>
+                        <li><strong>Surah Pendek</strong> — Hafalan Juz 'Amma (Juz 30)</li>
+                        <li><strong>Doa Harian</strong> — Doa-doa harian praktis</li>
+                        <li><strong>Bacaan Shalat</strong> — Doa &amp; gerakan sholat</li>
+                        <li><strong>Ujian Tertulis</strong> — Dinul Islam &amp; tajwid teori</li>
                     </ol>
-                    <p class="text-[11px] text-slate-500 pt-1">Seluruh nilai dihitung rata-rata dan totalnya secara otomatis oleh sistem!</p>
+                    <p class="text-[11px] text-slate-500 pt-1">Seluruh nilai dihitung otomatis oleh sistem karya Hugo Putra Pratama!</p>
                 </div>
             `
         },
@@ -202,93 +358,30 @@
             answer: `
                 <div class="space-y-1.5">
                     <p class="font-bold text-slate-900">🎓 Standar Kelulusan Santri:</p>
-                    <p class="text-slate-700 leading-relaxed">
-                        Santri dinyatakan <strong>LULUS</strong> jika memenuhi seluruh kriteria kelayakan pada 9 mata uji dengan predikat penilaian:
+                    <p class="text-slate-700 leading-relaxed text-xs">
+                        Santri dinyatakan <strong>LULUS</strong> jika memenuhi seluruh kriteria kelayakan pada 9 mata uji dengan predikat:
                     </p>
                     <ul class="space-y-1 text-slate-700 pl-1 text-[11px]">
-                        <li>🌟 <strong>Istimewa (A)</strong>: Rata-rata 90 – 100</li>
-                        <li>👍 <strong>Amat Baik (B)</strong>: Rata-rata 80 – 89</li>
-                        <li>👌 <strong>Baik (C)</strong>: Rata-rata 70 – 79</li>
-                        <li>⚠️ <strong>Cukup / Perbaikan</strong>: Rata-rata &lt; 70</li>
+                        <li>🌟 <strong>Mumtaz (Istimewa)</strong>: Rata-rata 90 – 100</li>
+                        <li>👍 <strong>Jayyid Jiddan (Sangat Baik)</strong>: Rata-rata 80 – 89</li>
+                        <li>👌 <strong>Jayyid (Baik)</strong>: Rata-rata 70 – 79</li>
+                        <li>📑 <strong>Maqbul (Cukup)</strong>: Rata-rata 60 – 69</li>
+                        <li>⚠️ <strong>Rasib (Perbaikan)</strong>: Rata-rata &lt; 60</li>
                     </ul>
-                    <p class="text-[11px] text-slate-500 pt-1">Surat Keterangan Kelulusan resmi dapat langsung diterbitkan bagi santri yang berstatus Lulus.</p>
                 </div>
             `
         },
         {
             keywords: ['cetak', 'surat', 'kelulusan', 'sertifikat', 'ijazah', 'rapor', 'print', 'pdf'],
             answer: `
-                <div class="space-y-1.5">
+                <div class="space-y-1.5 text-xs">
                     <p class="font-bold text-slate-900">🖨️ Cara Cetak Surat Kelulusan:</p>
                     <ol class="list-decimal list-inside space-y-1 text-slate-700 pl-1">
-                        <li>Buka menu <strong>TPQ Ar-Raudhah</strong> atau <strong>RTQ Ar-Raudhah</strong>.</li>
-                        <li>Cari nama santri yang ingin dicetak surat kelulusannya.</li>
-                        <li>Klik tombol <strong>"Sertifikat / Kelulusan"</strong> (ikon dokumen/print).</li>
+                        <li>Buka menu <strong>TPQ</strong> atau <strong>RTQ</strong> di sidebar dashboard.</li>
+                        <li>Cari nama santri, klik tombol <strong>"Surat Kelulusan"</strong>.</li>
                         <li>Halaman surat kelulusan berkop resmi Yayasan akan terbuka.</li>
-                        <li>Klik tombol merah <strong>"Cetak Surat Kelulusan"</strong> di pojok kanan atas (otomatis memunculkan dialog print/simpan ke PDF).</li>
+                        <li>Klik tombol <strong>"Cetak Surat"</strong> di pojok kanan atas (langsung print atau simpan PDF).</li>
                     </ol>
-                </div>
-            `
-        },
-        {
-            keywords: ['export', 'excel', 'csv', 'unduh', 'spreadsheet', 'download data', 'laporan'],
-            answer: `
-                <div class="space-y-1.5">
-                    <p class="font-bold text-slate-900">📊 Cara Export Data ke Excel / CSV:</p>
-                    <p class="text-slate-700">
-                        Tersedia 2 format export resmi di menu sidebar:
-                    </p>
-                    <ul class="space-y-1 text-slate-700 pl-1 text-[11px]">
-                        <li>🟢 <strong>Export Excel (.xls)</strong>: Rapi dengan header warna, tabel formal, dan formula nilai.</li>
-                        <li>🔵 <strong>Export Spreadsheet (.csv)</strong>: Ringan dan kompatibel dengan Google Sheets &amp; aplikasi data lainnya.</li>
-                    </ul>
-                    <p class="text-[11px] text-slate-500">Anda juga dapat memfilter berdasarkan unit tertentu sebelum melakukan export.</p>
-                </div>
-            `
-        },
-        {
-            keywords: ['beda', 'tpq', 'rtq', 'perbedaan', 'taman pendidikan', 'rumah tahfidz'],
-            answer: `
-                <div class="space-y-2">
-                    <p class="font-bold text-slate-900">🕌 Dua Lembaga Naungan Yayasan Ar-Raudhah:</p>
-                    <div class="p-2.5 rounded-xl bg-blue-50 border border-blue-200">
-                        <p class="font-bold text-blue-950">1. TPQ Ar-Raudhah (Taman Pendidikan Qur'an)</p>
-                        <p class="text-[11px] text-slate-600 mt-0.5">Fokus pada pembinaan tartil dasar membaca Al-Qur'an, tajwid praktis, makharijul huruf, gharib, adab harian, dan doa-doa pendek.</p>
-                    </div>
-                    <div class="p-2.5 rounded-xl bg-red-50 border border-red-200">
-                        <p class="font-bold text-red-950">2. RTQ Ar-Raudhah (Rumah Tahfidz Qur'an)</p>
-                        <p class="text-[11px] text-slate-600 mt-0.5">Program intensif penghafalan Al-Qur'an berjenjang (Juz 'Amma &amp; surah tematik), muraja'ah berkala, dan penguatan mutqin hafalan santri.</p>
-                    </div>
-                </div>
-            `
-        },
-        {
-            keywords: ['user', 'pengguna', 'admin', 'tambah akun', 'kelola pengguna', 'password', 'login'],
-            answer: `
-                <div class="space-y-1.5">
-                    <p class="font-bold text-slate-900">👥 Kelola Pengguna Sistem:</p>
-                    <p class="text-slate-700">
-                        Anda dapat menambah dan mengatur akun pengelola melalui menu <strong>Kelola Pengguna</strong> di sidebar:
-                    </p>
-                    <ul class="space-y-1 text-slate-700 pl-1 text-[11px]">
-                        <li>🛡️ <strong>Administrator</strong>: Memiliki hak akses penuh ke seluruh pengaturan.</li>
-                        <li>📖 <strong>Penguji TPQ</strong>: Diberikan akses input &amp; penilaian santri TPQ.</li>
-                        <li>🕌 <strong>Penguji RTQ</strong>: Diberikan akses input &amp; penilaian santri RTQ.</li>
-                        <li>📋 <strong>Panitia</strong>: Membantu administrasi &amp; rekapitulasi data.</li>
-                    </ul>
-                    <p class="text-[11px] text-slate-500">Kredensial username dan password disimpan secara aman dengan hashing di database.</p>
-                </div>
-            `
-        },
-        {
-            keywords: ['alamat', 'lokasi', 'yayasan', 'banjarbaru', 'kontak', 'telepon', 'cahaya amanah'],
-            answer: `
-                <div class="space-y-1.5">
-                    <p class="font-bold text-slate-900">📍 Yayasan Cahaya Amanah Ar-Raudhah:</p>
-                    <p class="text-slate-700 text-xs leading-relaxed">
-                        Lembaga pendidikan Al-Qur'an terpadu yang berkedudukan di <strong>Banjarbaru, Kalimantan Selatan</strong>, membina santri Taman Pendidikan Qur'an (TPQ) dan Rumah Tahfidz Qur'an (RTQ).
-                    </p>
-                    <p class="text-[11px] text-slate-500">Platform munaqasyah ini menjamin transparansi, objektivitas, dan standarisasi kelulusan santri generasi Qur'ani.</p>
                 </div>
             `
         }
@@ -312,6 +405,7 @@
             win.classList.remove('flex');
             iconOpen.classList.remove('hidden');
             iconClose.classList.add('hidden');
+            stopVoiceRecognition();
         }
     }
 
@@ -332,15 +426,15 @@
         input.value = '';
     }
 
-    // Ask Question function
-    function askQuestion(query) {
+    // Ask Question function (Asynchronous with Backend & Fallback)
+    async function askQuestion(query) {
         const messages = document.getElementById('chat-messages');
         const typing = document.getElementById('typing-indicator');
 
         // Add user bubble
         const userHtml = `
             <div class="flex items-start justify-end gap-2.5">
-                <div class="bg-gradient-to-r from-red-600 to-rose-600 text-white rounded-2xl rounded-tr-xs p-3 shadow-xs max-w-[85%] font-medium leading-relaxed">
+                <div class="bg-gradient-to-r from-red-600 to-rose-600 text-white rounded-2xl rounded-tr-xs p-3 shadow-xs max-w-[85%] font-medium leading-relaxed text-xs sm:text-sm">
                     ${escapeHtml(query)}
                 </div>
             </div>
@@ -352,28 +446,80 @@
         typing.classList.remove('hidden');
         scrollChatBottom();
 
-        // Simulate thinking delay
-        setTimeout(() => {
+        let botAnswer = '';
+        let sourceBadge = '';
+
+        try {
+            // Panggil API Backend Chatbot
+            const response = await fetch(CHATBOT_ENDPOINT, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': CSRF_TOKEN,
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({ message: query })
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                botAnswer = data.reply;
+                
+                // Beri label badge sumber
+                if (data.source === 'santri_db') {
+                    sourceBadge = '<span class="text-[9px] px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 font-bold ml-1.5"><i class="fa-solid fa-id-card mr-1"></i>Profil Santri</span>';
+                } else if (data.source === 'quran_api') {
+                    sourceBadge = '<span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold ml-1.5"><i class="fa-solid fa-book-quran mr-1"></i>Al-Qur\'anul Karim</span>';
+                } else if (data.source === 'prayer_worship') {
+                    sourceBadge = '<span class="text-[9px] px-1.5 py-0.5 rounded bg-indigo-100 text-indigo-800 font-bold ml-1.5"><i class="fa-solid fa-mosque mr-1"></i>Jadwal Sholat &amp; Doa</span>';
+                } else if (data.source === 'database') {
+                    sourceBadge = '<span class="text-[9px] px-1.5 py-0.5 rounded bg-blue-100 text-blue-800 font-bold ml-1.5"><i class="fa-solid fa-database mr-1"></i>Data Realtime</span>';
+                } else if (data.source === 'calculator') {
+                    sourceBadge = '<span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold ml-1.5"><i class="fa-solid fa-calculator mr-1"></i>Kalkulator</span>';
+                } else if (data.source === 'wikipedia') {
+                    sourceBadge = '<span class="text-[9px] px-1.5 py-0.5 rounded bg-purple-100 text-purple-800 font-bold ml-1.5"><i class="fa-solid fa-book mr-1"></i>Ensiklopedia</span>';
+                } else if (data.source === 'generative_ai') {
+                    sourceBadge = '<span class="text-[9px] px-1.5 py-0.5 rounded bg-red-100 text-red-800 font-bold ml-1.5"><i class="fa-solid fa-wand-magic-sparkles mr-1"></i>AI Generatif</span>';
+                }
+            } else {
+                botAnswer = findOfflineAnswer(query);
+            }
+        } catch (err) {
+            console.warn('Chatbot API fetch error, fallback to offline KB:', err);
+            botAnswer = findOfflineAnswer(query);
+        } finally {
             typing.classList.add('hidden');
-            const botAnswer = findAnswer(query);
 
             const botHtml = `
                 <div class="flex items-start gap-2.5">
                     <div class="w-7 h-7 rounded-xl bg-gradient-to-tr from-slate-900 to-red-600 text-white flex items-center justify-center text-xs shrink-0 mt-1 shadow-xs">
                         <i class="fa-solid fa-robot"></i>
                     </div>
-                    <div class="bg-white border border-slate-200 rounded-2xl rounded-tl-xs p-3.5 text-slate-800 shadow-xs max-w-[88%] space-y-2 leading-relaxed">
-                        ${botAnswer}
+                    <div class="bg-white border border-slate-200 rounded-2xl rounded-tl-xs p-3.5 text-slate-800 shadow-xs max-w-[88%] space-y-2 leading-relaxed text-xs sm:text-sm bot-bubble-content relative group">
+                        <div class="flex items-center justify-between border-b border-slate-100 pb-1.5 mb-1 no-read">
+                            <div>${sourceBadge}</div>
+                            <div class="flex items-center gap-1 opacity-80 hover:opacity-100 transition">
+                                <button type="button" onclick="speakText(this)" class="p-1 rounded hover:bg-slate-100 text-slate-500 hover:text-slate-900" title="Dengarkan Suara (Text-to-Speech)">
+                                    <i class="fa-solid fa-volume-low text-[11px]"></i>
+                                </button>
+                                <button type="button" onclick="copyChatText(this)" class="p-1 rounded hover:bg-slate-100 text-slate-500 hover:text-slate-900" title="Salin Pesan">
+                                    <i class="fa-regular fa-copy text-[11px]"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div>
+                            ${botAnswer}
+                        </div>
                     </div>
                 </div>
             `;
             messages.insertAdjacentHTML('beforeend', botHtml);
             scrollChatBottom();
-        }, 450);
+        }
     }
 
-    // Find Answer with fuzzy keyword matching
-    function findAnswer(query) {
+    // Offline Matcher Fallback
+    function findOfflineAnswer(query) {
         const q = query.toLowerCase();
 
         for (const item of FAQ_KNOWLEDGE) {
@@ -384,22 +530,19 @@
             }
         }
 
-        // Default Fallback
         return `
-            <div class="space-y-2">
+            <div class="space-y-2 text-xs">
                 <p class="font-bold text-slate-800">Terima kasih atas pertanyaannya! 😊</p>
-                <p class="text-slate-600 text-xs leading-relaxed">
-                    Saya dapat membantu Anda memberikan informasi seputar:
+                <p class="text-slate-600 leading-relaxed">
+                    Saya dapat membantu Anda menjawab segala pertanyaan terkait:
                 </p>
                 <ul class="list-disc list-inside space-y-1 text-slate-600 text-[11px] pl-1">
+                    <li><strong>Cari Data Santri</strong> (contoh: <em>"cari santri Ahmad"</em>)</li>
+                    <li><strong>Al-Qur'an 114 Surah</strong> (contoh: <em>"surah al fatihah"</em>, <em>"ayat kursi"</em>)</li>
+                    <li><strong>Jadwal Sholat &amp; Doa Harian</strong></li>
                     <li><strong>Pembuat Sistem</strong> (Karya <strong>Hugo Putra Pratama</strong>)</li>
-                    <li><strong>9 Mata Uji Munaqasyah</strong> (Fashohah, Tajwid, dll.)</li>
-                    <li><strong>Standar &amp; Syarat Kelulusan Santri</strong></li>
-                    <li><strong>Cara Cetak Surat Kelulusan</strong></li>
-                    <li><strong>Export Data Excel &amp; Spreadsheet</strong></li>
-                    <li><strong>Perbedaan TPQ &amp; RTQ Ar-Raudhah</strong></li>
+                    <li><strong>9 Mata Uji Munaqasyah &amp; Syarat Kelulusan</strong></li>
                 </ul>
-                <p class="text-[11px] text-slate-500">Silakan klik salah satu topik di atas atau tanyakan dengan kata kunci yang lebih spesifik.</p>
             </div>
         `;
     }
@@ -412,15 +555,16 @@
                 <div class="w-7 h-7 rounded-xl bg-gradient-to-tr from-slate-900 to-red-600 text-white flex items-center justify-center text-xs shrink-0 mt-1 shadow-xs">
                     <i class="fa-solid fa-robot"></i>
                 </div>
-                <div class="bg-white border border-slate-200 rounded-2xl rounded-tl-xs p-3.5 text-slate-800 shadow-xs max-w-[85%] space-y-2 leading-relaxed">
-                    <p class="font-bold text-slate-900 text-xs">
+                <div class="bg-white border border-slate-200 rounded-2xl rounded-tl-xs p-3.5 text-slate-800 shadow-xs max-w-[85%] space-y-2 leading-relaxed text-xs sm:text-sm">
+                    <p class="font-bold text-slate-900">
                         Percakapan telah dimulai ulang. 👋
                     </p>
-                    <p class="text-slate-600 text-xs leading-relaxed">
-                        Sistem munaqasyah ini dikembangkan oleh <strong class="text-red-600 font-bold">Hugo Putra Pratama</strong>.
+                    <p class="text-slate-600 leading-relaxed">
+                        Saya adalah Asisten Virtual Cerdas <strong>Yayasan Cahaya Amanah Ar-Raudhah</strong> karya 
+                        <strong class="text-red-600 font-bold">Hugo Putra Pratama</strong>.
                     </p>
-                    <p class="text-slate-600 text-xs">
-                        Silakan tanyakan hal apa pun yang ingin Anda ketahui!
+                    <p class="text-slate-600">
+                        Silakan tanyakan apa saja yang ingin Anda ketahui!
                     </p>
                 </div>
             </div>
@@ -429,16 +573,16 @@
                 <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider px-1">Pertanyaan Cepat:</p>
                 <div class="flex flex-wrap gap-1.5">
                     <button type="button" onclick="askQuestion('Siapa pembuat sistem ini?')" class="suggestion-chip px-2.5 py-1.5 rounded-xl bg-white border border-slate-200 hover:border-red-500 hover:text-red-700 hover:bg-red-50 text-slate-700 text-[11px] font-semibold transition text-left shadow-2xs">
-                        👨‍💻 Siapa pembuat sistem ini?
+                        👨‍💻 Pembuat Sistem
                     </button>
-                    <button type="button" onclick="askQuestion('Apa saja 9 mata uji penilaian?')" class="suggestion-chip px-2.5 py-1.5 rounded-xl bg-white border border-slate-200 hover:border-blue-500 hover:text-blue-700 hover:bg-blue-50 text-slate-700 text-[11px] font-semibold transition text-left shadow-2xs">
-                        📖 9 Mata Uji Munaqasyah
+                    <button type="button" onclick="askQuestion('Berapa jumlah santri saat ini?')" class="suggestion-chip px-2.5 py-1.5 rounded-xl bg-white border border-slate-200 hover:border-emerald-500 hover:text-emerald-700 hover:bg-emerald-50 text-slate-700 text-[11px] font-semibold transition text-left shadow-2xs">
+                        📊 Total Santri
                     </button>
-                    <button type="button" onclick="askQuestion('Bagaimana syarat kelulusan santri?')" class="suggestion-chip px-2.5 py-1.5 rounded-xl bg-white border border-slate-200 hover:border-amber-500 hover:text-amber-700 hover:bg-amber-50 text-slate-700 text-[11px] font-semibold transition text-left shadow-2xs">
-                        🎓 Syarat Kelulusan
+                    <button type="button" onclick="askQuestion('Siapa santri dengan nilai tertinggi?')" class="suggestion-chip px-2.5 py-1.5 rounded-xl bg-white border border-slate-200 hover:border-purple-500 hover:text-purple-700 hover:bg-purple-50 text-slate-700 text-[11px] font-semibold transition text-left shadow-2xs">
+                        🏆 Santri Terbaik
                     </button>
-                    <button type="button" onclick="askQuestion('Bagaimana cara cetak surat kelulusan?')" class="suggestion-chip px-2.5 py-1.5 rounded-xl bg-white border border-slate-200 hover:border-red-500 hover:text-red-700 hover:bg-red-50 text-slate-700 text-[11px] font-semibold transition text-left shadow-2xs">
-                        🖨️ Cara Cetak Surat Kelulusan
+                    <button type="button" onclick="askQuestion('Surat Al-Fatihah')" class="suggestion-chip px-2.5 py-1.5 rounded-xl bg-white border border-slate-200 hover:border-teal-500 hover:text-teal-700 hover:bg-teal-50 text-slate-700 text-[11px] font-semibold transition text-left shadow-2xs">
+                        📖 Surah Al-Fatihah
                     </button>
                 </div>
             </div>
@@ -447,10 +591,11 @@
                 <div class="w-6 h-6 rounded-lg bg-slate-200 flex items-center justify-center text-[10px] text-slate-600 shrink-0">
                     <i class="fa-solid fa-robot"></i>
                 </div>
-                <div class="flex gap-1 items-center bg-white border border-slate-200 px-3 py-2 rounded-2xl shadow-2xs">
-                    <span class="w-1.5 h-1.5 rounded-full bg-slate-400 animate-bounce" style="animation-delay: 0s;"></span>
-                    <span class="w-1.5 h-1.5 rounded-full bg-slate-400 animate-bounce" style="animation-delay: 0.2s;"></span>
-                    <span class="w-1.5 h-1.5 rounded-full bg-slate-400 animate-bounce" style="animation-delay: 0.4s;"></span>
+                <div class="flex gap-1.5 items-center bg-white border border-slate-200 px-3 py-2 rounded-2xl shadow-2xs">
+                    <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-bounce" style="animation-delay: 0s;"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-bounce" style="animation-delay: 0.2s;"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-bounce" style="animation-delay: 0.4s;"></span>
+                    <span class="text-[10px] text-slate-400 ml-1 font-medium">Asisten sedang berpikir...</span>
                 </div>
             </div>
         `;

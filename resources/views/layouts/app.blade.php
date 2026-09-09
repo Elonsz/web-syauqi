@@ -222,6 +222,10 @@
                        class="px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 {{ request()->routeIs('dashboard') ? 'bg-white/20 text-white' : 'text-blue-200 hover:bg-[#1E3A8A] hover:text-white' }}">
                         <i class="fa-solid fa-gauge-high"></i> Dashboard
                     </a>
+                    <a href="{{ route('santri.index') }}" title="Direktori Biodata Siswa"
+                       class="px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 {{ request()->routeIs('santri.*') ? 'bg-white/20 text-white' : 'text-blue-200 hover:bg-[#1E3A8A] hover:text-white' }}">
+                        <i class="fa-solid fa-address-card text-cyan-300"></i> Biodata Santri
+                    </a>
                 </div>
 
                 <div class="flex items-center gap-2">

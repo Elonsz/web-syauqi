@@ -172,5 +172,23 @@
             </div>
         </form>
     </div>
+
+    <!-- Backup Database Card -->
+    <div class="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-xs space-y-4">
+        <div class="flex items-center gap-2 border-b border-slate-100 pb-2">
+            <i class="fa-solid fa-database text-blue-900 text-sm"></i>
+            <h2 class="text-xs font-bold uppercase tracking-wider text-slate-800">Cadangan Data &amp; Arsip (Backup)</h2>
+        </div>
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-200">
+            <div class="space-y-1">
+                <p class="text-xs font-bold text-slate-800">Unduh Salinan Cadangan Sistem</p>
+                <p class="text-[11px] text-slate-500">Mencadangkan seluruh data santri, nilai 9 mata uji, data unit, dan pengaturan sistem ke file JSON terenkapsulasi rapi.</p>
+            </div>
+            <a href="{{ route('settings.backup') }}" 
+               class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold text-white bg-slate-900 hover:bg-slate-800 shadow-md transition shrink-0 active:scale-95">
+                <i class="fa-solid fa-download"></i> Unduh Cadangan Data (.json)
+            </a>
+        </div>
+    </div>
 </div>
 @endsection

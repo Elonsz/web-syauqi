@@ -87,7 +87,12 @@
         @endphp
 
         <!-- Single Sheet Page (A4) -->
-        <div class="sheet-page max-w-3xl mx-auto bg-white p-8 sm:p-12 shadow-lg border border-slate-200 rounded-2xl relative">
+        <div class="sheet-page max-w-3xl mx-auto bg-white p-8 sm:p-12 shadow-lg border border-slate-200 rounded-2xl relative overflow-hidden">
+
+            <!-- Watermark Logo Resmi Yayasan -->
+            <div class="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0">
+                <img src="{{ asset('images/logo.png') }}" alt="Watermark Ar-Raudhah" class="w-80 h-80 sm:w-96 sm:h-96 object-contain opacity-[0.04] grayscale">
+            </div>
 
             <!-- Header Kop Surat -->
             <div class="border-b-2 border-slate-900 pb-4 mb-4 text-center">
@@ -212,15 +217,54 @@
                 <p>{{ $settings['alamat_yayasan'] ?? 'Banjarbaru' }}, {{ $settings['tanggal_surat_masehi'] ?? '08 September 2026' }} M / {{ $settings['tanggal_surat_hijriyah'] ?? '25 Rabiul Awwal 1448 H' }}</p>
             </div>
 
-            <div class="grid grid-cols-2 gap-4 text-center text-xs mt-6">
+            <!-- Tanda Tangan, Stempel Resmi & QR Code Verifikasi -->
+            <div class="grid grid-cols-3 gap-2 sm:gap-4 items-end text-center text-xs mt-6 relative z-10">
+                <!-- Kepala Unit -->
                 <div>
                     <p class="text-slate-600 mb-14">Kepala {{ $santri->jenis == 'TPQ' ? 'TPQ Ar-Raudhah' : 'RTQ Ar-Raudhah' }},</p>
                     <p class="font-bold text-slate-900 underline uppercase text-xs">{{ $kepalaNama }}</p>
                     <p class="text-[10px] text-slate-500">Kepala Unit {{ $santri->jenis }}</p>
                 </div>
-                <div>
+
+                <!-- QR Code Verifikasi Keaslian -->
+                <div class="flex flex-col items-center justify-center">
+                    @php
+                        $verifyUrl = route('public.check.cetak', $santri->id);
+                        $qrSrc = "https://api.qrserver.com/v1/create-qr-code/?size=110x110&margin=2&data=" . urlencode($verifyUrl);
+                    @endphp
+                    <div class="p-1.5 bg-white border border-slate-300 rounded-xl shadow-xs inline-block">
+                        <img src="{{ $qrSrc }}" alt="QR Code Verifikasi" class="w-16 h-16 sm:w-18 sm:h-18 object-contain mx-auto" loading="lazy">
+                    </div>
+                    <p class="text-[8.5px] font-black text-slate-800 uppercase tracking-tighter mt-1">VERIFIKASI RESMI</p>
+                    <p class="text-[7.5px] text-slate-500 font-mono">Scan QR untuk verifikasi</p>
+                </div>
+
+                <!-- Ketua Yayasan + Stempel Digital -->
+                <div class="relative">
                     <p class="text-slate-600 mb-14">Ketua Yayasan,</p>
-                    <p class="font-bold text-slate-900 underline uppercase text-xs">{{ $settings['ketua_yayasan'] ?? 'Ustadz H. Ahmad Ridhani, S.Pd.I' }}</p>
+                    <!-- Stempel Digital Resmi Yayasan -->
+                    <div class="absolute left-1/2 -translate-x-1/2 top-3 w-22 h-22 sm:w-26 sm:h-26 pointer-events-none select-none opacity-85 -rotate-12">
+                        <svg viewBox="0 0 120 120" class="w-full h-full text-red-600" fill="currentColor">
+                            <circle cx="60" cy="60" r="54" fill="none" stroke="currentColor" stroke-width="2.5" stroke-dasharray="3 1.5"/>
+                            <circle cx="60" cy="60" r="50" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                            <circle cx="60" cy="60" r="34" fill="none" stroke="currentColor" stroke-width="1"/>
+                            <path id="stampPathTopM" d="M 18,60 A 42,42 0 0,1 102,60" fill="none" stroke="none"/>
+                            <path id="stampPathBottomM" d="M 102,60 A 42,42 0 0,1 18,60" fill="none" stroke="none"/>
+                            <text font-size="8" font-weight="bold" fill="currentColor" letter-spacing="1">
+                                <textPath href="#stampPathTopM" startOffset="50%" text-anchor="middle">
+                                    YAYASAN AR-RAUDHAH
+                                </textPath>
+                            </text>
+                            <text font-size="7.5" font-weight="bold" fill="currentColor" letter-spacing="1">
+                                <textPath href="#stampPathBottomM" startOffset="50%" text-anchor="middle">
+                                    ★ PANITIA MUNAQASYAH ★
+                                </textPath>
+                            </text>
+                            <text x="60" y="55" font-size="9" font-weight="black" text-anchor="middle" fill="currentColor">SAH</text>
+                            <text x="60" y="68" font-size="7" font-weight="bold" text-anchor="middle" fill="currentColor">2026 / 1447 H</text>
+                        </svg>
+                    </div>
+                    <p class="font-bold text-slate-900 underline uppercase text-xs relative z-10">{{ $settings['ketua_yayasan'] ?? 'Ustadz H. Ahmad Ridhani, S.Pd.I' }}</p>
                     <p class="text-[10px] text-slate-500">{{ $settings['nama_yayasan'] ?? 'Yayasan Cahaya Amanah Ar-Raudhah' }}</p>
                 </div>
             </div>

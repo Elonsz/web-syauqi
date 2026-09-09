@@ -181,6 +181,14 @@
 
                 {{-- Actions --}}
                 <div class="flex items-center gap-2 p-2.5 bg-white">
+                    @php
+                        $waTextSantri = "Assalamu'alaikum Wr. Wb. Yth. Wali Santri dari *" . $santri->nama . "* (No. Peserta: " . ($santri->no_peserta ?? '-') . ").%0A%0AAlhamdulillah, ananda dinyatakan *" . $santri->status_kelulusan . "* pada Ujian Munaqasyah Yayasan Cahaya Amanah Ar-Raudhah dengan Predikat *" . ($p ? $p->predikat : '-') . "* (Rata-rata: " . ($p ? number_format($p->rata_rata, 2) : '-') . ").%0A%0ABerikut tautan resmi Surat Keterangan Kelulusan dan nilai lengkap:%0A" . urlencode(route('public.check.cetak', $santri->id)) . "%0A%0ABarakallahu fiikum.%0A_Panitia Munaqasyah Ar-Raudhah_";
+                    @endphp
+                    <a href="https://api.whatsapp.com/send?text={{ $waTextSantri }}" target="_blank" rel="noopener"
+                       class="flex items-center justify-center gap-1 text-xs font-bold bg-emerald-50 hover:bg-emerald-100 text-emerald-700 py-2 px-2.5 rounded-lg border border-emerald-200/60 transition"
+                       title="Kirim Hasil ke WhatsApp">
+                        <i class="fa-brands fa-whatsapp text-sm"></i>
+                    </a>
                     <a href="{{ route('munaqasyah.kelulusan', $santri->id) }}" target="_blank"
                        class="flex-1 flex items-center justify-center gap-1.5 text-xs font-bold bg-blue-50 hover:bg-blue-100 text-blue-900 border border-blue-200/80 py-2 rounded-lg transition">
                         <i class="fa-solid fa-id-card text-blue-800"></i> Sertifikat
@@ -271,10 +279,14 @@
                             <td class="font-mono text-slate-800">{{ $p ? number_format($p->bacaan_shalat, 0) : '-' }}</td>
                             <td class="font-mono text-slate-800 bg-slate-50/50">{{ $p ? number_format($p->ujian_tertulis, 0) : '-' }}</td>
                             <td class="font-mono font-bold text-slate-900 bg-slate-100/60">{{ $p ? number_format($p->jumlah_nilai, 0) : '-' }}</td>
-                            <td class="font-mono font-extrabold {{ $isRed ? 'text-rose-600' : 'text-blue-900' }} bg-blue-50/50">{{ $p ? number_format($p->rata_rata, 2) : '-' }}</td>
                             <td class="font-bold text-amber-800 bg-amber-50/70">{{ $santri->tahun_munaqasyah ?? '2026' }}</td>
                             <td class="no-print">
                                 <div class="flex items-center justify-center gap-1">
+                                    <a href="https://api.whatsapp.com/send?text={{ $waTextSantri }}" target="_blank" rel="noopener"
+                                       class="p-1.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-600 border border-emerald-200/80 rounded-lg text-xs flex items-center justify-center transition"
+                                       title="Kirim Hasil ke WhatsApp">
+                                        <i class="fa-brands fa-whatsapp"></i>
+                                    </a>
                                     <a href="{{ route('munaqasyah.kelulusan', $santri->id) }}" target="_blank"
                                        class="p-1.5 bg-blue-50 hover:bg-blue-100 text-blue-900 border border-blue-200/80 rounded-lg text-xs flex items-center gap-1 transition whitespace-nowrap"
                                        title="Lihat Surat Kelulusan">
@@ -286,7 +298,7 @@
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </a>
                                     <form action="{{ route('munaqasyah.destroy', $santri->id) }}" method="POST"
-                                          onsubmit="return confirm('Hapus data santri ini?')">
+                                           onsubmit="return confirm('Hapus data santri ini?')">
                                         @csrf @method('DELETE')
                                         <button type="submit" class="p-1.5 bg-rose-50 hover:bg-rose-100 text-rose-600 rounded-lg text-xs transition"
                                                 title="Hapus Data">
@@ -294,7 +306,7 @@
                                         </button>
                                     </form>
                                 </div>
-                            </td>
+                            </td></td>
                         </tr>
                     @empty
                         <tr>

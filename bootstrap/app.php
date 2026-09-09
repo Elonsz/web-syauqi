@@ -11,10 +11,27 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
+
+        // ── Middleware Aliases (bisa dipakai di routes) ──────────────────
         $middleware->alias([
-            'auth.check' => \App\Http\Middleware\CheckLogin::class,
+            'auth.check'       => \App\Http\Middleware\CheckLogin::class,
+            'admin.only'       => \App\Http\Middleware\AdminOnly::class,
+            'login.throttle'   => \App\Http\Middleware\LoginRateLimiter::class,
+            'chatbot.throttle' => \App\Http\Middleware\ChatbotRateLimiter::class,
+        ]);
+
+        // ── Security Headers — diterapkan pada SEMUA web response ────────
+        $middleware->web(append: [
+            \App\Http\Middleware\SecurityHeaders::class,
+        ]);
+
+        // ── Chatbot: CSRF dikecualikan tapi diganti dengan rate limiter ──
+        // (Chatbot route tetap bebas CSRF karena diakses via JavaScript fetch)
+        $middleware->validateCsrfTokens(except: [
+            'chatbot/ask',
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
     })->create();
+

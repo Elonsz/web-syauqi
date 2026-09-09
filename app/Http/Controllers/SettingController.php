@@ -51,4 +51,31 @@ class SettingController extends Controller
 
         return redirect()->route('settings.index')->with('success', 'Pengaturan surat kelulusan & identitas lembaga berhasil disimpan.');
     }
+
+    /**
+     * Download cadangan database (JSON format)
+     */
+    public function backup()
+    {
+        $backupData = [
+            'meta' => [
+                'aplikasi'          => 'Sistem Penilaian Munaqasyah Ar-Raudhah',
+                'pengembang'        => 'Hugo Putra Pratama',
+                'tanggal_backup'    => now()->format('Y-m-d H:i:s'),
+                'total_santri'      => \App\Models\Santri::count(),
+                'total_penilaian'   => \App\Models\Penilaian::count(),
+            ],
+            'settings'   => \App\Models\Setting::all(),
+            'units'      => \App\Models\Unit::all(),
+            'santris'    => \App\Models\Santri::with('penilaian')->get(),
+        ];
+
+        $filename = 'backup_munaqasyah_arraudhah_' . now()->format('Y_m_d_His') . '.json';
+        $json = json_encode($backupData, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+
+        return response($json, 200, [
+            'Content-Type'        => 'application/json',
+            'Content-Disposition' => 'attachment; filename="' . $filename . '"',
+        ]);
+    }
 }

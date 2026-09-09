@@ -54,6 +54,15 @@
             </a>
         @endif
         <div class="flex items-center gap-2">
+            <!-- WhatsApp Share Button -->
+            @php
+                $waMessage = "Assalamu'alaikum Wr. Wb. Yth. Wali Santri dari *" . $santri->nama . "* (No. Peserta: " . ($santri->no_peserta ?? '-') . ").%0A%0AAlhamdulillah, santri dinyatakan *" . $santri->status_kelulusan . "* pada Ujian Munaqasyah Yayasan Cahaya Amanah Ar-Raudhah dengan Predikat *" . ($p ? $p->predikat : '-') . "* (Rata-rata: " . ($p ? number_format($p->rata_rata, 2) : '-') . ").%0A%0ABerikut tautan resmi Surat Keterangan Kelulusan dan nilai lengkap:%0A" . urlencode(route('public.check.cetak', $santri->id)) . "%0A%0ABarakallahu fiikum.%0A_Panitia Munaqasyah Ar-Raudhah_";
+            @endphp
+            <a href="https://api.whatsapp.com/send?text={{ $waMessage }}" target="_blank" rel="noopener"
+               class="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 px-3.5 py-2.5 rounded-xl shadow-md transition active:scale-95" title="Bagikan hasil ke WhatsApp">
+                <i class="fa-brands fa-whatsapp text-sm"></i> <span>Kirim ke WhatsApp</span>
+            </a>
+
             @if(!isset($isPublic) || !$isPublic)
                 <a href="{{ route('munaqasyah.edit', $santri->id) }}"
                    class="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 text-xs font-semibold text-slate-700 bg-white border border-slate-300 px-3.5 py-2.5 rounded-xl shadow-xs hover:bg-slate-50 transition">
@@ -68,7 +77,11 @@
     </div>
 
     <!-- Halaman Dokumen Cetak Kelulusan (A4 Standard) -->
-    <div class="sheet-page max-w-3xl mx-auto bg-white p-4 sm:p-8 md:p-12 shadow-md border border-slate-200 rounded-2xl relative">
+    <div class="sheet-page max-w-3xl mx-auto bg-white p-4 sm:p-8 md:p-12 shadow-md border border-slate-200 rounded-2xl relative overflow-hidden">
+        <!-- Watermark Logo Resmi Yayasan -->
+        <div class="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0">
+            <img src="{{ asset('images/logo.png') }}" alt="Watermark Ar-Raudhah" class="w-80 h-80 sm:w-96 sm:h-96 object-contain opacity-[0.04] grayscale">
+        </div>
         <!-- Bingkai Hiasan Islami Header -->
         <div class="border-b-2 border-slate-900 pb-4 mb-5 text-center relative">
             <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-5">
@@ -249,17 +262,55 @@
             </p>
         </div>
 
-        <!-- Tanda Tangan Penguji & Panitia -->
-        <div class="grid grid-cols-2 gap-4 text-center text-xs mt-8 sm:mt-10">
-            <div>
+        <!-- Tanda Tangan, Stempel Resmi & QR Code Verifikasi -->
+        <div class="grid grid-cols-3 gap-2 sm:gap-4 items-end text-center text-xs mt-6 sm:mt-8 relative z-10">
+            <!-- Kolom Ketua Panitia + Stempel -->
+            <div class="relative">
                 <p class="text-slate-600 mb-12 sm:mb-16">Ketua Panitia Munaqasyah,</p>
-                <p class="font-bold text-slate-900 underline uppercase text-[11px] sm:text-xs">H. AHMAD SYAUQI, S.Pd.I</p>
-                <p class="text-[10px] text-slate-500">Ketua Panitia Pelaksana Kota 2026</p>
+                <!-- Stempel Digital Resmi Yayasan -->
+                <div class="absolute left-1/2 -translate-x-1/2 top-4 w-24 h-24 sm:w-28 sm:h-28 pointer-events-none select-none opacity-85 -rotate-12">
+                    <svg viewBox="0 0 120 120" class="w-full h-full text-red-600" fill="currentColor">
+                        <circle cx="60" cy="60" r="54" fill="none" stroke="currentColor" stroke-width="2.5" stroke-dasharray="3 1.5"/>
+                        <circle cx="60" cy="60" r="50" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                        <circle cx="60" cy="60" r="34" fill="none" stroke="currentColor" stroke-width="1"/>
+                        <path id="stampPathTop" d="M 18,60 A 42,42 0 0,1 102,60" fill="none" stroke="none"/>
+                        <path id="stampPathBottom" d="M 102,60 A 42,42 0 0,1 18,60" fill="none" stroke="none"/>
+                        <text font-size="8" font-weight="bold" fill="currentColor" letter-spacing="1">
+                            <textPath href="#stampPathTop" startOffset="50%" text-anchor="middle">
+                                YAYASAN AR-RAUDHAH
+                            </textPath>
+                        </text>
+                        <text font-size="7.5" font-weight="bold" fill="currentColor" letter-spacing="1">
+                            <textPath href="#stampPathBottom" startOffset="50%" text-anchor="middle">
+                                ★ PANITIA MUNAQASYAH ★
+                            </textPath>
+                        </text>
+                        <text x="60" y="55" font-size="9" font-weight="black" text-anchor="middle" fill="currentColor">SAH</text>
+                        <text x="60" y="68" font-size="7" font-weight="bold" text-anchor="middle" fill="currentColor">2026 / 1447 H</text>
+                    </svg>
+                </div>
+                <p class="font-bold text-slate-900 underline uppercase text-[11px] sm:text-xs relative z-10">{{ $settings['ketua_yayasan'] ?? 'H. AHMAD SYAUQI, S.Pd.I' }}</p>
+                <p class="text-[10px] text-slate-500">Ketua Pelaksana Munaqasyah</p>
             </div>
+
+            <!-- Kolom Tengah: QR Code Verifikasi Keaslian -->
+            <div class="flex flex-col items-center justify-center">
+                @php
+                    $verifyUrl = route('public.check.cetak', $santri->id);
+                    $qrSrc = "https://api.qrserver.com/v1/create-qr-code/?size=110x110&margin=2&data=" . urlencode($verifyUrl);
+                @endphp
+                <div class="p-1.5 bg-white border border-slate-300 rounded-xl shadow-xs inline-block">
+                    <img src="{{ $qrSrc }}" alt="QR Code Verifikasi" class="w-18 h-18 sm:w-20 sm:h-20 object-contain mx-auto" loading="lazy">
+                </div>
+                <p class="text-[9px] font-black text-slate-800 uppercase tracking-tighter mt-1">VERIFIKASI RESMI</p>
+                <p class="text-[8px] text-slate-500 font-mono">Scan QR untuk cek keaslian</p>
+            </div>
+
+            <!-- Kolom Penguji -->
             <div>
                 <p class="text-slate-600 mb-12 sm:mb-16">Penguji Munaqasyah,</p>
                 <p class="font-bold text-slate-900 underline uppercase text-[11px] sm:text-xs">( ............................................ )</p>
-                <p class="text-[10px] text-slate-500">NIP / ID Penguji</p>
+                <p class="text-[10px] text-slate-500">Dewan Penguji Munaqasyah</p>
             </div>
         </div>
     </div>

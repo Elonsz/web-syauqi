@@ -78,6 +78,22 @@ class DashboardController extends Controller
 
         $santriTerbaru  = Santri::latest()->take(10)->get();
 
+        // Top Santri Berprestasi (Leaderboard)
+        $topSantriTPQ = $santriTPQ->filter(fn($s) => $s->penilaian && $s->penilaian->rata_rata !== null)
+            ->sortByDesc(fn($s) => $s->penilaian->rata_rata)
+            ->take(5)
+            ->values();
+
+        $topSantriRTQ = $santriRTQ->filter(fn($s) => $s->penilaian && $s->penilaian->rata_rata !== null)
+            ->sortByDesc(fn($s) => $s->penilaian->rata_rata)
+            ->take(5)
+            ->values();
+
+        $topSantriGlobal = $semua->filter(fn($s) => $s->penilaian && $s->penilaian->rata_rata !== null)
+            ->sortByDesc(fn($s) => $s->penilaian->rata_rata)
+            ->take(5)
+            ->values();
+
         return view('dashboard.index', compact(
             'totalSemua', 'totalTPQ', 'totalRTQ',
             'totalLulus', 'totalTidakLulus',
@@ -87,7 +103,8 @@ class DashboardController extends Controller
             'predikatCounts',
             'komponenLabels',
             'avgKomponenSemua', 'avgKomponenTPQ', 'avgKomponenRTQ',
-            'santriTerbaru'
+            'santriTerbaru',
+            'topSantriTPQ', 'topSantriRTQ', 'topSantriGlobal'
         ));
     }
 }

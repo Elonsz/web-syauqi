@@ -201,6 +201,111 @@
         </div>
     </div>
 
+    {{-- ===== LEADERBOARD / SANTRI BERPRESTASI ===== --}}
+    <div class="bg-white rounded-2xl sm:rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
+        <div class="p-4 sm:p-5 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-2 bg-gradient-to-r from-amber-500/10 via-red-500/5 to-transparent">
+            <div class="flex items-center gap-2.5">
+                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-amber-500 to-yellow-400 text-slate-950 flex items-center justify-center text-base shadow-xs">
+                    <i class="fa-solid fa-trophy"></i>
+                </div>
+                <div>
+                    <h3 class="font-extrabold text-slate-900 text-sm sm:text-base flex items-center gap-2">
+                        <span>Santri Berprestasi Munaqasyah 2026</span>
+                        <span class="text-[9px] px-2 py-0.5 rounded-full bg-amber-100 text-amber-900 font-black uppercase">Top Rata-Rata</span>
+                    </h3>
+                    <p class="text-[11px] text-slate-500">Santri peraih nilai munaqasyah tertinggi untuk unit TPQ &amp; RTQ Ar-Raudhah</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-2 text-xs">
+                <span class="text-[10px] text-slate-400 font-medium">Diperbarui Otomatis</span>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-slate-100">
+            {{-- Kolom Top TPQ --}}
+            <div class="p-4 sm:p-5 space-y-3">
+                <div class="flex items-center justify-between pb-2 border-b border-amber-100">
+                    <div class="flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+                        <h4 class="font-bold text-slate-900 text-xs uppercase tracking-wide">Top Santri TPQ Ar-Raudhah</h4>
+                    </div>
+                    <span class="text-[10px] font-bold text-amber-800 bg-amber-50 px-2 py-0.5 rounded-full border border-amber-200">Unit TPQ</span>
+                </div>
+
+                <div class="space-y-2">
+                    @forelse($topSantriTPQ as $idx => $santri)
+                        @php
+                            $p = $santri->penilaian;
+                            $medals = ['🥇', '🥈', '🥉', '4️⃣', '5️⃣'];
+                            $medalIco = $medals[$idx] ?? ($idx + 1);
+                        @endphp
+                        <div class="flex items-center justify-between p-2.5 rounded-xl border transition-all duration-200 {{ $idx === 0 ? 'bg-gradient-to-r from-amber-50 to-yellow-50/50 border-amber-200 shadow-2xs' : 'bg-slate-50/70 hover:bg-slate-50 border-slate-200' }}">
+                            <div class="flex items-center gap-3 min-w-0">
+                                <span class="text-base select-none shrink-0 w-6 text-center">{{ $medalIco }}</span>
+                                <div class="w-8 h-8 rounded-lg overflow-hidden border border-slate-200 bg-white shrink-0">
+                                    <img src="{{ $santri->foto_url }}" alt="{{ $santri->nama }}" class="w-full h-full object-cover">
+                                </div>
+                                <div class="min-w-0">
+                                    <p class="font-bold text-slate-900 text-xs truncate leading-tight">{{ $santri->nama }}</p>
+                                    <p class="text-[10px] text-slate-500 truncate font-mono">No: {{ $santri->no_peserta ?? '-' }} • {{ $santri->nama_unit ?? 'TPQ' }}</p>
+                                </div>
+                            </div>
+                            <div class="text-right shrink-0 pl-2">
+                                <div class="font-black text-amber-700 text-xs font-mono">{{ $p ? number_format($p->rata_rata, 2) : '-' }}</div>
+                                <span class="text-[9px] font-bold px-1.5 py-0.2 rounded {{ ($p && $p->predikat == 'Mumtaz (Istimewa)') ? 'bg-emerald-100 text-emerald-800' : 'bg-blue-100 text-blue-800' }}">
+                                    {{ $p ? explode(' ', $p->predikat)[0] : '-' }}
+                                </span>
+                            </div>
+                        </div>
+                    @empty
+                        <p class="text-slate-400 text-xs text-center py-4">Belum ada data nilai TPQ</p>
+                    @endforelse
+                </div>
+            </div>
+
+            {{-- Kolom Top RTQ --}}
+            <div class="p-4 sm:p-5 space-y-3">
+                <div class="flex items-center justify-between pb-2 border-b border-blue-100">
+                    <div class="flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-blue-900"></span>
+                        <h4 class="font-bold text-slate-900 text-xs uppercase tracking-wide">Top Santri RTQ Ar-Raudhah</h4>
+                    </div>
+                    <span class="text-[10px] font-bold text-blue-900 bg-blue-50 px-2 py-0.5 rounded-full border border-blue-200">Unit RTQ (Tahfidz)</span>
+                </div>
+
+                <div class="space-y-2">
+                    @forelse($topSantriRTQ as $idx => $santri)
+                        @php
+                            $p = $santri->penilaian;
+                            $medals = ['🥇', '🥈', '🥉', '4️⃣', '5️⃣'];
+                            $medalIco = $medals[$idx] ?? ($idx + 1);
+                        @endphp
+                        <div class="flex items-center justify-between p-2.5 rounded-xl border transition-all duration-200 {{ $idx === 0 ? 'bg-gradient-to-r from-blue-50 to-indigo-50/50 border-blue-200 shadow-2xs' : 'bg-slate-50/70 hover:bg-slate-50 border-slate-200' }}">
+                            <div class="flex items-center gap-3 min-w-0">
+                                <span class="text-base select-none shrink-0 w-6 text-center">{{ $medalIco }}</span>
+                                <div class="w-8 h-8 rounded-lg overflow-hidden border border-slate-200 bg-white shrink-0">
+                                    <img src="{{ $santri->foto_url }}" alt="{{ $santri->nama }}" class="w-full h-full object-cover">
+                                </div>
+                                <div class="min-w-0">
+                                    <p class="font-bold text-slate-900 text-xs truncate leading-tight">{{ $santri->nama }}</p>
+                                    <p class="text-[10px] text-slate-500 truncate font-mono">No: {{ $santri->no_peserta ?? '-' }} • {{ $santri->nama_unit ?? 'RTQ' }}</p>
+                                </div>
+                            </div>
+                            <div class="text-right shrink-0 pl-2">
+                                <div class="font-black text-blue-900 text-xs font-mono">{{ $p ? number_format($p->rata_rata, 2) : '-' }}</div>
+                                <span class="text-[9px] font-bold px-1.5 py-0.2 rounded {{ ($p && $p->predikat == 'Mumtaz (Istimewa)') ? 'bg-emerald-100 text-emerald-800' : 'bg-blue-100 text-blue-800' }}">
+                                    {{ $p ? explode(' ', $p->predikat)[0] : '-' }}
+                                </span>
+                            </div>
+                        </div>
+                    @empty
+                        <p class="text-slate-400 text-xs text-center py-4">Belum ada data nilai RTQ</p>
+                    @endforelse
+                </div>
+            </div>
+        </div>
+    </div>
+
     {{-- ===== GRID: Breakdown TPQ/RTQ + Aksi Cepat ===== --}}
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
 
