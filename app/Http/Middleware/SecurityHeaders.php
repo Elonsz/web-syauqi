@@ -44,7 +44,7 @@ class SecurityHeaders
                 "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://cdn.tailwindcss.com",
                 "font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:",
                 "img-src 'self' data: https://ui-avatars.com https://api.qrserver.com https://*.wikipedia.org storage.googleapis.com",
-                "connect-src 'self' https://id.wikipedia.org https://equran.id https://api.aladhan.com",
+                "connect-src 'self' https://id.wikipedia.org https://equran.id https://api.aladhan.com https://generativelanguage.googleapis.com https://*.ngrok-free.app https://*.ngrok.io",
                 "media-src 'self' https://cdn.equran.id",
                 "frame-ancestors 'none'",
                 "base-uri 'self'",

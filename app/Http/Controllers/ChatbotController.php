@@ -219,7 +219,7 @@ class ChatbotController extends Controller
      */
     protected function callGeminiCurl(string $apiKey, string $message, string $systemInstruction): ?string
     {
-        $endpoint = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=" . $apiKey;
+        $endpoint = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=" . $apiKey;
 
         $payload = json_encode([
             'system_instruction' => [
@@ -275,7 +275,7 @@ class ChatbotController extends Controller
     private function _legacyGeminiHttpFacade(string $geminiKey, string $message, string $systemPrompt): ?string
     {
         try {
-            $endpoint = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=" . $geminiKey;
+            $endpoint = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=" . $geminiKey;
             $response = Http::withoutVerifying()
                 ->withOptions(['curl' => [CURLOPT_IPRESOLVE => CURL_IPRESOLVE_V4]])
                 ->timeout(8)

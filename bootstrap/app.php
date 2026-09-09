@@ -20,6 +20,11 @@ return Application::configure(basePath: dirname(__DIR__))
             'chatbot.throttle' => \App\Http\Middleware\ChatbotRateLimiter::class,
         ]);
 
+        // ── Trust Proxies — wajib untuk ngrok / reverse proxy ────────────
+        // Ngrok bertindak sebagai reverse proxy; tanpa ini Laravel salah baca
+        // IP, scheme (https), dan host — bisa menyebabkan request gagal.
+        $middleware->trustProxies(at: '*');
+
         // ── Security Headers — diterapkan pada SEMUA web response ────────
         $middleware->web(append: [
             \App\Http\Middleware\SecurityHeaders::class,
