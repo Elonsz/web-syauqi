@@ -95,30 +95,23 @@
             inset: 0;
             z-index: 9999;
             pointer-events: none;
-            background: linear-gradient(135deg, #081026, #16285a, #dc2626);
+            background: #fff;
             opacity: 0;
-            transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: opacity 0.2s ease;
         }
-        #page-overlay.fade-in  { opacity: 1; pointer-events: all; }
+        #page-overlay.fade-in  { opacity: 0.5; pointer-events: all; }
         #page-overlay.fade-out { opacity: 0; pointer-events: none; }
 
         /* Progress bar */
         #page-progress {
             position: fixed;
             top: 0; left: 0;
-            height: 3px;
+            height: 2px;
             width: 0%;
-            background: linear-gradient(90deg, #dc2626, #2563eb, #dc2626);
-            background-size: 200% auto;
-            animation: progressShimmer 1.2s linear infinite;
+            background: #2563eb;
             z-index: 10000;
             transition: width 0.3s ease;
             border-radius: 0 2px 2px 0;
-            box-shadow: 0 0 8px rgba(220, 38, 38, 0.7);
-        }
-        @keyframes progressShimmer {
-            from { background-position: 0% center; }
-            to   { background-position: 200% center; }
         }
 
         /* Content fade-in on load */
@@ -202,68 +195,68 @@
     </form>
 
     <!-- Navbar -->
-    <header class="bg-gradient-to-r from-[#081026] via-[#0D1C44] to-[#1E3A8A] text-white shadow-lg sticky top-0 z-50 no-print border-b border-[#1E3A8A]/40">
+    <header class="bg-white border-b border-slate-200 text-slate-800 shadow-sm sticky top-0 z-50 no-print">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <div class="flex items-center space-x-3">
-                    <a href="{{ route('dashboard') }}" class="flex items-center gap-3 group">
-                        <div class="w-10 h-10 rounded-xl bg-white p-1 flex items-center justify-center font-bold text-xl shadow-md group-hover:scale-105 transition-transform border border-[#1E3A8A]">
+            <div class="flex items-center justify-between h-15" style="height:60px">
+                <div class="flex items-center gap-1">
+                    <a href="{{ route('dashboard') }}" class="flex items-center gap-2.5 mr-3 group">
+                        <div class="w-9 h-9 rounded-lg bg-slate-50 border border-slate-200 p-1.5 flex items-center justify-center group-hover:border-blue-300 transition">
                             <img src="{{ asset('images/logo.png') }}" alt="Logo" class="w-full h-full object-contain">
                         </div>
                         <div>
-                            <h1 class="text-base font-bold tracking-tight text-white flex items-center gap-2">
-                                AR-RAUDHAH
-                                <span class="text-xs bg-[#dc2626] text-white font-black px-2 py-0.5 rounded-full uppercase shadow">MUNAQASYAH</span>
-                            </h1>
-                            <p class="text-xs text-blue-200">Yayasan Cahaya Amanah Banjarbaru</p>
+                            <h1 class="text-sm font-black text-slate-800 leading-tight tracking-tight">AR-RAUDHAH</h1>
+                            <p class="text-[10px] text-slate-400 leading-none">Yayasan Cahaya Amanah</p>
                         </div>
                     </a>
+
+                    <div class="w-px h-6 bg-slate-200 mx-1"></div>
+
                     <a href="{{ route('dashboard') }}" title="Dashboard"
-                       class="px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 {{ request()->routeIs('dashboard') ? 'bg-white/20 text-white' : 'text-blue-200 hover:bg-[#1E3A8A] hover:text-white' }}">
-                        <i class="fa-solid fa-gauge-high"></i> Dashboard
+                       class="px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center gap-1.5 {{ request()->routeIs('dashboard') ? 'bg-blue-50 text-blue-700' : 'text-slate-600 hover:bg-slate-100 hover:text-slate-800' }}">
+                        <i class="fa-solid fa-gauge-high text-[11px]"></i> Dashboard
                     </a>
-                    <a href="{{ route('santri.index') }}" title="Direktori Biodata Siswa"
-                       class="px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 {{ request()->routeIs('santri.*') ? 'bg-white/20 text-white' : 'text-blue-200 hover:bg-[#1E3A8A] hover:text-white' }}">
-                        <i class="fa-solid fa-address-card text-cyan-300"></i> Biodata Santri
+                    <a href="{{ route('santri.index') }}" title="Biodata Santri"
+                       class="px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center gap-1.5 {{ request()->routeIs('santri.*') ? 'bg-blue-50 text-blue-700' : 'text-slate-600 hover:bg-slate-100 hover:text-slate-800' }}">
+                        <i class="fa-solid fa-address-card text-[11px]"></i> Biodata Santri
                     </a>
                 </div>
 
-                <div class="flex items-center gap-2">
+                <div class="flex items-center gap-1.5">
                     {{-- Tab Switch TPQ / RTQ --}}
-                    <div class="inline-flex bg-[#081026]/80 p-1 rounded-xl border border-blue-900/60">
+                    <div class="inline-flex bg-slate-100 p-0.5 rounded-lg border border-slate-200 mr-1">
                         <a href="{{ route('munaqasyah.index', ['jenis' => 'TPQ']) }}"
-                           class="px-3.5 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 {{ request('jenis', 'TPQ') == 'TPQ' ? 'bg-[#1E3A8A] text-white shadow' : 'text-blue-200 hover:bg-[#1E3A8A]/50' }}">
-                            <i class="fa-solid fa-scroll"></i> Tab TPQ
+                           class="px-3 py-1.5 rounded-md text-xs font-semibold transition flex items-center gap-1.5 {{ request('jenis', 'TPQ') == 'TPQ' ? 'bg-white text-blue-700 shadow-sm border border-slate-200' : 'text-slate-500 hover:text-slate-700' }}">
+                            <i class="fa-solid fa-scroll text-[10px]"></i> TPQ
                         </a>
                         <a href="{{ route('munaqasyah.index', ['jenis' => 'RTQ']) }}"
-                           class="px-3.5 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 {{ request('jenis') == 'RTQ' ? 'bg-[#dc2626] text-white shadow' : 'text-red-200 hover:bg-[#dc2626]/50' }}">
-                            <i class="fa-solid fa-book-quran"></i> Tab RTQ
+                           class="px-3 py-1.5 rounded-md text-xs font-semibold transition flex items-center gap-1.5 {{ request('jenis') == 'RTQ' ? 'bg-white text-emerald-700 shadow-sm border border-slate-200' : 'text-slate-500 hover:text-slate-700' }}">
+                            <i class="fa-solid fa-book-quran text-[10px]"></i> RTQ
                         </a>
                     </div>
 
                     {{-- Export Buttons --}}
                     @php $navJenis = request('jenis', 'TPQ'); $navUnit = request('unit'); @endphp
                     <a href="{{ route('munaqasyah.export.excel', ['jenis' => $navJenis, 'unit' => $navUnit]) }}"
-                       class="bg-emerald-600 hover:bg-emerald-500 text-white px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 shadow-sm"
+                       class="text-emerald-700 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center gap-1.5"
                        title="Download Excel">
-                        <i class="fa-solid fa-file-excel text-emerald-200"></i> Export Excel
+                        <i class="fa-solid fa-file-excel text-[11px]"></i> Excel
                     </a>
                     <a href="{{ route('munaqasyah.export.csv', ['jenis' => $navJenis, 'unit' => $navUnit]) }}"
-                       class="bg-[#1E3A8A] hover:bg-blue-700 text-white px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 shadow-sm border border-blue-400/40"
+                       class="text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-200 px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center gap-1.5"
                        title="Download Spreadsheet / CSV">
-                        <i class="fa-solid fa-table text-blue-200"></i> Export Spreadsheet
+                        <i class="fa-solid fa-table text-[11px]"></i> CSV
                     </a>
 
-                    {{-- Input Santri & Foto --}}
+                    {{-- Input Santri --}}
                     <a href="{{ route('munaqasyah.create', ['jenis' => $navJenis]) }}"
-                       class="bg-[#dc2626] hover:bg-red-700 text-white px-3.5 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
-                        <i class="fa-solid fa-user-plus"></i> Input Santri &amp; Foto
+                       class="bg-blue-700 hover:bg-blue-800 text-white px-3.5 py-1.5 rounded-lg text-xs font-semibold transition flex items-center gap-1.5 shadow-sm">
+                        <i class="fa-solid fa-user-plus text-[11px]"></i> Input Santri
                     </a>
 
                     {{-- Logout Button --}}
-                    <div class="border-l border-blue-800/60 pl-2 ml-1">
+                    <div class="border-l border-slate-200 pl-1.5 ml-0.5">
                         <button type="button" onclick="openLogoutModal()" title="Keluar dari sistem"
-                            class="flex items-center gap-1.5 text-xs font-bold text-red-300 hover:text-white hover:bg-red-600/40 px-3 py-1.5 rounded-lg transition">
+                            class="flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-red-600 hover:bg-red-50 px-3 py-1.5 rounded-lg transition">
                             <i class="fa-solid fa-right-from-bracket"></i> Keluar
                         </button>
                     </div>

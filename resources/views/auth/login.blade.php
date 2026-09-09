@@ -6,16 +6,16 @@
     <title>Login — Yayasan Cahaya Amanah Ar-Raudhah</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
     <script>
         window.tailwind = window.tailwind || {};
         window.tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        blue: { 50: '#eff6ff', 100: '#dbeafe', 200: '#bfdbfe', 300: '#93c5fd', 400: '#60a5fa', 500: '#2563eb', 600: '#1d4ed8', 700: '#1e40af', 800: '#1e3a8a', 900: '#16285a', 950: '#081026' },
-                        red: { 50: '#fef2f2', 100: '#fee2e2', 200: '#fecaca', 300: '#fca5a5', 400: '#f87171', 500: '#ef4444', 600: '#dc2626', 700: '#b91c1c', 800: '#991b1b', 900: '#7f1d1d', 950: '#450a0a' },
-                        rose: { 50: '#fff1f2', 100: '#ffe4e6', 200: '#fecdd3', 300: '#fda4af', 400: '#fb7185', 500: '#f43f5e', 600: '#e11d48', 700: '#be123c', 800: '#9f1239', 900: '#881337', 950: '#4c0519' }
+                        navy: { 50:'#f0f4ff', 100:'#dce6ff', 200:'#b9ccff', 300:'#87a8ff', 400:'#5481f7', 500:'#2d5be3', 600:'#1e3fa8', 700:'#17317f', 800:'#132460', 900:'#0d1a45', 950:'#080f2a' },
+                        green: { 50:'#f0fdf4', 100:'#dcfce7', 400:'#4ade80', 500:'#22c55e', 600:'#16a34a', 700:'#15803d' },
+                        amber: { 300:'#fcd34d', 400:'#fbbf24', 500:'#f59e0b', 600:'#d97706' }
                     }
                 }
             }
@@ -24,201 +24,229 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        * { font-family: 'Plus Jakarta Sans', sans-serif; }
 
-        .bg-animated {
-            background: linear-gradient(135deg, #070d1e 0%, #0c1836 25%, #152c64 50%, #0d1b3e 75%, #070d1e 100%);
-            background-size: 400% 400%;
-            animation: gradientShift 8s ease infinite;
-        }
-        @keyframes gradientShift {
-            0%   { background-position: 0% 50%; }
-            50%  { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        body {
+            background: #f8fafc;
+            min-height: 100vh;
         }
 
-        .orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(60px);
-            opacity: 0.22;
-            animation: floatOrb 10s ease-in-out infinite;
-        }
-        .orb-1 { width: 400px; height: 400px; background: #dc2626; top: -10%; left: -10%; animation-delay: 0s; }
-        .orb-2 { width: 300px; height: 300px; background: #f59e0b; top: 60%; right: -5%; animation-delay: -4s; }
-        .orb-3 { width: 250px; height: 250px; background: #1e3a8a; bottom: -5%; left: 40%; animation-delay: -7s; }
-        @keyframes floatOrb {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50%       { transform: translateY(-30px) scale(1.08); }
+        .login-left {
+            background: linear-gradient(155deg, #0d1a45 0%, #132460 40%, #17317f 100%);
         }
 
-        .islamic-pattern {
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        }
-
-        .glass-card {
-            background: rgba(15, 23, 42, 0.78);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border: 1px solid rgba(255, 255, 255, 0.14);
+        .pattern-bg {
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.04' fill-rule='evenodd'%3E%3Cpath d='M20 18v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM4 2V0H2v2H0v2h2v2h2V4h2V2H4z'/%3E%3C/g%3E%3C/svg%3E");
         }
 
         .input-field {
+            width: 100%;
+            background: #f8fafc;
+            border: 1.5px solid #e2e8f0;
+            color: #1e293b;
+            border-radius: 10px;
+            padding: 11px 16px;
+            font-size: 0.875rem;
             transition: all 0.2s;
-        }
-        .input-field:focus {
             outline: none;
-            box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.35);
+        }
+        .input-field::placeholder { color: #94a3b8; }
+        .input-field:focus {
+            border-color: #2d5be3;
+            box-shadow: 0 0 0 3px rgba(45, 91, 227, 0.12);
+            background: #fff;
+        }
+        .input-field.error {
             border-color: #ef4444;
-            background: rgba(255,255,255,0.12) !important;
+            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.10);
         }
 
-        .btn-login {
-            background: linear-gradient(135deg, #dc2626, #991b1b);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            color: #ffffff;
+        .btn-primary {
+            width: 100%;
+            background: #132460;
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.9rem;
+            padding: 12px 24px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
-        .btn-login::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%;
-            width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
-            transition: left 0.5s;
+        .btn-primary:hover {
+            background: #17317f;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(19, 36, 96, 0.28);
         }
-        .btn-login:hover::before { left: 100%; }
-        .btn-login:hover { transform: translateY(-1px); box-shadow: 0 8px 25px rgba(220, 38, 38, 0.45); }
-        .btn-login:active { transform: translateY(0); }
+        .btn-primary:active { transform: translateY(0); }
+        .btn-primary:disabled { opacity: 0.65; cursor: not-allowed; transform: none; }
 
         .card-enter {
-            animation: cardEnter 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation: cardIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
         }
-        @keyframes cardEnter {
-            from { opacity: 0; transform: translateY(30px) scale(0.97); }
-            to   { opacity: 1; transform: translateY(0) scale(1); }
+        @keyframes cardIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
 
-        .arabic-text {
+        .amiri-text {
             font-family: 'Amiri', serif;
-            background: linear-gradient(90deg, #fde68a, #fbbf24, #fde68a);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: shimmer 3s linear infinite;
-        }
-        @keyframes shimmer {
-            from { background-position: 0% center; }
-            to   { background-position: 200% center; }
         }
 
-        @keyframes rise {
-            from { transform: translateY(0) scale(1); opacity: 0.8; }
-            to   { transform: translateY(-100vh) scale(1.5); opacity: 0; }
+        .geometric-deco {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.07;
         }
     </style>
 </head>
-<body class="bg-animated min-h-screen flex items-center justify-center relative overflow-hidden py-10">
+<body class="min-h-screen flex">
 
-    <!-- Orbs -->
-    <div class="orb orb-1 islamic-pattern"></div>
-    <div class="orb orb-2"></div>
-    <div class="orb orb-3"></div>
+    <!-- Left Panel (Branding) -->
+    <div class="login-left pattern-bg hidden lg:flex flex-col justify-between w-[45%] min-h-screen p-12 relative overflow-hidden">
 
-    <!-- Islamic Pattern Overlay -->
-    <div class="absolute inset-0 islamic-pattern pointer-events-none"></div>
+        <!-- Geometric decorations (subtle, not animated) -->
+        <div class="geometric-deco bg-white" style="width:320px;height:320px;top:-80px;right:-80px;"></div>
+        <div class="geometric-deco bg-white" style="width:200px;height:200px;bottom:-40px;left:-40px;"></div>
 
-    <!-- Tombol Kembali ke Landing Page (Pojok Kiri Atas) -->
-    <a href="{{ route('landing') }}" 
-       class="fixed top-4 left-4 sm:top-6 sm:left-6 z-20 inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-300 bg-slate-900/70 hover:bg-slate-800 hover:text-white border border-white/15 backdrop-blur-md transition-all duration-200 shadow-lg group">
-        <i class="fa-solid fa-arrow-left text-[11px] transition-transform group-hover:-translate-x-1 text-red-400 group-hover:text-white"></i>
-        <span>Kembali ke Beranda</span>
-    </a>
-
-    <!-- Login Container -->
-    <div class="relative z-10 w-full max-w-md px-4">
-        <div class="card-enter">
-
-            <!-- Logo & Branding -->
-            <div class="text-center mb-6">
-                <div class="inline-flex items-center justify-center w-24 h-24 rounded-3xl bg-white text-slate-900 shadow-2xl mb-3 relative p-2 border-2 border-red-500/50">
-                    <img src="{{ asset('images/logo.png') }}" alt="Logo Yayasan" class="w-full h-full object-contain">
+        <!-- Top section -->
+        <div class="relative z-10">
+            <div class="flex items-center gap-3 mb-12">
+                <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center p-1.5 shadow-md">
+                    <img src="{{ asset('images/logo.png') }}" alt="Logo" class="w-full h-full object-contain">
                 </div>
-                <h1 class="text-xl sm:text-2xl font-black text-white tracking-tight">AR-RAUDHAH</h1>
-                <p class="text-xs sm:text-sm font-bold text-red-400">Yayasan Cahaya Amanah</p>
-                <p class="text-slate-300 text-[11px] mt-0.5">Banjarbaru - Kalimantan Selatan</p>
-                <p class="arabic-text text-xl sm:text-2xl mt-2 font-bold">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
-                <p class="text-blue-200 text-xs mt-1">Sistem Penilaian Munaqasyah TPQ &amp; RTQ Ar-Raudhah</p>
+                <div>
+                    <p class="text-white font-bold text-sm leading-tight">AR-RAUDHAH</p>
+                    <p class="text-blue-200 text-xs">Yayasan Cahaya Amanah</p>
+                </div>
             </div>
 
-            <!-- Glass Card -->
-            <div class="glass-card rounded-3xl p-8 shadow-2xl">
+            <h2 class="text-3xl xl:text-4xl font-black text-white leading-tight mb-4">
+                Sistem Penilaian<br>
+                <span class="text-amber-300">Munaqasyah</span><br>
+                Santri
+            </h2>
+            <p class="text-blue-200 text-sm leading-relaxed max-w-xs">
+                Platform digital pengelolaan ujian dan kelulusan santri TPQ & RTQ Ar-Raudhah, Banjarbaru.
+            </p>
+        </div>
+
+        <!-- Arabic verse -->
+        <div class="relative z-10">
+            <p class="amiri-text text-2xl text-amber-200 leading-relaxed mb-1">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
+            <p class="text-blue-300 text-xs">Dengan menyebut nama Allah Yang Maha Pengasih lagi Maha Penyayang</p>
+
+            <div class="mt-8 flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center">
+                    <i class="fa-solid fa-scroll text-amber-300 text-sm"></i>
+                </div>
+                <div>
+                    <p class="text-white text-xs font-semibold">TPQ Ar-Raudhah</p>
+                    <p class="text-blue-300 text-[11px]">Taman Pendidikan Qur'an</p>
+                </div>
+                <div class="w-px h-8 bg-white/20 mx-1"></div>
+                <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center">
+                    <i class="fa-solid fa-book-quran text-amber-300 text-sm"></i>
+                </div>
+                <div>
+                    <p class="text-white text-xs font-semibold">RTQ Ar-Raudhah</p>
+                    <p class="text-blue-300 text-[11px]">Rumah Tahfidz Qur'an</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Right Panel (Form) -->
+    <div class="flex-1 flex flex-col justify-center items-center px-6 py-10 bg-slate-50">
+
+        <!-- Back button -->
+        <a href="{{ route('landing') }}"
+           class="absolute top-5 left-5 lg:top-6 lg:left-[47%] xl:left-[47%] inline-flex items-center gap-2 text-xs font-semibold text-slate-500 hover:text-slate-800 bg-white border border-slate-200 px-3 py-2 rounded-lg shadow-sm transition hover:shadow-md group">
+            <i class="fa-solid fa-arrow-left text-[10px] group-hover:-translate-x-0.5 transition-transform"></i>
+            Kembali ke Beranda
+        </a>
+
+        <div class="w-full max-w-sm card-enter">
+
+            <!-- Mobile logo -->
+            <div class="lg:hidden text-center mb-8">
+                <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white border border-slate-200 shadow-sm mb-3 p-2">
+                    <img src="{{ asset('images/logo.png') }}" alt="Logo" class="w-full h-full object-contain">
+                </div>
+                <h1 class="font-black text-slate-800 text-xl">AR-RAUDHAH</h1>
+                <p class="text-slate-500 text-xs">Yayasan Cahaya Amanah Banjarbaru</p>
+            </div>
+
+            <!-- Form Card -->
+            <div class="bg-white rounded-2xl shadow-lg border border-slate-200 p-8">
                 <div class="mb-6">
-                    <h2 class="text-xl font-bold text-white">Selamat Datang 👋</h2>
-                    <p class="text-slate-300 text-sm mt-0.5">Silakan masuk untuk melanjutkan</p>
+                    <h2 class="text-xl font-bold text-slate-800">Selamat Datang</h2>
+                    <p class="text-slate-500 text-sm mt-1">Masuk untuk mengelola data munaqasyah</p>
                 </div>
 
+                {{-- Success message --}}
                 @if(session('success'))
-                <div class="mb-4 bg-emerald-500/20 border border-emerald-400/40 rounded-xl p-3.5 flex items-start gap-2.5">
-                    <i class="fa-solid fa-circle-check text-emerald-400 mt-0.5 shrink-0"></i>
-                    <p class="text-emerald-200 text-xs leading-relaxed">{{ session('success') }}</p>
+                <div class="mb-4 bg-green-50 border border-green-200 rounded-lg p-3 flex items-start gap-2.5">
+                    <i class="fa-solid fa-circle-check text-green-500 mt-0.5 shrink-0 text-sm"></i>
+                    <p class="text-green-700 text-xs leading-relaxed">{{ session('success') }}</p>
                 </div>
                 @endif
 
+                {{-- Lockout warning --}}
                 @if(session('is_locked'))
-                <div class="mb-5 bg-gradient-to-r from-red-950/80 to-rose-950/80 border-2 border-red-500/60 rounded-2xl p-4 shadow-xl text-center space-y-2">
-                    <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-red-600/30 border border-red-500/50 text-red-400 animate-pulse">
-                        <i class="fa-solid fa-lock text-xl"></i>
+                <div class="mb-5 bg-red-50 border border-red-200 rounded-xl p-4 text-center">
+                    <div class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-red-100 text-red-500 mb-2">
+                        <i class="fa-solid fa-lock text-lg"></i>
                     </div>
-                    <h3 class="text-sm font-bold text-red-300">AKSES LOGIN DIKUNCI SEMENTARA</h3>
-                    <p class="text-slate-300 text-xs">
-                        Terlalu banyak percobaan login gagal dari perangkat ini demi perlindungan keamanan sistem.
-                    </p>
-                    <div class="py-2">
-                        <div class="inline-block px-4 py-2 rounded-xl bg-red-950/90 border border-red-500/40 font-mono text-lg font-black text-red-400 tracking-wider shadow-inner" id="countdownBox">
-                            ⏳ <span id="countdownTimer">--:--</span>
-                        </div>
+                    <h3 class="text-sm font-bold text-red-700 mb-1">Akses Sementara Dikunci</h3>
+                    <p class="text-slate-500 text-xs mb-3">Terlalu banyak percobaan login gagal. Harap tunggu:</p>
+                    <div class="inline-block px-4 py-2 rounded-lg bg-red-100 font-mono text-lg font-black text-red-600" id="countdownBox">
+                        <span id="countdownTimer">--:--</span>
                     </div>
-                    <p class="text-[11px] text-slate-400">Silakan tunggu hingga waktu selesai atau hubungi administrator.</p>
+                    <p class="text-xs text-slate-400 mt-2">Atau hubungi administrator sistem.</p>
                 </div>
                 @endif
 
+                {{-- Validation errors (global) --}}
                 @if($errors->any())
-                <div class="mb-4 bg-red-500/20 border border-red-400/40 rounded-xl p-3 flex items-start gap-2">
-                    <i class="fa-solid fa-circle-exclamation text-red-400 mt-0.5 shrink-0"></i>
+                <div class="mb-4 bg-red-50 border border-red-200 rounded-lg p-3 flex items-start gap-2">
+                    <i class="fa-solid fa-circle-exclamation text-red-400 mt-0.5 shrink-0 text-sm"></i>
                     <div>
                         @foreach($errors->all() as $error)
-                            <p class="text-red-200 text-xs">{{ $error }}</p>
+                            <p class="text-red-600 text-xs">{{ $error }}</p>
                         @endforeach
                     </div>
                 </div>
                 @endif
 
-                <form action="{{ route('login.post') }}" method="POST" class="space-y-5" id="loginForm">
+                <form action="{{ route('login.post') }}" method="POST" class="space-y-4" id="loginForm">
                     @csrf
 
                     <!-- Username -->
                     <div>
-                        <label class="block text-xs font-semibold text-slate-200 mb-1.5 uppercase tracking-wide">
-                            <i class="fa-solid fa-user mr-1.5 text-red-400"></i>Username
+                        <label class="block text-xs font-semibold text-slate-600 mb-1.5 uppercase tracking-wide">
+                            Username
                         </label>
                         <input
                             type="text"
                             name="username"
                             id="username"
                             value="{{ old('username') }}"
-                            placeholder="Masukkan username..."
+                            placeholder="Masukkan username"
                             autocomplete="username"
-                            class="input-field w-full bg-white/10 border border-white/20 text-white placeholder-slate-400 rounded-xl px-4 py-3 text-sm"
+                            class="input-field"
                             required
                         >
                     </div>
 
                     <!-- Password -->
                     <div>
-                        <label class="block text-xs font-semibold text-slate-200 mb-1.5 uppercase tracking-wide">
-                            <i class="fa-solid fa-lock mr-1.5 text-red-400"></i>Password
+                        <label class="block text-xs font-semibold text-slate-600 mb-1.5 uppercase tracking-wide">
+                            Password
                         </label>
                         <div class="relative">
                             <input
@@ -227,24 +255,26 @@
                                 id="password"
                                 placeholder="••••••••"
                                 autocomplete="current-password"
-                                class="input-field w-full bg-white/10 border {{ session('error') && !session('is_locked') ? 'border-red-400/80 ring-1 ring-red-400/50' : 'border-white/20' }} text-white placeholder-slate-400 rounded-xl px-4 py-3 pr-11 text-sm"
+                                class="input-field pr-11 {{ session('error') && !session('is_locked') ? 'error' : '' }}"
                                 required
                             >
-                            <button type="button" class="absolute right-3 top-1/2 -translate-y-1/2 text-red-400 hover:text-white transition-colors" onclick="togglePass()">
+                            <button type="button"
+                                class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-700 transition-colors"
+                                onclick="togglePass()">
                                 <i class="fa-solid fa-eye text-sm" id="eyeIcon"></i>
                             </button>
                         </div>
 
-                        <!-- Peringatan Error & Sisa Percobaan (Di Bawah Password) -->
+                        <!-- Password error (di bawah input) -->
                         @if(session('error') && !session('is_locked'))
-                        <div class="mt-2.5 bg-red-500/20 border border-red-400/40 rounded-xl p-3 flex items-start gap-2.5">
+                        <div class="mt-2 bg-red-50 border border-red-200 rounded-lg p-3 flex items-start gap-2.5">
                             <i class="fa-solid fa-triangle-exclamation text-red-400 mt-0.5 shrink-0 text-sm"></i>
-                            <div class="space-y-1">
-                                <p class="text-red-200 text-xs font-semibold leading-relaxed">{!! session('error') !!}</p>
+                            <div class="space-y-1.5">
+                                <p class="text-red-600 text-xs font-semibold leading-relaxed">{!! session('error') !!}</p>
                                 @if(session('remaining_attempts'))
-                                <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-amber-500/20 border border-amber-400/40 text-amber-300 text-[11px] font-bold">
+                                <div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-amber-50 border border-amber-200 text-amber-700 text-[11px] font-semibold">
                                     <i class="fa-solid fa-shield-halved text-[10px]"></i>
-                                    <span>Sisa percobaan: {{ session('remaining_attempts') }}x lagi sebelum diblokir</span>
+                                    <span>Sisa percobaan: {{ session('remaining_attempts') }}x sebelum diblokir</span>
                                 </div>
                                 @endif
                             </div>
@@ -255,36 +285,34 @@
                     <!-- Remember Me -->
                     <div class="flex items-center">
                         <label class="flex items-center gap-2 cursor-pointer">
-                            <input type="checkbox" name="remember" id="remember" class="w-4 h-4 rounded accent-red-600">
-                            <span class="text-xs text-slate-300">Ingat saya selama 7 hari</span>
+                            <input type="checkbox" name="remember" id="remember" class="w-4 h-4 rounded accent-blue-700">
+                            <span class="text-xs text-slate-500">Ingat saya selama 7 hari</span>
                         </label>
                     </div>
 
                     <!-- Submit -->
-                    <button type="submit" id="loginBtn"
-                        class="btn-login w-full font-black text-sm py-3.5 rounded-xl shadow-lg tracking-wide flex items-center justify-center gap-2 active:scale-95">
+                    <button type="submit" id="loginBtn" class="btn-primary mt-2">
                         <i class="fa-solid fa-right-to-bracket" id="loginIcon"></i>
                         <span id="loginText">Masuk ke Sistem</span>
                     </button>
                 </form>
 
-                <!-- Info Footer -->
-                <div class="mt-6 pt-6 border-t border-white/10 text-center space-y-3">
+                <!-- Footer -->
+                <div class="mt-6 pt-5 border-t border-slate-100 text-center space-y-3">
                     <p class="text-slate-400 text-xs">
-                        <i class="fa-solid fa-shield-halved mr-1 text-red-400"></i>
-                        Akses terbatas untuk panitia munaqasyah yang berwenang
+                        <i class="fa-solid fa-shield-halved mr-1 text-slate-400"></i>
+                        Akses terbatas — panitia munaqasyah berwenang
                     </p>
-                    <div class="pt-1">
-                        <a href="{{ route('landing') }}" class="inline-flex items-center justify-center gap-2 text-xs font-semibold text-slate-300 hover:text-white transition group py-1.5 px-3 rounded-xl hover:bg-white/5 border border-transparent hover:border-white/10">
-                            <i class="fa-solid fa-house text-[11px] text-red-400 group-hover:scale-110 transition-transform"></i>
-                            <span>Kembali ke Halaman Landing</span>
-                        </a>
-                    </div>
+                    <a href="{{ route('landing') }}"
+                       class="inline-flex items-center gap-2 text-xs text-slate-500 hover:text-slate-800 transition font-medium py-1">
+                        <i class="fa-solid fa-house text-[11px]"></i>
+                        Kembali ke Halaman Beranda
+                    </a>
                 </div>
             </div>
 
-            <p class="text-center text-slate-400 text-xs mt-6">
-                &copy; 2026 Yayasan Cahaya Amanah Ar-Raudhah • Banjarbaru
+            <p class="text-center text-slate-400 text-xs mt-5">
+                &copy; 2026 Yayasan Cahaya Amanah Ar-Raudhah, Banjarbaru
             </p>
         </div>
     </div>
@@ -304,53 +332,31 @@
             text.textContent = 'Memverifikasi...';
             icon.className = 'fa-solid fa-spinner fa-spin';
             btn.disabled = true;
-            btn.style.opacity = '0.8';
         });
-
-        // Floating particles
-        function createParticle() {
-            const p = document.createElement('div');
-            const size = Math.random() * 4 + 2;
-            p.style.cssText = `position:fixed;width:${size}px;height:${size}px;background:rgba(239,68,68,${Math.random()*0.35+0.1});border-radius:50%;left:${Math.random()*100}vw;top:100vh;pointer-events:none;z-index:1;animation:rise ${Math.random()*6+6}s linear forwards;`;
-            document.body.appendChild(p);
-            setTimeout(() => p.remove(), 12000);
-        }
-        setInterval(createParticle, 700);
 
         @if(session('is_locked'))
         (function() {
             let secondsLeft = {{ (int) session('lockout_seconds', 900) }};
             const display = document.getElementById('countdownTimer');
-            const form = document.getElementById('loginForm');
             const btn = document.getElementById('loginBtn');
             const uInput = document.getElementById('username');
             const pInput = document.getElementById('password');
 
-            if (btn) {
-                btn.disabled = true;
-                btn.classList.add('opacity-50', 'cursor-not-allowed');
-                document.getElementById('loginText').textContent = 'Terkunci Sementara';
-            }
+            if (btn) { btn.disabled = true; document.getElementById('loginText').textContent = 'Terkunci Sementara'; }
             if (uInput) uInput.disabled = true;
             if (pInput) pInput.disabled = true;
 
             function updateTimer() {
                 if (secondsLeft <= 0) {
-                    if (display) display.textContent = 'Waktu Habis! Silakan Refresh';
-                    if (btn) {
-                        btn.disabled = false;
-                        btn.classList.remove('opacity-50', 'cursor-not-allowed');
-                        document.getElementById('loginText').textContent = 'Coba Masuk Lagi';
-                    }
+                    if (display) display.textContent = 'Silakan Refresh';
+                    if (btn) { btn.disabled = false; document.getElementById('loginText').textContent = 'Coba Masuk Lagi'; }
                     if (uInput) uInput.disabled = false;
                     if (pInput) pInput.disabled = false;
                     return;
                 }
                 const mins = Math.floor(secondsLeft / 60);
                 const secs = secondsLeft % 60;
-                if (display) {
-                    display.textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-                }
+                if (display) display.textContent = `${mins.toString().padStart(2,'0')}:${secs.toString().padStart(2,'0')}`;
                 secondsLeft--;
                 setTimeout(updateTimer, 1000);
             }

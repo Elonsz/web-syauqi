@@ -108,40 +108,37 @@
         }
 
         .sidebar-item {
-            transition: all 0.18s ease;
+            transition: all 0.15s ease;
         }
         .sidebar-item:hover {
-            background: rgba(255,255,255,0.08);
+            background: #f1f5f9;
+            color: #1e3a8a;
         }
         .sidebar-item.active {
-            background: rgba(220, 38, 38, 0.2);
-            border-left: 3px solid #dc2626;
+            background: #eff6ff;
+            border-left: 3px solid #2563eb;
         }
-        .sidebar-item.active i { color: #f87171; }
-        .sidebar-item.active span { color: #ffffff; font-weight: 700; }
+        .sidebar-item.active i { color: #2563eb; }
+        .sidebar-item.active span { color: #1e3a8a; font-weight: 700; }
 
         /* ===== PAGE TRANSITION ===== */
         #page-overlay {
             position: fixed; inset: 0; z-index: 9999;
             pointer-events: none;
-            background: linear-gradient(135deg, #081026, #16285a);
+            background: #fff;
             opacity: 0;
-            transition: opacity 0.25s ease;
+            transition: opacity 0.2s ease;
         }
-        #page-overlay.fade-in  { opacity: 1; pointer-events: all; }
+        #page-overlay.fade-in  { opacity: 0.4; pointer-events: all; }
 
         #page-progress {
             position: fixed; top: 0; left: 0;
-            height: 3px; width: 0%;
-            background: linear-gradient(90deg, #dc2626, #2563eb, #dc2626);
-            background-size: 200% auto;
-            animation: prgShimmer 1.2s linear infinite;
+            height: 2px; width: 0%;
+            background: #2563eb;
             z-index: 10000;
             transition: width 0.3s ease;
             border-radius: 0 2px 2px 0;
-            box-shadow: 0 0 8px rgba(220, 38, 38, 0.7);
         }
-        @keyframes prgShimmer { from{background-position:0%} to{background-position:200%} }
 
         #main-content {
             animation: contentIn 0.35s cubic-bezier(0.16,1,0.3,1) both;
@@ -178,7 +175,7 @@
         }
     </style>
 </head>
-<body class="bg-slate-100 font-sans antialiased overflow-x-hidden">
+<body class="bg-slate-50 font-sans antialiased overflow-x-hidden">
 
     <!-- Page Transition -->
     <div id="page-overlay"></div>
@@ -224,27 +221,27 @@
     <div class="flex min-h-screen">
 
         <!-- ===== SIDEBAR ===== -->
-        <aside id="sidebar" class="no-print bg-gradient-to-b from-[#081026] via-[#0D1C44] to-[#122558] text-white flex flex-col w-64 shrink-0 relative border-r border-blue-950/80 shadow-2xl">
+        <aside id="sidebar" class="no-print bg-white text-slate-700 flex flex-col w-64 shrink-0 relative border-r border-slate-200 shadow-sm">
 
             <!-- Brand -->
-            <div class="sidebar-header flex items-center justify-between px-3.5 py-3.5 border-b border-slate-800/80 min-h-[60px] transition-all duration-300">
+            <div class="sidebar-header flex items-center justify-between px-3.5 py-3.5 border-b border-slate-200 min-h-[60px] transition-all duration-300">
                 <a href="{{ route('dashboard') }}" class="sidebar-brand flex items-center gap-3 min-w-0 transition-all duration-300">
-                    <img src="{{ asset('images/logo.png') }}" alt="Logo Yayasan" class="w-9 h-9 object-contain bg-white rounded-xl p-0.5 shadow-md shrink-0">
+                    <img src="{{ asset('images/logo.png') }}" alt="Logo Yayasan" class="w-9 h-9 object-contain bg-slate-50 border border-slate-200 rounded-xl p-0.5 shrink-0">
                     <div class="sidebar-brand-text transition-all duration-300 overflow-hidden">
-                        <p class="text-xs font-black text-white leading-tight tracking-tight">AR-RAUDHAH</p>
-                        <p class="text-[9px] text-blue-300 leading-tight truncate">Cahaya Amanah</p>
+                        <p class="text-xs font-black text-slate-800 leading-tight tracking-tight">AR-RAUDHAH</p>
+                        <p class="text-[9px] text-slate-400 leading-tight truncate">Cahaya Amanah</p>
                     </div>
                 </a>
                 <!-- Collapse toggle (desktop) -->
                 <button onclick="toggleSidebar()" id="collapseBtn"
-                    class="w-8 h-8 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white transition flex items-center justify-center shrink-0 hidden lg:flex"
+                    class="w-8 h-8 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-800 transition flex items-center justify-center shrink-0 hidden lg:flex"
                     title="Kecilkan sidebar">
                     <i class="fa-solid fa-angles-left text-xs" id="collapseIcon"></i>
                 </button>
 
                 <!-- Close button (mobile) -->
                 <button onclick="closeMobileSidebar()"
-                    class="ml-auto w-8 h-8 rounded-xl bg-slate-800/80 hover:bg-slate-700 flex items-center justify-center text-slate-300 hover:text-white transition shrink-0 lg:hidden"
+                    class="ml-auto w-8 h-8 rounded-xl bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500 hover:text-slate-800 transition shrink-0 lg:hidden"
                     title="Tutup menu">
                     <i class="fa-solid fa-xmark text-sm"></i>
                 </button>
@@ -254,15 +251,15 @@
             <nav class="flex-1 py-4 px-2 overflow-y-auto space-y-0.5">
 
                 <!-- Overview -->
-                <p class="sidebar-section-label text-[9px] font-bold text-blue-400 uppercase tracking-widest px-3 py-2 transition-all duration-300">Overview</p>
+                <p class="sidebar-section-label text-[9px] font-bold text-slate-400 uppercase tracking-widest px-3 py-2 transition-all duration-300">Overview</p>
                 <a href="{{ route('dashboard') }}"
-                   class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-300 hover:text-white {{ request()->routeIs('dashboard') ? 'active' : '' }}">
-                    <i class="fa-solid fa-gauge-high w-5 text-center shrink-0"></i>
+                   class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:text-slate-800 {{ request()->routeIs('dashboard') ? 'active' : '' }}">
+                    <i class="fa-solid fa-gauge-high w-5 text-center shrink-0 text-slate-400"></i>
                     <span class="sidebar-label transition-all duration-300">Dashboard</span>
                 </a>
 
                 <!-- Penilaian -->
-                <p class="sidebar-section-label text-[9px] font-bold text-blue-400 uppercase tracking-widest px-3 pt-4 pb-2 transition-all duration-300">Penilaian</p>
+                <p class="sidebar-section-label text-[9px] font-bold text-slate-400 uppercase tracking-widest px-3 pt-4 pb-2 transition-all duration-300">Penilaian</p>
                 @php
                     $isCreatePage = request()->routeIs('munaqasyah.create');
                     $currJenis = request('jenis', isset($santri) ? ($santri->jenis ?? 'TPQ') : 'TPQ');
@@ -272,83 +269,83 @@
                     $isCreateRtqActive = $isCreatePage && request('jenis') === 'RTQ';
                 @endphp
                 <a href="{{ route('munaqasyah.index', ['jenis' => 'TPQ']) }}"
-                   class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-300 hover:text-white {{ $isTpqActive ? 'active' : '' }}"
+                   class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:text-slate-800 {{ $isTpqActive ? 'active' : '' }}"
                    title="Taman Pendidikan Qur'an Ar-Raudhah">
-                    <i class="fa-solid fa-scroll w-5 text-center shrink-0"></i>
+                    <i class="fa-solid fa-scroll w-5 text-center shrink-0 text-slate-400"></i>
                     <span class="sidebar-label transition-all duration-300">TPQ Ar-Raudhah</span>
                 </a>
                 <a href="{{ route('munaqasyah.index', ['jenis' => 'RTQ']) }}"
-                   class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-300 hover:text-white {{ $isRtqActive ? 'active' : '' }}"
+                   class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:text-slate-800 {{ $isRtqActive ? 'active' : '' }}"
                    title="Rumah Tahfidz Qur'an Ar-Raudhah">
-                    <i class="fa-solid fa-book-quran w-5 text-center shrink-0"></i>
+                    <i class="fa-solid fa-book-quran w-5 text-center shrink-0 text-slate-400"></i>
                     <span class="sidebar-label transition-all duration-300">RTQ Ar-Raudhah</span>
                 </a>
 
                 <!-- Biodata Santri (Terpisah dari Penilaian) -->
-                <p class="sidebar-section-label text-[9px] font-bold text-blue-400 uppercase tracking-widest px-3 pt-4 pb-2 transition-all duration-300">Biodata Santri</p>
+                <p class="sidebar-section-label text-[9px] font-bold text-slate-400 uppercase tracking-widest px-3 pt-4 pb-2 transition-all duration-300">Biodata Santri</p>
                 <a href="{{ route('santri.index') }}"
-                   class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-300 hover:text-white {{ request()->routeIs('santri.index') || request()->routeIs('santri.show') || request()->routeIs('santri.edit') ? 'active' : '' }}"
+                   class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:text-slate-800 {{ request()->routeIs('santri.index') || request()->routeIs('santri.show') || request()->routeIs('santri.edit') ? 'active' : '' }}"
                    title="Direktori Biodata Siswa">
-                    <i class="fa-solid fa-address-card w-5 text-center shrink-0 text-cyan-400"></i>
+                    <i class="fa-solid fa-address-card w-5 text-center shrink-0 text-slate-400"></i>
                     <span class="sidebar-label transition-all duration-300">Direktori Biodata</span>
                 </a>
                 <a href="{{ route('santri.create') }}"
-                   class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-300 hover:text-white {{ request()->routeIs('santri.create') ? 'active' : '' }}"
+                   class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:text-slate-800 {{ request()->routeIs('santri.create') ? 'active' : '' }}"
                    title="Tambah Biodata Santri Baru">
-                    <i class="fa-solid fa-user-plus w-5 text-center shrink-0 text-rose-400"></i>
+                    <i class="fa-solid fa-user-plus w-5 text-center shrink-0 text-slate-400"></i>
                     <span class="sidebar-label transition-all duration-300">Tambah Biodata</span>
                 </a>
 
                 <!-- Input Data -->
-                <p class="sidebar-section-label text-[9px] font-bold text-blue-400 uppercase tracking-widest px-3 pt-4 pb-2 transition-all duration-300">Input Data</p>
+                <p class="sidebar-section-label text-[9px] font-bold text-slate-400 uppercase tracking-widest px-3 pt-4 pb-2 transition-all duration-300">Input Data</p>
                 @php $navJenis = request('jenis', 'TPQ'); @endphp
                 <a href="{{ route('munaqasyah.create', ['jenis' => 'TPQ']) }}"
-                   class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-300 hover:text-white {{ $isCreateTpqActive ? 'active' : '' }}">
-                    <i class="fa-solid fa-user-plus w-5 text-center shrink-0"></i>
+                   class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:text-slate-800 {{ $isCreateTpqActive ? 'active' : '' }}">
+                    <i class="fa-solid fa-user-plus w-5 text-center shrink-0 text-slate-400"></i>
                     <span class="sidebar-label transition-all duration-300">Input TPQ Ar-Raudhah</span>
                 </a>
                 <a href="{{ route('munaqasyah.create', ['jenis' => 'RTQ']) }}"
-                   class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-300 hover:text-white {{ $isCreateRtqActive ? 'active' : '' }}">
-                    <i class="fa-solid fa-user-plus w-5 text-center shrink-0"></i>
+                   class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:text-slate-800 {{ $isCreateRtqActive ? 'active' : '' }}">
+                    <i class="fa-solid fa-user-plus w-5 text-center shrink-0 text-slate-400"></i>
                     <span class="sidebar-label transition-all duration-300">Input RTQ Ar-Raudhah</span>
                 </a>
 
                 <!-- Export -->
-                <p class="sidebar-section-label text-[9px] font-bold text-blue-400 uppercase tracking-widest px-3 pt-4 pb-2 transition-all duration-300">Export</p>
+                <p class="sidebar-section-label text-[9px] font-bold text-slate-400 uppercase tracking-widest px-3 pt-4 pb-2 transition-all duration-300">Export</p>
                 @php $navUnit = request('unit'); @endphp
                 <a href="{{ route('munaqasyah.export.excel', ['jenis' => $navJenis, 'unit' => $navUnit]) }}"
-                   class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-300 hover:text-white">
+                   class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:text-slate-800">
                     <i class="fa-solid fa-file-excel w-5 text-center shrink-0 text-emerald-400"></i>
                     <span class="sidebar-label transition-all duration-300">Export Excel</span>
                 </a>
                 <a href="{{ route('munaqasyah.export.csv', ['jenis' => $navJenis, 'unit' => $navUnit]) }}"
-                   class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-300 hover:text-white">
-                    <i class="fa-solid fa-table w-5 text-center shrink-0 text-sky-400"></i>
+                   class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:text-slate-800">
+                    <i class="fa-solid fa-table w-5 text-center shrink-0 text-slate-400"></i>
                     <span class="sidebar-label transition-all duration-300">Export Spreadsheet</span>
                 </a>
 
                 <!-- Pengaturan -->
-                <p class="sidebar-section-label text-[9px] font-bold text-blue-400 uppercase tracking-widest px-3 pt-4 pb-2 transition-all duration-300">Pengaturan</p>
+                <p class="sidebar-section-label text-[9px] font-bold text-slate-400 uppercase tracking-widest px-3 pt-4 pb-2 transition-all duration-300">Pengaturan</p>
                 <a href="{{ route('users.index') }}"
-                   class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-300 hover:text-white {{ request()->routeIs('users.*') ? 'active' : '' }}"
+                   class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:text-slate-800 {{ request()->routeIs('users.*') ? 'active' : '' }}"
                    title="Kelola Pengguna Sistem">
-                    <i class="fa-solid fa-users-gear w-5 text-center shrink-0"></i>
+                    <i class="fa-solid fa-users-gear w-5 text-center shrink-0 text-slate-400"></i>
                     <span class="sidebar-label transition-all duration-300">Kelola Pengguna</span>
                 </a>
                 <a href="{{ route('settings.index') }}"
-                   class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-300 hover:text-white {{ request()->routeIs('settings.*') ? 'active' : '' }}"
+                   class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:text-slate-800 {{ request()->routeIs('settings.*') ? 'active' : '' }}"
                    title="Pengaturan Kop Surat & Identitas">
-                    <i class="fa-solid fa-sliders w-5 text-center shrink-0"></i>
+                    <i class="fa-solid fa-sliders w-5 text-center shrink-0 text-slate-400"></i>
                     <span class="sidebar-label transition-all duration-300">Pengaturan Surat</span>
                 </a>
             </nav>
 
             <!-- Sidebar Footer -->
-            <div class="sidebar-footer border-t border-slate-800/80 p-3 text-center">
+            <div class="sidebar-footer border-t border-slate-200 p-3 text-center">
                 <div class="sidebar-label px-2 transition-all duration-300 overflow-hidden">
-                    <p class="text-[10px] text-red-400 font-bold uppercase tracking-wider">AR-RAUDHAH</p>
+                    <p class="text-[10px] text-slate-700 font-bold uppercase tracking-wider">AR-RAUDHAH</p>
                     <p class="text-[9px] text-slate-400 mt-0.5">&copy; 2026 Yayasan Cahaya Amanah</p>
-                    <p class="text-[8.5px] text-slate-500 mt-1">Diciptakan oleh <span class="text-blue-300 font-bold">Hugo Putra Pratama</span></p>
+                    <p class="text-[8.5px] text-slate-400 mt-1">by <span class="text-blue-600 font-semibold">Hugo Putra Pratama</span></p>
                 </div>
             </div>
         </aside>
@@ -397,14 +394,14 @@
                 <div class="flex items-center gap-1.5 sm:gap-2">
                     {{-- Tab TPQ/RTQ (munaqasyah pages) --}}
                     @if(request()->is('munaqasyah*'))
-                    <div class="inline-flex bg-slate-100 p-0.5 rounded-xl border border-slate-200">
+                    <div class="inline-flex bg-slate-100 p-0.5 rounded-lg border border-slate-200">
                         <a href="{{ route('munaqasyah.index', ['jenis' => 'TPQ']) }}"
-                           class="px-2.5 sm:px-3 py-1 rounded-lg text-xs font-bold transition {{ request('jenis','TPQ') == 'TPQ' ? 'bg-red-600 text-white shadow-xs' : 'text-slate-600 hover:text-slate-900' }}">
-                            <i class="fa-solid fa-scroll"></i><span class="hidden sm:inline ml-1.5">TPQ Ar-Raudhah</span>
+                           class="px-2.5 sm:px-3 py-1.5 rounded-md text-xs font-semibold transition {{ request('jenis','TPQ') == 'TPQ' ? 'bg-white text-blue-700 shadow-sm border border-slate-200' : 'text-slate-500 hover:text-slate-700' }}">
+                            <i class="fa-solid fa-scroll"></i><span class="hidden sm:inline ml-1.5">TPQ</span>
                         </a>
                         <a href="{{ route('munaqasyah.index', ['jenis' => 'RTQ']) }}"
-                           class="px-2.5 sm:px-3 py-1 rounded-lg text-xs font-bold transition {{ request('jenis') == 'RTQ' ? 'bg-red-600 text-white shadow-xs' : 'text-slate-600 hover:text-slate-900' }}">
-                            <i class="fa-solid fa-book-quran"></i><span class="hidden sm:inline ml-1.5">RTQ Ar-Raudhah</span>
+                           class="px-2.5 sm:px-3 py-1.5 rounded-md text-xs font-semibold transition {{ request('jenis') == 'RTQ' ? 'bg-white text-emerald-700 shadow-sm border border-slate-200' : 'text-slate-500 hover:text-slate-700' }}">
+                            <i class="fa-solid fa-book-quran"></i><span class="hidden sm:inline ml-1.5">RTQ</span>
                         </a>
                     </div>
                     @endif
@@ -414,12 +411,12 @@
                         <button onclick="toggleUserDropdown(event)" id="userDropdownBtn"
                             class="flex items-center gap-2 bg-slate-100 hover:bg-slate-200 border border-slate-200 rounded-xl px-2.5 py-1.5 transition select-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-red-500/40"
                             aria-expanded="false" aria-haspopup="true">
-                            <div class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-gradient-to-tr from-blue-950 via-blue-900 to-red-600 text-white flex items-center justify-center text-xs font-bold shrink-0 shadow-xs">
+                            <div class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-blue-800 text-white flex items-center justify-center text-xs font-bold shrink-0">
                                 <i class="fa-solid fa-user-tie"></i>
                             </div>
                             <div class="text-left hidden sm:block">
-                                <p class="text-xs font-bold text-slate-800 leading-none capitalize">{{ session('user_name', 'Admin') }}</p>
-                                <p class="text-[9px] text-red-600 font-bold leading-none mt-0.5">Panitia • Online</p>
+                                <p class="text-xs font-semibold text-slate-800 leading-none capitalize">{{ session('user_name', 'Admin') }}</p>
+                                <p class="text-[9px] text-emerald-600 font-semibold leading-none mt-0.5">● Online</p>
                             </div>
                             <span class="w-2 h-2 bg-emerald-400 rounded-full sm:hidden shrink-0"></span>
                             <i class="fa-solid fa-chevron-down text-[9px] text-slate-400 transition-transform duration-200 hidden sm:inline-block" id="userDropdownChevron"></i>

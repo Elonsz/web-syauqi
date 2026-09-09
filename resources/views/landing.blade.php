@@ -28,39 +28,9 @@
             background-size: 100% 100%;
         }
 
-        /* Floating orbs in Crimson Red, Navy Blue, and Amber Gold */
-        .orb { position: absolute; border-radius: 50%; filter: blur(80px); animation: orbFloat 14s ease-in-out infinite; }
-        .orb-1 { width:520px; height:520px; background:rgba(220,38,38,.24); top:-10%; left:-5%; animation-delay:0s; }
-        .orb-2 { width:420px; height:420px; background:rgba(245,158,11,.15); top:45%; right:-5%; animation-delay:-5s; }
-        .orb-3 { width:380px; height:380px; background:rgba(37,99,235,.35); bottom:-5%; left:25%; animation-delay:-9s; }
-        @keyframes orbFloat {
-            0%,100% { transform:translateY(0) scale(1); }
-            50%      { transform:translateY(-30px) scale(1.06); }
-        }
-
         /* Islamic SVG pattern overlay */
         .islamic-bg {
             background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        }
-
-        /* Text shimmer - Amber Gold */
-        .text-shimmer {
-            background: linear-gradient(90deg, #fde68a, #fbbf24, #f59e0b, #fbbf24, #fde68a);
-            background-size: 250% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: shimmer 4s linear infinite;
-        }
-        @keyframes shimmer { from{background-position:0%} to{background-position:250%} }
-
-        /* Arabic shimmer */
-        .arabic-shimmer {
-            font-family: 'Amiri', serif;
-            background: linear-gradient(90deg, #ffffff, #bfdbfe, #fecaca, #ffffff);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: shimmer 3s linear infinite;
         }
 
         /* Feature card hover */
@@ -85,23 +55,12 @@
             border-color: rgba(96, 165, 250, 0.6);
         }
 
-        /* CTA button in Crimson Red */
+        /* CTA button */
         .btn-cta {
-            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
-            box-shadow: 0 10px 28px rgba(220,38,38,0.45);
-            transition: all 0.3s ease;
-            position: relative; 
-            overflow: hidden;
-            border: 1.5px solid rgba(254, 202, 202, 0.3);
+            background: #1e3a8a;
+            transition: all 0.2s ease;
         }
-        .btn-cta::before {
-            content:''; position:absolute; top:0; left:-100%;
-            width:100%; height:100%;
-            background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);
-            transition:left 0.5s;
-        }
-        .btn-cta:hover::before { left:100%; }
-        .btn-cta:hover { transform:translateY(-2px); box-shadow:0 14px 36px rgba(220,38,38,0.6); }
+        .btn-cta:hover { background: #17317f; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(30,58,138,0.3); }
 
         /* Scroll reveal */
         .reveal {
@@ -114,12 +73,12 @@
             transform: translateY(0);
         }
 
-        /* Navbar glass */
+        /* Navbar scroll effect */
         #navbar.scrolled {
-            background: rgba(7, 16, 38, 0.96);
+            background: rgba(13, 26, 69, 0.97);
             backdrop-filter: blur(16px);
-            border-bottom: 2px solid rgba(30, 58, 138, 0.6);
-            box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+            border-bottom: 1px solid rgba(30, 58, 138, 0.5);
+            box-shadow: 0 2px 16px rgba(0,0,0,0.25);
         }
     </style>
 </head>
@@ -156,14 +115,8 @@
 
     <!-- ===== HERO SECTION ===== -->
     <section class="hero-bg min-h-screen flex flex-col items-center justify-center relative overflow-hidden pt-24 pb-16">
-        <!-- Ambient Orbs & Pattern -->
-        <div class="orb orb-1"></div>
-        <div class="orb orb-2"></div>
-        <div class="orb orb-3"></div>
+        <!-- Subtle Islamic pattern only -->
         <div class="absolute inset-0 islamic-bg"></div>
-
-        <!-- Canvas Particles -->
-        <canvas id="particles" class="absolute inset-0 pointer-events-none opacity-45"></canvas>
 
         <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
             <!-- Badge Yayasan -->
@@ -174,7 +127,7 @@
             </div>
 
             <!-- Arabic Bismillah -->
-            <p class="arabic-shimmer text-3xl sm:text-4xl lg:text-5xl mb-4 font-bold">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
+            <p class="amiri-text text-2xl sm:text-3xl lg:text-4xl mb-5 text-amber-200 font-bold" style="font-family:'Amiri',serif">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
 
             <!-- Main Heading -->
             <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mb-4 tracking-tight">
@@ -190,13 +143,13 @@
                 <strong class="text-white font-bold underline decoration-[#dc2626] decoration-2">Rumah Tahfidz Qur'an (RTQ)</strong> Ar-Raudhah Banjarbaru.
             </p>
 
-            <!-- Unit Pills in Authentic Logo Colors -->
+            <!-- Unit Pills -->
             <div class="flex flex-wrap items-center justify-center gap-3 mb-10">
-                <span class="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-[#1e3a8a] border-2 border-[#60a5fa]/50 text-white text-xs sm:text-sm font-bold shadow-lg shadow-[#1e3a8a]/40">
+                <span class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/10 border border-white/20 text-white text-xs sm:text-sm font-semibold">
                     <i class="fa-solid fa-book-quran text-amber-300"></i> Taman Pendidikan Qur'an (TPQ)
                 </span>
-                <span class="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-[#dc2626] border-2 border-[#fca5a5]/50 text-white text-xs sm:text-sm font-bold shadow-lg shadow-[#dc2626]/40">
-                    <i class="fa-solid fa-mosque text-white"></i> Rumah Tahfidz Qur'an (RTQ)
+                <span class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/10 border border-white/20 text-white text-xs sm:text-sm font-semibold">
+                    <i class="fa-solid fa-mosque text-amber-300"></i> Rumah Tahfidz Qur'an (RTQ)
                 </span>
             </div>
 
