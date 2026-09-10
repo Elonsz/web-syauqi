@@ -15,7 +15,7 @@
             <div>
                 <div class="flex items-center gap-2 mb-1 flex-wrap">
                     <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-blue-50 text-blue-700 border border-blue-200">
-                        Sistem Munaqasyah
+                        Database Sekolah
                     </span>
                     <span class="text-xs text-slate-500 font-medium">Tahun 2026</span>
                 </div>

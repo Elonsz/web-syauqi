@@ -3,7 +3,7 @@
 @section('title', 'Tambah Santri ' . ($jenis == 'TPQ' ? "Taman Pendidikan Qur'an Ar-Raudhah" : "Rumah Tahfidz Qur'an Ar-Raudhah"))
 
 @section('breadcrumb')
-    <a href="{{ route('munaqasyah.index', ['jenis' => $jenis]) }}" class="hover:text-blue-900 transition">Penilaian {{ $jenis == 'TPQ' ? "TPQ Ar-Raudhah" : "RTQ Ar-Raudhah" }}</a>
+    <a href="{{ route('munaqasyah.index', ['jenis' => $jenis]) }}" class="hover:text-blue-900 transition">Database Sekolah {{ $jenis == 'TPQ' ? "TPQ Ar-Raudhah" : "RTQ Ar-Raudhah" }}</a>
     <i class="fa-solid fa-chevron-right text-[9px]"></i>
     <span class="text-blue-950 font-bold">Tambah Santri</span>
 @endsection

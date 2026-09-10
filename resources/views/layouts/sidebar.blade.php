@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Yayasan Cahaya Amanah Ar-Raudhah — Munaqasyah')</title>
+    <title>@yield('title', 'Yayasan Cahaya Amanah Ar-Raudhah — Database Sekolah')</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
@@ -512,7 +512,7 @@
             <!-- Footer -->
             <footer class="no-print bg-white border-t border-slate-200 py-3 px-6 text-xs text-slate-400 flex flex-col sm:flex-row items-center justify-between gap-1">
                 <span>&copy; 2026 Yayasan Cahaya Amanah Ar-Raudhah • Banjarbaru</span>
-                <span class="text-slate-500 font-medium">Sistem Munaqasyah Ar-Raudhah v1.0</span>
+                <span class="text-slate-500 font-medium">Database Sekolah Ar-Raudhah v1.0</span>
             </footer>
         </div>
     </div>

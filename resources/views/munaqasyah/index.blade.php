@@ -1,9 +1,9 @@
 @extends('layouts.sidebar')
 
-@section('title', 'Penilaian Munaqasyah ' . ($jenis == 'TPQ' ? "Taman Pendidikan Qur'an Ar-Raudhah" : "Rumah Tahfidz Qur'an Ar-Raudhah") . ' 2026')
+@section('title', 'Database Sekolah ' . ($jenis == 'TPQ' ? "Taman Pendidikan Qur'an Ar-Raudhah" : "Rumah Tahfidz Qur'an Ar-Raudhah") . ' 2026')
 
 @section('breadcrumb')
-    <span class="text-blue-950 font-bold">Penilaian {{ $jenis == 'TPQ' ? "Taman Pendidikan Qur'an Ar-Raudhah (TPQ)" : "Rumah Tahfidz Qur'an Ar-Raudhah (RTQ)" }}</span>
+    <span class="text-blue-950 font-bold">Database Sekolah {{ $jenis == 'TPQ' ? "Taman Pendidikan Qur'an Ar-Raudhah (TPQ)" : "Rumah Tahfidz Qur'an Ar-Raudhah (RTQ)" }}</span>
 @endsection
 
 @section('content')
@@ -14,7 +14,7 @@
                 <span class="px-2.5 py-1 text-xs font-bold rounded-lg {{ $jenis == 'TPQ' ? 'bg-amber-100 text-amber-900 border border-amber-300' : 'bg-blue-100 text-blue-950 border border-blue-300' }}">{{ $jenis }}</span>
                 <h2 class="text-lg sm:text-xl font-extrabold text-slate-900 tracking-tight">{{ $jenis == 'TPQ' ? "Taman Pendidikan Qur'an Ar-Raudhah" : "Rumah Tahfidz Qur'an Ar-Raudhah" }}</h2>
             </div>
-            <p class="text-xs text-slate-500 mt-1">Rekapitulasi nilai bacaan &amp; hafalan munaqasyah <strong class="text-slate-700">{{ $jenis == 'TPQ' ? "Taman Pendidikan Qur'an Ar-Raudhah" : "Rumah Tahfidz Qur'an Ar-Raudhah" }}</strong> — Tahun 2026</p>
+            <p class="text-xs text-slate-500 mt-1">Database Sekolah nilai bacaan &amp; hafalan <strong class="text-slate-700">{{ $jenis == 'TPQ' ? "Taman Pendidikan Qur'an Ar-Raudhah" : "Rumah Tahfidz Qur'an Ar-Raudhah" }}</strong> — Tahun 2026</p>
         </div>
         <div class="flex flex-wrap items-center gap-2 self-start sm:self-auto">
             <a href="{{ route('munaqasyah.cetak.massal', ['jenis' => $jenis, 'unit' => request('unit')]) }}" target="_blank" class="inline-flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-3.5 py-2.5 rounded-xl shadow-xs transition"><i class="fa-solid fa-print"></i> Cetak Massal</a>
@@ -58,7 +58,7 @@
                 <thead>
                     <tr class="bg-slate-800 text-white font-bold uppercase tracking-wider text-[11px]">
                         <th rowspan="2" class="w-12 bg-slate-900 text-slate-200">NO. PESERTA</th><th rowspan="2" class="w-10 bg-slate-900 text-slate-200">UNIT</th><th rowspan="2" class="text-left w-56 bg-slate-800 text-white">NAMA SANTRI</th><th rowspan="2" class="w-14 bg-slate-800 text-slate-200">FOTO</th><th rowspan="2" class="w-24 bg-slate-800 text-slate-200">LEMBAGA</th>
-                        <th colspan="4" class="bg-slate-700 text-slate-100 border-b border-slate-600">MUNAQASYAH BACAAN</th><th colspan="4" class="bg-slate-700 text-slate-100 border-b border-slate-600">MUNAQASYAH HAFALAN</th>
+                        <th colspan="4" class="bg-slate-700 text-slate-100 border-b border-slate-600">NILAI BACAAN</th><th colspan="4" class="bg-slate-700 text-slate-100 border-b border-slate-600">NILAI HAFALAN</th>
                         <th rowspan="2" class="w-14 bg-slate-800 text-slate-200">TERTULIS</th><th rowspan="2" class="w-16 bg-slate-900 text-white">JUMLAH</th><th rowspan="2" class="w-16 bg-blue-950 text-white font-black">RATA²</th><th rowspan="2" class="w-20 bg-slate-800 text-slate-200">ANGKATAN</th><th rowspan="2" class="w-32 bg-slate-800 text-slate-200 no-print">AKSI</th>
                     </tr>
                     <tr class="bg-slate-100 text-slate-700 font-bold text-[10px] uppercase"><th class="w-12">FASHOHAH</th><th class="w-12">TAJWID</th><th class="w-14">GHARIB</th><th class="w-14">SUARA</th><th class="w-14">AYAT</th><th class="w-12">S.PENDEK</th><th class="w-12">DOA</th><th class="w-14">BAC. SHALAT</th></tr>

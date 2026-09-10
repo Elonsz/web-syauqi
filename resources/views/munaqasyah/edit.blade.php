@@ -3,7 +3,7 @@
 @section('title', 'Edit Santri - ' . $santri->nama)
 
 @section('breadcrumb')
-    <a href="{{ route('munaqasyah.index', ['jenis' => $santri->jenis]) }}" class="hover:text-blue-900 transition">Penilaian {{ $santri->jenis == 'TPQ' ? "TPQ Ar-Raudhah" : "RTQ Ar-Raudhah" }}</a>
+    <a href="{{ route('munaqasyah.index', ['jenis' => $santri->jenis]) }}" class="hover:text-blue-900 transition">Database Sekolah {{ $santri->jenis == 'TPQ' ? "TPQ Ar-Raudhah" : "RTQ Ar-Raudhah" }}</a>
     <i class="fa-solid fa-chevron-right text-[9px]"></i>
     <span class="text-blue-950 font-bold truncate max-w-[120px] sm:max-w-none">Edit: {{ $santri->nama }}</span>
 @endsection

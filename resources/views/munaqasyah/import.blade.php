@@ -3,7 +3,7 @@
 @section('title', 'Import Data Nilai Munaqasyah ' . $jenis . ' — Ar-Raudhah')
 
 @section('breadcrumb')
-    <a href="{{ route('munaqasyah.index', ['jenis' => $jenis]) }}" class="hover:underline">Penilaian {{ $jenis }}</a>
+    <a href="{{ route('munaqasyah.index', ['jenis' => $jenis]) }}" class="hover:underline">Database Sekolah {{ $jenis }}</a>
     <i class="fa-solid fa-chevron-right text-[10px] text-slate-400"></i>
     <span class="text-blue-950 font-bold">Import Spreadsheet</span>
 @endsection

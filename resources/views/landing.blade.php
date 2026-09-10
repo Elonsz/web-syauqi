@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yayasan Cahaya Amanah Ar-Raudhah — Munaqasyah TPQ & RTQ</title>
-    <meta name="description" content="Platform digital penilaian & kelulusan munaqasyah santri Taman Pendidikan Qur'an (TPQ) & Rumah Tahfidz Qur'an (RTQ) Ar-Raudhah, Yayasan Cahaya Amanah Ar-Raudhah Banjarbaru.">
+    <title>Yayasan Cahaya Amanah Ar-Raudhah — Database Sekolah TPQ & RTQ</title>
+    <meta name="description" content="Platform digital database sekolah, biodata & penilaian santri Taman Pendidikan Qur'an (TPQ) & Rumah Tahfidz Qur'an (RTQ) Ar-Raudhah, Yayasan Cahaya Amanah Ar-Raudhah Banjarbaru.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -131,7 +131,7 @@
 
             <!-- Main Heading -->
             <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mb-4 tracking-tight">
-                Sistem Penilaian Munaqasyah
+                Database Sekolah
                 <span class="block mt-2 text-white drop-shadow-sm">
                     TPQ &amp; RTQ Ar-Raudhah
                 </span>
