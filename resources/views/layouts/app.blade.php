@@ -224,11 +224,11 @@
                 <div class="flex items-center gap-1.5">
                     {{-- Tab Switch TPQ / RTQ --}}
                     <div class="inline-flex bg-slate-100 p-0.5 rounded-lg border border-slate-200 mr-1">
-                        <a href="{{ route('database sekolah.index', ['jenis' => 'TPQ']) }}"
+                        <a href="{{ route('database_sekolah.index', ['jenis' => 'TPQ']) }}"
                            class="px-3 py-1.5 rounded-md text-xs font-semibold transition flex items-center gap-1.5 {{ request('jenis', 'TPQ') == 'TPQ' ? 'bg-white text-blue-700 shadow-sm border border-slate-200' : 'text-slate-500 hover:text-slate-700' }}">
                             <i class="fa-solid fa-scroll text-[10px]"></i> TPQ
                         </a>
-                        <a href="{{ route('database sekolah.index', ['jenis' => 'RTQ']) }}"
+                        <a href="{{ route('database_sekolah.index', ['jenis' => 'RTQ']) }}"
                            class="px-3 py-1.5 rounded-md text-xs font-semibold transition flex items-center gap-1.5 {{ request('jenis') == 'RTQ' ? 'bg-white text-emerald-700 shadow-sm border border-slate-200' : 'text-slate-500 hover:text-slate-700' }}">
                             <i class="fa-solid fa-book-quran text-[10px]"></i> RTQ
                         </a>
@@ -236,19 +236,19 @@
 
                     {{-- Export Buttons --}}
                     @php $navJenis = request('jenis', 'TPQ'); $navUnit = request('unit'); @endphp
-                    <a href="{{ route('database sekolah.export.excel', ['jenis' => $navJenis, 'unit' => $navUnit]) }}"
+                    <a href="{{ route('database_sekolah.export.excel', ['jenis' => $navJenis, 'unit' => $navUnit]) }}"
                        class="text-emerald-700 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center gap-1.5"
                        title="Download Excel">
                         <i class="fa-solid fa-file-excel text-[11px]"></i> Excel
                     </a>
-                    <a href="{{ route('database sekolah.export.csv', ['jenis' => $navJenis, 'unit' => $navUnit]) }}"
+                    <a href="{{ route('database_sekolah.export.csv', ['jenis' => $navJenis, 'unit' => $navUnit]) }}"
                        class="text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-200 px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center gap-1.5"
                        title="Download Spreadsheet / CSV">
                         <i class="fa-solid fa-table text-[11px]"></i> CSV
                     </a>
 
                     {{-- Input Santri --}}
-                    <a href="{{ route('database sekolah.create', ['jenis' => $navJenis]) }}"
+                    <a href="{{ route('database_sekolah.create', ['jenis' => $navJenis]) }}"
                        class="bg-blue-700 hover:bg-blue-800 text-white px-3.5 py-1.5 rounded-lg text-xs font-semibold transition flex items-center gap-1.5 shadow-sm">
                         <i class="fa-solid fa-user-plus text-[11px]"></i> Input Santri
                     </a>

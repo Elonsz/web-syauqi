@@ -32,12 +32,12 @@
                class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold text-slate-700 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 border border-slate-200 transition">
                 <i class="fa-solid fa-pen-to-square text-xs text-blue-700"></i> Edit Biodata
             </a>
-            <a href="{{ route('database sekolah.edit', $santri->id) }}" 
+            <a href="{{ route('database_sekolah.edit', $santri->id) }}" 
                class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold bg-blue-900 hover:bg-blue-800 text-white shadow-xs transition">
                 <i class="fa-solid fa-calculator text-xs text-blue-200"></i> {{ $santri->penilaian ? 'Edit Nilai' : '+ Input Nilai' }}
             </a>
             @if($santri->penilaian)
-            <a href="{{ route('database sekolah.kelulusan', $santri->id) }}" target="_blank"
+            <a href="{{ route('database_sekolah.kelulusan', $santri->id) }}" target="_blank"
                class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold bg-emerald-600 hover:bg-emerald-500 text-white shadow-xs transition">
                 <i class="fa-solid fa-print text-xs"></i> Cetak Surat Kelulusan
             </a>
@@ -188,9 +188,9 @@
                     </span>
                     <h3 class="text-base font-extrabold text-slate-900">Hasil Penilaian Database Sekolah</h3>
                 </div>
-                <p class="text-xs text-slate-500 mt-0.5">Ringkasan perolehan nilai dari 9 mata uji database sekolah.</p>
+                <p class="text-xs text-slate-500 mt-0.5">Ringkasan perolehan nilai dari 9 mata uji database_sekolah.</p>
             </div>
-            <a href="{{ route('database sekolah.edit', $santri->id) }}" 
+            <a href="{{ route('database_sekolah.edit', $santri->id) }}" 
                class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-bold text-blue-900 bg-blue-50 hover:bg-blue-100 border border-blue-200 transition shrink-0">
                 <i class="fa-solid fa-pen-to-square text-xs"></i> Edit Lembar Nilai
             </a>
@@ -263,7 +263,7 @@
             Santri ini sudah terdaftar dalam direktori biodata, namun lembar nilai 9 mata uji database sekolah belum diisi atau disimpan.
         </p>
         <div class="pt-2">
-            <a href="{{ route('database sekolah.edit', $santri->id) }}" 
+            <a href="{{ route('database_sekolah.edit', $santri->id) }}" 
                class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold bg-blue-600 hover:bg-blue-700 text-white shadow-md shadow-blue-900/20 transition active:scale-95">
                 <i class="fa-solid fa-calculator"></i>
                 <span>Mulai Isi Nilai Database Sekolah</span>

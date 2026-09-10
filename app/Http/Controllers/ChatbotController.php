@@ -503,7 +503,7 @@ class ChatbotController extends Controller
                         <li>Klik tombol <strong>\"Simpan Perubahan Nilai\"</strong> di bagian bawah form.</li>
                     </ol>
                     <div class='pt-1'>
-                        <a href='/munaqasyah' class='inline-block px-3 py-1.5 bg-blue-950 text-white rounded-lg font-bold text-[11px] hover:bg-slate-900 transition'>
+                        <a href='/database-sekolah' class='inline-block px-3 py-1.5 bg-blue-950 text-white rounded-lg font-bold text-[11px] hover:bg-slate-900 transition'>
                             Buka Lembar Penilaian &rarr;
                         </a>
                     </div>
@@ -788,7 +788,7 @@ class ChatbotController extends Controller
                     </div>
                     <div class='mt-2 flex items-center justify-between text-[11px] font-semibold text-slate-500'>
                         <span>Total Nilai: <strong class='text-slate-900'>{$total}</strong></span>
-                        <a href='/munaqasyah/{$s->id}/kelulusan' target='_blank' class='text-red-600 hover:text-red-700 font-bold flex items-center gap-1 hover:underline'>
+                        <a href='/database-sekolah/{$s->id}/kelulusan' target='_blank' class='text-red-600 hover:text-red-700 font-bold flex items-center gap-1 hover:underline'>
                             <i class='fa-solid fa-print'></i> Surat Kelulusan
                         </a>
                     </div>
@@ -798,7 +798,7 @@ class ChatbotController extends Controller
             $scoresHtml = "
                 <div class='mt-2 p-2 rounded-xl bg-amber-50 border border-amber-200 text-[11px] text-amber-800 flex items-center justify-between'>
                     <span>⚠️ Santri ini belum memiliki penilaian munaqasyah.</span>
-                    <a href='/munaqasyah/{$s->id}/edit' class='px-2 py-1 rounded bg-amber-600 text-white font-bold hover:bg-amber-700 transition'>Input Nilai</a>
+                    <a href='/database-sekolah/{$s->id}/edit' class='px-2 py-1 rounded bg-amber-600 text-white font-bold hover:bg-amber-700 transition'>Input Nilai</a>
                 </div>
             ";
         }

@@ -55,7 +55,7 @@
     <div class="no-print sticky top-0 z-50 bg-slate-900/95 backdrop-blur-md text-white border-b border-slate-800 px-4 py-3 shadow-xl">
         <div class="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
             <div class="flex items-center gap-3">
-                <a href="{{ route('database sekolah.index', ['jenis' => $jenis]) }}"
+                <a href="{{ route('database_sekolah.index', ['jenis' => $jenis]) }}"
                    class="w-8 h-8 rounded-xl bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-slate-300 hover:text-white transition">
                     <i class="fa-solid fa-arrow-left text-xs"></i>
                 </a>

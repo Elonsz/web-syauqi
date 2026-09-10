@@ -21,7 +21,7 @@
                 <h2 class="text-base sm:text-lg font-extrabold text-slate-900">Tambah Biodata Santri Baru</h2>
             </div>
             <p class="text-xs text-slate-500 mt-1">
-                Isi data diri santri, foto kelulusan, dan data wali secara terpisah dari lembar penilaian database sekolah.
+                Isi data diri santri, foto kelulusan, dan data wali secara terpisah dari lembar penilaian database_sekolah.
             </p>
         </div>
         <a href="{{ route('santri.index') }}" 

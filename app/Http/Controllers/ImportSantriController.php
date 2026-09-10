@@ -16,7 +16,7 @@ class ImportSantriController extends Controller
     public function showImportForm(Request $request)
     {
         $jenis = $request->get('jenis', 'TPQ');
-        return view('munaqasyah.import', compact('jenis'));
+        return view('database_sekolah.import', compact('jenis'));
     }
 
     /**
@@ -252,7 +252,7 @@ class ImportSantriController extends Controller
             fclose($handle);
             DB::commit();
 
-            return redirect()->route('munaqasyah.index', ['jenis' => $jenis])
+            return redirect()->route('database_sekolah.index', ['jenis' => $jenis])
                 ->with('success', "Proses import berhasil! {$importedCount} data santri baru ditambahkan, {$updatedCount} data diperbarui.");
         } catch (\Exception $e) {
             DB::rollBack();

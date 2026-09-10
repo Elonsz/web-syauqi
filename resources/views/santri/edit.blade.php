@@ -23,7 +23,7 @@
                 <h2 class="text-base sm:text-lg font-extrabold text-slate-900">Edit Biodata Santri</h2>
             </div>
             <p class="text-xs text-slate-500 mt-1">
-                Perbarui identitas <strong class="text-slate-800">{{ $santri->nama }}</strong> tanpa memengaruhi catatan penilaian database sekolah.
+                Perbarui identitas <strong class="text-slate-800">{{ $santri->nama }}</strong> tanpa memengaruhi catatan penilaian database_sekolah.
             </p>
         </div>
         <div class="flex items-center gap-2">
@@ -31,7 +31,7 @@
                class="inline-flex items-center justify-center gap-2 text-xs font-semibold text-slate-600 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 border border-slate-200 px-3.5 py-2 rounded-xl transition shrink-0">
                 <i class="fa-solid fa-eye text-xs"></i> Lihat Profil
             </a>
-            <a href="{{ route('database sekolah.edit', $santri->id) }}" 
+            <a href="{{ route('database_sekolah.edit', $santri->id) }}" 
                class="inline-flex items-center justify-center gap-2 text-xs font-semibold text-emerald-700 hover:text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 px-3.5 py-2 rounded-xl transition shrink-0">
                 <i class="fa-solid fa-calculator text-xs"></i> Form Nilai
             </a>

@@ -137,7 +137,7 @@ class SantriController extends Controller
 
         // Jika user memilih tombol "Simpan & Input Penilaian"
         if ($request->input('action') === 'save_and_grade') {
-            return redirect()->route('munaqasyah.edit', $santri->id)
+            return redirect()->route('database_sekolah.edit', $santri->id)
                 ->with('success', "Biodata santri {$santri->nama} berhasil disimpan. Silakan lanjutkan mengisi nilai database sekolah.");
         }
 

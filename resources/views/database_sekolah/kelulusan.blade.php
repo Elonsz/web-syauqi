@@ -48,7 +48,7 @@
                 <i class="fa-solid fa-arrow-left"></i> Kembali ke Portal Cek Kelulusan
             </a>
         @else
-            <a href="{{ route('database sekolah.index', ['jenis' => $santri->jenis]) }}" 
+            <a href="{{ route('database_sekolah.index', ['jenis' => $santri->jenis]) }}" 
                class="inline-flex items-center justify-center gap-2 text-xs font-semibold text-slate-700 bg-white border border-slate-300 px-3.5 py-2.5 rounded-xl shadow-xs hover:bg-slate-50 transition">
                 <i class="fa-solid fa-arrow-left"></i> Kembali ke Rekapitulasi
             </a>
@@ -65,7 +65,7 @@
             </a>
 
             @if(!isset($isPublic) || !$isPublic)
-                <a href="{{ route('database sekolah.edit', $santri->id) }}"
+                <a href="{{ route('database_sekolah.edit', $santri->id) }}"
                    class="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 text-xs font-semibold text-slate-700 bg-white border border-slate-300 px-3.5 py-2.5 rounded-xl shadow-xs hover:bg-slate-50 transition">
                     <i class="fa-solid fa-pen-to-square text-amber-500"></i> Edit Data
                 </a>

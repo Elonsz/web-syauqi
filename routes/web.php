@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\MunaqasyahController;
+use App\Http\Controllers\DatabaseSekolahController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
@@ -54,11 +54,11 @@ Route::middleware('auth.check')->group(function () {
     // ── Biodata Siswa (semua user yang sudah login) ──────────────────
     Route::resource('santri', SantriController::class);
 
-    // ── Munaqasyah — Penilaian (semua user yang sudah login) ─────────
-    Route::prefix('munaqasyah')->name('munaqasyah.')->group(function () {
-        Route::get('/', [MunaqasyahController::class, 'index'])->name('index');
-        Route::get('/tambah', [MunaqasyahController::class, 'create'])->name('create');
-        Route::post('/', [MunaqasyahController::class, 'store'])->name('store');
+    // ── Database Sekolah — Penilaian (semua user yang sudah login) ─────────
+    Route::prefix('database-sekolah')->name('database_sekolah.')->group(function () {
+        Route::get('/', [DatabaseSekolahController::class, 'index'])->name('index');
+        Route::get('/tambah', [DatabaseSekolahController::class, 'create'])->name('create');
+        Route::post('/', [DatabaseSekolahController::class, 'store'])->name('store');
 
         // Import Excel / CSV
         Route::get('/import', [ImportSantriController::class, 'showImportForm'])->name('import');
@@ -66,25 +66,25 @@ Route::middleware('auth.check')->group(function () {
         Route::get('/import/template', [ImportSantriController::class, 'downloadTemplate'])->name('import.template');
 
         // Export
-        Route::get('/export/excel', [MunaqasyahController::class, 'exportExcel'])->name('export.excel');
-        Route::get('/export/csv', [MunaqasyahController::class, 'exportCsv'])->name('export.csv');
+        Route::get('/export/excel', [DatabaseSekolahController::class, 'exportExcel'])->name('export.excel');
+        Route::get('/export/csv', [DatabaseSekolahController::class, 'exportCsv'])->name('export.csv');
 
         // Surat Kelulusan
-        Route::get('/cetak-massal', [MunaqasyahController::class, 'cetakMassal'])->name('cetak.massal');
-        Route::get('/{id}/kelulusan', [MunaqasyahController::class, 'kelulusan'])
+        Route::get('/cetak-massal', [DatabaseSekolahController::class, 'cetakMassal'])->name('cetak.massal');
+        Route::get('/{id}/kelulusan', [DatabaseSekolahController::class, 'kelulusan'])
             ->where('id', '[0-9]+')
             ->name('kelulusan');
 
         // CRUD — Edit & Update bisa semua user login
-        Route::get('/{id}/edit', [MunaqasyahController::class, 'edit'])
+        Route::get('/{id}/edit', [DatabaseSekolahController::class, 'edit'])
             ->where('id', '[0-9]+')
             ->name('edit');
-        Route::put('/{id}', [MunaqasyahController::class, 'update'])
+        Route::put('/{id}', [DatabaseSekolahController::class, 'update'])
             ->where('id', '[0-9]+')
             ->name('update');
 
         // ✅ RBAC: Hapus data santri — hanya Administrator
-        Route::delete('/{id}', [MunaqasyahController::class, 'destroy'])
+        Route::delete('/{id}', [DatabaseSekolahController::class, 'destroy'])
             ->where('id', '[0-9]+')
             ->middleware('admin.only')
             ->name('destroy');

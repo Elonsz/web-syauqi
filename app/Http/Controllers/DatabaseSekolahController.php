@@ -8,7 +8,7 @@ use App\Models\Penilaian;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class MunaqasyahController extends Controller
+class DatabaseSekolahController extends Controller
 {
     /**
      * Tampilkan data munaqasyah (TPQ & RTQ)
@@ -40,7 +40,7 @@ class MunaqasyahController extends Controller
             return $s->penilaian ? $s->penilaian->rata_rata : 0;
         });
 
-        return view('munaqasyah.index', compact(
+        return view('database_sekolah.index', compact(
             'santris',
             'units',
             'jenis',
@@ -57,7 +57,7 @@ class MunaqasyahController extends Controller
     {
         $jenis = $request->get('jenis', 'TPQ');
         $units = Unit::all();
-        return view('munaqasyah.create', compact('jenis', 'units'));
+        return view('database_sekolah.create', compact('jenis', 'units'));
     }
 
     /**
@@ -131,7 +131,7 @@ class MunaqasyahController extends Controller
         $penilaian->hitungNilai();
         $penilaian->save();
 
-        return redirect()->route('munaqasyah.index', ['jenis' => $santri->jenis])
+        return redirect()->route('database_sekolah.index', ['jenis' => $santri->jenis])
             ->with('success', "Data santri {$santri->nama} dan nilai database sekolah berhasil disimpan.");
     }
 
@@ -142,7 +142,7 @@ class MunaqasyahController extends Controller
     {
         $santri = Santri::with(['penilaian', 'unit'])->findOrFail($id);
         $units = Unit::all();
-        return view('munaqasyah.edit', compact('santri', 'units'));
+        return view('database_sekolah.edit', compact('santri', 'units'));
     }
 
     /**
@@ -198,7 +198,7 @@ class MunaqasyahController extends Controller
         $penilaian->hitungNilai();
         $penilaian->save();
 
-        return redirect()->route('munaqasyah.index', ['jenis' => $santri->jenis])
+        return redirect()->route('database_sekolah.index', ['jenis' => $santri->jenis])
             ->with('success', "Data santri {$santri->nama} berhasil diperbarui.");
     }
 
@@ -216,7 +216,7 @@ class MunaqasyahController extends Controller
 
         $santri->delete();
 
-        return redirect()->route('munaqasyah.index', ['jenis' => $jenis])
+        return redirect()->route('database_sekolah.index', ['jenis' => $jenis])
             ->with('success', 'Data santri berhasil dihapus.');
     }
 
@@ -227,7 +227,7 @@ class MunaqasyahController extends Controller
     {
         $santri = Santri::with(['penilaian', 'unit'])->findOrFail($id);
         $settings = \App\Models\Setting::getAll();
-        return view('munaqasyah.kelulusan', compact('santri', 'settings'));
+        return view('database_sekolah.kelulusan', compact('santri', 'settings'));
     }
 
     /**
@@ -259,7 +259,7 @@ class MunaqasyahController extends Controller
             return back()->with('error', "Tidak ada data santri {$jenis} yang memenuhi kriteria untuk dicetak massal.");
         }
 
-        return view('munaqasyah.cetak_massal', compact('santris', 'jenis', 'settings'));
+        return view('database_sekolah.cetak_massal', compact('santris', 'jenis', 'settings'));
     }
 
     /**
@@ -279,7 +279,7 @@ class MunaqasyahController extends Controller
         $filename = "PENILAIAN_MUNAQASYAH_{$jenis}_KOTA_2026.xls";
 
         return response()
-            ->view('munaqasyah.export_excel', compact('santris', 'jenis'))
+            ->view('database_sekolah.export_excel', compact('santris', 'jenis'))
             ->header('Content-Type', 'application/vnd.ms-excel; charset=utf-8')
             ->header('Content-Disposition', "attachment; filename=\"{$filename}\"")
             ->header('Cache-Control', 'max-age=0');

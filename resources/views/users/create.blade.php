@@ -19,7 +19,7 @@
             </div>
             <div>
                 <h1 class="text-lg sm:text-xl font-black text-slate-900 tracking-tight">Tambah Pengguna Baru</h1>
-                <p class="text-xs text-slate-500 mt-0.5">Daftarkan akun administrator, penguji, atau panitia database sekolah.</p>
+                <p class="text-xs text-slate-500 mt-0.5">Daftarkan akun administrator, penguji, atau panitia database_sekolah.</p>
             </div>
         </div>
         <a href="{{ route('users.index') }}"

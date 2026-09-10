@@ -37,7 +37,7 @@
                 <i class="fa-solid fa-user-plus text-xs"></i>
                 <span>+ Tambah Santri</span>
             </a>
-            <a href="{{ route('database sekolah.index', ['jenis' => $jenis ?? 'TPQ']) }}" 
+            <a href="{{ route('database_sekolah.index', ['jenis' => $jenis ?? 'TPQ']) }}" 
                class="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-xs font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 transition">
                 <i class="fa-solid fa-table-list text-xs text-slate-500"></i>
                 <span>Lembar Penilaian</span>
@@ -335,7 +335,7 @@
                                 </a>
 
                                 <!-- Input / Edit Nilai -->
-                                <a href="{{ route('database sekolah.edit', $s->id) }}" title="Kelola Nilai Database Sekolah"
+                                <a href="{{ route('database_sekolah.edit', $s->id) }}" title="Kelola Nilai Database Sekolah"
                                    class="w-7 h-7 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-700 flex items-center justify-center transition">
                                      <i class="fa-solid fa-calculator text-xs"></i>
                                  </a>

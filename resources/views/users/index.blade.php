@@ -17,7 +17,7 @@
                 <span class="text-xs font-bold uppercase tracking-wider text-blue-700">Manajemen Akun</span>
             </div>
             <h1 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Data Pengguna Sistem</h1>
-            <p class="text-xs sm:text-sm text-slate-500 mt-0.5">Kelola akun administrator, penguji TPQ/RTQ, dan panitia database sekolah.</p>
+            <p class="text-xs sm:text-sm text-slate-500 mt-0.5">Kelola akun administrator, penguji TPQ/RTQ, dan panitia database_sekolah.</p>
         </div>
         <a href="{{ route('users.create') }}"
            class="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-xl text-xs font-semibold text-white bg-blue-600 hover:bg-blue-700 shadow-xs transition shrink-0">
