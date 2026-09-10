@@ -258,6 +258,21 @@
                     <span class="sidebar-label transition-all duration-300">Dashboard</span>
                 </a>
 
+                <!-- Biodata Santri -->
+                <p class="sidebar-section-label text-[9px] font-bold text-slate-400 uppercase tracking-widest px-3 pt-4 pb-2 transition-all duration-300">Biodata Santri</p>
+                <a href="{{ route('santri.index') }}"
+                   class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:text-slate-800 {{ request()->routeIs('santri.index') || request()->routeIs('santri.show') || request()->routeIs('santri.edit') ? 'active' : '' }}"
+                   title="Direktori Biodata Siswa">
+                    <i class="fa-solid fa-address-card w-5 text-center shrink-0 text-slate-400"></i>
+                    <span class="sidebar-label transition-all duration-300">Direktori Biodata</span>
+                </a>
+                <a href="{{ route('santri.create') }}"
+                   class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:text-slate-800 {{ request()->routeIs('santri.create') ? 'active' : '' }}"
+                   title="Tambah Biodata Santri Baru">
+                    <i class="fa-solid fa-user-plus w-5 text-center shrink-0 text-slate-400"></i>
+                    <span class="sidebar-label transition-all duration-300">Tambah Biodata</span>
+                </a>
+
                 <!-- Penilaian -->
                 <p class="sidebar-section-label text-[9px] font-bold text-slate-400 uppercase tracking-widest px-3 pt-4 pb-2 transition-all duration-300">Penilaian</p>
                 @php
@@ -279,21 +294,6 @@
                    title="Rumah Tahfidz Qur'an Ar-Raudhah">
                     <i class="fa-solid fa-book-quran w-5 text-center shrink-0 text-slate-400"></i>
                     <span class="sidebar-label transition-all duration-300">RTQ Ar-Raudhah</span>
-                </a>
-
-                <!-- Biodata Santri (Terpisah dari Penilaian) -->
-                <p class="sidebar-section-label text-[9px] font-bold text-slate-400 uppercase tracking-widest px-3 pt-4 pb-2 transition-all duration-300">Biodata Santri</p>
-                <a href="{{ route('santri.index') }}"
-                   class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:text-slate-800 {{ request()->routeIs('santri.index') || request()->routeIs('santri.show') || request()->routeIs('santri.edit') ? 'active' : '' }}"
-                   title="Direktori Biodata Siswa">
-                    <i class="fa-solid fa-address-card w-5 text-center shrink-0 text-slate-400"></i>
-                    <span class="sidebar-label transition-all duration-300">Direktori Biodata</span>
-                </a>
-                <a href="{{ route('santri.create') }}"
-                   class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:text-slate-800 {{ request()->routeIs('santri.create') ? 'active' : '' }}"
-                   title="Tambah Biodata Santri Baru">
-                    <i class="fa-solid fa-user-plus w-5 text-center shrink-0 text-slate-400"></i>
-                    <span class="sidebar-label transition-all duration-300">Tambah Biodata</span>
                 </a>
 
                 <!-- Input Data -->
@@ -441,6 +441,13 @@
                                 <a href="{{ route('dashboard') }}" class="flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-100 rounded-xl transition">
                                     <i class="fa-solid fa-gauge-high text-slate-500 w-4 text-center"></i>
                                     Dashboard
+                                </a>
+                                <a href="{{ route('santri.index') }}" class="flex items-start gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-100 rounded-xl transition">
+                                    <i class="fa-solid fa-address-card text-blue-600 w-4 text-center mt-0.5 shrink-0"></i>
+                                    <div>
+                                        <p class="font-bold text-slate-800 leading-tight">Biodata Santri</p>
+                                        <p class="text-[10px] text-slate-400 font-normal">Direktori Data Pokok</p>
+                                    </div>
                                 </a>
                                 <a href="{{ route('munaqasyah.index', ['jenis' => 'TPQ']) }}" class="flex items-start gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-100 rounded-xl transition">
                                     <i class="fa-solid fa-scroll text-amber-500 w-4 text-center mt-0.5 shrink-0"></i>

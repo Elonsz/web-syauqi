@@ -41,11 +41,15 @@ class Santri extends Model
     // Accessor untuk URL foto siswa
     public function getFotoUrlAttribute()
     {
-        if ($this->foto && Storage::disk('public')->exists($this->foto)) {
-            return asset('storage/' . $this->foto);
+        if ($this->foto) {
+            $cleanPath = ltrim(str_replace('storage/', '', $this->foto), '/\\');
+            if (Storage::disk('public')->exists($cleanPath)) {
+                return asset('storage/' . $cleanPath);
+            }
         }
 
         // Avatar placeholder berdasarkan jenis kelamin / nama jika belum ada foto
-        return 'https://ui-avatars.com/api/?name=' . urlencode($this->nama) . '&background=0D8ABC&color=fff&size=256';
+        $bg = ($this->jenis_kelamin === 'P') ? 'E11D48' : '1D4ED8';
+        return 'https://ui-avatars.com/api/?name=' . urlencode($this->nama) . '&background=' . $bg . '&color=fff&size=256&bold=true';
     }
 }

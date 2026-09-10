@@ -69,12 +69,10 @@
             <div class="flex flex-col sm:flex-row gap-6 items-start -mt-14 sm:-mt-16 mb-6">
                 <!-- Foto Profil Santri -->
                 <div class="w-28 h-36 sm:w-32 sm:h-40 rounded-2xl bg-white p-1.5 border-2 border-slate-200 shadow-xl shrink-0 overflow-hidden relative">
-                    @if($santri->foto)
-                        <img src="{{ asset('storage/' . $santri->foto) }}" alt="{{ $santri->nama }}" class="w-full h-full object-cover rounded-xl">
-                    @else
-                        <div class="w-full h-full rounded-xl bg-slate-100 flex flex-col items-center justify-center text-slate-400">
-                            <i class="fa-solid fa-user text-3xl"></i>
-                            <span class="text-[10px] font-bold mt-1">Tanpa Foto</span>
+                    <img src="{{ $santri->foto_url }}" alt="{{ $santri->nama }}" class="w-full h-full object-cover rounded-xl" onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name={{ urlencode($santri->nama) }}&background=0D8ABC&color=fff&size=256';">
+                    @if(!$santri->foto)
+                        <div class="absolute bottom-2.5 inset-x-2.5 bg-slate-900/75 backdrop-blur-xs text-white text-[9px] font-bold py-0.5 px-1 rounded-md text-center shadow-xs">
+                            Avatar Default
                         </div>
                     @endif
                 </div>

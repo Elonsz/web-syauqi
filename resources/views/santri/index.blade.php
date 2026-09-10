@@ -224,13 +224,7 @@
                         <td class="py-3 px-3">
                             <div class="flex items-center gap-3">
                                 <div class="w-10 h-12 rounded-lg bg-slate-100 border border-slate-200 overflow-hidden shrink-0 shadow-2xs">
-                                    @if($s->foto)
-                                        <img src="{{ asset('storage/' . $s->foto) }}" alt="{{ $s->nama }}" class="w-full h-full object-cover">
-                                    @else
-                                        <div class="w-full h-full flex flex-col items-center justify-center text-slate-400 bg-slate-50">
-                                            <i class="fa-solid fa-user text-xs"></i>
-                                        </div>
-                                    @endif
+                                    <img src="{{ $s->foto_url }}" alt="{{ $s->nama }}" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name={{ urlencode($s->nama) }}&background=0D8ABC&color=fff&size=128';">
                                 </div>
                                 <div class="min-w-0">
                                     <a href="{{ route('santri.show', $s->id) }}" class="font-extrabold text-slate-900 hover:text-blue-600 transition truncate block max-w-xs text-xs">
