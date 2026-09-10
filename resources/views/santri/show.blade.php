@@ -42,6 +42,19 @@
                 <i class="fa-solid fa-print text-xs"></i> Cetak Surat Kelulusan
             </a>
             @endif
+
+            @php
+                $pSantri = $santri->penilaian;
+                if ($pSantri) {
+                    $waTextSantri = "Assalamu'alaikum Wr. Wb. Yth. Wali Santri dari *" . $santri->nama . "* (No. Peserta: " . ($santri->no_peserta ?? '-') . ").%0A%0AInformasi Hasil Ujian Munaqasyah Yayasan Cahaya Amanah Ar-Raudhah:%0A- Status: *" . $santri->status_kelulusan . "*%0A- Predikat: *" . ($pSantri->predikat ?? '-') . "*%0A- Rata-rata: *" . number_format($pSantri->rata_rata, 2) . "*%0A%0ABerikut tautan resmi Surat Keterangan Kelulusan dan nilai lengkap:%0A" . urlencode(route('public.check.cetak', $santri->id)) . "%0A%0ABarakallahu fiikum.%0A_Panitia Munaqasyah Ar-Raudhah_";
+                } else {
+                    $waTextSantri = "Assalamu'alaikum Wr. Wb. Yth. Wali Santri dari *" . $santri->nama . "* (No. Peserta: " . ($santri->no_peserta ?? '-') . ").%0A%0AInformasi Pendaftaran Ujian Munaqasyah Yayasan Cahaya Amanah Ar-Raudhah:%0A- No. Peserta: " . ($santri->no_peserta ?? '-') . "%0A- Lembaga: " . ($santri->nama_unit ?? '-') . "%0A- Status: *" . $santri->status_kelulusan . "*%0A%0ABarakallahu fiikum.%0A_Panitia Munaqasyah Ar-Raudhah_";
+                }
+            @endphp
+            <a href="https://api.whatsapp.com/send?text={{ $waTextSantri }}" target="_blank" rel="noopener"
+               class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold bg-emerald-600 hover:bg-emerald-700 text-white shadow-xs transition" title="Kirim Info ke WhatsApp">
+                <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp
+            </a>
         </div>
     </div>
 
@@ -66,9 +79,9 @@
         </div>
 
         <div class="px-6 sm:px-8 pb-8 pt-0 relative">
-            <div class="flex flex-col sm:flex-row gap-6 items-start -mt-14 sm:-mt-16 mb-6">
-                <!-- Foto Profil Santri -->
-                <div class="w-28 h-36 sm:w-32 sm:h-40 rounded-2xl bg-white p-1.5 border-2 border-slate-200 shadow-xl shrink-0 overflow-hidden relative">
+            <div class="flex flex-col sm:flex-row gap-5 sm:gap-6 items-start sm:items-end mb-6">
+                <!-- Foto Profil Santri (Hanya foto yang overlap ke banner) -->
+                <div class="-mt-16 sm:-mt-20 w-28 h-36 sm:w-32 sm:h-40 rounded-2xl bg-white p-1.5 border-2 border-slate-200 shadow-xl shrink-0 overflow-hidden relative z-20">
                     <img src="{{ $santri->foto_url }}" alt="{{ $santri->nama }}" class="w-full h-full object-cover rounded-xl" onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name={{ urlencode($santri->nama) }}&background=0D8ABC&color=fff&size=256';">
                     @if(!$santri->foto)
                         <div class="absolute bottom-2.5 inset-x-2.5 bg-slate-900/75 backdrop-blur-xs text-white text-[9px] font-bold py-0.5 px-1 rounded-md text-center shadow-xs">
@@ -77,22 +90,22 @@
                     @endif
                 </div>
 
-                <!-- Info Header Santri -->
-                <div class="flex-1 min-w-0 pt-2 sm:pt-4">
-                    <div class="flex items-center gap-2 flex-wrap mb-1">
-                        <span class="px-2.5 py-0.5 rounded-md text-xs font-bold {{ $santri->jenis === 'TPQ' ? 'bg-blue-100 text-blue-900' : 'bg-emerald-100 text-emerald-900' }}">
+                <!-- Info Header Santri (Berada bersih di area putih) -->
+                <div class="flex-1 min-w-0 pt-2 sm:pt-4 sm:pb-1">
+                    <div class="flex items-center gap-2 flex-wrap mb-1.5">
+                        <span class="px-2.5 py-0.5 rounded-md text-xs font-bold {{ $santri->jenis === 'TPQ' ? 'bg-blue-100 text-blue-900 border border-blue-200' : 'bg-emerald-100 text-emerald-900 border border-emerald-200' }}">
                             {{ $santri->jenis }}
                         </span>
-                        <span class="text-xs font-mono font-bold text-slate-500">
+                        <span class="text-xs font-mono font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-md border border-slate-200">
                             No. Peserta: <strong class="text-slate-800">{{ $santri->no_peserta ?? '-' }}</strong>
                         </span>
                         <span class="text-slate-300">•</span>
-                        <span class="text-xs font-mono text-slate-500">
+                        <span class="text-xs font-mono text-slate-500 bg-slate-100 px-2 py-0.5 rounded-md border border-slate-200">
                             NISN: <strong class="text-slate-800">{{ $santri->nisn ?? 'Belum ada' }}</strong>
                         </span>
                     </div>
 
-                    <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+                    <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight leading-snug">
                         {{ $santri->nama }}
                     </h2>
 
@@ -188,7 +201,7 @@
             <div class="bg-gradient-to-br from-blue-950 to-blue-900 rounded-2xl p-4 text-white text-center shadow-md">
                 <p class="text-xs text-blue-200 font-semibold uppercase tracking-wider">Total Nilai</p>
                 <p class="text-3xl sm:text-4xl font-black font-mono mt-1 text-white">
-                    {{ number_format($santri->penilaian->total_nilai, 1) }}
+                    {{ number_format($santri->penilaian->total_nilai ?? 0, 1) }}
                 </p>
                 <p class="text-[11px] text-blue-300 mt-1">Skala Maksimal 900</p>
             </div>
@@ -196,7 +209,7 @@
             <div class="bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl p-4 text-white text-center shadow-md">
                 <p class="text-xs text-slate-300 font-semibold uppercase tracking-wider">Rata-Rata</p>
                 <p class="text-3xl sm:text-4xl font-black font-mono mt-1 text-amber-300">
-                    {{ number_format($santri->penilaian->rata_rata, 1) }}
+                    {{ number_format($santri->penilaian->rata_rata ?? 0, 1) }}
                 </p>
                 <p class="text-[11px] text-slate-400 mt-1">Skala Nilai 0 - 100</p>
             </div>

@@ -209,7 +209,7 @@
                         <th class="py-3 px-3">Orang Tua / Wali</th>
                         <th class="py-3 px-3 text-center">Penilaian</th>
                         <th class="py-3 px-3 text-center">Status</th>
-                        <th class="py-3 px-3 text-center w-36">Aksi</th>
+                        <th class="py-3 px-3 text-center w-44">Aksi</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-slate-100">
@@ -337,7 +337,22 @@
                                 <!-- Input / Edit Nilai -->
                                 <a href="{{ route('munaqasyah.edit', $s->id) }}" title="Kelola Nilai Munaqasyah"
                                    class="w-7 h-7 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-700 flex items-center justify-center transition">
-                                    <i class="fa-solid fa-calculator text-xs"></i>
+                                     <i class="fa-solid fa-calculator text-xs"></i>
+                                 </a>
+
+                                <!-- Kirim WhatsApp -->
+                                @php
+                                    $pRow = $s->penilaian;
+                                    if ($pRow) {
+                                        $waText = "Assalamu'alaikum Wr. Wb. Yth. Wali Santri dari *" . $s->nama . "* (No. Peserta: " . ($s->no_peserta ?? '-') . ").%0A%0AInformasi Hasil Ujian Munaqasyah Yayasan Cahaya Amanah Ar-Raudhah:%0A- Status: *" . $s->status_kelulusan . "*%0A- Predikat: *" . ($pRow->predikat ?? '-') . "*%0A- Rata-rata: *" . number_format($pRow->rata_rata, 2) . "*%0A%0ABerikut tautan resmi Surat Keterangan Kelulusan dan nilai lengkap:%0A" . urlencode(route('public.check.cetak', $s->id)) . "%0A%0ABarakallahu fiikum.%0A_Panitia Munaqasyah Ar-Raudhah_";
+                                    } else {
+                                        $waText = "Assalamu'alaikum Wr. Wb. Yth. Wali Santri dari *" . $s->nama . "* (No. Peserta: " . ($s->no_peserta ?? '-') . ").%0A%0AInformasi Pendaftaran Ujian Munaqasyah Yayasan Cahaya Amanah Ar-Raudhah:%0A- No. Peserta: " . ($s->no_peserta ?? '-') . "%0A- Lembaga: " . ($s->nama_unit ?? '-') . "%0A- Status: *" . $s->status_kelulusan . "*%0A%0ABarakallahu fiikum.%0A_Panitia Munaqasyah Ar-Raudhah_";
+                                    }
+                                @endphp
+                                <a href="https://api.whatsapp.com/send?text={{ $waText }}" target="_blank" rel="noopener"
+                                   title="Kirim Info via WhatsApp"
+                                   class="w-7 h-7 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white flex items-center justify-center transition shadow-2xs">
+                                    <i class="fa-brands fa-whatsapp text-xs"></i>
                                 </a>
 
                                 <!-- Hapus -->

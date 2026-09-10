@@ -56,6 +56,7 @@
         <div class="flex items-center gap-2">
             <!-- WhatsApp Share Button -->
             @php
+                $p = $santri->penilaian;
                 $waMessage = "Assalamu'alaikum Wr. Wb. Yth. Wali Santri dari *" . $santri->nama . "* (No. Peserta: " . ($santri->no_peserta ?? '-') . ").%0A%0AAlhamdulillah, santri dinyatakan *" . $santri->status_kelulusan . "* pada Ujian Munaqasyah Yayasan Cahaya Amanah Ar-Raudhah dengan Predikat *" . ($p ? $p->predikat : '-') . "* (Rata-rata: " . ($p ? number_format($p->rata_rata, 2) : '-') . ").%0A%0ABerikut tautan resmi Surat Keterangan Kelulusan dan nilai lengkap:%0A" . urlencode(route('public.check.cetak', $santri->id)) . "%0A%0ABarakallahu fiikum.%0A_Panitia Munaqasyah Ar-Raudhah_";
             @endphp
             <a href="https://api.whatsapp.com/send?text={{ $waMessage }}" target="_blank" rel="noopener"
