@@ -27,6 +27,16 @@ Route::get('/', function () {
 })->name('landing');
 
 // ============================================================
+// ===== Redirect lama /munaqasyah → /database-sekolah ========
+// ============================================================
+Route::get('/munaqasyah', function () {
+    return redirect('/database-sekolah' . (request()->getQueryString() ? '?' . request()->getQueryString() : ''));
+});
+Route::get('/munaqasyah/{any}', function ($any) {
+    return redirect('/database-sekolah/' . $any . (request()->getQueryString() ? '?' . request()->getQueryString() : ''));
+})->where('any', '.*');
+
+// ============================================================
 // ===== Public Routes (tidak butuh login) ====================
 // ============================================================
 // Cek Kelulusan — hanya expose info yang diperlukan wali santri
