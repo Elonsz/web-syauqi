@@ -3,7 +3,7 @@
 @section('title', 'Edit Santri - ' . $santri->nama)
 
 @section('breadcrumb')
-    <a href="{{ route('munaqasyah.index', ['jenis' => $santri->jenis]) }}" class="hover:text-blue-900 transition">Database Sekolah {{ $santri->jenis == 'TPQ' ? "TPQ Ar-Raudhah" : "RTQ Ar-Raudhah" }}</a>
+    <a href="{{ route('database sekolah.index', ['jenis' => $santri->jenis]) }}" class="hover:text-blue-900 transition">Database Sekolah {{ $santri->jenis == 'TPQ' ? "TPQ Ar-Raudhah" : "RTQ Ar-Raudhah" }}</a>
     <i class="fa-solid fa-chevron-right text-[9px]"></i>
     <span class="text-blue-950 font-bold truncate max-w-[120px] sm:max-w-none">Edit: {{ $santri->nama }}</span>
 @endsection
@@ -19,14 +19,14 @@
                 </span>
                 <h2 class="text-base sm:text-lg font-extrabold text-slate-900">Edit Data Santri & Penilaian</h2>
             </div>
-            <p class="text-xs text-slate-500 mt-1">Ubah biodata peserta, update pas foto kelulusan, atau perbarui nilai ujian munaqasyah.</p>
+            <p class="text-xs text-slate-500 mt-1">Ubah biodata peserta, update pas foto kelulusan, atau perbarui nilai ujian database sekolah.</p>
         </div>
         <div class="flex items-center gap-2 self-start sm:self-auto shrink-0">
-            <a href="{{ route('munaqasyah.kelulusan', $santri->id) }}" target="_blank"
+            <a href="{{ route('database sekolah.kelulusan', $santri->id) }}" target="_blank"
                class="inline-flex items-center justify-center gap-1.5 text-xs font-bold text-blue-900 hover:text-blue-950 bg-blue-50 hover:bg-blue-100 border border-blue-200/80 px-3 py-2 rounded-xl transition">
                 <i class="fa-solid fa-file-lines text-blue-800"></i> Surat Kelulusan
             </a>
-            <a href="{{ route('munaqasyah.index', ['jenis' => $santri->jenis]) }}" 
+            <a href="{{ route('database sekolah.index', ['jenis' => $santri->jenis]) }}" 
                class="inline-flex items-center justify-center gap-1.5 text-xs font-semibold text-slate-600 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 border border-slate-200 px-3 py-2 rounded-xl transition">
                 <i class="fa-solid fa-arrow-left"></i> Kembali
             </a>
@@ -47,7 +47,7 @@
         </div>
     @endif
 
-    <form action="{{ route('munaqasyah.update', $santri->id) }}" method="POST" enctype="multipart/form-data" class="space-y-5 sm:space-y-6">
+    <form action="{{ route('database sekolah.update', $santri->id) }}" method="POST" enctype="multipart/form-data" class="space-y-5 sm:space-y-6">
         @csrf
         @method('PUT')
 
@@ -134,20 +134,20 @@
             </div>
         </div>
 
-        <!-- CARD 2: NILAI MUNAQASYAH (9 KOMPONEN PENILAIAN) -->
+        <!-- CARD 2: NILAI DATABASE SEKOLAH (9 KOMPONEN PENILAIAN) -->
         <div class="bg-white p-4 sm:p-6 rounded-2xl border border-slate-200 shadow-xs space-y-5">
             <div class="border-b border-slate-100 pb-3 flex items-center justify-between">
                 <h3 class="text-sm font-bold text-slate-800 flex items-center gap-2">
                     <span class="w-6 h-6 rounded-lg bg-blue-100 text-blue-800 flex items-center justify-center text-xs font-black">2</span>
-                    Nilai Ujian Munaqasyah (9 Komponen Penilaian)
+                    Nilai Ujian Database Sekolah (9 Komponen Penilaian)
                 </h3>
                 <span class="text-[11px] text-slate-500 font-medium">Rentang: 0 - 100</span>
             </div>
 
-            <!-- BAGIAN A: MUNAQASYAH BACAAN -->
+            <!-- BAGIAN A: DATABASE SEKOLAH BACAAN -->
             <div>
                 <h4 class="text-xs font-extrabold text-blue-950 uppercase tracking-wider bg-blue-50 border border-blue-200/80 px-3 py-1.5 rounded-xl mb-3 flex items-center gap-2">
-                    <i class="fa-solid fa-book-open text-blue-700"></i> A. Munaqasyah Bacaan (4 Materi)
+                    <i class="fa-solid fa-book-open text-blue-700"></i> A. Database Sekolah Bacaan (4 Materi)
                 </h4>
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
                     <div>
@@ -173,10 +173,10 @@
                 </div>
             </div>
 
-            <!-- BAGIAN B: MUNAQASYAH HAFALAN -->
+            <!-- BAGIAN B: DATABASE SEKOLAH HAFALAN -->
             <div>
                 <h4 class="text-xs font-extrabold text-amber-950 uppercase tracking-wider bg-amber-50 border border-amber-200/80 px-3 py-1.5 rounded-xl mb-3 flex items-center gap-2">
-                    <i class="fa-solid fa-brain text-amber-600"></i> B. Munaqasyah Hafalan (4 Materi)
+                    <i class="fa-solid fa-brain text-amber-600"></i> B. Database Sekolah Hafalan (4 Materi)
                 </h4>
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
                     <div>

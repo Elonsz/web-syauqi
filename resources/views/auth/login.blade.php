@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login — Sistem Munaqasyah Ar-Raudhah</title>
+    <title>Login — Database Sekolah Ar-Raudhah</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
@@ -207,7 +207,7 @@
 
         <div class="left-body">
             <p class="arabic">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
-            <h1>Sistem Penilaian<br>Munaqasyah Santri</h1>
+            <h1>Database Sekolah<br>Santri</h1>
             <p>Platform digital resmi untuk pengelolaan ujian, penilaian, dan kelulusan santri Ar-Raudhah Banjarbaru.</p>
         </div>
 
@@ -224,7 +224,7 @@
     <div class="login-right">
         <div class="right-header">
             <h3>Selamat Datang</h3>
-            <p>Masuk untuk mengelola data munaqasyah</p>
+            <p>Masuk untuk mengelola database sekolah</p>
         </div>
 
         {{-- Success --}}

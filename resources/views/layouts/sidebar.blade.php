@@ -276,20 +276,20 @@
                 <!-- Penilaian -->
                 <p class="sidebar-section-label text-[9px] font-bold text-slate-400 uppercase tracking-widest px-3 pt-4 pb-2 transition-all duration-300">Penilaian</p>
                 @php
-                    $isCreatePage = request()->routeIs('munaqasyah.create');
+                    $isCreatePage = request()->routeIs('database sekolah.create');
                     $currJenis = request('jenis', isset($santri) ? ($santri->jenis ?? 'TPQ') : 'TPQ');
-                    $isTpqActive = !$isCreatePage && request()->is('munaqasyah*') && $currJenis === 'TPQ';
-                    $isRtqActive = !$isCreatePage && request()->is('munaqasyah*') && $currJenis === 'RTQ';
+                    $isTpqActive = !$isCreatePage && request()->is('database sekolah*') && $currJenis === 'TPQ';
+                    $isRtqActive = !$isCreatePage && request()->is('database sekolah*') && $currJenis === 'RTQ';
                     $isCreateTpqActive = $isCreatePage && request('jenis', 'TPQ') === 'TPQ';
                     $isCreateRtqActive = $isCreatePage && request('jenis') === 'RTQ';
                 @endphp
-                <a href="{{ route('munaqasyah.index', ['jenis' => 'TPQ']) }}"
+                <a href="{{ route('database sekolah.index', ['jenis' => 'TPQ']) }}"
                    class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:text-slate-800 {{ $isTpqActive ? 'active' : '' }}"
                    title="Taman Pendidikan Qur'an Ar-Raudhah">
                     <i class="fa-solid fa-scroll w-5 text-center shrink-0 text-slate-400"></i>
                     <span class="sidebar-label transition-all duration-300">TPQ Ar-Raudhah</span>
                 </a>
-                <a href="{{ route('munaqasyah.index', ['jenis' => 'RTQ']) }}"
+                <a href="{{ route('database sekolah.index', ['jenis' => 'RTQ']) }}"
                    class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:text-slate-800 {{ $isRtqActive ? 'active' : '' }}"
                    title="Rumah Tahfidz Qur'an Ar-Raudhah">
                     <i class="fa-solid fa-book-quran w-5 text-center shrink-0 text-slate-400"></i>
@@ -299,12 +299,12 @@
                 <!-- Input Data -->
                 <p class="sidebar-section-label text-[9px] font-bold text-slate-400 uppercase tracking-widest px-3 pt-4 pb-2 transition-all duration-300">Input Data</p>
                 @php $navJenis = request('jenis', 'TPQ'); @endphp
-                <a href="{{ route('munaqasyah.create', ['jenis' => 'TPQ']) }}"
+                <a href="{{ route('database sekolah.create', ['jenis' => 'TPQ']) }}"
                    class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:text-slate-800 {{ $isCreateTpqActive ? 'active' : '' }}">
                     <i class="fa-solid fa-user-plus w-5 text-center shrink-0 text-slate-400"></i>
                     <span class="sidebar-label transition-all duration-300">Input TPQ Ar-Raudhah</span>
                 </a>
-                <a href="{{ route('munaqasyah.create', ['jenis' => 'RTQ']) }}"
+                <a href="{{ route('database sekolah.create', ['jenis' => 'RTQ']) }}"
                    class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:text-slate-800 {{ $isCreateRtqActive ? 'active' : '' }}">
                     <i class="fa-solid fa-user-plus w-5 text-center shrink-0 text-slate-400"></i>
                     <span class="sidebar-label transition-all duration-300">Input RTQ Ar-Raudhah</span>
@@ -313,12 +313,12 @@
                 <!-- Export -->
                 <p class="sidebar-section-label text-[9px] font-bold text-slate-400 uppercase tracking-widest px-3 pt-4 pb-2 transition-all duration-300">Export</p>
                 @php $navUnit = request('unit'); @endphp
-                <a href="{{ route('munaqasyah.export.excel', ['jenis' => $navJenis, 'unit' => $navUnit]) }}"
+                <a href="{{ route('database sekolah.export.excel', ['jenis' => $navJenis, 'unit' => $navUnit]) }}"
                    class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:text-slate-800">
                     <i class="fa-solid fa-file-excel w-5 text-center shrink-0 text-emerald-400"></i>
                     <span class="sidebar-label transition-all duration-300">Export Excel</span>
                 </a>
-                <a href="{{ route('munaqasyah.export.csv', ['jenis' => $navJenis, 'unit' => $navUnit]) }}"
+                <a href="{{ route('database sekolah.export.csv', ['jenis' => $navJenis, 'unit' => $navUnit]) }}"
                    class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:text-slate-800">
                     <i class="fa-solid fa-table w-5 text-center shrink-0 text-slate-400"></i>
                     <span class="sidebar-label transition-all duration-300">Export Spreadsheet</span>
@@ -392,14 +392,14 @@
 
                 <!-- Right side -->
                 <div class="flex items-center gap-1.5 sm:gap-2">
-                    {{-- Tab TPQ/RTQ (munaqasyah pages) --}}
-                    @if(request()->is('munaqasyah*'))
+                    {{-- Tab TPQ/RTQ (database sekolah pages) --}}
+                    @if(request()->is('database sekolah*'))
                     <div class="inline-flex bg-slate-100 p-0.5 rounded-lg border border-slate-200">
-                        <a href="{{ route('munaqasyah.index', ['jenis' => 'TPQ']) }}"
+                        <a href="{{ route('database sekolah.index', ['jenis' => 'TPQ']) }}"
                            class="px-2.5 sm:px-3 py-1.5 rounded-md text-xs font-semibold transition {{ request('jenis','TPQ') == 'TPQ' ? 'bg-white text-blue-700 shadow-sm border border-slate-200' : 'text-slate-500 hover:text-slate-700' }}">
                             <i class="fa-solid fa-scroll"></i><span class="hidden sm:inline ml-1.5">TPQ</span>
                         </a>
-                        <a href="{{ route('munaqasyah.index', ['jenis' => 'RTQ']) }}"
+                        <a href="{{ route('database sekolah.index', ['jenis' => 'RTQ']) }}"
                            class="px-2.5 sm:px-3 py-1.5 rounded-md text-xs font-semibold transition {{ request('jenis') == 'RTQ' ? 'bg-white text-emerald-700 shadow-sm border border-slate-200' : 'text-slate-500 hover:text-slate-700' }}">
                             <i class="fa-solid fa-book-quran"></i><span class="hidden sm:inline ml-1.5">RTQ</span>
                         </a>
@@ -449,14 +449,14 @@
                                         <p class="text-[10px] text-slate-400 font-normal">Direktori Data Pokok</p>
                                     </div>
                                 </a>
-                                <a href="{{ route('munaqasyah.index', ['jenis' => 'TPQ']) }}" class="flex items-start gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-100 rounded-xl transition">
+                                <a href="{{ route('database sekolah.index', ['jenis' => 'TPQ']) }}" class="flex items-start gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-100 rounded-xl transition">
                                     <i class="fa-solid fa-scroll text-amber-500 w-4 text-center mt-0.5 shrink-0"></i>
                                     <div>
                                         <p class="font-bold text-slate-800 leading-tight">TPQ Ar-Raudhah</p>
                                         <p class="text-[10px] text-slate-400 font-normal">Taman Pendidikan Qur'an</p>
                                     </div>
                                 </a>
-                                <a href="{{ route('munaqasyah.index', ['jenis' => 'RTQ']) }}" class="flex items-start gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-100 rounded-xl transition">
+                                <a href="{{ route('database sekolah.index', ['jenis' => 'RTQ']) }}" class="flex items-start gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-100 rounded-xl transition">
                                     <i class="fa-solid fa-book-quran text-emerald-600 w-4 text-center mt-0.5 shrink-0"></i>
                                     <div>
                                         <p class="font-bold text-slate-800 leading-tight">RTQ Ar-Raudhah</p>

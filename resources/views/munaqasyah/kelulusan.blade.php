@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Surat Keterangan Kelulusan Munaqasyah - {{ $santri->nama }}</title>
+    <title>Surat Keterangan Kelulusan Database Sekolah - {{ $santri->nama }}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
@@ -48,7 +48,7 @@
                 <i class="fa-solid fa-arrow-left"></i> Kembali ke Portal Cek Kelulusan
             </a>
         @else
-            <a href="{{ route('munaqasyah.index', ['jenis' => $santri->jenis]) }}" 
+            <a href="{{ route('database sekolah.index', ['jenis' => $santri->jenis]) }}" 
                class="inline-flex items-center justify-center gap-2 text-xs font-semibold text-slate-700 bg-white border border-slate-300 px-3.5 py-2.5 rounded-xl shadow-xs hover:bg-slate-50 transition">
                 <i class="fa-solid fa-arrow-left"></i> Kembali ke Rekapitulasi
             </a>
@@ -57,7 +57,7 @@
             <!-- WhatsApp Share Button -->
             @php
                 $p = $santri->penilaian;
-                $waMessage = "Assalamu'alaikum Wr. Wb. Yth. Wali Santri dari *" . $santri->nama . "* (No. Peserta: " . ($santri->no_peserta ?? '-') . ").%0A%0AAlhamdulillah, santri dinyatakan *" . $santri->status_kelulusan . "* pada Ujian Munaqasyah Yayasan Cahaya Amanah Ar-Raudhah dengan Predikat *" . ($p ? $p->predikat : '-') . "* (Rata-rata: " . ($p ? number_format($p->rata_rata, 2) : '-') . ").%0A%0ABerikut tautan resmi Surat Keterangan Kelulusan dan nilai lengkap:%0A" . urlencode(route('public.check.cetak', $santri->id)) . "%0A%0ABarakallahu fiikum.%0A_Panitia Munaqasyah Ar-Raudhah_";
+                $waMessage = "Assalamu'alaikum Wr. Wb. Yth. Wali Santri dari *" . $santri->nama . "* (No. Peserta: " . ($santri->no_peserta ?? '-') . ").%0A%0AAlhamdulillah, santri dinyatakan *" . $santri->status_kelulusan . "* pada Ujian Database Sekolah Yayasan Cahaya Amanah Ar-Raudhah dengan Predikat *" . ($p ? $p->predikat : '-') . "* (Rata-rata: " . ($p ? number_format($p->rata_rata, 2) : '-') . ").%0A%0ABerikut tautan resmi Surat Keterangan Kelulusan dan nilai lengkap:%0A" . urlencode(route('public.check.cetak', $santri->id)) . "%0A%0ABarakallahu fiikum.%0A_Panitia Database Sekolah Ar-Raudhah_";
             @endphp
             <a href="https://api.whatsapp.com/send?text={{ $waMessage }}" target="_blank" rel="noopener"
                class="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 px-3.5 py-2.5 rounded-xl shadow-md transition active:scale-95" title="Bagikan hasil ke WhatsApp">
@@ -65,7 +65,7 @@
             </a>
 
             @if(!isset($isPublic) || !$isPublic)
-                <a href="{{ route('munaqasyah.edit', $santri->id) }}"
+                <a href="{{ route('database sekolah.edit', $santri->id) }}"
                    class="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 text-xs font-semibold text-slate-700 bg-white border border-slate-300 px-3.5 py-2.5 rounded-xl shadow-xs hover:bg-slate-50 transition">
                     <i class="fa-solid fa-pen-to-square text-amber-500"></i> Edit Data
                 </a>
@@ -97,10 +97,10 @@
 
         <div class="text-center mb-5 sm:mb-6">
             <h2 class="text-sm sm:text-base font-extrabold uppercase text-slate-900 tracking-wide underline decoration-slate-900 decoration-2 underline-offset-4">
-                SURAT KETERANGAN HASIL UJIAN MUNAQASYAH
+                SURAT KETERANGAN HASIL UJIAN DATABASE SEKOLAH
             </h2>
             <p class="text-[11px] sm:text-xs text-slate-500 mt-1 font-mono">
-                Nomor: {{ $settings['nomor_sk_munaqasyah'] ?? ('SKM/' . $santri->jenis . '/2026/' . str_pad($santri->no_peserta ?? $santri->id, 4, '0', STR_PAD_LEFT)) }}
+                Nomor: {{ $settings['nomor_sk_database sekolah'] ?? ('SKM/' . $santri->jenis . '/2026/' . str_pad($santri->no_peserta ?? $santri->id, 4, '0', STR_PAD_LEFT)) }}
             </p>
         </div>
 
@@ -135,7 +135,7 @@
                 <div class="flex">
                     <span class="w-32 sm:w-36 font-semibold text-slate-600 shrink-0">Tahun Ujian</span>
                     <span class="w-3 text-center shrink-0">:</span>
-                    <span class="text-slate-800">{{ $santri->tahun_munaqasyah ?? '2026' }}</span>
+                    <span class="text-slate-800">{{ $santri->tahun_database sekolah ?? '2026' }}</span>
                 </div>
             </div>
 
@@ -150,11 +150,11 @@
 
         @php $p = $santri->penilaian; @endphp
 
-        <!-- Tabel Transkrip Nilai Munaqasyah (Sesuai 9 Mata Uji Google Sheet) -->
+        <!-- Tabel Transkrip Nilai Database Sekolah (Sesuai 9 Mata Uji Google Sheet) -->
         <div class="mb-6">
             <h4 class="text-xs font-bold text-slate-800 uppercase mb-2 flex items-center gap-1.5">
                 <i class="fa-solid fa-square-poll-vertical text-blue-900"></i>
-                Rincian Nilai Ujian Munaqasyah
+                Rincian Nilai Ujian Database Sekolah
             </h4>
             <div class="overflow-x-auto -mx-1 sm:mx-0">
                 <table class="w-full text-center table-nilai border-collapse min-w-[340px]">
@@ -169,7 +169,7 @@
                     <tbody class="divide-y divide-slate-800">
                         <!-- Kelompok A: Bacaan -->
                         <tr class="bg-blue-50/70 font-bold text-blue-950 text-left">
-                            <td colspan="4" class="px-2 py-1">A. MUNAQASYAH BACAAN</td>
+                            <td colspan="4" class="px-2 py-1">A. DATABASE SEKOLAH BACAAN</td>
                         </tr>
                         <tr>
                             <td>1</td>
@@ -198,7 +198,7 @@
 
                         <!-- Kelompok B: Hafalan -->
                         <tr class="bg-amber-50/60 font-bold text-amber-950 text-left">
-                            <td colspan="4" class="px-2 py-1">B. MUNAQASYAH HAFALAN</td>
+                            <td colspan="4" class="px-2 py-1">B. DATABASE SEKOLAH HAFALAN</td>
                         </tr>
                         <tr>
                             <td>5</td>
@@ -254,7 +254,7 @@
 
         <!-- Box Keputusan Kelulusan -->
         <div class="border-2 {{ $santri->status_kelulusan == 'LULUS' ? 'border-emerald-600 bg-emerald-50/50' : 'border-rose-600 bg-rose-50/50' }} rounded-xl p-3 sm:p-4 mb-6 sm:mb-8 text-center">
-            <p class="text-[11px] sm:text-xs uppercase font-semibold text-slate-600">Berdasarkan hasil sidang munaqasyah, santri yang bersangkutan dinyatakan:</p>
+            <p class="text-[11px] sm:text-xs uppercase font-semibold text-slate-600">Berdasarkan hasil sidang database sekolah, santri yang bersangkutan dinyatakan:</p>
             <h3 class="text-lg sm:text-xl font-black {{ $santri->status_kelulusan == 'LULUS' ? 'text-emerald-700' : 'text-rose-700' }} tracking-widest my-1 uppercase">
                 {{ $santri->status_kelulusan }}
             </h3>
@@ -267,7 +267,7 @@
         <div class="grid grid-cols-3 gap-2 sm:gap-4 items-end text-center text-xs mt-6 sm:mt-8 relative z-10">
             <!-- Kolom Ketua Panitia + Stempel -->
             <div class="relative">
-                <p class="text-slate-600 mb-12 sm:mb-16">Ketua Panitia Munaqasyah,</p>
+                <p class="text-slate-600 mb-12 sm:mb-16">Ketua Panitia Database Sekolah,</p>
                 <!-- Stempel Digital Resmi Yayasan -->
                 <div class="absolute left-1/2 -translate-x-1/2 top-4 w-24 h-24 sm:w-28 sm:h-28 pointer-events-none select-none opacity-85 -rotate-12">
                     <svg viewBox="0 0 120 120" class="w-full h-full text-blue-800" fill="currentColor">
@@ -283,7 +283,7 @@
                         </text>
                         <text font-size="7.5" font-weight="bold" fill="currentColor" letter-spacing="1">
                             <textPath href="#stampPathBottom" startOffset="50%" text-anchor="middle">
-                                ★ PANITIA MUNAQASYAH ★
+                                ★ PANITIA DATABASE SEKOLAH ★
                             </textPath>
                         </text>
                         <text x="60" y="55" font-size="9" font-weight="black" text-anchor="middle" fill="currentColor">SAH</text>
@@ -291,7 +291,7 @@
                     </svg>
                 </div>
                 <p class="font-bold text-slate-900 underline uppercase text-[11px] sm:text-xs relative z-10">{{ $settings['ketua_yayasan'] ?? 'H. AHMAD SYAUQI, S.Pd.I' }}</p>
-                <p class="text-[10px] text-slate-500">Ketua Pelaksana Munaqasyah</p>
+                <p class="text-[10px] text-slate-500">Ketua Pelaksana Database Sekolah</p>
             </div>
 
             <!-- Kolom Tengah: QR Code Verifikasi Keaslian -->
@@ -309,9 +309,9 @@
 
             <!-- Kolom Penguji -->
             <div>
-                <p class="text-slate-600 mb-12 sm:mb-16">Penguji Munaqasyah,</p>
+                <p class="text-slate-600 mb-12 sm:mb-16">Penguji Database Sekolah,</p>
                 <p class="font-bold text-slate-900 underline uppercase text-[11px] sm:text-xs">( ............................................ )</p>
-                <p class="text-[10px] text-slate-500">Dewan Penguji Munaqasyah</p>
+                <p class="text-[10px] text-slate-500">Dewan Penguji Database Sekolah</p>
             </div>
         </div>
     </div>

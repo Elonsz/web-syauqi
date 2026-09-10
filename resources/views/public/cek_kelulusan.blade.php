@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portal Cek Kelulusan Santri — Yayasan Cahaya Amanah Ar-Raudhah</title>
-    <meta name="description" content="Portal mandiri pengecekan kelulusan dan nilai munaqasyah santri TPQ & RTQ Ar-Raudhah Yayasan Cahaya Amanah Ar-Raudhah Banjarbaru.">
+    <meta name="description" content="Portal mandiri pengecekan kelulusan dan nilai database sekolah santri TPQ & RTQ Ar-Raudhah Yayasan Cahaya Amanah Ar-Raudhah Banjarbaru.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -80,7 +80,7 @@
                 </div>
                 <h1 class="text-2xl sm:text-4xl font-black text-white tracking-tight">
                     Cek Pengumuman &amp; Nilai Kelulusan
-                    <span class="text-shimmer block text-xl sm:text-3xl mt-1">Munaqasyah Santri 2026</span>
+                    <span class="text-shimmer block text-xl sm:text-3xl mt-1">Database Sekolah Santri 2026</span>
                 </h1>
                 <p class="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto">
                     Masukkan nomor peserta ujian atau nama lengkap santri untuk melihat hasil kelulusan dan transkrip nilai resmi.
@@ -134,7 +134,7 @@
                                     <i class="fa-solid {{ $isLulus ? 'fa-circle-check' : 'fa-circle-xmark' }}"></i>
                                 </div>
                                 <div>
-                                    <p class="text-[10px] uppercase font-bold tracking-widest text-white/80">Hasil Munaqasyah 2026</p>
+                                    <p class="text-[10px] uppercase font-bold tracking-widest text-white/80">Hasil Database Sekolah 2026</p>
                                     <h3 class="text-lg font-black tracking-tight">
                                         {{ $isLulus ? 'ALHAMDULILLAH — DINYATAKAN LULUS' : 'DINYATAKAN BELUM LULUS (PERBAIKAN)' }}
                                     </h3>
@@ -175,12 +175,12 @@
                             {{-- Scores Breakdown Table --}}
                             <div>
                                 <h4 class="text-xs font-black uppercase text-slate-700 mb-3 flex items-center gap-1.5">
-                                    <i class="fa-solid fa-list-check text-blue-900"></i> Rincian 9 Komponen Nilai Munaqasyah
+                                    <i class="fa-solid fa-list-check text-blue-900"></i> Rincian 9 Komponen Nilai Database Sekolah
                                 </h4>
                                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                                     {{-- Kelompok 1: Bacaan --}}
                                     <div class="bg-amber-50/70 border border-amber-200 rounded-2xl p-4 space-y-2">
-                                        <p class="text-[11px] font-black text-amber-900 uppercase">Munaqasyah Bacaan</p>
+                                        <p class="text-[11px] font-black text-amber-900 uppercase">Database Sekolah Bacaan</p>
                                         <div class="flex justify-between text-xs text-slate-700"><span>Fashohah</span><strong class="font-mono">{{ $p?->fashohah ?? 0 }}</strong></div>
                                         <div class="flex justify-between text-xs text-slate-700"><span>Tajwid</span><strong class="font-mono">{{ $p?->tajwid ?? 0 }}</strong></div>
                                         <div class="flex justify-between text-xs text-slate-700"><span>Gharib &amp; Musykilat</span><strong class="font-mono">{{ $p?->gharib_musykilat ?? 0 }}</strong></div>
@@ -189,7 +189,7 @@
 
                                     {{-- Kelompok 2: Hafalan --}}
                                     <div class="bg-blue-50/70 border border-blue-200 rounded-2xl p-4 space-y-2">
-                                        <p class="text-[11px] font-black text-blue-900 uppercase">Munaqasyah Hafalan</p>
+                                        <p class="text-[11px] font-black text-blue-900 uppercase">Database Sekolah Hafalan</p>
                                         <div class="flex justify-between text-xs text-slate-700"><span>Ayat-ayat Pilihan</span><strong class="font-mono">{{ $p?->ayat_pilihan ?? 0 }}</strong></div>
                                         <div class="flex justify-between text-xs text-slate-700"><span>Surah-surah Pendek</span><strong class="font-mono">{{ $p?->surah_pendek ?? 0 }}</strong></div>
                                         <div class="flex justify-between text-xs text-slate-700"><span>Do'a Harian</span><strong class="font-mono">{{ $p?->doa_harian ?? 0 }}</strong></div>
@@ -214,7 +214,7 @@
                             <div class="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-3">
                                 <p class="text-[11px] text-slate-500 text-center sm:text-left">
                                     <i class="fa-solid fa-shield-halved text-emerald-600 mr-1"></i>
-                                    Terverifikasi resmi oleh Sistem Munaqasyah Yayasan Cahaya Amanah Ar-Raudhah
+                                    Terverifikasi resmi oleh Database Sekolah Yayasan Cahaya Amanah Ar-Raudhah
                                 </p>
                                 <a href="{{ route('public.check.cetak', $santri->id) }}" target="_blank"
                                     class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-950 to-slate-900 hover:from-slate-900 hover:to-blue-950 text-white font-extrabold text-xs px-6 py-3 rounded-xl shadow-md hover:shadow-lg transition active:scale-95">
@@ -265,7 +265,7 @@
                         </div>
                         <h3 class="text-lg font-black text-white">Data Santri Tidak Ditemukan</h3>
                         <p class="text-xs text-slate-400 max-w-md mx-auto">
-                            Tidak ada data munaqasyah yang cocok dengan kata kunci "<strong>{{ $keyword }}</strong>". Silakan periksa kembali ejaan nama atau nomor peserta yang dimasukkan.
+                            Tidak ada data database sekolah yang cocok dengan kata kunci "<strong>{{ $keyword }}</strong>". Silakan periksa kembali ejaan nama atau nomor peserta yang dimasukkan.
                         </p>
                         <div class="pt-2">
                             <a href="{{ route('public.check') }}" class="text-xs font-bold text-amber-400 hover:underline">

@@ -32,12 +32,12 @@
                class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold text-slate-700 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 border border-slate-200 transition">
                 <i class="fa-solid fa-pen-to-square text-xs text-blue-700"></i> Edit Biodata
             </a>
-            <a href="{{ route('munaqasyah.edit', $santri->id) }}" 
+            <a href="{{ route('database sekolah.edit', $santri->id) }}" 
                class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold bg-blue-900 hover:bg-blue-800 text-white shadow-xs transition">
                 <i class="fa-solid fa-calculator text-xs text-blue-200"></i> {{ $santri->penilaian ? 'Edit Nilai' : '+ Input Nilai' }}
             </a>
             @if($santri->penilaian)
-            <a href="{{ route('munaqasyah.kelulusan', $santri->id) }}" target="_blank"
+            <a href="{{ route('database sekolah.kelulusan', $santri->id) }}" target="_blank"
                class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold bg-emerald-600 hover:bg-emerald-500 text-white shadow-xs transition">
                 <i class="fa-solid fa-print text-xs"></i> Cetak Surat Kelulusan
             </a>
@@ -46,9 +46,9 @@
             @php
                 $pSantri = $santri->penilaian;
                 if ($pSantri) {
-                    $waTextSantri = "Assalamu'alaikum Wr. Wb. Yth. Wali Santri dari *" . $santri->nama . "* (No. Peserta: " . ($santri->no_peserta ?? '-') . ").%0A%0AInformasi Hasil Ujian Munaqasyah Yayasan Cahaya Amanah Ar-Raudhah:%0A- Status: *" . $santri->status_kelulusan . "*%0A- Predikat: *" . ($pSantri->predikat ?? '-') . "*%0A- Rata-rata: *" . number_format($pSantri->rata_rata, 2) . "*%0A%0ABerikut tautan resmi Surat Keterangan Kelulusan dan nilai lengkap:%0A" . urlencode(route('public.check.cetak', $santri->id)) . "%0A%0ABarakallahu fiikum.%0A_Panitia Munaqasyah Ar-Raudhah_";
+                    $waTextSantri = "Assalamu'alaikum Wr. Wb. Yth. Wali Santri dari *" . $santri->nama . "* (No. Peserta: " . ($santri->no_peserta ?? '-') . ").%0A%0AInformasi Hasil Ujian Database Sekolah Yayasan Cahaya Amanah Ar-Raudhah:%0A- Status: *" . $santri->status_kelulusan . "*%0A- Predikat: *" . ($pSantri->predikat ?? '-') . "*%0A- Rata-rata: *" . number_format($pSantri->rata_rata, 2) . "*%0A%0ABerikut tautan resmi Surat Keterangan Kelulusan dan nilai lengkap:%0A" . urlencode(route('public.check.cetak', $santri->id)) . "%0A%0ABarakallahu fiikum.%0A_Panitia Database Sekolah Ar-Raudhah_";
                 } else {
-                    $waTextSantri = "Assalamu'alaikum Wr. Wb. Yth. Wali Santri dari *" . $santri->nama . "* (No. Peserta: " . ($santri->no_peserta ?? '-') . ").%0A%0AInformasi Pendaftaran Ujian Munaqasyah Yayasan Cahaya Amanah Ar-Raudhah:%0A- No. Peserta: " . ($santri->no_peserta ?? '-') . "%0A- Lembaga: " . ($santri->nama_unit ?? '-') . "%0A- Status: *" . $santri->status_kelulusan . "*%0A%0ABarakallahu fiikum.%0A_Panitia Munaqasyah Ar-Raudhah_";
+                    $waTextSantri = "Assalamu'alaikum Wr. Wb. Yth. Wali Santri dari *" . $santri->nama . "* (No. Peserta: " . ($santri->no_peserta ?? '-') . ").%0A%0AInformasi Pendaftaran Ujian Database Sekolah Yayasan Cahaya Amanah Ar-Raudhah:%0A- No. Peserta: " . ($santri->no_peserta ?? '-') . "%0A- Lembaga: " . ($santri->nama_unit ?? '-') . "%0A- Status: *" . $santri->status_kelulusan . "*%0A%0ABarakallahu fiikum.%0A_Panitia Database Sekolah Ar-Raudhah_";
                 }
             @endphp
             <a href="https://api.whatsapp.com/send?text={{ $waTextSantri }}" target="_blank" rel="noopener"
@@ -64,7 +64,7 @@
             <div class="relative z-10 flex items-center gap-2">
                 @if($santri->status_kelulusan === 'LULUS')
                     <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black bg-emerald-500 text-white shadow-md">
-                        <i class="fa-solid fa-circle-check"></i> LULUS MUNAQASYAH
+                        <i class="fa-solid fa-circle-check"></i> LULUS DATABASE SEKOLAH
                     </span>
                 @elseif($santri->status_kelulusan === 'TIDAK LULUS')
                     <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black bg-rose-600 text-white shadow-md">
@@ -150,11 +150,11 @@
                     </p>
                 </div>
 
-                <!-- Tahun Munaqasyah -->
+                <!-- Tahun Database Sekolah -->
                 <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200/80">
-                    <p class="text-[11px] font-semibold text-slate-500 uppercase tracking-wide">Tahun Munaqasyah</p>
+                    <p class="text-[11px] font-semibold text-slate-500 uppercase tracking-wide">Tahun Database Sekolah</p>
                     <p class="text-sm font-bold text-slate-800 mt-1 font-mono">
-                        {{ $santri->tahun_munaqasyah ?? '2026' }}
+                        {{ $santri->tahun_database sekolah ?? '2026' }}
                     </p>
                 </div>
 
@@ -177,7 +177,7 @@
         </div>
     </div>
 
-    <!-- SEKSI CATATAN PENILAIAN MUNAQASYAH -->
+    <!-- SEKSI CATATAN PENILAIAN DATABASE SEKOLAH -->
     @if($santri->penilaian)
     <div class="bg-white rounded-3xl border border-slate-200 shadow-sm p-6 sm:p-8 space-y-6">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-4">
@@ -186,11 +186,11 @@
                     <span class="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center text-xs font-black">
                         <i class="fa-solid fa-award"></i>
                     </span>
-                    <h3 class="text-base font-extrabold text-slate-900">Hasil Penilaian Munaqasyah</h3>
+                    <h3 class="text-base font-extrabold text-slate-900">Hasil Penilaian Database Sekolah</h3>
                 </div>
-                <p class="text-xs text-slate-500 mt-0.5">Ringkasan perolehan nilai dari 9 mata uji munaqasyah.</p>
+                <p class="text-xs text-slate-500 mt-0.5">Ringkasan perolehan nilai dari 9 mata uji database sekolah.</p>
             </div>
-            <a href="{{ route('munaqasyah.edit', $santri->id) }}" 
+            <a href="{{ route('database sekolah.edit', $santri->id) }}" 
                class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-bold text-blue-900 bg-blue-50 hover:bg-blue-100 border border-blue-200 transition shrink-0">
                 <i class="fa-solid fa-pen-to-square text-xs"></i> Edit Lembar Nilai
             </a>
@@ -258,15 +258,15 @@
         <div class="w-14 h-14 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center mx-auto text-2xl border border-amber-200">
             <i class="fa-solid fa-file-pen"></i>
         </div>
-        <h3 class="text-base font-extrabold text-slate-900">Santri Belum Memiliki Nilai Munaqasyah</h3>
+        <h3 class="text-base font-extrabold text-slate-900">Santri Belum Memiliki Nilai Database Sekolah</h3>
         <p class="text-xs text-slate-500 max-w-md mx-auto leading-relaxed">
-            Santri ini sudah terdaftar dalam direktori biodata, namun lembar nilai 9 mata uji munaqasyah belum diisi atau disimpan.
+            Santri ini sudah terdaftar dalam direktori biodata, namun lembar nilai 9 mata uji database sekolah belum diisi atau disimpan.
         </p>
         <div class="pt-2">
-            <a href="{{ route('munaqasyah.edit', $santri->id) }}" 
+            <a href="{{ route('database sekolah.edit', $santri->id) }}" 
                class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold bg-blue-600 hover:bg-blue-700 text-white shadow-md shadow-blue-900/20 transition active:scale-95">
                 <i class="fa-solid fa-calculator"></i>
-                <span>Mulai Isi Nilai Munaqasyah</span>
+                <span>Mulai Isi Nilai Database Sekolah</span>
             </a>
         </div>
     </div>

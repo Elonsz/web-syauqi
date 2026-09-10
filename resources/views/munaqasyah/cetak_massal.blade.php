@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cetak Massal Surat Kelulusan Munaqasyah {{ $jenis }} — Yayasan Cahaya Amanah Ar-Raudhah</title>
+    <title>Cetak Massal Surat Kelulusan Database Sekolah {{ $jenis }} — Yayasan Cahaya Amanah Ar-Raudhah</title>
     <script>
         window.tailwind = window.tailwind || {};
         window.tailwind.config = { theme: { extend: { colors: {
@@ -55,7 +55,7 @@
     <div class="no-print sticky top-0 z-50 bg-slate-900/95 backdrop-blur-md text-white border-b border-slate-800 px-4 py-3 shadow-xl">
         <div class="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
             <div class="flex items-center gap-3">
-                <a href="{{ route('munaqasyah.index', ['jenis' => $jenis]) }}"
+                <a href="{{ route('database sekolah.index', ['jenis' => $jenis]) }}"
                    class="w-8 h-8 rounded-xl bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-slate-300 hover:text-white transition">
                     <i class="fa-solid fa-arrow-left text-xs"></i>
                 </a>
@@ -100,7 +100,7 @@
                     <img src="{{ asset('images/logo.png') }}" alt="Logo Yayasan" class="w-16 h-16 object-contain shrink-0">
                     <div>
                         <h3 class="text-xs font-black tracking-wider text-blue-950 uppercase">{{ $settings['nama_yayasan'] ?? 'YAYASAN CAHAYA AMANAH AR-RAUDHAH' }}</h3>
-                        <h1 class="text-lg font-black text-slate-900 tracking-tight">PANITIA MUNAQASYAH SANTRI BANJARBARU</h1>
+                        <h1 class="text-lg font-black text-slate-900 tracking-tight">PANITIA DATABASE SEKOLAH BANJARBARU</h1>
                         <p class="text-[11px] text-slate-600 font-semibold">{{ $settings['alamat_yayasan'] ?? 'Banjarbaru, Kalimantan Selatan' }} • Periode {{ $settings['tahun_ajaran'] ?? '1447 H / 2026 M' }}</p>
                     </div>
                 </div>
@@ -109,10 +109,10 @@
             <!-- Judul Surat -->
             <div class="text-center mb-5">
                 <h2 class="text-sm font-extrabold uppercase text-slate-900 tracking-wide underline decoration-slate-900 decoration-2 underline-offset-4">
-                    SURAT KETERANGAN HASIL UJIAN MUNAQASYAH
+                    SURAT KETERANGAN HASIL UJIAN DATABASE SEKOLAH
                 </h2>
                 <p class="text-[11px] text-slate-500 mt-0.5 font-mono">
-                    Nomor: {{ $settings['nomor_sk_munaqasyah'] ?? ('SKM/' . $santri->jenis . '/2026/' . str_pad($santri->no_peserta ?? $santri->id, 4, '0', STR_PAD_LEFT)) }}
+                    Nomor: {{ $settings['nomor_sk_database sekolah'] ?? ('SKM/' . $santri->jenis . '/2026/' . str_pad($santri->no_peserta ?? $santri->id, 4, '0', STR_PAD_LEFT)) }}
                 </p>
             </div>
 
@@ -160,7 +160,7 @@
                     <thead>
                         <tr class="bg-slate-900 text-white">
                             <th class="w-8">NO</th>
-                            <th class="text-left pl-3">MATA UJI MUNAQASYAH</th>
+                            <th class="text-left pl-3">MATA UJI DATABASE SEKOLAH</th>
                             <th class="w-24">NILAI</th>
                             <th class="w-28">STANDAR</th>
                         </tr>
@@ -203,7 +203,7 @@
 
             <!-- Keputusan Status Kelulusan -->
             <div class="border-2 {{ $santri->status_kelulusan == 'LULUS' ? 'border-emerald-600 bg-emerald-50/40' : 'border-rose-600 bg-rose-50/40' }} rounded-xl p-2.5 mb-6 text-center">
-                <p class="text-[10px] uppercase font-semibold text-slate-600">Berdasarkan hasil sidang munaqasyah, santri yang bersangkutan dinyatakan:</p>
+                <p class="text-[10px] uppercase font-semibold text-slate-600">Berdasarkan hasil sidang database sekolah, santri yang bersangkutan dinyatakan:</p>
                 <h3 class="text-base font-black {{ $santri->status_kelulusan == 'LULUS' ? 'text-emerald-700' : 'text-rose-700' }} tracking-widest uppercase my-0.5">
                     {{ $santri->status_kelulusan }}
                 </h3>
@@ -257,7 +257,7 @@
                             </text>
                             <text font-size="7.5" font-weight="bold" fill="currentColor" letter-spacing="1">
                                 <textPath href="#stampPathBottomM" startOffset="50%" text-anchor="middle">
-                                    ★ PANITIA MUNAQASYAH ★
+                                    ★ PANITIA DATABASE SEKOLAH ★
                                 </textPath>
                             </text>
                             <text x="60" y="55" font-size="9" font-weight="black" text-anchor="middle" fill="currentColor">SAH</text>

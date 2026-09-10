@@ -27,7 +27,7 @@
                 Direktori Biodata Santri
             </h1>
             <p class="text-xs sm:text-sm text-slate-500 mt-1 max-w-2xl">
-                Kelola data identitas peserta munaqasyah TPQ &amp; RTQ Ar-Raudhah secara mandiri dan terstruktur.
+                Kelola data identitas peserta database sekolah TPQ &amp; RTQ Ar-Raudhah secara mandiri dan terstruktur.
             </p>
         </div>
 
@@ -37,7 +37,7 @@
                 <i class="fa-solid fa-user-plus text-xs"></i>
                 <span>+ Tambah Santri</span>
             </a>
-            <a href="{{ route('munaqasyah.index', ['jenis' => $jenis ?? 'TPQ']) }}" 
+            <a href="{{ route('database sekolah.index', ['jenis' => $jenis ?? 'TPQ']) }}" 
                class="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-xs font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 transition">
                 <i class="fa-solid fa-table-list text-xs text-slate-500"></i>
                 <span>Lembar Penilaian</span>
@@ -234,7 +234,7 @@
                                         <span class="text-[9px] font-black px-1.5 py-0.5 rounded {{ $s->jenis === 'TPQ' ? 'bg-blue-100 text-blue-900' : 'bg-emerald-100 text-emerald-900' }}">
                                             {{ $s->jenis }}
                                         </span>
-                                        <span class="text-[10px] text-slate-400 font-medium">Tahun {{ $s->tahun_munaqasyah ?? '2026' }}</span>
+                                        <span class="text-[10px] text-slate-400 font-medium">Tahun {{ $s->tahun_database sekolah ?? '2026' }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -335,7 +335,7 @@
                                 </a>
 
                                 <!-- Input / Edit Nilai -->
-                                <a href="{{ route('munaqasyah.edit', $s->id) }}" title="Kelola Nilai Munaqasyah"
+                                <a href="{{ route('database sekolah.edit', $s->id) }}" title="Kelola Nilai Database Sekolah"
                                    class="w-7 h-7 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-700 flex items-center justify-center transition">
                                      <i class="fa-solid fa-calculator text-xs"></i>
                                  </a>
@@ -344,9 +344,9 @@
                                 @php
                                     $pRow = $s->penilaian;
                                     if ($pRow) {
-                                        $waText = "Assalamu'alaikum Wr. Wb. Yth. Wali Santri dari *" . $s->nama . "* (No. Peserta: " . ($s->no_peserta ?? '-') . ").%0A%0AInformasi Hasil Ujian Munaqasyah Yayasan Cahaya Amanah Ar-Raudhah:%0A- Status: *" . $s->status_kelulusan . "*%0A- Predikat: *" . ($pRow->predikat ?? '-') . "*%0A- Rata-rata: *" . number_format($pRow->rata_rata, 2) . "*%0A%0ABerikut tautan resmi Surat Keterangan Kelulusan dan nilai lengkap:%0A" . urlencode(route('public.check.cetak', $s->id)) . "%0A%0ABarakallahu fiikum.%0A_Panitia Munaqasyah Ar-Raudhah_";
+                                        $waText = "Assalamu'alaikum Wr. Wb. Yth. Wali Santri dari *" . $s->nama . "* (No. Peserta: " . ($s->no_peserta ?? '-') . ").%0A%0AInformasi Hasil Ujian Database Sekolah Yayasan Cahaya Amanah Ar-Raudhah:%0A- Status: *" . $s->status_kelulusan . "*%0A- Predikat: *" . ($pRow->predikat ?? '-') . "*%0A- Rata-rata: *" . number_format($pRow->rata_rata, 2) . "*%0A%0ABerikut tautan resmi Surat Keterangan Kelulusan dan nilai lengkap:%0A" . urlencode(route('public.check.cetak', $s->id)) . "%0A%0ABarakallahu fiikum.%0A_Panitia Database Sekolah Ar-Raudhah_";
                                     } else {
-                                        $waText = "Assalamu'alaikum Wr. Wb. Yth. Wali Santri dari *" . $s->nama . "* (No. Peserta: " . ($s->no_peserta ?? '-') . ").%0A%0AInformasi Pendaftaran Ujian Munaqasyah Yayasan Cahaya Amanah Ar-Raudhah:%0A- No. Peserta: " . ($s->no_peserta ?? '-') . "%0A- Lembaga: " . ($s->nama_unit ?? '-') . "%0A- Status: *" . $s->status_kelulusan . "*%0A%0ABarakallahu fiikum.%0A_Panitia Munaqasyah Ar-Raudhah_";
+                                        $waText = "Assalamu'alaikum Wr. Wb. Yth. Wali Santri dari *" . $s->nama . "* (No. Peserta: " . ($s->no_peserta ?? '-') . ").%0A%0AInformasi Pendaftaran Ujian Database Sekolah Yayasan Cahaya Amanah Ar-Raudhah:%0A- No. Peserta: " . ($s->no_peserta ?? '-') . "%0A- Lembaga: " . ($s->nama_unit ?? '-') . "%0A- Status: *" . $s->status_kelulusan . "*%0A%0ABarakallahu fiikum.%0A_Panitia Database Sekolah Ar-Raudhah_";
                                     }
                                 @endphp
                                 <a href="https://api.whatsapp.com/send?text={{ $waText }}" target="_blank" rel="noopener"
@@ -408,7 +408,7 @@
             </div>
         </div>
         <p class="text-xs text-slate-600 leading-relaxed">
-            Data biodata santri <strong id="deleteSantriName" class="text-slate-900"></strong> beserta seluruh riwayat penilaian munaqasyahnya akan dihapus permanen dari sistem.
+            Data biodata santri <strong id="deleteSantriName" class="text-slate-900"></strong> beserta seluruh riwayat penilaian database sekolahnya akan dihapus permanen dari sistem.
         </p>
         <div class="flex items-center justify-end gap-2 pt-2">
             <button type="button" onclick="closeDeleteModal()" 

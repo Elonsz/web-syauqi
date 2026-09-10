@@ -21,7 +21,7 @@
                 <h2 class="text-base sm:text-lg font-extrabold text-slate-900">Tambah Biodata Santri Baru</h2>
             </div>
             <p class="text-xs text-slate-500 mt-1">
-                Isi data diri santri, foto kelulusan, dan data wali secara terpisah dari lembar penilaian munaqasyah.
+                Isi data diri santri, foto kelulusan, dan data wali secara terpisah dari lembar penilaian database sekolah.
             </p>
         </div>
         <a href="{{ route('santri.index') }}" 
@@ -122,10 +122,10 @@
                         </div>
                     </div>
 
-                    <!-- Tahun Munaqasyah -->
+                    <!-- Tahun Database Sekolah -->
                     <div>
-                        <label class="block text-xs font-bold text-slate-700 mb-1">Tahun Angkatan / Munaqasyah</label>
-                        <input type="text" name="tahun_munaqasyah" value="{{ old('tahun_munaqasyah', '2026') }}" placeholder="2026"
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Tahun Angkatan / Database Sekolah</label>
+                        <input type="text" name="tahun_database sekolah" value="{{ old('tahun_database sekolah', '2026') }}" placeholder="2026"
                                class="w-full text-xs p-2.5 bg-slate-50 border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-600 focus:bg-white focus:outline-none transition font-mono">
                     </div>
                 </div>

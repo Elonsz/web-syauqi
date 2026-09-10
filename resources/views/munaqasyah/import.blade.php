@@ -1,9 +1,9 @@
 @extends('layouts.sidebar')
 
-@section('title', 'Import Data Nilai Munaqasyah ' . $jenis . ' — Ar-Raudhah')
+@section('title', 'Import Data Nilai Database Sekolah ' . $jenis . ' — Ar-Raudhah')
 
 @section('breadcrumb')
-    <a href="{{ route('munaqasyah.index', ['jenis' => $jenis]) }}" class="hover:underline">Database Sekolah {{ $jenis }}</a>
+    <a href="{{ route('database sekolah.index', ['jenis' => $jenis]) }}" class="hover:underline">Database Sekolah {{ $jenis }}</a>
     <i class="fa-solid fa-chevron-right text-[10px] text-slate-400"></i>
     <span class="text-blue-950 font-bold">Import Spreadsheet</span>
 @endsection
@@ -18,13 +18,13 @@
                 <span class="px-2.5 py-1 text-xs font-bold rounded-lg {{ $jenis == 'TPQ' ? 'bg-amber-100 text-amber-900 border border-amber-300' : 'bg-blue-100 text-blue-950 border border-blue-300' }}">
                     {{ $jenis }}
                 </span>
-                <h2 class="text-xl font-black text-slate-900 tracking-tight">Import Data Nilai Munaqasyah</h2>
+                <h2 class="text-xl font-black text-slate-900 tracking-tight">Import Data Nilai Database Sekolah</h2>
             </div>
             <p class="text-xs text-slate-500 mt-1">
                 Unggah berkas spreadsheet CSV untuk mengimpor atau memperbarui data santri dan nilai secara massal.
             </p>
         </div>
-        <a href="{{ route('munaqasyah.index', ['jenis' => $jenis]) }}"
+        <a href="{{ route('database sekolah.index', ['jenis' => $jenis]) }}"
             class="self-start sm:self-auto inline-flex items-center gap-2 text-xs font-bold text-slate-700 bg-white hover:bg-slate-50 border border-slate-300 px-3.5 py-2 rounded-xl transition shadow-xs">
             <i class="fa-solid fa-arrow-left"></i> Kembali ke Daftar
         </a>
@@ -47,14 +47,14 @@
                     <i class="fa-solid fa-cloud-arrow-up text-blue-900"></i> Form Unggah Berkas
                 </h3>
 
-                <form action="{{ route('munaqasyah.import.post') }}" method="POST" enctype="multipart/form-data" class="space-y-4">
+                <form action="{{ route('database sekolah.import.post') }}" method="POST" enctype="multipart/form-data" class="space-y-4">
                     @csrf
 
                     <div>
                         <label class="block text-xs font-bold text-slate-700 mb-1.5">Lembaga / Jenjang</label>
                         <div class="grid grid-cols-2 gap-3">
                             <label class="flex items-center gap-2.5 p-3 rounded-xl border {{ $jenis == 'TPQ' ? 'border-amber-500 bg-amber-50/60 ring-2 ring-amber-400/30' : 'border-slate-200 bg-slate-50' }} cursor-pointer transition">
-                                <input type="radio" name="jenis" value="TPQ" {{ $jenis == 'TPQ' ? 'checked' : '' }} onchange="window.location.href='{{ route('munaqasyah.import', ['jenis' => 'TPQ']) }}'" class="text-amber-600 focus:ring-amber-500">
+                                <input type="radio" name="jenis" value="TPQ" {{ $jenis == 'TPQ' ? 'checked' : '' }} onchange="window.location.href='{{ route('database sekolah.import', ['jenis' => 'TPQ']) }}'" class="text-amber-600 focus:ring-amber-500">
                                 <div>
                                     <p class="text-xs font-bold text-slate-900">TPQ Ar-Raudhah</p>
                                     <p class="text-[10px] text-slate-500">Taman Pendidikan Qur'an</p>
@@ -62,7 +62,7 @@
                             </label>
 
                             <label class="flex items-center gap-2.5 p-3 rounded-xl border {{ $jenis == 'RTQ' ? 'border-blue-900 bg-blue-50/60 ring-2 ring-blue-900/30' : 'border-slate-200 bg-slate-50' }} cursor-pointer transition">
-                                <input type="radio" name="jenis" value="RTQ" {{ $jenis == 'RTQ' ? 'checked' : '' }} onchange="window.location.href='{{ route('munaqasyah.import', ['jenis' => 'RTQ']) }}'" class="text-blue-900 focus:ring-blue-900">
+                                <input type="radio" name="jenis" value="RTQ" {{ $jenis == 'RTQ' ? 'checked' : '' }} onchange="window.location.href='{{ route('database sekolah.import', ['jenis' => 'RTQ']) }}'" class="text-blue-900 focus:ring-blue-900">
                                 <div>
                                     <p class="text-xs font-bold text-slate-900">RTQ Ar-Raudhah</p>
                                     <p class="text-[10px] text-slate-500">Rumah Tahfidz Qur'an</p>
@@ -89,7 +89,7 @@
                     </div>
 
                     <div class="pt-3 border-t border-slate-100 flex items-center justify-end gap-2">
-                        <a href="{{ route('munaqasyah.index', ['jenis' => $jenis]) }}" class="px-4 py-2 text-xs font-bold text-slate-600 hover:bg-slate-100 rounded-xl transition">
+                        <a href="{{ route('database sekolah.index', ['jenis' => $jenis]) }}" class="px-4 py-2 text-xs font-bold text-slate-600 hover:bg-slate-100 rounded-xl transition">
                             Batal
                         </a>
                         <button type="submit" class="inline-flex items-center gap-2 bg-gradient-to-r from-blue-950 to-slate-900 hover:from-slate-900 hover:to-blue-950 text-white font-bold text-xs px-5 py-2.5 rounded-xl shadow-md hover:shadow-lg transition active:scale-95">
@@ -111,7 +111,7 @@
                     <h4 class="font-black text-sm">Download Template CSV</h4>
                     <p class="text-[11px] text-emerald-100 mt-0.5">Gunakan format resmi berikut agar struktur kolom terisi dengan tepat.</p>
                 </div>
-                <a href="{{ route('munaqasyah.import.template', ['jenis' => $jenis]) }}"
+                <a href="{{ route('database sekolah.import.template', ['jenis' => $jenis]) }}"
                     class="w-full inline-flex items-center justify-center gap-2 bg-white text-emerald-800 hover:bg-emerald-50 font-extrabold text-xs py-2.5 rounded-xl shadow-sm transition">
                     <i class="fa-solid fa-file-excel"></i> Unduh Format {{ $jenis }} (.csv)
                 </a>
@@ -158,8 +158,8 @@
                     <tr><td class="px-3 py-1.5 font-sans text-slate-400">3</td><td class="px-3 py-1.5 font-bold text-blue-900">NAMA_SANTRI</td><td class="px-3 py-1.5 font-sans">Nama lengkap santri</td><td class="px-3 py-1.5 font-sans">Muhammad Rayhan</td></tr>
                     <tr><td class="px-3 py-1.5 font-sans text-slate-400">4</td><td class="px-3 py-1.5 font-bold text-blue-900">JENIS_KELAMIN</td><td class="px-3 py-1.5 font-sans">Laki-laki (L) / Perempuan (P)</td><td class="px-3 py-1.5">L</td></tr>
                     <tr><td class="px-3 py-1.5 font-sans text-slate-400">5</td><td class="px-3 py-1.5 font-bold text-blue-900">NAMA_UNIT</td><td class="px-3 py-1.5 font-sans">Nama unit atau asal sekolah</td><td class="px-3 py-1.5 font-sans">Unit Ar-Raudhah Pusat</td></tr>
-                    <tr><td class="px-3 py-1.5 font-sans text-slate-400">6..9</td><td class="px-3 py-1.5 font-bold text-amber-700">FASHOHAH, TAJWID, GHARIB_MUSYKILAT, SUARA_LAGU</td><td class="px-3 py-1.5 font-sans">4 Aspek Munaqasyah Bacaan (0-100)</td><td class="px-3 py-1.5">85, 88, 84, 82</td></tr>
-                    <tr><td class="px-3 py-1.5 font-sans text-slate-400">10..13</td><td class="px-3 py-1.5 font-bold text-emerald-700">AYAT_PILIHAN, SURAH_PENDEK, DOA_HARIAN, BACAAN_SHALAT</td><td class="px-3 py-1.5 font-sans">4 Aspek Munaqasyah Hafalan (0-100)</td><td class="px-3 py-1.5">86, 90, 88, 85</td></tr>
+                    <tr><td class="px-3 py-1.5 font-sans text-slate-400">6..9</td><td class="px-3 py-1.5 font-bold text-amber-700">FASHOHAH, TAJWID, GHARIB_MUSYKILAT, SUARA_LAGU</td><td class="px-3 py-1.5 font-sans">4 Aspek Database Sekolah Bacaan (0-100)</td><td class="px-3 py-1.5">85, 88, 84, 82</td></tr>
+                    <tr><td class="px-3 py-1.5 font-sans text-slate-400">10..13</td><td class="px-3 py-1.5 font-bold text-emerald-700">AYAT_PILIHAN, SURAH_PENDEK, DOA_HARIAN, BACAAN_SHALAT</td><td class="px-3 py-1.5 font-sans">4 Aspek Database Sekolah Hafalan (0-100)</td><td class="px-3 py-1.5">86, 90, 88, 85</td></tr>
                     <tr><td class="px-3 py-1.5 font-sans text-slate-400">14</td><td class="px-3 py-1.5 font-bold text-purple-700">UJIAN_TERTULIS</td><td class="px-3 py-1.5 font-sans">Aspek Ujian Tulis (0-100)</td><td class="px-3 py-1.5">87</td></tr>
                 </tbody>
             </table>

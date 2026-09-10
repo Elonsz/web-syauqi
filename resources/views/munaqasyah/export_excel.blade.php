@@ -43,7 +43,7 @@
         <thead>
             <tr>
                 <th colspan="13" style="font-size: 14pt; font-weight: bold; text-align: center; border: none; height: 35px; background-color: #FFFF00;">
-                    PENILAIAN MUNAQASYAH KOTA 2026 ({{ $jenis }})
+                    PENILAIAN DATABASE SEKOLAH KOTA 2026 ({{ $jenis }})
                 </th>
             </tr>
             <tr>
@@ -51,19 +51,19 @@
                 <th rowspan="2" class="header-top" style="width: 70px;">NO. UNIT</th>
                 <th rowspan="2" class="header-top" style="width: 250px;">NAMA</th>
                 <th rowspan="2" class="header-top" style="width: 120px;">NAMA UNIT</th>
-                <th colspan="4" class="header-bacaan">MUNAQASYAH BACAAN</th>
-                <th colspan="4" class="header-hafalan">MUNAQASYAH HAFALAN</th>
+                <th colspan="4" class="header-bacaan">DATABASE SEKOLAH BACAAN</th>
+                <th colspan="4" class="header-hafalan">DATABASE SEKOLAH HAFALAN</th>
                 <th rowspan="2" class="header-top" style="width: 90px;">UJIAN TERTULIS</th>
                 <th rowspan="2" class="header-top" style="width: 90px;">JUMLAH NILAI</th>
                 <th rowspan="2" class="header-top" style="width: 90px;">RATA - RATA</th>
             </tr>
             <tr>
-                <!-- MUNAQASYAH BACAAN -->
+                <!-- DATABASE SEKOLAH BACAAN -->
                 <th class="header-bacaan" style="width: 80px;">FASHOHAH</th>
                 <th class="header-bacaan" style="width: 80px;">TAJWID</th>
                 <th class="header-bacaan" style="width: 95px;">GHARIB MUSYKILAT</th>
                 <th class="header-bacaan" style="width: 85px;">SUARA & LAGU</th>
-                <!-- MUNAQASYAH HAFALAN -->
+                <!-- DATABASE SEKOLAH HAFALAN -->
                 <th class="header-hafalan" style="width: 95px;">AYAT-AYAT PILIHAN</th>
                 <th class="header-hafalan" style="width: 85px;">SURAH PENDEK</th>
                 <th class="header-hafalan" style="width: 85px;">DOA HARIAN</th>

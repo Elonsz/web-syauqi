@@ -1,1 +1,1 @@
-@include('munaqasyah.kelulusan', ['santri' => $santri, 'settings' => $settings, 'isPublic' => true])
+@include('database sekolah.kelulusan', ['santri' => $santri, 'settings' => $settings, 'isPublic' => true])

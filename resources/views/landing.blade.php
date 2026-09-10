@@ -318,7 +318,7 @@
                         <i class="fa-solid fa-file-excel"></i>
                     </div>
                     <h3 class="font-black text-slate-900 text-base mb-2">Export Data Excel &amp; CSV</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">Unduh seluruh rekapitulasi data santri munaqasyah TPQ &amp; RTQ dalam format Excel/CSV dengan sekali klik.</p>
+                    <p class="text-slate-600 text-sm leading-relaxed">Unduh seluruh rekapitulasi data santri database sekolah TPQ &amp; RTQ dalam format Excel/CSV dengan sekali klik.</p>
                 </div>
                 <!-- F5 -->
                 <div class="feature-card bg-white rounded-3xl p-7 border border-slate-200 hover:border-blue-700 shadow-sm hover:shadow-xl transition-all duration-300 reveal">
@@ -352,7 +352,7 @@
                     Frequently Asked Questions (FAQ)
                 </h2>
                 <p class="text-blue-200 text-xs sm:text-sm mt-2 max-w-lg mx-auto">
-                    Temukan jawaban atas pertanyaan seputar penilaian, syarat kelulusan munaqasyah santri, dan pengembang platform.
+                    Temukan jawaban atas pertanyaan seputar penilaian, syarat kelulusan database sekolah santri, dan pengembang platform.
                 </p>
             </div>
 
@@ -366,7 +366,7 @@
                         </div>
                         <div>
                             <h3 class="text-base font-bold text-white mb-1.5 flex items-center gap-2">
-                                Siapa pembuat sistem munaqasyah ini?
+                                Siapa pembuat sistem database sekolah ini?
                                 <span class="px-2.5 py-0.5 rounded text-[10px] font-bold bg-blue-600 text-white uppercase shadow-sm">Creator</span>
                             </h3>
                             <p class="text-blue-100 text-xs sm:text-sm leading-relaxed">
@@ -517,7 +517,7 @@
                 <span class="text-[#60a5fa] text-xs font-semibold">TPQ &amp; RTQ Ar-Raudhah Banjarbaru</span>
             </div>
             <p class="text-xs text-slate-400">
-                Sistem Penilaian Munaqasyah Santri &copy; 2026. Diciptakan &amp; Dikembangkan dengan bangga oleh <strong class="text-amber-300 font-bold">Hugo Putra Pratama</strong>.
+                Database Sekolah Santri &copy; 2026. Diciptakan &amp; Dikembangkan dengan bangga oleh <strong class="text-amber-300 font-bold">Hugo Putra Pratama</strong>.
             </p>
         </div>
     </footer>

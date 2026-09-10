@@ -319,7 +319,7 @@
                         <p class="text-[11px] text-blue-700 font-semibold mt-0.5">Software Engineer &amp; Full-Stack Architect</p>
                     </div>
                     <p class="text-slate-700 leading-relaxed text-xs">
-                        Sistem Penilaian &amp; Kelulusan Munaqasyah ini <strong>dibuat dan dirancang secara eksklusif oleh Hugo Putra Pratama</strong> untuk <strong>Yayasan Cahaya Amanah Ar-Raudhah Banjarbaru</strong>.
+                        Sistem Database Sekolah ini <strong>dibuat dan dirancang secara eksklusif oleh Hugo Putra Pratama</strong> untuk <strong>Yayasan Cahaya Amanah Ar-Raudhah Banjarbaru</strong>.
                     </p>
                     <div class="text-[11px] text-slate-600 space-y-1">
                         <p>✨ <strong>Sorotan Fitur Unggulan:</strong></p>
@@ -337,7 +337,7 @@
             keywords: ['9', 'mata uji', 'indikator', 'komponen', 'aspek', 'ujian', 'fashohah', 'tajwid', 'gharib'],
             answer: `
                 <div class="space-y-1.5">
-                    <p class="font-bold text-slate-900">📖 9 Mata Uji Standar Munaqasyah:</p>
+                    <p class="font-bold text-slate-900">📖 9 Mata Uji Standar Database Sekolah:</p>
                     <ol class="list-decimal list-inside space-y-1 text-slate-700 pl-1 text-xs">
                         <li><strong>Fashohah</strong> — Kelancaran membaca Al-Qur'an</li>
                         <li><strong>Tajwid</strong> — Ketepatan hukum tajwid</li>
@@ -542,7 +542,7 @@
                     <li><strong>Al-Qur'an 114 Surah</strong> (contoh: <em>"surah al fatihah"</em>, <em>"ayat kursi"</em>)</li>
                     <li><strong>Jadwal Sholat &amp; Doa Harian</strong></li>
                     <li><strong>Pembuat Sistem</strong> (Karya <strong>Hugo Putra Pratama</strong>)</li>
-                    <li><strong>9 Mata Uji Munaqasyah &amp; Syarat Kelulusan</strong></li>
+                    <li><strong>9 Mata Uji Database Sekolah &amp; Syarat Kelulusan</strong></li>
                 </ul>
             </div>
         `;

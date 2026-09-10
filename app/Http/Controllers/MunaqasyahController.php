@@ -132,7 +132,7 @@ class MunaqasyahController extends Controller
         $penilaian->save();
 
         return redirect()->route('munaqasyah.index', ['jenis' => $santri->jenis])
-            ->with('success', "Data santri {$santri->nama} dan nilai munaqasyah berhasil disimpan.");
+            ->with('success', "Data santri {$santri->nama} dan nilai database sekolah berhasil disimpan.");
     }
 
     /**

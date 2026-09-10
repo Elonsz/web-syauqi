@@ -3,7 +3,7 @@
 @section('title', 'Tambah Santri ' . ($jenis == 'TPQ' ? "Taman Pendidikan Qur'an Ar-Raudhah" : "Rumah Tahfidz Qur'an Ar-Raudhah"))
 
 @section('breadcrumb')
-    <a href="{{ route('munaqasyah.index', ['jenis' => $jenis]) }}" class="hover:text-blue-900 transition">Database Sekolah {{ $jenis == 'TPQ' ? "TPQ Ar-Raudhah" : "RTQ Ar-Raudhah" }}</a>
+    <a href="{{ route('database sekolah.index', ['jenis' => $jenis]) }}" class="hover:text-blue-900 transition">Database Sekolah {{ $jenis == 'TPQ' ? "TPQ Ar-Raudhah" : "RTQ Ar-Raudhah" }}</a>
     <i class="fa-solid fa-chevron-right text-[9px]"></i>
     <span class="text-blue-950 font-bold">Tambah Santri</span>
 @endsection
@@ -19,9 +19,9 @@
                 </span>
                 <h2 class="text-base sm:text-lg font-extrabold text-slate-900">Tambah Data Santri & Penilaian</h2>
             </div>
-            <p class="text-xs text-slate-500 mt-1">Input biodata peserta munaqasyah, upload pas foto kelulusan, dan nilai 9 mata uji.</p>
+            <p class="text-xs text-slate-500 mt-1">Input biodata peserta database sekolah, upload pas foto kelulusan, dan nilai 9 mata uji.</p>
         </div>
-        <a href="{{ route('munaqasyah.index', ['jenis' => $jenis]) }}" 
+        <a href="{{ route('database sekolah.index', ['jenis' => $jenis]) }}" 
            class="inline-flex items-center justify-center gap-2 text-xs font-semibold text-slate-600 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 border border-slate-200 px-3.5 py-2 rounded-xl transition self-start sm:self-auto shrink-0">
             <i class="fa-solid fa-arrow-left"></i> Kembali ke Daftar
         </a>
@@ -41,7 +41,7 @@
         </div>
     @endif
 
-    <form action="{{ route('munaqasyah.store') }}" method="POST" enctype="multipart/form-data" class="space-y-5 sm:space-y-6">
+    <form action="{{ route('database sekolah.store') }}" method="POST" enctype="multipart/form-data" class="space-y-5 sm:space-y-6">
         @csrf
 
         <!-- CARD 1: BIODATA SANTRI & FOTO KELULUSAN -->
@@ -125,20 +125,20 @@
             </div>
         </div>
 
-        <!-- CARD 2: NILAI MUNAQASYAH (9 KOMPONEN PENILAIAN) -->
+        <!-- CARD 2: NILAI DATABASE SEKOLAH (9 KOMPONEN PENILAIAN) -->
         <div class="bg-white p-4 sm:p-6 rounded-2xl border border-slate-200 shadow-xs space-y-5">
             <div class="border-b border-slate-100 pb-3 flex items-center justify-between">
                 <h3 class="text-sm font-bold text-slate-800 flex items-center gap-2">
                     <span class="w-6 h-6 rounded-lg bg-blue-100 text-blue-800 flex items-center justify-center text-xs font-black">2</span>
-                    Nilai Ujian Munaqasyah (9 Komponen Penilaian)
+                    Nilai Ujian Database Sekolah (9 Komponen Penilaian)
                 </h3>
                 <span class="text-[11px] text-slate-500 font-medium">Rentang: 0 - 100</span>
             </div>
 
-            <!-- BAGIAN A: MUNAQASYAH BACAAN -->
+            <!-- BAGIAN A: DATABASE SEKOLAH BACAAN -->
             <div>
                 <h4 class="text-xs font-extrabold text-blue-950 uppercase tracking-wider bg-blue-50 border border-blue-200/80 px-3 py-1.5 rounded-xl mb-3 flex items-center gap-2">
-                    <i class="fa-solid fa-book-open text-blue-700"></i> A. Munaqasyah Bacaan (4 Materi)
+                    <i class="fa-solid fa-book-open text-blue-700"></i> A. Database Sekolah Bacaan (4 Materi)
                 </h4>
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
                     <div>
@@ -164,10 +164,10 @@
                 </div>
             </div>
 
-            <!-- BAGIAN B: MUNAQASYAH HAFALAN -->
+            <!-- BAGIAN B: DATABASE SEKOLAH HAFALAN -->
             <div>
                 <h4 class="text-xs font-extrabold text-amber-950 uppercase tracking-wider bg-amber-50 border border-amber-200/80 px-3 py-1.5 rounded-xl mb-3 flex items-center gap-2">
-                    <i class="fa-solid fa-brain text-amber-600"></i> B. Munaqasyah Hafalan (4 Materi)
+                    <i class="fa-solid fa-brain text-amber-600"></i> B. Database Sekolah Hafalan (4 Materi)
                 </h4>
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
                     <div>

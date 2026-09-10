@@ -192,7 +192,7 @@
                 </div>
             </div>
             <p class="text-[10px] text-slate-400 text-center mt-2">
-                *Skala nilai 0 – 100. Evaluasi mata uji mencakup bidang Munaqasyah Bacaan, Hafalan, &amp; Ujian Tertulis.
+                *Skala nilai 0 – 100. Evaluasi mata uji mencakup bidang Database Sekolah Bacaan, Hafalan, &amp; Ujian Tertulis.
             </p>
         </div>
     </div>
@@ -206,10 +206,10 @@
                 </div>
                 <div>
                     <h3 class="font-extrabold text-slate-900 text-sm sm:text-base flex items-center gap-2">
-                        <span>Santri Berprestasi Munaqasyah 2026</span>
+                        <span>Santri Berprestasi Database Sekolah 2026</span>
                         <span class="text-[9px] px-2 py-0.5 rounded-md bg-amber-50 text-amber-800 border border-amber-200 font-bold uppercase">Top Nilai</span>
                     </h3>
-                    <p class="text-[11px] text-slate-500">Santri peraih nilai munaqasyah tertinggi untuk unit TPQ &amp; RTQ Ar-Raudhah</p>
+                    <p class="text-[11px] text-slate-500">Santri peraih nilai database sekolah tertinggi untuk unit TPQ &amp; RTQ Ar-Raudhah</p>
                 </div>
             </div>
             <div class="flex items-center gap-2 text-xs">
@@ -354,7 +354,7 @@
                             {{ $totalTPQ > 0 ? round(($lulusTPQ / $totalTPQ) * 100) : 0 }}% lulus
                         </p>
                     </div>
-                    <a href="{{ route('munaqasyah.index', ['jenis' => 'TPQ']) }}"
+                    <a href="{{ route('database sekolah.index', ['jenis' => 'TPQ']) }}"
                         class="mt-3 w-full inline-flex items-center justify-center gap-1.5 text-xs font-semibold text-amber-900 bg-amber-100 hover:bg-amber-200 border border-amber-300 py-2 rounded-xl transition">
                         <i class="fa-solid fa-arrow-right text-[10px]"></i> Lihat Data TPQ
                     </a>
@@ -399,7 +399,7 @@
                             {{ $totalRTQ > 0 ? round(($lulusRTQ / $totalRTQ) * 100) : 0 }}% lulus
                         </p>
                     </div>
-                    <a href="{{ route('munaqasyah.index', ['jenis' => 'RTQ']) }}"
+                    <a href="{{ route('database sekolah.index', ['jenis' => 'RTQ']) }}"
                         class="mt-3 w-full inline-flex items-center justify-center gap-1.5 text-xs font-semibold text-blue-900 bg-blue-100 hover:bg-blue-200 border border-blue-300 py-2 rounded-xl transition">
                         <i class="fa-solid fa-arrow-right text-[10px]"></i> Lihat Data RTQ
                     </a>
@@ -414,7 +414,7 @@
                 <h3 class="font-bold text-slate-800 text-sm">Aksi Cepat</h3>
             </div>
             <div class="p-4 space-y-2">
-                <a href="{{ route('munaqasyah.create', ['jenis' => 'TPQ']) }}"
+                <a href="{{ route('database sekolah.create', ['jenis' => 'TPQ']) }}"
                     class="flex items-center gap-3 p-3 rounded-xl bg-amber-50 hover:bg-amber-100 border border-amber-200 transition group">
                     <div class="w-9 h-9 bg-amber-400 rounded-lg flex items-center justify-center text-slate-900 group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-user-plus text-sm"></i>
@@ -426,7 +426,7 @@
                     <i class="fa-solid fa-chevron-right text-xs text-slate-400 ml-auto"></i>
                 </a>
 
-                <a href="{{ route('munaqasyah.create', ['jenis' => 'RTQ']) }}"
+                <a href="{{ route('database sekolah.create', ['jenis' => 'RTQ']) }}"
                     class="flex items-center gap-3 p-3 rounded-xl bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 transition group">
                     <div class="w-9 h-9 bg-emerald-600 rounded-lg flex items-center justify-center text-white group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-user-plus text-sm"></i>
@@ -438,31 +438,31 @@
                     <i class="fa-solid fa-chevron-right text-xs text-slate-400 ml-auto"></i>
                 </a>
 
-                <a href="{{ route('munaqasyah.index', ['jenis' => 'TPQ']) }}"
+                <a href="{{ route('database sekolah.index', ['jenis' => 'TPQ']) }}"
                     class="flex items-center gap-3 p-3 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition group">
                     <div class="w-9 h-9 bg-amber-500 rounded-lg flex items-center justify-center text-white group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-table-list text-sm"></i>
                     </div>
                     <div>
                         <p class="text-xs font-bold text-slate-800">Rekapitulasi TPQ Ar-Raudhah</p>
-                        <p class="text-[10px] text-slate-500">Daftar nilai munaqasyah</p>
+                        <p class="text-[10px] text-slate-500">Daftar nilai database sekolah</p>
                     </div>
                     <i class="fa-solid fa-chevron-right text-xs text-slate-400 ml-auto"></i>
                 </a>
 
-                <a href="{{ route('munaqasyah.index', ['jenis' => 'RTQ']) }}"
+                <a href="{{ route('database sekolah.index', ['jenis' => 'RTQ']) }}"
                     class="flex items-center gap-3 p-3 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition group">
                     <div class="w-9 h-9 bg-emerald-600 rounded-lg flex items-center justify-center text-white group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-table-list text-sm"></i>
                     </div>
                     <div>
                         <p class="text-xs font-bold text-slate-800">Rekapitulasi RTQ Ar-Raudhah</p>
-                        <p class="text-[10px] text-slate-500">Daftar nilai munaqasyah</p>
+                        <p class="text-[10px] text-slate-500">Daftar nilai database sekolah</p>
                     </div>
                     <i class="fa-solid fa-chevron-right text-xs text-slate-400 ml-auto"></i>
                 </a>
 
-                <a href="{{ route('munaqasyah.export.excel', ['jenis' => 'TPQ']) }}"
+                <a href="{{ route('database sekolah.export.excel', ['jenis' => 'TPQ']) }}"
                     class="flex items-center gap-3 p-3 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition group">
                     <div class="w-9 h-9 bg-emerald-600 rounded-lg flex items-center justify-center text-white group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-file-excel text-sm"></i>
@@ -484,7 +484,7 @@
                 <i class="fa-solid fa-clock-rotate-left text-slate-500"></i>
                 <h3 class="font-bold text-slate-800 text-sm">Santri Terbaru Ditambahkan</h3>
             </div>
-            <a href="{{ route('munaqasyah.index') }}" class="text-xs text-blue-600 font-semibold hover:underline">Lihat Semua</a>
+            <a href="{{ route('database sekolah.index') }}" class="text-xs text-blue-600 font-semibold hover:underline">Lihat Semua</a>
         </div>
 
         {{-- Mobile card list --}}
@@ -512,7 +512,7 @@
                         @endif
                     </div>
                 </div>
-                <a href="{{ route('munaqasyah.edit', $santri->id) }}" class="shrink-0 w-8 h-8 flex items-center justify-center bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-lg transition">
+                <a href="{{ route('database sekolah.edit', $santri->id) }}" class="shrink-0 w-8 h-8 flex items-center justify-center bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-lg transition">
                     <i class="fa-solid fa-pen text-xs"></i>
                 </a>
             </div>
@@ -562,7 +562,7 @@
                             @endif
                         </td>
                         <td class="px-4 py-3 text-center">
-                            <a href="{{ route('munaqasyah.edit', $santri->id) }}"
+                            <a href="{{ route('database sekolah.edit', $santri->id) }}"
                                 class="inline-flex items-center gap-1 text-[10px] font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 px-2 py-1 rounded-lg transition">
                                 <i class="fa-solid fa-pen"></i> Edit
                             </a>

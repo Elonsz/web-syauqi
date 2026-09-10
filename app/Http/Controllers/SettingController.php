@@ -59,7 +59,7 @@ class SettingController extends Controller
     {
         $backupData = [
             'meta' => [
-                'aplikasi'          => 'Sistem Penilaian Munaqasyah Ar-Raudhah',
+                'aplikasi'          => 'Database Sekolah Ar-Raudhah',
                 'pengembang'        => 'Hugo Putra Pratama',
                 'tanggal_backup'    => now()->format('Y-m-d H:i:s'),
                 'total_santri'      => \App\Models\Santri::count(),
