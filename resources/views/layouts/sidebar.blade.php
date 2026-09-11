@@ -278,8 +278,8 @@
                 @php
                     $isCreatePage = request()->routeIs('database_sekolah.create');
                     $currJenis = request('jenis', isset($santri) ? ($santri->jenis ?? 'TPQ') : 'TPQ');
-                    $isTpqActive = !$isCreatePage && request()->is('database sekolah*') && $currJenis === 'TPQ';
-                    $isRtqActive = !$isCreatePage && request()->is('database sekolah*') && $currJenis === 'RTQ';
+                    $isTpqActive = !$isCreatePage && request()->is('database-sekolah*') && $currJenis === 'TPQ';
+                    $isRtqActive = !$isCreatePage && request()->is('database-sekolah*') && $currJenis === 'RTQ';
                     $isCreateTpqActive = $isCreatePage && request('jenis', 'TPQ') === 'TPQ';
                     $isCreateRtqActive = $isCreatePage && request('jenis') === 'RTQ';
                 @endphp
@@ -393,7 +393,7 @@
                 <!-- Right side -->
                 <div class="flex items-center gap-1.5 sm:gap-2">
                     {{-- Tab TPQ/RTQ (database sekolah pages) --}}
-                    @if(request()->is('database sekolah*'))
+                    @if(request()->is('database-sekolah*'))
                     <div class="inline-flex bg-slate-100 p-0.5 rounded-lg border border-slate-200">
                         <a href="{{ route('database_sekolah.index', ['jenis' => 'TPQ']) }}"
                            class="px-2.5 sm:px-3 py-1.5 rounded-md text-xs font-semibold transition {{ request('jenis','TPQ') == 'TPQ' ? 'bg-white text-blue-700 shadow-sm border border-slate-200' : 'text-slate-500 hover:text-slate-700' }}">

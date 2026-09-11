@@ -65,7 +65,7 @@
                             800: '#1e3a8a',
                             900: '#16285a',
                         },
-                        database sekolah: {
+                        munaqasyah: {
                             yellow: '#FEF08A',
                             yellowDark: '#EAB308',
                         }

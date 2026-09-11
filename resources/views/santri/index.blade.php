@@ -234,7 +234,7 @@
                                         <span class="text-[9px] font-black px-1.5 py-0.5 rounded {{ $s->jenis === 'TPQ' ? 'bg-blue-100 text-blue-900' : 'bg-emerald-100 text-emerald-900' }}">
                                             {{ $s->jenis }}
                                         </span>
-                                        <span class="text-[10px] text-slate-400 font-medium">Tahun {{ $s->tahun_database sekolah ?? '2026' }}</span>
+                                        <span class="text-[10px] text-slate-400 font-medium">Tahun {{ $s->tahun_munaqasyah ?? '2026' }}</span>
                                     </div>
                                 </div>
                             </div>

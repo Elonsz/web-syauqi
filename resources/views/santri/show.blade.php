@@ -154,7 +154,7 @@
                 <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200/80">
                     <p class="text-[11px] font-semibold text-slate-500 uppercase tracking-wide">Tahun Database Sekolah</p>
                     <p class="text-sm font-bold text-slate-800 mt-1 font-mono">
-                        {{ $santri->tahun_database sekolah ?? '2026' }}
+                        {{ $santri->tahun_munaqasyah ?? '2026' }}
                     </p>
                 </div>
 

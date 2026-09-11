@@ -71,13 +71,13 @@
                 </div>
 
                 <div>
-                    <label for="nomor_sk_database sekolah" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                    <label for="nomor_sk_munaqasyah" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
                         Nomor SK / Format Sertifikat
                     </label>
                     <input type="text"
-                           name="nomor_sk_database sekolah"
-                           id="nomor_sk_database sekolah"
-                           value="{{ old('nomor_sk_database sekolah', $settings['nomor_sk_database sekolah'] ?? '045/SK-MUN/YCA-AR/IX/2026') }}"
+                           name="nomor_sk_munaqasyah"
+                           id="nomor_sk_munaqasyah"
+                           value="{{ old('nomor_sk_munaqasyah', $settings['nomor_sk_munaqasyah'] ?? $settings['nomor_sk_database sekolah'] ?? '045/SK-MUN/YCA-AR/IX/2026') }}"
                            class="w-full px-4 py-2.5 rounded-xl text-sm font-mono border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600 transition">
                 </div>
             </div>

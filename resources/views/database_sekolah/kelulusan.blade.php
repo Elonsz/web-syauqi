@@ -100,7 +100,7 @@
                 SURAT KETERANGAN HASIL UJIAN DATABASE SEKOLAH
             </h2>
             <p class="text-[11px] sm:text-xs text-slate-500 mt-1 font-mono">
-                Nomor: {{ $settings['nomor_sk_database sekolah'] ?? ('SKM/' . $santri->jenis . '/2026/' . str_pad($santri->no_peserta ?? $santri->id, 4, '0', STR_PAD_LEFT)) }}
+                Nomor: {{ $settings['nomor_sk_munaqasyah'] ?? $settings['nomor_sk_database sekolah'] ?? ('SKM/' . $santri->jenis . '/2026/' . str_pad($santri->no_peserta ?? $santri->id, 4, '0', STR_PAD_LEFT)) }}
             </p>
         </div>
 
@@ -135,7 +135,7 @@
                 <div class="flex">
                     <span class="w-32 sm:w-36 font-semibold text-slate-600 shrink-0">Tahun Ujian</span>
                     <span class="w-3 text-center shrink-0">:</span>
-                    <span class="text-slate-800">{{ $santri->tahun_database sekolah ?? '2026' }}</span>
+                    <span class="text-slate-800">{{ $santri->tahun_munaqasyah ?? '2026' }}</span>
                 </div>
             </div>
 

@@ -125,7 +125,7 @@
                     <!-- Tahun Database Sekolah -->
                     <div>
                         <label class="block text-xs font-bold text-slate-700 mb-1">Tahun Angkatan / Database Sekolah</label>
-                        <input type="text" name="tahun_database sekolah" value="{{ old('tahun_database sekolah', '2026') }}" placeholder="2026"
+                        <input type="text" name="tahun_munaqasyah" value="{{ old('tahun_munaqasyah', '2026') }}" placeholder="2026"
                                class="w-full text-xs p-2.5 bg-slate-50 border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-600 focus:bg-white focus:outline-none transition font-mono">
                     </div>
                 </div>

@@ -112,7 +112,7 @@
                     SURAT KETERANGAN HASIL UJIAN DATABASE SEKOLAH
                 </h2>
                 <p class="text-[11px] text-slate-500 mt-0.5 font-mono">
-                    Nomor: {{ $settings['nomor_sk_database sekolah'] ?? ('SKM/' . $santri->jenis . '/2026/' . str_pad($santri->no_peserta ?? $santri->id, 4, '0', STR_PAD_LEFT)) }}
+                    Nomor: {{ $settings['nomor_sk_munaqasyah'] ?? $settings['nomor_sk_database sekolah'] ?? ('SKM/' . $santri->jenis . '/2026/' . str_pad($santri->no_peserta ?? $santri->id, 4, '0', STR_PAD_LEFT)) }}
                 </p>
             </div>
 
