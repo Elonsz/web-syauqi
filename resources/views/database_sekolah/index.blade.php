@@ -11,7 +11,14 @@
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
             <div class="flex items-center gap-2 flex-wrap">
-                <span class="px-2.5 py-1 text-xs font-bold rounded-lg {{ $jenis == 'TPQ' ? 'bg-amber-100 text-amber-900 border border-amber-300' : 'bg-blue-100 text-blue-950 border border-blue-300' }}">{{ $jenis }}</span>
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-bold rounded-lg {{ $jenis == 'TPQ' ? 'bg-amber-100 text-amber-900 border border-amber-300' : 'bg-blue-100 text-blue-950 border border-blue-300' }}">
+                    @if($jenis == 'TPQ')
+                        <img src="{{ asset('images/logo_tpq.png') }}" alt="Logo TPQ" class="w-4 h-4 object-contain">
+                    @elseif($jenis == 'RTQ')
+                        <img src="{{ asset('images/logo_rtq.png') }}" alt="Logo RTQ" class="w-4 h-4 object-contain">
+                    @endif
+                    {{ $jenis }}
+                </span>
                 <h2 class="text-lg sm:text-xl font-extrabold text-slate-900 tracking-tight">{{ $jenis == 'TPQ' ? "Taman Pendidikan Qur'an Ar-Raudhah" : "Rumah Tahfidz Qur'an Ar-Raudhah" }}</h2>
             </div>
             <p class="text-xs text-slate-500 mt-1">Database Sekolah nilai bacaan &amp; hafalan <strong class="text-slate-700">{{ $jenis == 'TPQ' ? "Taman Pendidikan Qur'an Ar-Raudhah" : "Rumah Tahfidz Qur'an Ar-Raudhah" }}</strong> — Tahun 2026</p>

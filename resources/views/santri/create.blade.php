@@ -15,8 +15,9 @@
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-xs">
         <div>
             <div class="flex items-center gap-2">
-                <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-950 border border-blue-300">
-                    Form Pendaftaran Siswa
+                <span class="inline-flex items-center gap-1.5 text-xs font-bold px-2.5 py-0.5 rounded-full {{ ($jenis ?? 'TPQ') === 'RTQ' ? 'bg-emerald-100 text-emerald-950 border border-emerald-300' : 'bg-blue-100 text-blue-950 border border-blue-300' }}">
+                    <img src="{{ ($jenis ?? 'TPQ') === 'RTQ' ? asset('images/logo_rtq.png') : asset('images/logo_tpq.png') }}" alt="Logo {{ $jenis ?? 'TPQ' }}" class="w-3.5 h-3.5 object-contain">
+                    Form Pendaftaran Siswa ({{ $jenis ?? 'TPQ' }})
                 </span>
                 <h2 class="text-base sm:text-lg font-extrabold text-slate-900">Tambah Biodata Santri Baru</h2>
             </div>

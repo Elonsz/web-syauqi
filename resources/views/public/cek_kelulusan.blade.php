@@ -153,7 +153,12 @@
                                 </div>
                                 <div class="text-center sm:text-left flex-1 min-w-0">
                                     <div class="flex items-center justify-center sm:justify-start gap-2 flex-wrap mb-1">
-                                        <span class="px-2 py-0.5 text-[10px] font-black rounded-lg {{ $santri->jenis == 'TPQ' ? 'bg-amber-100 text-amber-900' : 'bg-blue-100 text-blue-900' }}">
+                                        <span class="inline-flex items-center gap-1.5 px-2 py-0.5 text-[10px] font-black rounded-lg {{ $santri->jenis == 'TPQ' ? 'bg-amber-100 text-amber-900' : 'bg-blue-100 text-blue-900' }}">
+                                            @if($santri->jenis == 'TPQ')
+                                                <img src="{{ asset('images/logo_tpq.png') }}" alt="Logo TPQ" class="w-3.5 h-3.5 object-contain">
+                                            @elseif($santri->jenis == 'RTQ')
+                                                <img src="{{ asset('images/logo_rtq.png') }}" alt="Logo RTQ" class="w-3.5 h-3.5 object-contain">
+                                            @endif
                                             {{ $santri->jenis == 'TPQ' ? "Taman Pendidikan Qur'an (TPQ)" : "Rumah Tahfidz Qur'an (RTQ)" }}
                                         </span>
                                         <span class="font-mono text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded-lg font-bold">

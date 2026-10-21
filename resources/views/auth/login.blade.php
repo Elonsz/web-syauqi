@@ -213,8 +213,8 @@
 
         <div class="left-footer">
             <div>
-                <span class="unit-pill"><i class="fa-solid fa-scroll"></i> TPQ Ar-Raudhah</span>
-                <span class="unit-pill"><i class="fa-solid fa-book-quran"></i> RTQ Ar-Raudhah</span>
+                <span class="unit-pill"><img src="{{ asset('images/logo_tpq.png') }}" alt="Logo TPQ" style="width:16px;height:16px;object-fit:contain;display:inline-block;vertical-align:middle;margin-right:6px;">TPQ Ar-Raudhah</span>
+                <span class="unit-pill"><img src="{{ asset('images/logo_rtq.png') }}" alt="Logo RTQ" style="width:16px;height:16px;object-fit:contain;display:inline-block;vertical-align:middle;margin-right:6px;">RTQ Ar-Raudhah</span>
             </div>
             <p style="color:rgba(255,255,255,0.3);font-size:11px;margin-top:16px;">&copy; 2026 Yayasan Cahaya Amanah Ar-Raudhah</p>
         </div>

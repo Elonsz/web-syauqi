@@ -188,19 +188,12 @@ class SantriController extends Controller
             'keterangan'      => 'nullable|string',
         ]);
 
-        if ($request->hasFile('foto')) {
-            if ($santri->foto && Storage::disk('public')->exists($santri->foto)) {
-                Storage::disk('public')->delete($santri->foto);
-            }
-            $santri->foto = $request->file('foto')->store('foto_santri', 'public');
-        }
-
         $unit = Unit::firstOrCreate(
             ['nama_unit' => $request->nama_unit, 'jenis' => $request->jenis],
             ['no_unit' => $request->no_unit ?? '01']
         );
 
-        $santri->update([
+        $data = [
             'no_peserta'       => $request->no_peserta,
             'no_unit'          => $request->no_unit,
             'nama'             => strtoupper($request->nama),
@@ -215,7 +208,16 @@ class SantriController extends Controller
             'tahun_munaqasyah' => $request->tahun_munaqasyah ?? $santri->tahun_munaqasyah,
             'status_kelulusan' => $request->status_kelulusan ?? $santri->status_kelulusan,
             'keterangan'       => $request->keterangan,
-        ]);
+        ];
+
+        if ($request->hasFile('foto')) {
+            if ($santri->foto && Storage::disk('public')->exists($santri->foto)) {
+                Storage::disk('public')->delete($santri->foto);
+            }
+            $data['foto'] = $request->file('foto')->store('foto_santri', 'public');
+        }
+
+        $santri->update($data);
 
         return redirect()->route('santri.show', $santri->id)
             ->with('success', "Biodata santri {$santri->nama} berhasil diperbarui.");

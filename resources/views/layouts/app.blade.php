@@ -226,11 +226,11 @@
                     <div class="inline-flex bg-slate-100 p-0.5 rounded-lg border border-slate-200 mr-1">
                         <a href="{{ route('database_sekolah.index', ['jenis' => 'TPQ']) }}"
                            class="px-3 py-1.5 rounded-md text-xs font-semibold transition flex items-center gap-1.5 {{ request('jenis', 'TPQ') == 'TPQ' ? 'bg-white text-blue-700 shadow-sm border border-slate-200' : 'text-slate-500 hover:text-slate-700' }}">
-                            <i class="fa-solid fa-scroll text-[10px]"></i> TPQ
+                            <img src="{{ asset('images/logo_tpq.png') }}" alt="Logo TPQ" class="w-4 h-4 object-contain inline-block"> TPQ
                         </a>
                         <a href="{{ route('database_sekolah.index', ['jenis' => 'RTQ']) }}"
                            class="px-3 py-1.5 rounded-md text-xs font-semibold transition flex items-center gap-1.5 {{ request('jenis') == 'RTQ' ? 'bg-white text-emerald-700 shadow-sm border border-slate-200' : 'text-slate-500 hover:text-slate-700' }}">
-                            <i class="fa-solid fa-book-quran text-[10px]"></i> RTQ
+                            <img src="{{ asset('images/logo_rtq.png') }}" alt="Logo RTQ" class="w-4 h-4 object-contain inline-block"> RTQ
                         </a>
                     </div>
 

@@ -17,7 +17,12 @@
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-xs">
         <div>
             <div class="flex items-center gap-2">
-                <span class="text-xs font-bold px-2.5 py-0.5 rounded-full {{ $santri->jenis === 'TPQ' ? 'bg-blue-100 text-blue-900' : 'bg-emerald-100 text-emerald-900' }}">
+                <span class="inline-flex items-center gap-1.5 text-xs font-bold px-2.5 py-0.5 rounded-full {{ $santri->jenis === 'TPQ' ? 'bg-blue-100 text-blue-900' : 'bg-emerald-100 text-emerald-900' }}">
+                    @if($santri->jenis === 'TPQ')
+                        <img src="{{ asset('images/logo_tpq.png') }}" alt="Logo TPQ" class="w-3.5 h-3.5 object-contain">
+                    @elseif($santri->jenis === 'RTQ')
+                        <img src="{{ asset('images/logo_rtq.png') }}" alt="Logo RTQ" class="w-3.5 h-3.5 object-contain">
+                    @endif
                     {{ $santri->jenis }}
                 </span>
                 <h2 class="text-base sm:text-lg font-extrabold text-slate-900">Edit Biodata Santri</h2>
@@ -70,13 +75,8 @@
                 <!-- Upload Pas Foto -->
                 <div class="md:col-span-1 flex flex-col items-center justify-center p-4 bg-slate-50 border-2 border-dashed border-slate-300 hover:border-blue-500 rounded-2xl transition">
                     <div class="w-32 h-40 bg-slate-200 rounded-xl overflow-hidden border border-slate-300 shadow-inner flex items-center justify-center relative mb-3">
-                        @if($santri->foto)
-                            <img id="photo-preview" src="{{ asset('storage/' . $santri->foto) }}" 
-                                 alt="Pas Foto {{ $santri->nama }}" class="w-full h-full object-cover">
-                        @else
-                            <img id="photo-preview" src="https://ui-avatars.com/api/?name={{ urlencode($santri->nama) }}&background=e2e8f0&color=64748b&size=250" 
-                                 alt="Avatar {{ $santri->nama }}" class="w-full h-full object-cover">
-                        @endif
+                        <img id="photo-preview" src="{{ $santri->foto_url }}" 
+                             alt="Pas Foto {{ $santri->nama }}" class="w-full h-full object-cover">
                     </div>
                     <label class="cursor-pointer bg-blue-950 hover:bg-slate-900 text-white text-xs font-bold px-3.5 py-2 rounded-xl shadow-xs transition inline-flex items-center gap-1.5 active:scale-95">
                         <i class="fa-solid fa-camera"></i> Ganti Pas Foto

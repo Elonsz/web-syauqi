@@ -52,8 +52,8 @@
 
         <!-- Penguji TPQ -->
         <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-xs flex items-center gap-3">
-            <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-700 flex items-center justify-center text-lg shrink-0 border border-blue-100">
-                <i class="fa-solid fa-scroll"></i>
+            <div class="w-10 h-10 rounded-xl bg-white p-1 flex items-center justify-center shrink-0 border border-blue-100 shadow-xs overflow-hidden">
+                <img src="{{ asset('images/logo_tpq.png') }}" alt="Logo TPQ" class="w-full h-full object-contain">
             </div>
             <div>
                 <p class="text-[11px] font-semibold text-slate-400 uppercase tracking-wide">Penguji TPQ</p>
@@ -63,8 +63,8 @@
 
         <!-- Penguji RTQ -->
         <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-xs flex items-center gap-3">
-            <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center text-lg shrink-0 border border-amber-100">
-                <i class="fa-solid fa-book-quran"></i>
+            <div class="w-10 h-10 rounded-xl bg-white p-1 flex items-center justify-center shrink-0 border border-amber-100 shadow-xs overflow-hidden">
+                <img src="{{ asset('images/logo_rtq.png') }}" alt="Logo RTQ" class="w-full h-full object-contain">
             </div>
             <div>
                 <p class="text-[11px] font-semibold text-slate-400 uppercase tracking-wide">Penguji RTQ</p>
@@ -167,11 +167,11 @@
                                 </span>
                             @elseif($user->role === 'Penguji TPQ')
                                 <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200">
-                                    <i class="fa-solid fa-scroll text-[10px]"></i> Penguji TPQ
+                                    <img src="{{ asset('images/logo_tpq.png') }}" alt="Logo TPQ" class="w-3.5 h-3.5 object-contain"> Penguji TPQ
                                 </span>
                             @elseif($user->role === 'Penguji RTQ')
                                 <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-800 border border-amber-200">
-                                    <i class="fa-solid fa-book-quran text-[10px]"></i> Penguji RTQ
+                                    <img src="{{ asset('images/logo_rtq.png') }}" alt="Logo RTQ" class="w-3.5 h-3.5 object-contain"> Penguji RTQ
                                 </span>
                             @else
                                 <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-teal-50 text-teal-700 border border-teal-200">
@@ -241,9 +241,13 @@
                         @if($user->role === 'Administrator')
                             <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200">Admin</span>
                         @elseif($user->role === 'Penguji TPQ')
-                            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200">TPQ</span>
+                            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200">
+                                <img src="{{ asset('images/logo_tpq.png') }}" alt="Logo TPQ" class="w-3 h-3 object-contain"> TPQ
+                            </span>
                         @elseif($user->role === 'Penguji RTQ')
-                            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-50 text-amber-800 border border-amber-200">RTQ</span>
+                            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-50 text-amber-800 border border-amber-200">
+                                <img src="{{ asset('images/logo_rtq.png') }}" alt="Logo RTQ" class="w-3 h-3 object-contain"> RTQ
+                            </span>
                         @else
                             <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-teal-50 text-teal-700 border border-teal-200">Panitia</span>
                         @endif

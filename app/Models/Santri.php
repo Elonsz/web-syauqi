@@ -43,7 +43,8 @@ class Santri extends Model
     {
         if ($this->foto) {
             $cleanPath = ltrim(str_replace('storage/', '', $this->foto), '/\\');
-            if (Storage::disk('public')->exists($cleanPath)) {
+            $cleanPath = str_replace('\\', '/', $cleanPath);
+            if (Storage::disk('public')->exists($cleanPath) || file_exists(public_path('storage/' . $cleanPath))) {
                 return asset('storage/' . $cleanPath);
             }
         }

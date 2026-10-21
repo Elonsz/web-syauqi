@@ -318,8 +318,8 @@
                 {{-- TPQ Card --}}
                 <div class="bg-amber-50/50 rounded-2xl p-4 border border-amber-200/80">
                     <div class="flex items-center gap-2.5 mb-3">
-                        <div class="w-10 h-10 bg-amber-100 text-amber-800 rounded-xl flex items-center justify-center border border-amber-200 shadow-xs">
-                            <i class="fa-solid fa-scroll text-base"></i>
+                        <div class="w-10 h-10 bg-white rounded-xl flex items-center justify-center border border-amber-200 shadow-xs p-1 shrink-0 overflow-hidden">
+                            <img src="{{ asset('images/logo_tpq.png') }}" alt="Logo TPQ" class="w-full h-full object-contain">
                         </div>
                         <div>
                             <p class="text-[10px] font-bold text-amber-800 uppercase tracking-wide leading-none">Lembaga</p>
@@ -363,8 +363,8 @@
                 {{-- RTQ Card --}}
                 <div class="bg-blue-50/50 rounded-2xl p-4 border border-blue-200/80">
                     <div class="flex items-center gap-2.5 mb-3">
-                        <div class="w-10 h-10 bg-blue-100 text-blue-800 rounded-xl flex items-center justify-center border border-blue-200 shadow-xs">
-                            <i class="fa-solid fa-book-quran text-base"></i>
+                        <div class="w-10 h-10 bg-white rounded-xl flex items-center justify-center border border-blue-200 shadow-xs p-1 shrink-0 overflow-hidden">
+                            <img src="{{ asset('images/logo_rtq.png') }}" alt="Logo RTQ" class="w-full h-full object-contain">
                         </div>
                         <div>
                             <p class="text-[10px] font-bold text-blue-800 uppercase tracking-wide leading-none">Lembaga</p>

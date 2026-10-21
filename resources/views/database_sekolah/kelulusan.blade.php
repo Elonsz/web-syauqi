@@ -79,14 +79,14 @@
 
     <!-- Halaman Dokumen Cetak Kelulusan (A4 Standard) -->
     <div class="sheet-page max-w-3xl mx-auto bg-white p-4 sm:p-8 md:p-12 shadow-md border border-slate-200 rounded-2xl relative overflow-hidden">
-        <!-- Watermark Logo Resmi Yayasan -->
+        <!-- Watermark Logo Resmi Yayasan / Unit -->
         <div class="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0">
-            <img src="{{ asset('images/logo.png') }}" alt="Watermark Ar-Raudhah" class="w-80 h-80 sm:w-96 sm:h-96 object-contain opacity-[0.04] grayscale">
+            <img src="{{ $santri->jenis === 'TPQ' ? asset('images/logo_tpq.png') : ($santri->jenis === 'RTQ' ? asset('images/logo_rtq.png') : asset('images/logo.png')) }}" alt="Watermark" class="w-80 h-80 sm:w-96 sm:h-96 object-contain opacity-[0.05] grayscale">
         </div>
         <!-- Bingkai Hiasan Islami Header -->
         <div class="border-b-2 border-slate-900 pb-4 mb-5 text-center relative">
             <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-5">
-                <img src="{{ asset('images/logo.png') }}" alt="Logo Yayasan" class="w-16 h-16 sm:w-20 sm:h-20 object-contain shrink-0">
+                <img src="{{ $santri->jenis === 'TPQ' ? asset('images/logo_tpq.png') : ($santri->jenis === 'RTQ' ? asset('images/logo_rtq.png') : asset('images/logo.png')) }}" alt="Logo" class="w-16 h-16 sm:w-20 sm:h-20 object-contain shrink-0">
                 <div>
                     <h3 class="text-xs sm:text-sm font-black tracking-wider text-blue-950 uppercase">{{ $settings['nama_yayasan'] ?? 'YAYASAN CAHAYA AMANAH AR-RAUDHAH' }}</h3>
                     <h1 class="text-base sm:text-xl font-black text-slate-900 tracking-tight">TAMAN PENDIDIKAN QUR'AN AR-RAUDHAH UNIT 004</h1>

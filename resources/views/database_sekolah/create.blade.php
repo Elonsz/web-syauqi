@@ -51,7 +51,12 @@
                     <span class="w-6 h-6 rounded-lg bg-blue-100 text-blue-950 flex items-center justify-center text-xs font-black">1</span>
                     Identitas Santri & Pas Foto Kelulusan
                 </h3>
-                <span class="text-[11px] text-blue-950 bg-blue-50 border border-blue-200 px-2.5 py-0.5 rounded-full font-bold">
+                <span class="inline-flex items-center gap-1.5 text-[11px] text-blue-950 bg-blue-50 border border-blue-200 px-2.5 py-0.5 rounded-full font-bold">
+                    @if($jenis === 'TPQ')
+                        <img src="{{ asset('images/logo_tpq.png') }}" alt="Logo TPQ" class="w-3.5 h-3.5 object-contain">
+                    @elseif($jenis === 'RTQ')
+                        <img src="{{ asset('images/logo_rtq.png') }}" alt="Logo RTQ" class="w-3.5 h-3.5 object-contain">
+                    @endif
                     {{ $jenis }}
                 </span>
             </div>

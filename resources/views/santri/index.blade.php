@@ -125,12 +125,14 @@
                     Semua
                 </a>
                 <a href="{{ route('santri.index', array_merge(request()->query(), ['jenis' => 'TPQ'])) }}" 
-                   class="flex-1 py-1.5 text-center text-xs font-bold rounded-lg transition {{ $jenis === 'TPQ' ? 'bg-blue-900 text-white shadow-xs' : 'text-slate-500 hover:text-slate-800' }}">
-                    TPQ
+                   class="flex-1 py-1.5 text-center text-xs font-bold rounded-lg transition flex items-center justify-center gap-1.5 {{ $jenis === 'TPQ' ? 'bg-blue-900 text-white shadow-xs' : 'text-slate-500 hover:text-slate-800' }}">
+                    <img src="{{ asset('images/logo_tpq.png') }}" alt="Logo TPQ" class="w-3.5 h-3.5 object-contain inline-block">
+                    <span>TPQ</span>
                 </a>
                 <a href="{{ route('santri.index', array_merge(request()->query(), ['jenis' => 'RTQ'])) }}" 
-                   class="flex-1 py-1.5 text-center text-xs font-bold rounded-lg transition {{ $jenis === 'RTQ' ? 'bg-emerald-700 text-white shadow-xs' : 'text-slate-500 hover:text-slate-800' }}">
-                    RTQ
+                   class="flex-1 py-1.5 text-center text-xs font-bold rounded-lg transition flex items-center justify-center gap-1.5 {{ $jenis === 'RTQ' ? 'bg-emerald-700 text-white shadow-xs' : 'text-slate-500 hover:text-slate-800' }}">
+                    <img src="{{ asset('images/logo_rtq.png') }}" alt="Logo RTQ" class="w-3.5 h-3.5 object-contain inline-block">
+                    <span>RTQ</span>
                 </a>
             </div>
 

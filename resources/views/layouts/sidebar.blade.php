@@ -286,13 +286,13 @@
                 <a href="{{ route('database_sekolah.index', ['jenis' => 'TPQ']) }}"
                    class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:text-slate-800 {{ $isTpqActive ? 'active' : '' }}"
                    title="Taman Pendidikan Qur'an Ar-Raudhah">
-                    <i class="fa-solid fa-scroll w-5 text-center shrink-0 text-slate-400"></i>
+                    <img src="{{ asset('images/logo_tpq.png') }}" alt="Logo TPQ" class="w-5 h-5 object-contain shrink-0">
                     <span class="sidebar-label transition-all duration-300">TPQ Ar-Raudhah</span>
                 </a>
                 <a href="{{ route('database_sekolah.index', ['jenis' => 'RTQ']) }}"
                    class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:text-slate-800 {{ $isRtqActive ? 'active' : '' }}"
                    title="Rumah Tahfidz Qur'an Ar-Raudhah">
-                    <i class="fa-solid fa-book-quran w-5 text-center shrink-0 text-slate-400"></i>
+                    <img src="{{ asset('images/logo_rtq.png') }}" alt="Logo RTQ" class="w-5 h-5 object-contain shrink-0">
                     <span class="sidebar-label transition-all duration-300">RTQ Ar-Raudhah</span>
                 </a>
 
@@ -301,12 +301,12 @@
                 @php $navJenis = request('jenis', 'TPQ'); @endphp
                 <a href="{{ route('database_sekolah.create', ['jenis' => 'TPQ']) }}"
                    class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:text-slate-800 {{ $isCreateTpqActive ? 'active' : '' }}">
-                    <i class="fa-solid fa-user-plus w-5 text-center shrink-0 text-slate-400"></i>
+                    <img src="{{ asset('images/logo_tpq.png') }}" alt="Logo TPQ" class="w-5 h-5 object-contain shrink-0">
                     <span class="sidebar-label transition-all duration-300">Input TPQ Ar-Raudhah</span>
                 </a>
                 <a href="{{ route('database_sekolah.create', ['jenis' => 'RTQ']) }}"
                    class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:text-slate-800 {{ $isCreateRtqActive ? 'active' : '' }}">
-                    <i class="fa-solid fa-user-plus w-5 text-center shrink-0 text-slate-400"></i>
+                    <img src="{{ asset('images/logo_rtq.png') }}" alt="Logo RTQ" class="w-5 h-5 object-contain shrink-0">
                     <span class="sidebar-label transition-all duration-300">Input RTQ Ar-Raudhah</span>
                 </a>
 
@@ -396,12 +396,12 @@
                     @if(request()->is('database-sekolah*'))
                     <div class="inline-flex bg-slate-100 p-0.5 rounded-lg border border-slate-200">
                         <a href="{{ route('database_sekolah.index', ['jenis' => 'TPQ']) }}"
-                           class="px-2.5 sm:px-3 py-1.5 rounded-md text-xs font-semibold transition {{ request('jenis','TPQ') == 'TPQ' ? 'bg-white text-blue-700 shadow-sm border border-slate-200' : 'text-slate-500 hover:text-slate-700' }}">
-                            <i class="fa-solid fa-scroll"></i><span class="hidden sm:inline ml-1.5">TPQ</span>
+                           class="px-2.5 sm:px-3 py-1.5 rounded-md text-xs font-semibold transition flex items-center gap-1.5 {{ request('jenis','TPQ') == 'TPQ' ? 'bg-white text-blue-700 shadow-sm border border-slate-200' : 'text-slate-500 hover:text-slate-700' }}">
+                            <img src="{{ asset('images/logo_tpq.png') }}" alt="Logo TPQ" class="w-4 h-4 object-contain inline-block"><span class="hidden sm:inline">TPQ</span>
                         </a>
                         <a href="{{ route('database_sekolah.index', ['jenis' => 'RTQ']) }}"
-                           class="px-2.5 sm:px-3 py-1.5 rounded-md text-xs font-semibold transition {{ request('jenis') == 'RTQ' ? 'bg-white text-emerald-700 shadow-sm border border-slate-200' : 'text-slate-500 hover:text-slate-700' }}">
-                            <i class="fa-solid fa-book-quran"></i><span class="hidden sm:inline ml-1.5">RTQ</span>
+                           class="px-2.5 sm:px-3 py-1.5 rounded-md text-xs font-semibold transition flex items-center gap-1.5 {{ request('jenis') == 'RTQ' ? 'bg-white text-emerald-700 shadow-sm border border-slate-200' : 'text-slate-500 hover:text-slate-700' }}">
+                            <img src="{{ asset('images/logo_rtq.png') }}" alt="Logo RTQ" class="w-4 h-4 object-contain inline-block"><span class="hidden sm:inline">RTQ</span>
                         </a>
                     </div>
                     @endif
@@ -450,14 +450,14 @@
                                     </div>
                                 </a>
                                 <a href="{{ route('database_sekolah.index', ['jenis' => 'TPQ']) }}" class="flex items-start gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-100 rounded-xl transition">
-                                    <i class="fa-solid fa-scroll text-amber-500 w-4 text-center mt-0.5 shrink-0"></i>
+                                    <img src="{{ asset('images/logo_tpq.png') }}" alt="Logo TPQ" class="w-4 h-4 object-contain mt-0.5 shrink-0">
                                     <div>
                                         <p class="font-bold text-slate-800 leading-tight">TPQ Ar-Raudhah</p>
                                         <p class="text-[10px] text-slate-400 font-normal">Taman Pendidikan Qur'an</p>
                                     </div>
                                 </a>
                                 <a href="{{ route('database_sekolah.index', ['jenis' => 'RTQ']) }}" class="flex items-start gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-100 rounded-xl transition">
-                                    <i class="fa-solid fa-book-quran text-emerald-600 w-4 text-center mt-0.5 shrink-0"></i>
+                                    <img src="{{ asset('images/logo_rtq.png') }}" alt="Logo RTQ" class="w-4 h-4 object-contain mt-0.5 shrink-0">
                                     <div>
                                         <p class="font-bold text-slate-800 leading-tight">RTQ Ar-Raudhah</p>
                                         <p class="text-[10px] text-slate-400 font-normal">Rumah Tahfidz Qur'an</p>

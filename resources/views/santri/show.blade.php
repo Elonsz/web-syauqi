@@ -15,7 +15,12 @@
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-xs">
         <div>
             <div class="flex items-center gap-2">
-                <span class="text-xs font-bold px-2.5 py-0.5 rounded-full {{ $santri->jenis === 'TPQ' ? 'bg-blue-100 text-blue-900' : 'bg-emerald-100 text-emerald-900' }}">
+                <span class="inline-flex items-center gap-1.5 text-xs font-bold px-2.5 py-0.5 rounded-full {{ $santri->jenis === 'TPQ' ? 'bg-blue-100 text-blue-900' : 'bg-emerald-100 text-emerald-900' }}">
+                    @if($santri->jenis === 'TPQ')
+                        <img src="{{ asset('images/logo_tpq.png') }}" alt="Logo TPQ" class="w-3.5 h-3.5 object-contain">
+                    @elseif($santri->jenis === 'RTQ')
+                        <img src="{{ asset('images/logo_rtq.png') }}" alt="Logo RTQ" class="w-3.5 h-3.5 object-contain">
+                    @endif
                     {{ $santri->jenis }} Ar-Raudhah
                 </span>
                 <span class="text-xs text-slate-400 font-mono">ID #{{ $santri->id }}</span>
@@ -93,7 +98,12 @@
                 <!-- Info Header Santri (Berada bersih di area putih) -->
                 <div class="flex-1 min-w-0 pt-2 sm:pt-4 sm:pb-1">
                     <div class="flex items-center gap-2 flex-wrap mb-1.5">
-                        <span class="px-2.5 py-0.5 rounded-md text-xs font-bold {{ $santri->jenis === 'TPQ' ? 'bg-blue-100 text-blue-900 border border-blue-200' : 'bg-emerald-100 text-emerald-900 border border-emerald-200' }}">
+                        <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-xs font-bold {{ $santri->jenis === 'TPQ' ? 'bg-blue-100 text-blue-900 border border-blue-200' : 'bg-emerald-100 text-emerald-900 border border-emerald-200' }}">
+                            @if($santri->jenis === 'TPQ')
+                                <img src="{{ asset('images/logo_tpq.png') }}" alt="Logo TPQ" class="w-3.5 h-3.5 object-contain">
+                            @elseif($santri->jenis === 'RTQ')
+                                <img src="{{ asset('images/logo_rtq.png') }}" alt="Logo RTQ" class="w-3.5 h-3.5 object-contain">
+                            @endif
                             {{ $santri->jenis }}
                         </span>
                         <span class="text-xs font-mono font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-md border border-slate-200">

@@ -146,10 +146,10 @@
             <!-- Unit Pills -->
             <div class="flex flex-wrap items-center justify-center gap-3 mb-10">
                 <span class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/10 border border-white/20 text-white text-xs sm:text-sm font-semibold">
-                    <i class="fa-solid fa-book-quran text-amber-300"></i> Taman Pendidikan Qur'an (TPQ)
+                    <img src="{{ asset('images/logo_tpq.png') }}" alt="Logo TPQ" class="w-5 h-5 object-contain"> Taman Pendidikan Qur'an (TPQ)
                 </span>
                 <span class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/10 border border-white/20 text-white text-xs sm:text-sm font-semibold">
-                    <i class="fa-solid fa-mosque text-amber-300"></i> Rumah Tahfidz Qur'an (RTQ)
+                    <img src="{{ asset('images/logo_rtq.png') }}" alt="Logo RTQ" class="w-5 h-5 object-contain"> Rumah Tahfidz Qur'an (RTQ)
                 </span>
             </div>
 
@@ -226,8 +226,8 @@
                 <div class="bg-gradient-to-br from-[#0c1a44] via-[#102560] to-[#183584] border border-blue-400/50 rounded-3xl p-8 shadow-xl shadow-[#1e3a8a]/20 hover:border-white transition reveal relative overflow-hidden">
                     <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-blue-500/10 rounded-full blur-2xl"></div>
                     <div class="flex items-center gap-4 mb-5">
-                        <div class="w-16 h-16 bg-[#1e3a8a] text-white border-2 border-[#60a5fa] rounded-2xl flex items-center justify-center text-3xl shadow-lg">
-                            <i class="fa-solid fa-book-open-reader"></i>
+                        <div class="w-16 h-16 bg-white/10 backdrop-blur-xs border-2 border-[#60a5fa] rounded-2xl flex items-center justify-center p-1.5 shadow-lg overflow-hidden shrink-0">
+                            <img src="{{ asset('images/logo_tpq.png') }}" alt="Logo TPQ Ar-Raudhah" class="w-full h-full object-contain">
                         </div>
                         <div>
                             <span class="text-[11px] font-bold text-blue-300 uppercase tracking-widest bg-blue-950/80 px-2.5 py-0.5 rounded-lg border border-blue-400/30">Unit 01 • TPQ</span>
@@ -250,8 +250,8 @@
                 <div class="bg-gradient-to-br from-[#041a12] via-[#062b1e] to-[#0a3d2b] border border-emerald-500/50 rounded-3xl p-8 shadow-xl shadow-emerald-950/20 hover:border-white transition reveal relative overflow-hidden">
                     <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-emerald-500/10 rounded-full blur-2xl"></div>
                     <div class="flex items-center gap-4 mb-5">
-                        <div class="w-16 h-16 bg-emerald-700 text-white border-2 border-emerald-400/50 rounded-2xl flex items-center justify-center text-3xl shadow-lg">
-                            <i class="fa-solid fa-mosque"></i>
+                        <div class="w-16 h-16 bg-white border-2 border-emerald-400/50 rounded-2xl flex items-center justify-center p-1.5 shadow-lg overflow-hidden shrink-0">
+                            <img src="{{ asset('images/logo_rtq.png') }}" alt="Logo RTQ Ar-Raudhah" class="w-full h-full object-contain">
                         </div>
                         <div>
                             <span class="text-[11px] font-bold text-emerald-300 uppercase tracking-widest bg-emerald-950/80 px-2.5 py-0.5 rounded-lg border border-emerald-400/30">Unit 02 • RTQ</span>
