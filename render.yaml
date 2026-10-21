@@ -1,25 +1,30 @@
 services:
   - type: web
-    name: web-syauqi-ar-raudhah
+    name: web-syauqi
     runtime: docker
     plan: free
     region: singapore
+    branch: main
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /up
     envVars:
       - key: APP_NAME
-        value: "Yayasan Cahaya Amanah Ar-Raudhah"
+        value: "Yayasan Ar-Raudhah"
       - key: APP_ENV
         value: production
       - key: APP_DEBUG
         value: "false"
       - key: APP_KEY
-        value: "base64:J14m/iT0BfXj4oGoU3fdd2pqtvR7iILJ44dl1lO9CtA="
+        generateValue: true
+      - key: APP_URL
+        fromHost: true
       - key: DB_CONNECTION
         value: sqlite
       - key: DB_DATABASE
         value: /var/www/html/database/database.sqlite
       - key: SESSION_DRIVER
-        value: database
+        value: file
       - key: CACHE_STORE
-        value: database
-      - key: GEMINI_API_KEY
-        sync: false
+        value: file
+      - key: LOG_CHANNEL
+        value: stderr
