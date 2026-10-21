@@ -22,6 +22,14 @@
             <p class="text-xs text-slate-500 mt-1">Ubah biodata peserta, update pas foto kelulusan, atau perbarui nilai ujian database_sekolah.</p>
         </div>
         <div class="flex items-center gap-2 self-start sm:self-auto shrink-0">
+            @if(session('user_role') === 'Administrator')
+            <button type="button"
+                    onclick="openGlobalDeleteModal('{{ route('database_sekolah.destroy', $santri->id) }}', '{{ addslashes($santri->nama) }}', '{{ $santri->no_peserta ?? '-' }}', '{{ $santri->nama_unit ?? $santri->jenis }}')"
+                    class="inline-flex items-center justify-center gap-1.5 text-xs font-bold text-rose-700 hover:text-white bg-rose-50 hover:bg-rose-600 border border-rose-200 px-3 py-2 rounded-xl transition"
+                    title="Hapus Data Santri">
+                <i class="fa-solid fa-trash-can text-xs"></i> Hapus
+            </button>
+            @endif
             <a href="{{ route('database_sekolah.kelulusan', $santri->id) }}" target="_blank"
                class="inline-flex items-center justify-center gap-1.5 text-xs font-bold text-blue-900 hover:text-blue-950 bg-blue-50 hover:bg-blue-100 border border-blue-200/80 px-3 py-2 rounded-xl transition">
                 <i class="fa-solid fa-file-lines text-blue-800"></i> Surat Kelulusan

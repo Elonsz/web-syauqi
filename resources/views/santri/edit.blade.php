@@ -32,6 +32,14 @@
             </p>
         </div>
         <div class="flex items-center gap-2">
+            @if(session('user_role') === 'Administrator')
+            <button type="button"
+                    onclick="openGlobalDeleteModal('{{ route('santri.destroy', $santri->id) }}', '{{ addslashes($santri->nama) }}', '{{ $santri->no_peserta ?? '-' }}', '{{ $santri->nama_unit ?? $santri->jenis }}')"
+                    class="inline-flex items-center justify-center gap-1.5 text-xs font-bold text-rose-700 hover:text-white bg-rose-50 hover:bg-rose-600 border border-rose-200 px-3.5 py-2 rounded-xl transition shrink-0"
+                    title="Hapus Santri">
+                <i class="fa-solid fa-trash-can text-xs"></i> Hapus
+            </button>
+            @endif
             <a href="{{ route('santri.show', $santri->id) }}" 
                class="inline-flex items-center justify-center gap-2 text-xs font-semibold text-slate-600 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 border border-slate-200 px-3.5 py-2 rounded-xl transition shrink-0">
                 <i class="fa-solid fa-eye text-xs"></i> Lihat Profil

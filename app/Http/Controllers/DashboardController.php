@@ -26,9 +26,9 @@ class DashboardController extends Controller
         $lulusRTQ        = $santriRTQ->where('status_kelulusan', 'LULUS')->count();
         $tidakLulusRTQ   = $santriRTQ->where('status_kelulusan', 'TIDAK LULUS')->count();
 
-        $rataRataGlobal = $semua->avg(fn($s) => $s->penilaian?->rata_rata ?? 0);
-        $rataTPQ        = $santriTPQ->avg(fn($s) => $s->penilaian?->rata_rata ?? 0);
-        $rataRTQ        = $santriRTQ->avg(fn($s) => $s->penilaian?->rata_rata ?? 0);
+        $rataRataGlobal = $semua->avg(fn($s) => $s->penilaian?->rata_rata ?? 0) ?? 0;
+        $rataTPQ        = $santriTPQ->avg(fn($s) => $s->penilaian?->rata_rata ?? 0) ?? 0;
+        $rataRTQ        = $santriRTQ->avg(fn($s) => $s->penilaian?->rata_rata ?? 0) ?? 0;
 
         // Predikat Distribution
         $predikatCounts = [
@@ -71,9 +71,9 @@ class DashboardController extends Controller
         $avgKomponenRTQ = [];
 
         foreach ($komponenKeys as $key) {
-            $avgKomponenSemua[] = round($semua->avg(fn($s) => $s->penilaian?->$key ?? 0), 1);
-            $avgKomponenTPQ[] = round($santriTPQ->avg(fn($s) => $s->penilaian?->$key ?? 0), 1);
-            $avgKomponenRTQ[] = round($santriRTQ->avg(fn($s) => $s->penilaian?->$key ?? 0), 1);
+            $avgKomponenSemua[] = round($semua->avg(fn($s) => $s->penilaian?->$key ?? 0) ?? 0, 1);
+            $avgKomponenTPQ[] = round($santriTPQ->avg(fn($s) => $s->penilaian?->$key ?? 0) ?? 0, 1);
+            $avgKomponenRTQ[] = round($santriRTQ->avg(fn($s) => $s->penilaian?->$key ?? 0) ?? 0, 1);
         }
 
         $santriTerbaru  = Santri::latest()->take(10)->get();

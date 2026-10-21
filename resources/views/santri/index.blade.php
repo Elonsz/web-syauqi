@@ -358,7 +358,7 @@
                                 </a>
 
                                 <!-- Hapus -->
-                                <button type="button" onclick="confirmDeleteSantri({{ $s->id }}, '{{ addslashes($s->nama) }}')" 
+                                <button type="button" onclick="openGlobalDeleteModal('{{ route('santri.destroy', $s->id) }}', '{{ addslashes($s->nama) }}', '{{ $s->no_peserta ?? '-' }}', '{{ $s->nama_unit ?? $s->jenis }}')" 
                                         title="Hapus Data Santri"
                                         class="w-7 h-7 rounded-lg bg-rose-50 hover:bg-rose-100 text-rose-600 flex items-center justify-center transition">
                                     <i class="fa-solid fa-trash-can text-xs"></i>
@@ -396,49 +396,4 @@
     </div>
 
 </div>
-
-<!-- MODAL KONFIRMASI HAPUS -->
-<div id="deleteModal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl max-w-sm w-full p-5 space-y-4 shadow-2xl border border-slate-200">
-        <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center shrink-0">
-                <i class="fa-solid fa-triangle-exclamation text-lg"></i>
-            </div>
-            <div>
-                <h3 class="text-sm font-bold text-slate-900">Hapus Data Santri?</h3>
-                <p class="text-xs text-slate-500">Tindakan ini tidak dapat dibatalkan.</p>
-            </div>
-        </div>
-        <p class="text-xs text-slate-600 leading-relaxed">
-            Data biodata santri <strong id="deleteSantriName" class="text-slate-900"></strong> beserta seluruh riwayat penilaian database sekolahnya akan dihapus permanen dari sistem.
-        </p>
-        <div class="flex items-center justify-end gap-2 pt-2">
-            <button type="button" onclick="closeDeleteModal()" 
-                    class="px-3.5 py-2 text-xs font-semibold text-slate-600 hover:text-slate-800 bg-slate-100 hover:bg-slate-200 rounded-xl transition">
-                Batal
-            </button>
-            <form id="deleteForm" method="POST">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="px-4 py-2 text-xs font-bold text-white bg-rose-600 hover:bg-rose-700 rounded-xl transition shadow-xs">
-                    Ya, Hapus Santri
-                </button>
-            </form>
-        </div>
-    </div>
-</div>
-@endsection
-
-@section('scripts')
-<script>
-    function confirmDeleteSantri(id, name) {
-        document.getElementById('deleteSantriName').textContent = name;
-        document.getElementById('deleteForm').action = '/santri/' + id;
-        document.getElementById('deleteModal').classList.remove('hidden');
-    }
-
-    function closeDeleteModal() {
-        document.getElementById('deleteModal').classList.add('hidden');
-    }
-</script>
 @endsection

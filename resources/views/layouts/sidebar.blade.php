@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
@@ -34,7 +35,17 @@
                     }
                 }
             }
-        }
+        };
+
+        // Inisialisasi tema instan sebelum render untuk mencegah efek kedip (FOUC)
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        })();
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -47,6 +58,205 @@
             border: 1px solid #cbd5e1;
             padding: 6px 10px;
             font-size: 0.85rem;
+        }
+
+        /* ===== DARK MODE OVERRIDES ===== */
+        html.dark {
+            color-scheme: dark;
+        }
+        html.dark body {
+            background-color: #0b1120 !important;
+            color: #f1f5f9 !important;
+        }
+        html.dark aside#sidebar {
+            background-color: #0d1527 !important;
+            border-color: #1e293b !important;
+            color: #cbd5e1 !important;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4) !important;
+        }
+        html.dark .sidebar-header,
+        html.dark .sidebar-footer {
+            border-color: #1e293b !important;
+        }
+        html.dark .sidebar-section-label {
+            color: #64748b !important;
+        }
+        html.dark .sidebar-item {
+            color: #94a3b8 !important;
+        }
+        html.dark .sidebar-item:hover {
+            background-color: #17233d !important;
+            color: #f8fafc !important;
+        }
+        html.dark .sidebar-item.active {
+            background: linear-gradient(90deg, rgba(30, 58, 138, 0.45) 0%, rgba(37, 99, 235, 0.25) 100%) !important;
+            color: #93c5fd !important;
+            border-color: #3b82f6 !important;
+        }
+        html.dark header {
+            background-color: #0d1527 !important;
+            border-color: #1e293b !important;
+            color: #f1f5f9 !important;
+        }
+        html.dark .bg-white {
+            background-color: #111b33 !important;
+            border-color: #1e2d4d !important;
+            color: #f1f5f9;
+        }
+        html.dark .bg-slate-50 {
+            background-color: #0c1427 !important;
+            border-color: #1e293b !important;
+            color: #cbd5e1;
+        }
+        html.dark .bg-slate-100 {
+            background-color: #17233d !important;
+            border-color: #273859 !important;
+            color: #cbd5e1;
+        }
+        html.dark .text-slate-900,
+        html.dark .text-slate-800 {
+            color: #f8fafc !important;
+        }
+        html.dark .text-slate-700 {
+            color: #e2e8f0 !important;
+        }
+        html.dark .text-slate-600 {
+            color: #cbd5e1 !important;
+        }
+        html.dark .text-slate-500 {
+            color: #94a3b8 !important;
+        }
+        html.dark .text-slate-400 {
+            color: #64748b !important;
+        }
+        html.dark .text-blue-950,
+        html.dark .text-blue-900 {
+            color: #93c5fd !important;
+        }
+        html.dark .border-slate-200,
+        html.dark .border-slate-100 {
+            border-color: #1e2d4d !important;
+        }
+        html.dark .divide-slate-200 > :not([hidden]) ~ :not([hidden]),
+        html.dark .divide-slate-100 > :not([hidden]) ~ :not([hidden]),
+        html.dark .divide-slate-50 > :not([hidden]) ~ :not([hidden]) {
+            border-color: #1e2d4d !important;
+        }
+        html.dark [class*="bg-slate-50"] {
+            background-color: #0c1427 !important;
+            border-color: #1e293b !important;
+        }
+        html.dark [class*="bg-amber-50"] {
+            background-color: rgba(245, 158, 11, 0.12) !important;
+            border-color: rgba(245, 158, 11, 0.28) !important;
+        }
+        html.dark [class*="bg-blue-50"] {
+            background-color: rgba(59, 130, 246, 0.12) !important;
+            border-color: rgba(59, 130, 246, 0.28) !important;
+        }
+        html.dark [class*="bg-emerald-50"] {
+            background-color: rgba(16, 185, 129, 0.12) !important;
+            border-color: rgba(16, 185, 129, 0.28) !important;
+        }
+        html.dark [class*="bg-rose-50"],
+        html.dark [class*="bg-red-50"] {
+            background-color: rgba(244, 63, 94, 0.12) !important;
+            border-color: rgba(244, 63, 94, 0.28) !important;
+        }
+        html.dark .text-amber-800,
+        html.dark .text-amber-900 {
+            color: #fde68a !important;
+        }
+        html.dark .text-emerald-800,
+        html.dark .text-emerald-900 {
+            color: #a7f3d0 !important;
+        }
+        html.dark .text-blue-800,
+        html.dark .text-blue-900 {
+            color: #bfdbfe !important;
+        }
+        html.dark [class*="hover:bg-slate-50"]:hover {
+            background-color: #17233d !important;
+        }
+        html.dark [class*="hover:bg-slate-100"]:hover {
+            background-color: #1e2d4d !important;
+        }
+        html.dark [class*="hover:bg-amber-100"]:hover {
+            background-color: rgba(245, 158, 11, 0.22) !important;
+        }
+        html.dark [class*="hover:bg-emerald-100"]:hover {
+            background-color: rgba(16, 185, 129, 0.22) !important;
+        }
+        html.dark [class*="hover:bg-blue-100"]:hover {
+            background-color: rgba(59, 130, 246, 0.22) !important;
+        }
+        html.dark #page-overlay {
+            background: #0b1120 !important;
+        }
+        html.dark .shadow-sm,
+        html.dark .shadow-md,
+        html.dark .shadow-lg {
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5) !important;
+        }
+        html.dark input[type="text"],
+        html.dark input[type="number"],
+        html.dark input[type="search"],
+        html.dark input[type="password"],
+        html.dark select,
+        html.dark textarea {
+            background-color: #0d162a !important;
+            border-color: #273859 !important;
+            color: #f8fafc !important;
+        }
+        html.dark input::placeholder,
+        html.dark textarea::placeholder {
+            color: #64748b !important;
+        }
+        html.dark input:focus,
+        html.dark select:focus,
+        html.dark textarea:focus {
+            border-color: #3b82f6 !important;
+            background-color: #111b33 !important;
+        }
+        html.dark #themeToggleBtn {
+            background-color: #17233d !important;
+            border-color: #273859 !important;
+            color: #f8fafc !important;
+        }
+        html.dark #userDropdownBtn {
+            background-color: #17233d !important;
+            border-color: #273859 !important;
+            color: #f8fafc !important;
+        }
+        html.dark #userDropdownMenu {
+            background-color: #111b33 !important;
+            border-color: #273859 !important;
+            box-shadow: 0 20px 35px -5px rgba(0, 0, 0, 0.6) !important;
+        }
+        html.dark #userDropdownMenu a:hover,
+        html.dark #userDropdownMenu button:hover {
+            background-color: #17233d !important;
+        }
+        html.dark .modal-card,
+        html.dark #globalDeleteModalBox {
+            background-color: #111b33 !important;
+            border-color: #273859 !important;
+            color: #f8fafc !important;
+        }
+        html.dark table.table-custom th {
+            background-color: #0c1427 !important;
+            border-color: #273859 !important;
+            color: #e2e8f0 !important;
+        }
+        html.dark table.table-custom td {
+            border-color: #1e2d4d !important;
+            color: #cbd5e1 !important;
+        }
+        html.dark table.table-custom tbody tr:hover {
+            background-color: #17233d !important;
+        }
+        body, aside, header, main, .bg-white, .sidebar-item, .modal-card {
+            transition: background-color 0.25s ease, border-color 0.25s ease, color 0.2s ease !important;
         }
 
         /* ===== SIDEBAR ===== */
@@ -406,6 +616,15 @@
                     </div>
                     @endif
 
+                    <!-- Theme Toggle Button (Light/Dark Mode) -->
+                    <button type="button" 
+                            onclick="toggleTheme()" 
+                            id="themeToggleBtn"
+                            class="w-9 h-9 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 flex items-center justify-center text-slate-700 transition cursor-pointer select-none shrink-0"
+                            title="Ganti Mode Terang / Gelap (Light / Dark Mode)">
+                        <i class="fa-solid fa-moon text-sm text-slate-600" id="themeToggleIcon"></i>
+                    </button>
+
                     <!-- User Profile Dropdown -->
                     <div class="relative" id="userDropdownWrapper">
                         <button onclick="toggleUserDropdown(event)" id="userDropdownBtn"
@@ -470,6 +689,14 @@
                                         <p class="text-[10px] text-slate-400 font-normal">Manajemen Akun &amp; Hak Akses</p>
                                     </div>
                                 </a>
+                                <button type="button" onclick="toggleTheme()"
+                                    class="w-full flex items-center justify-between px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-100 rounded-xl transition cursor-pointer">
+                                    <div class="flex items-center gap-2.5">
+                                        <i class="fa-solid fa-circle-half-stroke text-amber-500 w-4 text-center"></i>
+                                        <span>Mode Tampilan</span>
+                                    </div>
+                                    <span class="text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-md" id="themeToggleMenuBadge">Terang</span>
+                                </button>
                             </div>
 
                             <div class="border-t border-slate-100 my-1"></div>
@@ -693,7 +920,42 @@
                 if (flash) { flash.style.opacity = '0'; flash.style.transition = 'opacity 0.5s'; setTimeout(() => flash.remove(), 500); }
             }, 5000);
         });
+
+        // ==============================
+        // THEME CONTROLLER (LIGHT / DARK)
+        // ==============================
+        function toggleTheme() {
+            const html = document.documentElement;
+            const isDark = html.classList.toggle('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            updateThemeIcons();
+            window.dispatchEvent(new CustomEvent('themeChanged', { detail: { isDark } }));
+        }
+
+        function updateThemeIcons() {
+            const isDark = document.documentElement.classList.contains('dark');
+            const icon = document.getElementById('themeToggleIcon');
+            const btn = document.getElementById('themeToggleBtn');
+            const menuBadge = document.getElementById('themeToggleMenuBadge');
+
+            if (icon) {
+                icon.className = isDark ? 'fa-solid fa-sun text-amber-400 text-sm' : 'fa-solid fa-moon text-slate-600 text-sm';
+            }
+            if (btn) {
+                btn.title = isDark ? 'Beralih ke Mode Terang (Light Mode)' : 'Beralih ke Mode Gelap (Dark Mode)';
+            }
+            if (menuBadge) {
+                menuBadge.textContent = isDark ? 'Gelap' : 'Terang';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            updateThemeIcons();
+        });
     </script>
+
+    {{-- Universal Student Delete Confirmation Modal --}}
+    @include('partials.modal_delete_santri')
 
     {{-- Floating FAQ Chatbot Widget (Created by Hugo Putra Pratama) --}}
     @include('partials.chatbot')

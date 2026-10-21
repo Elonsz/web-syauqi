@@ -602,10 +602,27 @@
     updateClock();
     setInterval(updateClock, 1000);
 
+    // Theme Colors Helper for Chart.js
+    let predikatChartInstance = null;
+    let komponenChartInstance = null;
+
+    function getChartThemeColors(isDark) {
+        return {
+            doughnutBorder: isDark ? '#111b33' : '#ffffff',
+            gridColor: isDark ? 'rgba(255, 255, 255, 0.08)' : '#f1f5f9',
+            tickColor: isDark ? '#94a3b8' : '#64748b',
+            rtqBarBg: isDark ? 'rgba(59, 130, 246, 0.85)' : 'rgba(23, 37, 84, 0.9)',
+            rtqBarBorder: isDark ? '#3b82f6' : '#0f172a'
+        };
+    }
+
+    const isDarkInitial = document.documentElement.classList.contains('dark');
+    const initialColors = getChartThemeColors(isDarkInitial);
+
     // Chart.js: Distribusi Predikat (Doughnut)
     const ctxPredikat = document.getElementById('predikatChart');
     if (ctxPredikat) {
-        new Chart(ctxPredikat, {
+        predikatChartInstance = new Chart(ctxPredikat, {
             type: 'doughnut',
             data: {
                 labels: ['Mumtaz (Istimewa)', 'Jayyid Jiddan (Sangat Baik)', 'Jayyid (Baik)', 'Maqbul (Cukup)', 'Rasib (Kurang)'],
@@ -625,7 +642,7 @@
                         '#f43f5e'  // Rose
                     ],
                     borderWidth: 2,
-                    borderColor: '#ffffff',
+                    borderColor: initialColors.doughnutBorder,
                     hoverOffset: 6
                 }]
             },
@@ -655,7 +672,7 @@
     // Chart.js: Komparasi 9 Komponen Nilai (Bar Chart)
     const ctxKomponen = document.getElementById('komponenChart');
     if (ctxKomponen) {
-        new Chart(ctxKomponen, {
+        komponenChartInstance = new Chart(ctxKomponen, {
             type: 'bar',
             data: {
                 labels: {!! json_encode($komponenLabels) !!},
@@ -671,8 +688,8 @@
                     {
                         label: 'RTQ Ar-Raudhah',
                         data: {!! json_encode($avgKomponenRTQ) !!},
-                        backgroundColor: 'rgba(23, 37, 84, 0.9)', // Blue 950
-                        borderColor: '#0f172a',
+                        backgroundColor: initialColors.rtqBarBg,
+                        borderColor: initialColors.rtqBarBorder,
                         borderWidth: 1,
                         borderRadius: 6,
                     }
@@ -686,9 +703,10 @@
                         beginAtZero: true,
                         max: 100,
                         grid: {
-                            color: '#f1f5f9'
+                            color: initialColors.gridColor
                         },
                         ticks: {
+                            color: initialColors.tickColor,
                             font: { size: 10 },
                             stepSize: 20
                         }
@@ -698,6 +716,7 @@
                             display: false
                         },
                         ticks: {
+                            color: initialColors.tickColor,
                             font: { size: 10 },
                             maxRotation: 45,
                             minRotation: 0
@@ -719,5 +738,25 @@
             }
         });
     }
+
+    // Listener saat tema berubah (Light <-> Dark)
+    window.addEventListener('themeChanged', function (e) {
+        const isDark = e.detail ? e.detail.isDark : document.documentElement.classList.contains('dark');
+        const c = getChartThemeColors(isDark);
+
+        if (predikatChartInstance) {
+            predikatChartInstance.data.datasets[0].borderColor = c.doughnutBorder;
+            predikatChartInstance.update();
+        }
+
+        if (komponenChartInstance) {
+            komponenChartInstance.options.scales.y.grid.color = c.gridColor;
+            komponenChartInstance.options.scales.y.ticks.color = c.tickColor;
+            komponenChartInstance.options.scales.x.ticks.color = c.tickColor;
+            komponenChartInstance.data.datasets[1].backgroundColor = c.rtqBarBg;
+            komponenChartInstance.data.datasets[1].borderColor = c.rtqBarBorder;
+            komponenChartInstance.update();
+        }
+    });
 </script>
 @endsection

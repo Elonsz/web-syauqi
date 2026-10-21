@@ -38,7 +38,7 @@ class DatabaseSekolahController extends Controller
         $totalLulus = $santris->where('status_kelulusan', 'LULUS')->count();
         $rataRataKeseluruhan = $santris->avg(function ($s) {
             return $s->penilaian ? $s->penilaian->rata_rata : 0;
-        });
+        }) ?? 0;
 
         return view('database_sekolah.index', compact(
             'santris',
