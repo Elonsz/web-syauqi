@@ -21,6 +21,12 @@ if [ "${DB_CONNECTION:-sqlite}" = "sqlite" ]; then
     chmod 664 /var/www/html/database/database.sqlite
 fi
 
+# Ensure valid APP_KEY
+if [ -z "$APP_KEY" ]; then
+    echo "APP_KEY belum disetel, membuat APP_KEY baru..."
+    export APP_KEY=$(php artisan key:generate --show)
+fi
+
 # Storage symlink
 php artisan storage:link || true
 

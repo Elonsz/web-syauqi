@@ -11,20 +11,20 @@ services:
       - key: APP_NAME
         value: "Yayasan Ar-Raudhah"
       - key: APP_ENV
-        value: production
+        value: "production"
       - key: APP_DEBUG
         value: "false"
       - key: APP_KEY
         generateValue: true
       - key: APP_URL
-        fromHost: true
+        value: "https://web-syauqi.onrender.com"
       - key: DB_CONNECTION
-        value: sqlite
+        value: "sqlite"
       - key: DB_DATABASE
-        value: /var/www/html/database/database.sqlite
+        value: "/var/www/html/database/database.sqlite"
       - key: SESSION_DRIVER
-        value: file
+        value: "file"
       - key: CACHE_STORE
-        value: file
+        value: "file"
       - key: LOG_CHANNEL
-        value: stderr
+        value: "stderr"
