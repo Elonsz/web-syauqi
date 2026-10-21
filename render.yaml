@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: web-syauqi
+    name: arraudhah-project
     runtime: docker
     plan: free
     region: singapore
@@ -17,7 +17,7 @@ services:
       - key: APP_KEY
         generateValue: true
       - key: APP_URL
-        value: "https://web-syauqi.onrender.com"
+        value: "https://arraudhah-project.onrender.com"
       - key: DB_CONNECTION
         value: "sqlite"
       - key: DB_DATABASE
