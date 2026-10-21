@@ -1,5 +1,9 @@
+@php
+    $rawCookieTheme = $_COOKIE['theme'] ?? request()->cookie('theme', 'light');
+    $isDarkServer = $rawCookieTheme === 'dark';
+@endphp
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="{{ $isDarkServer ? 'dark' : '' }}" style="{{ $isDarkServer ? 'color-scheme: dark; background-color: #0b1120;' : '' }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     fontFamily: {
@@ -72,7 +77,30 @@
                     }
                 }
             }
-        }
+        };
+
+        // Inisialisasi tema instan sebelum render untuk mencegah efek kedip (FOUC)
+        (function() {
+            try {
+                let theme = localStorage.getItem('theme');
+                if (!theme) {
+                    const match = document.cookie.match(/(^|; )theme=([^;]+)/);
+                    if (match) theme = decodeURIComponent(match[2]);
+                }
+                if (!theme) {
+                    theme = '{{ $isDarkServer ? "dark" : "light" }}';
+                }
+                if (theme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                    document.documentElement.style.colorScheme = 'dark';
+                    document.documentElement.style.backgroundColor = '#0b1120';
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    document.documentElement.style.colorScheme = 'light';
+                    document.documentElement.style.backgroundColor = '';
+                }
+            } catch (e) {}
+        })();
     </script>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -283,8 +311,14 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-white border-t border-slate-200 py-4 text-center text-xs text-slate-500 no-print">
-        <p>&copy; 2026 Yayasan Cahaya Amanah Ar-Raudhah Banjarbaru. Database Sekolah Santri.</p>
+    <footer class="bg-white border-t border-slate-200 py-3.5 px-6 text-xs text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-2 no-print transition-colors">
+        <div class="flex items-center gap-2 text-center sm:text-left">
+            <img src="{{ asset('images/logo.png') }}" alt="Logo Ar-Raudhah" class="w-5 h-5 object-contain inline-block shrink-0">
+            <span>&copy; 2026 <strong class="text-slate-700 font-semibold">Yayasan Cahaya Amanah Ar-Raudhah</strong> • Banjarbaru, Kalimantan Selatan</span>
+        </div>
+        <div class="text-[11px] text-slate-400 text-center sm:text-right">
+            Diciptakan &amp; Dikembangkan oleh <span class="text-blue-600 font-bold">Hugo Putra Pratama</span>
+        </div>
     </footer>
 
     @yield('scripts')
@@ -400,6 +434,13 @@
                 setTimeout(() => flash.remove(), 500);
             }
         }, 5000);
+
+        // Paksa refresh saat navigasi back/forward cache setelah logout
+        window.addEventListener('pageshow', function (e) {
+            if (e.persisted || (window.performance && window.performance.navigation && window.performance.navigation.type === 2) || (window.performance && window.performance.getEntriesByType && window.performance.getEntriesByType('navigation')[0]?.type === 'back_forward')) {
+                window.location.reload();
+            }
+        });
     </script>
 </body>
 </html>

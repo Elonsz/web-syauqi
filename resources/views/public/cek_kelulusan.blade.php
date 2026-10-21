@@ -285,10 +285,15 @@
     </main>
 
     {{-- ===== FOOTER ===== --}}
-    <footer class="bg-slate-950 border-t border-white/10 py-6 px-4 text-center text-xs text-slate-500">
-        <p>© 2026 Yayasan Cahaya Amanah Ar-Raudhah — Banjarbaru, Kalimantan Selatan.</p>
-        <p class="mt-1 text-[11px] text-slate-600">
-            Dikembangkan &amp; Dirancang oleh <span class="text-slate-400 font-bold">Hugo Putra Pratama</span>
+    <footer class="bg-slate-950 border-t border-white/10 py-6 px-4 text-center text-xs text-slate-400">
+        <div class="flex items-center justify-center gap-2 mb-1.5 flex-wrap">
+            <img src="{{ asset('images/logo.png') }}" alt="Logo Ar-Raudhah" class="w-5 h-5 object-contain inline-block">
+            <span class="text-white font-semibold">&copy; 2026 Yayasan Cahaya Amanah Ar-Raudhah</span>
+            <span class="text-slate-600">•</span>
+            <span class="text-blue-400 text-xs font-medium">TPQ &amp; RTQ Ar-Raudhah Banjarbaru, Kalimantan Selatan</span>
+        </div>
+        <p class="text-[11px] text-slate-500">
+            Diciptakan &amp; Dikembangkan oleh <strong class="text-amber-400 font-semibold">Hugo Putra Pratama</strong>
         </p>
     </footer>
 

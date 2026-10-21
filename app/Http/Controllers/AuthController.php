@@ -22,7 +22,11 @@ class AuthController extends Controller
         if (session('logged_in')) {
             return redirect()->route('dashboard');
         }
-        return view('auth.login');
+        return response()
+            ->view('auth.login')
+            ->header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0')
+            ->header('Pragma', 'no-cache')
+            ->header('Expires', 'Sun, 02 Jan 1990 00:00:00 GMT');
     }
 
     public function login(Request $request)
@@ -88,10 +92,16 @@ class AuthController extends Controller
         // 📋 Audit log — logout
         Log::info("LOGOUT: user={$userName} ip={$ip}");
 
-        // ✅ KEAMANAN: Flush seluruh session dan regenerate ID baru
-        Session::flush();
-        Session::regenerate();
+        // ✅ KEAMANAN: Flush & invalidate seluruh session dan regenerate token CSRF
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
 
-        return redirect()->route('login')->with('success', 'Anda telah berhasil keluar dari sistem.');
+        return redirect()->route('login')
+            ->with('success', 'Anda telah berhasil keluar dari sistem.')
+            ->withHeaders([
+                'Cache-Control' => 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0',
+                'Pragma' => 'no-cache',
+                'Expires' => 'Sun, 02 Jan 1990 00:00:00 GMT',
+            ]);
     }
 }

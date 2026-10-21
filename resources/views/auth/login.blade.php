@@ -642,7 +642,8 @@
                     </span>
                 </div>
                 <p class="copyright-text">
-                    &copy; 2026 Yayasan Ar-Raudhah · Karya <strong style="color:#94a3b8;">Hugo Putra Pratama</strong>
+                    &copy; 2026 Yayasan Cahaya Amanah Ar-Raudhah • Banjarbaru<br>
+                    Diciptakan &amp; Dikembangkan oleh <strong style="color:#cbd5e1;">Hugo Putra Pratama</strong>
                 </p>
             </div>
         </div>

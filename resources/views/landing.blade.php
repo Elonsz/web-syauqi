@@ -510,14 +510,14 @@
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex flex-col sm:flex-row items-center justify-center gap-3 mb-2">
                 <div class="w-8 h-8 bg-white rounded-lg p-0.5 shadow flex items-center justify-center">
-                    <img src="{{ asset('images/logo.png') }}" alt="Logo" class="w-full h-full object-contain">
+                    <img src="{{ asset('images/logo.png') }}" alt="Logo Ar-Raudhah" class="w-full h-full object-contain">
                 </div>
                 <span class="text-white font-bold text-sm">Yayasan Cahaya Amanah Ar-Raudhah</span>
                 <span class="hidden sm:inline text-slate-600">•</span>
-                <span class="text-[#60a5fa] text-xs font-semibold">TPQ &amp; RTQ Ar-Raudhah Banjarbaru</span>
+                <span class="text-[#60a5fa] text-xs font-semibold">TPQ &amp; RTQ Ar-Raudhah Banjarbaru, Kalimantan Selatan</span>
             </div>
             <p class="text-xs text-slate-400">
-                Database Sekolah Santri &copy; 2026. Diciptakan &amp; Dikembangkan dengan bangga oleh <strong class="text-amber-300 font-bold">Hugo Putra Pratama</strong>.
+                &copy; 2026 Database Sekolah Santri. Diciptakan &amp; Dikembangkan oleh <strong class="text-amber-300 font-bold">Hugo Putra Pratama</strong>.
             </p>
         </div>
     </footer>

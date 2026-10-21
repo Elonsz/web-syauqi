@@ -1,5 +1,11 @@
+@php
+    $rawCookieTheme = $_COOKIE['theme'] ?? request()->cookie('theme', 'light');
+    $isDarkServer = $rawCookieTheme === 'dark';
+    $rawSidebar = $_COOKIE['sidebar_collapsed'] ?? request()->cookie('sidebar_collapsed', 'false');
+    $isSidebarCollapsed = $rawSidebar === 'true';
+@endphp
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="{{ $isDarkServer ? 'dark' : '' }}" style="{{ $isDarkServer ? 'color-scheme: dark; background-color: #0b1120;' : '' }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +14,29 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
     <script>
+        // 1. Eksekusi tercepat di awal HEAD sebelum browser merender apapun
+        (function() {
+            try {
+                let theme = localStorage.getItem('theme');
+                if (!theme) {
+                    const match = document.cookie.match(/(^|; )theme=([^;]+)/);
+                    if (match) theme = decodeURIComponent(match[2]);
+                }
+                if (!theme) {
+                    theme = '{{ $isDarkServer ? "dark" : "light" }}';
+                }
+                if (theme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                    document.documentElement.style.colorScheme = 'dark';
+                    document.documentElement.style.backgroundColor = '#0b1120';
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    document.documentElement.style.colorScheme = 'light';
+                    document.documentElement.style.backgroundColor = '';
+                }
+            } catch (e) {}
+        })();
+
         tailwind.config = {
             darkMode: 'class',
             theme: {
@@ -36,16 +65,6 @@
                 }
             }
         };
-
-        // Inisialisasi tema instan sebelum render untuk mencegah efek kedip (FOUC)
-        (function() {
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                document.documentElement.classList.add('dark');
-            } else {
-                document.documentElement.classList.remove('dark');
-            }
-        })();
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -96,6 +115,14 @@
         html.dark header {
             background-color: #0d1527 !important;
             border-color: #1e293b !important;
+            color: #f1f5f9 !important;
+        }
+        html.dark footer {
+            background-color: #0d1527 !important;
+            border-color: #1e293b !important;
+            color: #94a3b8 !important;
+        }
+        html.dark footer strong {
             color: #f1f5f9 !important;
         }
         html.dark .bg-white {
@@ -243,17 +270,35 @@
             border-color: #273859 !important;
             color: #f8fafc !important;
         }
+        html.dark table th,
         html.dark table.table-custom th {
             background-color: #0c1427 !important;
             border-color: #273859 !important;
             color: #e2e8f0 !important;
         }
+        html.dark table td,
         html.dark table.table-custom td {
             border-color: #1e2d4d !important;
             color: #cbd5e1 !important;
         }
+        html.dark table tbody tr:hover,
         html.dark table.table-custom tbody tr:hover {
             background-color: #17233d !important;
+        }
+        html.dark option {
+            background-color: #0d162a !important;
+            color: #f8fafc !important;
+        }
+        html.dark .bg-slate-200 {
+            background-color: #1e2d4d !important;
+            border-color: #273859 !important;
+            color: #cbd5e1 !important;
+        }
+        html.dark .border-slate-300 {
+            border-color: #273859 !important;
+        }
+        html.dark .border-slate-400 {
+            border-color: #334155 !important;
         }
         body, aside, header, main, .bg-white, .sidebar-item, .modal-card {
             transition: background-color 0.25s ease, border-color 0.25s ease, color 0.2s ease !important;
@@ -333,21 +378,17 @@
 
         /* ===== PAGE TRANSITION ===== */
         #page-overlay {
-            position: fixed; inset: 0; z-index: 9999;
-            pointer-events: none;
-            background: #fff;
-            opacity: 0;
-            transition: opacity 0.2s ease;
+            display: none !important;
         }
-        #page-overlay.fade-in  { opacity: 0.4; pointer-events: all; }
 
         #page-progress {
             position: fixed; top: 0; left: 0;
-            height: 2px; width: 0%;
-            background: #2563eb;
+            height: 2.5px; width: 0%;
+            background: linear-gradient(90deg, #2563eb, #38bdf8);
             z-index: 10000;
-            transition: width 0.3s ease;
+            transition: width 0.25s ease, opacity 0.3s ease;
             border-radius: 0 2px 2px 0;
+            pointer-events: none;
         }
 
         #main-content {
@@ -431,7 +472,7 @@
     <div class="flex min-h-screen">
 
         <!-- ===== SIDEBAR ===== -->
-        <aside id="sidebar" class="no-print bg-white text-slate-700 flex flex-col w-64 shrink-0 relative border-r border-slate-200 shadow-sm">
+        <aside id="sidebar" class="no-print bg-white text-slate-700 flex flex-col w-64 shrink-0 relative border-r border-slate-200 shadow-sm {{ $isSidebarCollapsed ? 'collapsed' : '' }}">
 
             <!-- Brand -->
             <div class="sidebar-header flex items-center justify-between px-3.5 py-3.5 border-b border-slate-200 min-h-[60px] transition-all duration-300">
@@ -551,11 +592,11 @@
             </nav>
 
             <!-- Sidebar Footer -->
-            <div class="sidebar-footer border-t border-slate-200 p-3 text-center">
+            <div class="sidebar-footer border-t border-slate-200 dark:border-slate-800 p-3 text-center">
                 <div class="sidebar-label px-2 transition-all duration-300 overflow-hidden">
-                    <p class="text-[10px] text-slate-700 font-bold uppercase tracking-wider">AR-RAUDHAH</p>
-                    <p class="text-[9px] text-slate-400 mt-0.5">&copy; 2026 Yayasan Cahaya Amanah</p>
-                    <p class="text-[8.5px] text-slate-400 mt-1">by <span class="text-blue-600 font-semibold">Hugo Putra Pratama</span></p>
+                    <p class="text-[10px] text-slate-700 dark:text-slate-300 font-bold uppercase tracking-wider">AR-RAUDHAH</p>
+                    <p class="text-[9px] text-slate-400 dark:text-slate-500 mt-0.5">&copy; 2026 Yayasan Cahaya Amanah</p>
+                    <p class="text-[8.5px] text-slate-400 dark:text-slate-500 mt-1">Diciptakan &amp; Dikembangkan oleh <span class="text-blue-600 dark:text-blue-400 font-bold">Hugo Putra Pratama</span></p>
                 </div>
             </div>
         </aside>
@@ -744,9 +785,14 @@
             </main>
 
             <!-- Footer -->
-            <footer class="no-print bg-white border-t border-slate-200 py-3 px-6 text-xs text-slate-400 flex flex-col sm:flex-row items-center justify-between gap-1">
-                <span>&copy; 2026 Yayasan Cahaya Amanah Ar-Raudhah • Banjarbaru</span>
-                <span class="text-slate-500 font-medium">Database Sekolah Ar-Raudhah v1.0</span>
+            <footer class="no-print bg-white border-t border-slate-200 py-3.5 px-6 text-xs text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-2 transition-colors">
+                <div class="flex items-center gap-2 text-center sm:text-left">
+                    <img src="{{ asset('images/logo.png') }}" alt="Logo Ar-Raudhah" class="w-5 h-5 object-contain inline-block shrink-0">
+                    <span>&copy; 2026 <strong class="text-slate-700 font-semibold">Yayasan Cahaya Amanah Ar-Raudhah</strong> • Banjarbaru, Kalimantan Selatan</span>
+                </div>
+                <div class="text-[11px] text-slate-400 text-center sm:text-right">
+                    Diciptakan &amp; Dikembangkan oleh <span class="text-blue-600 dark:text-blue-400 font-bold">Hugo Putra Pratama</span>
+                </div>
             </footer>
         </div>
     </div>
@@ -789,12 +835,16 @@
             try {
                 localStorage.setItem('sidebar_collapsed', sidebarCollapsed ? 'true' : 'false');
             } catch (e) {}
+            document.cookie = "sidebar_collapsed=" + (sidebarCollapsed ? 'true' : 'false') + "; path=/; max-age=31536000; SameSite=Lax";
         }
 
         // Restore state on initial load
         try {
             if (localStorage.getItem('sidebar_collapsed') === 'true') {
                 sidebarCollapsed = true;
+                applySidebarState();
+            } else if (localStorage.getItem('sidebar_collapsed') === 'false') {
+                sidebarCollapsed = false;
                 applySidebarState();
             }
         } catch (e) {}
@@ -881,19 +931,7 @@
         // ==============================
         // PAGE TRANSITION
         // ==============================
-        const overlay  = document.getElementById('page-overlay');
         const progress = document.getElementById('page-progress');
-
-        function startTransition(href) {
-            progress.style.width = '0%';
-            progress.style.opacity = '1';
-            setTimeout(() => progress.style.width = '70%', 10);
-            overlay.classList.add('fade-in');
-            setTimeout(() => {
-                progress.style.width = '100%';
-                setTimeout(() => window.location.href = href, 150);
-            }, 260);
-        }
 
         document.addEventListener('DOMContentLoaded', function () {
             document.querySelectorAll('a[href]').forEach(link => {
@@ -902,17 +940,30 @@
                     || href.startsWith('mailto:') || href.startsWith('tel:')
                     || link.hasAttribute('download') || link.target === '_blank'
                     || href.includes('/export/')) return;
-                link.addEventListener('click', e => { e.preventDefault(); startTransition(href); });
+                link.addEventListener('click', () => {
+                    if (progress) {
+                        progress.style.opacity = '1';
+                        progress.style.width = '75%';
+                    }
+                });
             });
-            window.addEventListener('pageshow', e => {
-                if (e.persisted) { overlay.classList.remove('fade-in'); progress.style.opacity = '0'; }
+
+            window.addEventListener('pageshow', function (e) {
+                if (e.persisted || (window.performance && window.performance.navigation && window.performance.navigation.type === 2) || (window.performance && window.performance.getEntriesByType && window.performance.getEntriesByType('navigation')[0]?.type === 'back_forward')) {
+                    // Paksa refresh dari server agar dicek ulang oleh CheckLogin middleware
+                    window.location.reload();
+                } else if (progress) {
+                    progress.style.opacity = '0';
+                    progress.style.width = '0%';
+                }
             });
         });
 
         window.addEventListener('load', function () {
-            progress.style.width = '100%';
-            setTimeout(() => { progress.style.opacity = '0'; }, 400);
-            overlay.classList.remove('fade-in');
+            if (progress) {
+                progress.style.width = '100%';
+                setTimeout(() => { progress.style.opacity = '0'; }, 300);
+            }
 
             // Flash auto dismiss
             setTimeout(() => {
@@ -927,7 +978,23 @@
         function toggleTheme() {
             const html = document.documentElement;
             const isDark = html.classList.toggle('dark');
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            const themeStr = isDark ? 'dark' : 'light';
+
+            if (isDark) {
+                html.style.colorScheme = 'dark';
+                html.style.backgroundColor = '#0b1120';
+            } else {
+                html.style.colorScheme = 'light';
+                html.style.backgroundColor = '';
+            }
+
+            try {
+                localStorage.setItem('theme', themeStr);
+            } catch (e) {}
+
+            // Set cookie 1 tahun dengan path=/ agar konsisten di semua rute & sub-halaman
+            document.cookie = "theme=" + encodeURIComponent(themeStr) + "; path=/; max-age=31536000; SameSite=Lax";
+
             updateThemeIcons();
             window.dispatchEvent(new CustomEvent('themeChanged', { detail: { isDark } }));
         }
@@ -950,6 +1017,22 @@
         }
 
         document.addEventListener('DOMContentLoaded', function() {
+            try {
+                let saved = localStorage.getItem('theme');
+                if (!saved) {
+                    const m = document.cookie.match(/(^|; )theme=([^;]+)/);
+                    if (m) saved = decodeURIComponent(m[2]);
+                }
+                if (saved === 'dark' && !document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.add('dark');
+                    document.documentElement.style.colorScheme = 'dark';
+                    document.documentElement.style.backgroundColor = '#0b1120';
+                } else if (saved === 'light' && document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    document.documentElement.style.colorScheme = 'light';
+                    document.documentElement.style.backgroundColor = '';
+                }
+            } catch (e) {}
             updateThemeIcons();
         });
     </script>

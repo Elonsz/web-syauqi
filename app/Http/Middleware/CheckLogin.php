@@ -44,6 +44,15 @@ class CheckLogin
             }
         }
 
-        return $next($request);
+        $response = $next($request);
+
+        // ✅ KEAMANAN: Cegah browser cache pada halaman terproteksi
+        // Memastikan saat user sudah logout, menekan tombol 'Back' di browser
+        // tidak akan menampilkan halaman sebelumnya dan wajib login kembali.
+        $response->headers->set('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
+        $response->headers->set('Pragma', 'no-cache');
+        $response->headers->set('Expires', 'Sun, 02 Jan 1990 00:00:00 GMT');
+
+        return $response;
     }
 }

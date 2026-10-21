@@ -12,6 +12,12 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware): void {
 
+        // ── Cookies yang tidak dienkripsi agar bisa dibaca JS & PHP langsung ──
+        $middleware->encryptCookies(except: [
+            'theme',
+            'sidebar_collapsed',
+        ]);
+
         // ── Middleware Aliases (bisa dipakai di routes) ──────────────────
         $middleware->alias([
             'auth.check'       => \App\Http\Middleware\CheckLogin::class,
